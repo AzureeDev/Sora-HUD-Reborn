@@ -1,0 +1,17 @@
+<mod name="Nepgearsy HUD Reborn" global_key="NepgearsyHUDReborn">
+
+    <Classes directory="Classes">
+    </Classes>
+    <Hooks directory="Hooks">
+    </Hooks>
+
+    <Localization directory="Localization" default="english.txt">
+    </Localization>
+
+    <!--<Options name="Options" auto_build_menu="true" auto_load="true">
+        <options>
+            <merge_data area_bg="half"/>
+            <option type="bool" default_value="true" name="ExampleOption"/>
+        </options>
+    </Options>-->
+</mod>

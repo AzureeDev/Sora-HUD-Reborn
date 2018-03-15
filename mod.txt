@@ -1,0 +1,17 @@
+{
+	"name" : "Nepgearsy HUD Reborn",
+	"description" : "Muh custom HUD with a better code.",
+	"author" : "Nepgearsy",
+	"contact" : "https://steamcommunity.com/id/Nepgearsy",
+	"version" : "1.0.0",
+    "blt_version" : 2,
+    "pre_hooks" : [
+		{ "hook_id" : "lib/entry", "script_path" : "Core.lua" }
+    ],
+    "libraries" : [
+        {
+            "display_name" : "BeardLib",
+            "identifier" : "beardlib"
+        }
+    ]
+}
