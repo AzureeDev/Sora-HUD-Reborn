@@ -18,5 +18,8 @@
 
     <AddFiles directory="Assets">
         <texture path="NepgearsyHUDReborn/Menu/NepHudMenu"/>
+        <texture path="NepgearsyHUDReborn/Menu/EnableBackground"/>
+        <texture path="NepgearsyHUDReborn/Menu/DisableBackground"/>
+        <texture path="NepgearsyHUDReborn/Menu/MWSProfile"/>
     </AddFiles>
 </mod>

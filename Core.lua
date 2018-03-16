@@ -7,13 +7,34 @@ NepgearsyHUDReborn = NepgearsyHUDReborn or ModCore:new(ModPath .. "config.xml", 
 
 function NepgearsyHUDReborn:Init()
 	self.Version = "1.0.0"
+	self.Changelog = "- Initial release"
 	self.Initialized = true;
+	self:InitCollabs()
 	self:Log("Initialized.")
+end
+
+function NepgearsyHUDReborn:InitCollabs()
+	self.Creators = {
+		[1] = {
+			name = "Nepgearsy",
+			steam_id = "76561198045788203",
+			action = "Made the code. If you have issues, contact me."
+		},
+		[2] = {
+			name = "Matthelzor",
+			steam_id = "76561198084015153",
+			action = "Made the awesome background of the Control Panel."
+		},
+		[3] = {
+			name = "Luffy",
+			steam_id = "76561198075720845",
+			action = "Helped with LUA stuff when I needed."
+		}
+	}
 end
 
 function NepgearsyHUDReborn:InitMenu()
 	self.Menu = NepHudMenu:new()
-	self.Menu:Init()
 end
 
 function NepgearsyHUDReborn:Log(text, ...)

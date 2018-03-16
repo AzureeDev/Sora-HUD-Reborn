@@ -1,4 +1,23 @@
 {
+	"NepgearsyHUDReborn" : "Nepgearsy HUD Reborn",
+	"NepgearsyHUDReborn/Version" : "Version $version",
 	"NepgearsyHUDRebornMenu" : "Nepgearsy HUD Control Panel",
-	"NepgearsyHUDRebornMenu/Buttons/Close" : "Close"
+
+	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Options",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBar" : "Assault Bar",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Minimap Configuration",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Trackers",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Objectives" : "Objectives Panel",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Teammate" : "Teammate Panel",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CleanFont" : "Enable Clean Font",
+
+	"NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Menu & Lobby Options",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen" : "Enable the Starring Screen feature",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Starring Text",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Enable the Horizontal Loadout feature",
+
+	"NepgearsyHUDRebornMenu/Buttons/Close" : "Close",
+
+	"NepgearsyHUDRebornMenu/Collaborators/Header" : "Creator & Collaborators",
+	"NepgearsyHUDRebornMenu/Changelog/Header" : "Changelog: $version"
 }
