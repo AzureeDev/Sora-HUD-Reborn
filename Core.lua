@@ -11,6 +11,11 @@ function NepgearsyHUDReborn:Init()
 	self:Log("Initialized.")
 end
 
+function NepgearsyHUDReborn:InitMenu()
+	self.Menu = NepHudMenu:new()
+	self.Menu:Init()
+end
+
 function NepgearsyHUDReborn:Log(text, ...)
 	log("[NepgearsyHUDReborn] LOG : " .. text, ...)
 end
@@ -35,4 +40,8 @@ end
 -- Init NepgearsyHUDReborn coreclass if not initialized yet.
 if not NepgearsyHUDReborn.Initialized then
 	NepgearsyHUDReborn:Init()
+end
+
+if Hooks then
+	Hooks:Add("MenuManagerPopulateCustomMenus", "InitNepHudMenu", callback(NepgearsyHUDReborn, NepgearsyHUDReborn, "InitMenu"))
 end

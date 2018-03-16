@@ -1,3 +1,4 @@
 {
-	
+	"NepgearsyHUDRebornMenu" : "Nepgearsy HUD Control Panel",
+	"NepgearsyHUDRebornMenu/Buttons/Close" : "Close"
 }
