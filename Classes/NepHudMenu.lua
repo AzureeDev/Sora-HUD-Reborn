@@ -32,8 +32,7 @@ function NepHudMenu:init()
     MenuHelperPlus:AddButton({
         id = "NepgearsyHUDRebornMenu",
         title = "NepgearsyHUDRebornMenu",
-        node_name = "options",
-        position = 1,
+        node_name = "blt_options",
         callback = "NepgearsyHUDRebornMenu"
     })
 end
@@ -116,7 +115,7 @@ function NepHudMenu:InitTopBar()
         text_vertical = "center",
         font_size = 25,
         font = Font,
-        callback = callback(self, self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/commits/master")
+        callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/commits/master")
     })
 end
 

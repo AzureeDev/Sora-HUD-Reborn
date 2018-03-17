@@ -9,7 +9,7 @@
     <Localization directory="Localization" default="english.txt">
     </Localization>
 
-    <Options name="Options" auto_load="true">
+    <Options name="Options" auto_load="true" auto_build_menu="false">
         <options>
             <option type="number" min="25" max="45" default_value="45" name="AssaultBarThickness"/>
             <option type="bool" default_value="true" name="EnableMinimap"/>

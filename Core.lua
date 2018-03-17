@@ -12,7 +12,6 @@ function NepgearsyHUDReborn:Init()
 	self.Initialized = true;
 	self:InitCollabs()
 	self:InitTweakData()
-	--self:InitDefaultOptions()
 	self:Log("Initialized.")
 end
 
