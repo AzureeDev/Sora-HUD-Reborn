@@ -61,6 +61,26 @@ function NepgearsyHUDReborn:InitTweakData()
 	}
 end
 
+function NepgearsyHUDReborn:StringToColor(module, id)
+	local stc = {}
+	stc["starring"] = {}
+	stc["starring"][1] = Color.white
+	stc["starring"][2] = Color.red
+	stc["starring"][3] = Color.green
+	stc["starring"][4] = Color.blue
+	stc["starring"][5] = Color("9800ff")
+	stc["starring"][6] = Color.yellow
+	stc["starring"][7] = Color("ff6e00")
+	stc["starring"][8] = Color("ffa3f5")
+	stc["starring"][9] = Color("ff00e3")
+	stc["starring"][10] = Color("00ffff")
+	stc["starring"][11] = Color("2f5ab7")
+	stc["starring"][12] = Color("ff006e")
+	stc["starring"][13] = Color(1, 0.63, 0.58, 0.95)
+
+	return stc[module][id]
+end
+
 function NepgearsyHUDReborn:InitMenu()
 	self.Menu = NepHudMenu:new()
 end
@@ -85,12 +105,12 @@ end
 NepHook = NepHook or {}
 
 function NepHook:Post(based_class, based_func, content)
-	local concat_id = based_class .. "_" .. based_func .. "_PostHook"
+	local concat_id = tostring(based_func) .. "_PostHook"
 	Hooks:PostHook(based_class, based_func, concat_id, content)
 end
 
 function NepHook:Pre(based_class, based_func, content)
-	local concat_id = based_class .. "_" .. based_func .. "_PreHook"
+	local concat_id = tostring(based_func) .. "_PreHook"
 	Hooks:PreHook(based_class, based_func, concat_id, content)
 end
 
