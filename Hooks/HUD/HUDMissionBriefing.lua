@@ -29,10 +29,10 @@ NepHook:Post(HUDMissionBriefing, "set_player_slot", function(self, nr, params)
     self:_update_avatar_slot(peer_id)
 	self:_update_name(current_name, peer_id)
 
-    LuaNetworking:SendToPeers("NepgearsyHUDReborn/StarringColor", tostring(NepgearsyHUDReborn.Options:GetValue("StarringColor")))
+    LuaNetworking:SendToPeers("StarringColor", tostring(NepgearsyHUDReborn.Options:GetValue("StarringColor")))
 
     if has_starring_text then
-        LuaNetworking:SendToPeers("NepgearsyHUDReborn/StarringText", tostring(NepgearsyHUDReborn.Options:GetValue("StarringText")))
+        LuaNetworking:SendToPeers("StarringText", tostring(NepgearsyHUDReborn.Options:GetValue("StarringText")))
     end
 
     if current_name == managers.network.account:username_id() then
@@ -86,8 +86,8 @@ function HUDMissionBriefing:_update_custom_starring_text(text, peer_id)
 end
 
 Hooks:Add("NetworkReceivedData", "NepgearsyHUDReborn_StarringSync", function(sender, id, data)
-    local StarringColorSyncID = "NepgearsyHUDReborn/StarringColor"
-    local StarringTextSyncID = "NepgearsyHUDReborn/StarringText"
+    local StarringColorSyncID = "StarringColor"
+    local StarringTextSyncID = "StarringText"
 
     local blackscreen = managers.hud._hud_blackscreen
     local blackscreen_panel = blackscreen._blackscreen_panel

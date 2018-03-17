@@ -596,7 +596,12 @@ function NepHudMenu:open_url(url)
 end
 
 function NepHudMenu:background_enable_switch()
+    local active_menu = managers.menu:active_menu()
+
     if self.BackgroundStatus == true then
+        if active_menu then
+            active_menu.renderer:set_bg_area("none")
+        end
         self:SetBackgroundVis(false)
         self.CollabMenu:SetVisible(false)
         self.ChangelogMenu:SetVisible(false)
@@ -604,6 +609,10 @@ function NepHudMenu:background_enable_switch()
         self.BackgroundEnabler:SetImage("NepgearsyHUDReborn/Menu/EnableBackground")
         self.BackgroundStatus = false
     else
+        if active_menu then
+            active_menu.renderer:set_bg_area("full")
+        end
+
         self:SetBackgroundVis(true)
         self.CollabMenu:SetVisible(true)
         self.ChangelogMenu:SetVisible(true)
