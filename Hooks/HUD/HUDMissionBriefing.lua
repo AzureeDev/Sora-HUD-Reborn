@@ -10,6 +10,14 @@ NepHook:Post(HUDMissionBriefing, "init", function(self)
     self._player_connected[2] = false
     self._player_connected[3] = false
     self._player_connected[4] = false
+
+    self._custom_starring = {}
+    self._custom_starring[1] = ""
+    self._custom_starring[2] = ""
+    self._custom_starring[3] = ""
+    self._custom_starring[4] = ""
+
+    -- FUCK YOU OVERKILL
 end)
 
 NepHook:Post(HUDMissionBriefing, "set_player_slot", function(self, nr, params)
@@ -71,10 +79,13 @@ function HUDMissionBriefing:_update_name(name, peer_id)
 	local starring_panel = blackscreen_panel:child("starring_panel")
 	local player_slot = starring_panel:child("player_" .. peer_id)
 
-    if not self._player_connected[peer_id] then
-	    player_slot:set_text(name)
-        player_slot:set_visible(true)
+    player_slot:set_text(name)
+
+    if self._custom_starring[peer_id] ~= "" then
+        player_slot:set_text(name .. self._custom_starring[peer_id])
     end
+
+    player_slot:set_visible(true)
 end
 
 function HUDMissionBriefing:_update_custom_starring_text(text, peer_id)
@@ -105,7 +116,7 @@ Hooks:Add("NetworkReceivedData", "NepgearsyHUDReborn_StarringSync", function(sen
         local data_to_string = tostring(data)
         
         if not managers.hud._hud_mission_briefing._player_connected[sender] then
-            managers.hud._hud_mission_briefing:_update_custom_starring_text(data_to_string, sender)
+            managers.hud._hud_mission_briefing._custom_starring[sender] = ", " .. data_to_string
             managers.hud._hud_mission_briefing._player_connected[sender] = true
         end
     end
