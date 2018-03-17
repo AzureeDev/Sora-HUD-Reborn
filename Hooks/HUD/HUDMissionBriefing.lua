@@ -71,8 +71,10 @@ function HUDMissionBriefing:_update_name(name, peer_id)
 	local starring_panel = blackscreen_panel:child("starring_panel")
 	local player_slot = starring_panel:child("player_" .. peer_id)
 
-	player_slot:set_text(name)
-	player_slot:set_visible(true)
+    if not self._player_connected[sender] then
+	    player_slot:set_text(name)
+        player_slot:set_visible(true)
+    end
 end
 
 function HUDMissionBriefing:_update_custom_starring_text(text, peer_id)
