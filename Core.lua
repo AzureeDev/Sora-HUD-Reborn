@@ -6,10 +6,13 @@ end
 NepgearsyHUDReborn = NepgearsyHUDReborn or ModCore:new(ModPath .. "config.xml", true, true)
 
 function NepgearsyHUDReborn:Init()
+	self.Dev = true
 	self.Version = "1.0.0"
 	self.Changelog = "- Initial release"
 	self.Initialized = true;
 	self:InitCollabs()
+	self:InitTweakData()
+	--self:InitDefaultOptions()
 	self:Log("Initialized.")
 end
 
@@ -33,12 +36,46 @@ function NepgearsyHUDReborn:InitCollabs()
 	}
 end
 
+function NepgearsyHUDReborn:InitTweakData()
+	self.StarringColors = {
+		"White",
+		"Red",
+		"Green",
+		"Blue",
+		"Purple",
+		"Yellow",
+		"Orange",
+		"Pink",
+		"Fushia",
+		"Cyan",
+		"Blue Ocean",
+		"Red Fushia"
+	}
+	if self.Dev then table.insert(self.StarringColors, "DEV") end -- hi :3
+
+	self.Waifus = {
+		"None",
+		"Yourself (Steam Avatar)",
+		"Custom",
+		"Neptune",
+		"Nepgear"
+	}
+end
+
 function NepgearsyHUDReborn:InitMenu()
 	self.Menu = NepHudMenu:new()
 end
 
 function NepgearsyHUDReborn:Log(text, ...)
 	log("[NepgearsyHUDReborn] LOG : " .. text, ...)
+end
+
+function NepgearsyHUDReborn:DebugLog(text, ...)
+	if not self.Dev then
+		return
+	end
+
+	log("[NepgearsyHUDReborn] DEVLOG : " .. text, ...)
 end
 
 function NepgearsyHUDReborn:Error(text, ...)

@@ -9,17 +9,30 @@
     <Localization directory="Localization" default="english.txt">
     </Localization>
 
-    <!--<Options name="Options" auto_build_menu="true" auto_load="true">
+    <Options name="Options" auto_load="true">
         <options>
-            <merge_data area_bg="half"/>
-            <option type="bool" default_value="true" name="ExampleOption"/>
+            <option type="number" min="25" max="45" default_value="45" name="AssaultBarThickness"/>
+            <option type="bool" default_value="true" name="EnableMinimap"/>
+            <option type="bool" default_value="true" name="EnableTrackers"/>
+            <option type="bool" default_value="true" name="EnableObjective"/>
+            <option type="bool" default_value="true" name="EnableTeammate"/>
+            <option type="bool" default_value="true" name="EnableCleanFont"/>
+
+            <option type="bool" default_value="true" name="EnableStarring"/>
+            <option type="number" default_value="1" name="StarringColor"/>            
+            <option type="text" default_value="" name="StarringText"/>
+            <option type="bool" default_value="true" name="EnableHorizontalLoadout"/>
+
+            <option type="number" default_value="1" name="WaifuPicker"/>
+            
         </options>
-    </Options>-->
+    </Options>
 
     <AddFiles directory="Assets">
         <texture path="NepgearsyHUDReborn/Menu/NepHudMenu"/>
         <texture path="NepgearsyHUDReborn/Menu/EnableBackground"/>
         <texture path="NepgearsyHUDReborn/Menu/DisableBackground"/>
         <texture path="NepgearsyHUDReborn/Menu/MWSProfile"/>
+        <texture path="NepgearsyHUDReborn/Menu/Discord"/>
     </AddFiles>
 </mod>

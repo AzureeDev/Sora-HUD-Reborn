@@ -4,17 +4,21 @@
 	"NepgearsyHUDRebornMenu" : "Nepgearsy HUD Control Panel",
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Options",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBar" : "Assault Bar",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Minimap Configuration",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Trackers",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/Objectives" : "Objectives Panel",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/Teammate" : "Teammate Panel",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBar" : "Assault Bar Thickness",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Enable the Minimap",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Enable the Trackers",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Objectives" : "Enable the custom Objective Panel",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Teammate" : "Enable the custom Teammate Panel",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/CleanFont" : "Enable Clean Font",
 
 	"NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Menu & Lobby Options",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen" : "Enable the Starring Screen feature",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "Starring Color",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Starring Text",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Enable the Horizontal Loadout feature",
+	
+	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Extra Options",
+	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Waifu Picker",
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Close",
 
