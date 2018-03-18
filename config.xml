@@ -6,6 +6,10 @@
     <Hooks directory="Hooks">
         <hook file="HUD/HUDMissionBriefing.lua" source_file="lib/managers/hud/hudmissionbriefing"/>
         <hook file="HUD/HUDBlackScreen.lua" source_file="lib/managers/hud/hudblackscreen"/>
+        <hook file="HUD/HUDObjectives.lua" source_file="lib/managers/hud/hudobjectives"/>
+        <hook file="HUD/HUDManagerPD2.lua" source_file="lib/managers/hudmanagerpd2"/>
+        <hook file="HUD/HUDAssaultCorner.lua" source_file="lib/managers/hud/hudassaultcorner"/>
+        <hook file="HUD/GroupAIStateBase.lua" source_file="lib/managers/group_ai_states/groupaistatebesiege"/>
     </Hooks>
 
     <Localization directory="Localization" default="english.txt">
@@ -36,5 +40,8 @@
         <texture path="NepgearsyHUDReborn/Menu/DisableBackground"/>
         <texture path="NepgearsyHUDReborn/Menu/MWSProfile"/>
         <texture path="NepgearsyHUDReborn/Menu/Discord"/>
+
+        <texture path="NepgearsyHUDReborn/HUD/AssaultBar"/>
+        <texture path="NepgearsyHUDReborn/HUD/Thund"/>
     </AddFiles>
 </mod>

@@ -23,5 +23,10 @@
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Close",
 
 	"NepgearsyHUDRebornMenu/Collaborators/Header" : "Creator & Collaborators",
-	"NepgearsyHUDRebornMenu/Changelog/Header" : "Changelog: $version"
+	"NepgearsyHUDRebornMenu/Changelog/Header" : "Changelog: $version",
+
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Stealth Mode",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Prepare for the next assault",
+
+	"hud_instruct_mask_on" : ""
 }

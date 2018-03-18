@@ -1,23 +1,24 @@
 NepHook:Post(HUDMissionBriefing, "init", function(self)
-    self._player = {}
+    self._player = {}                       -- Steam ID for avatars
     self._player[1] = "0"
     self._player[2] = "0"
     self._player[3] = "0"
     self._player[4] = "0"
 
-    self._player_connected = {}
+    self._player_connected = {}             -- Boolean to check if the player got Networked data already
     self._player_connected[1] = false
     self._player_connected[2] = false
     self._player_connected[3] = false
     self._player_connected[4] = false
 
-    self._custom_starring = {}
+    self._custom_starring = {}              -- Stock the starring in a string then modify the panel if it's not empty
     self._custom_starring[1] = ""
     self._custom_starring[2] = ""
     self._custom_starring[3] = ""
     self._custom_starring[4] = ""
 
     -- FUCK YOU OVERKILL
+    -- Especially about the part of calling set_player_slot up to 6 times for the same player
 end)
 
 NepHook:Post(HUDMissionBriefing, "set_player_slot", function(self, nr, params)
@@ -86,16 +87,6 @@ function HUDMissionBriefing:_update_name(name, peer_id)
     end
 
     player_slot:set_visible(true)
-end
-
-function HUDMissionBriefing:_update_custom_starring_text(text, peer_id)
-	local blackscreen = managers.hud._hud_blackscreen
-	local blackscreen_panel = blackscreen._blackscreen_panel
-	local starring_panel = blackscreen_panel:child("starring_panel")
-	local player_slot = starring_panel:child("player_" .. peer_id)
-
-	local previous_text = player_slot:text()
-	player_slot:set_text(previous_text .. ", " .. text)
 end
 
 Hooks:Add("NetworkReceivedData", "NepgearsyHUDReborn_StarringSync", function(sender, id, data)
