@@ -4,7 +4,7 @@
 	"NepgearsyHUDRebornMenu" : "Nepgearsy HUD Control Panel",
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Options",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBar" : "Assault Bar Thickness",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Assault Bar Font",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Enable the Minimap",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Enable the Trackers",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Objectives" : "Enable the custom Objective Panel",

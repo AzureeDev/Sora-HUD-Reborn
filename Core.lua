@@ -31,6 +31,11 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "Luffy",
 			steam_id = "76561198075720845",
 			action = "Helped with LUA stuff when I needed."
+		},
+		[4] = {
+			name = "=PDTC= Splat",
+			steam_id = "76561198085683005",
+			action = "Helped with testing stuff."
 		}
 	}
 end
@@ -58,6 +63,11 @@ function NepgearsyHUDReborn:InitTweakData()
 		"Custom",
 		"Neptune",
 		"Nepgear"
+	}
+
+	self.AssaultBarFonts = {
+		"Normal",
+		"Eurostile"
 	}
 end
 

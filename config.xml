@@ -17,7 +17,7 @@
 
     <Options name="Options" auto_load="true" auto_build_menu="false">
         <options>
-            <option type="number" min="25" max="45" default_value="45" name="AssaultBarThickness"/>
+            <option type="number" default_value="1" name="AssaultBarFont"/>
             <option type="bool" default_value="true" name="EnableMinimap"/>
             <option type="bool" default_value="true" name="EnableTrackers"/>
             <option type="bool" default_value="true" name="EnableObjective"/>
@@ -43,5 +43,6 @@
 
         <texture path="NepgearsyHUDReborn/HUD/AssaultBar"/>
         <texture path="NepgearsyHUDReborn/HUD/Thund"/>
+        <texture path="NepgearsyHUDReborn/HUD/Skull"/>
     </AddFiles>
 </mod>

@@ -23,8 +23,8 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     })
 
     local thund_panel = self._hud_panel:panel({
-        w = 64,
-        h = 128
+        w = 32,
+        h = 64
     })
 
     self._assault_panel_v2 = assault_panel_v2
@@ -58,8 +58,8 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     local Thund = thund_panel:bitmap({
         name = "Thund",
         texture = "NepgearsyHUDReborn/HUD/Thund",
-        w = 64,
-        h = 128,
+        w = 32,
+        h = 64,
         color = Color.white
     })
     self.Thund = Thund
@@ -76,13 +76,50 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         layer = 2
     })
 
-    local function animate_heartbeat(o)
-        while self._heartbeat do
-            over(1, function (p)
-                o:set_alpha(math.lerp(0.2, 1, math.sin(p * 180)))
-            end)
-        end
-    end
+    local trackerPanel = self._hud_panel:panel({
+        name = "trackerPanel",
+        w = 356,
+        h = 40
+    })
+
+    trackerPanel:set_right(thund_panel:left())
+    trackerPanel:set_top(assault_panel_v2:bottom() + 5)
+
+    local killTracker = trackerPanel:panel({
+        w = 80,
+        h = 40,
+        right = trackerPanel:right(),
+        top = trackerPanel:top()
+    })
+
+    local killTrackerRect = killTracker:rect({
+            name = "background",
+            color = Color.white,
+            alpha = 0.6,
+            layer = -1,
+            halign = "scale",
+            valign = "scale"
+    })
+
+    local killTrackerSkull = killTracker:bitmap({
+        w = 20,
+        h = 28,
+        texture = "NepgearsyHUDReborn/HUD/Skull",
+        color = Color.black,
+        x = 5
+    })
+    killTrackerSkull:set_center_y(killTracker:center_y())
+
+    self.killTrackerAmount = killTracker:text({
+        font = "fonts/font_large_mf",
+        font_size = 24,
+        vertical = "center",
+        align = "right",
+        x = -5,
+        y = 1,
+        text = "9999",
+        color = Color.black
+    })
 
     if managers.groupai:state():whisper_mode() then
         self._current_assault_color = Color.white
@@ -165,17 +202,14 @@ function HUDAssaultCorner:_end_assault()
 	self._remove_hostage_offset = true
 	self._start_assault_after_hostage_offset = nil
 
-	if self:is_safehouse_raid() then
-		self:_update_assault_hud_color(self._assault_survived_color)
-		self:_set_text_list(self:_get_survived_assault_strings())
-		box_text_panel:animate(callback(self, self, "_animate_text"), nil, nil, callback(self, self, "assault_attention_color_function"))
-		icon_assaultbox:stop()
-		icon_assaultbox:animate(callback(self, self, "_show_icon_assaultbox"))
-		self._wave_bg_box:stop()
-		self._wave_bg_box:animate(callback(self, self, "_animate_wave_completed"), self)
-	else
-		self:_close_assault_box()
-	end
+    self:_update_assault_hud_color(self._assault_survived_color)
+    self:_set_text_list(self:_get_survived_assault_strings())
+    box_text_panel:animate(callback(self, self, "_animate_text"), nil, nil, callback(self, self, "assault_attention_color_function"))
+    
+    if self:is_safehouse_raid() then
+        self._wave_bg_box:stop()
+        self._wave_bg_box:animate(callback(self, self, "_animate_wave_completed"), self)
+    end
 end
 
 function HUDAssaultCorner:_set_text_list(text_list)
@@ -232,7 +266,15 @@ function HUDAssaultCorner:_animate_text(text_panel, bg_box, color, color_functio
 					text_string = text_string .. managers.localization:get_default_macro("BTN_SKULL")
 				end
 			end
-		end
+        end
+        
+        local font_type = "fonts/font_large_mf"
+
+        if NepgearsyHUDReborn.Options:GetValue("AssaultBarFont") then
+            if NepgearsyHUDReborn.Options:GetValue("AssaultBarFont") == 2 then
+                font_type = "fonts/font_eurostile_ext"
+            end
+        end
 
 		local mod_color = color_function and color_function() or color or self._assault_color
 		local text = text_panel:text({
@@ -243,9 +285,9 @@ function HUDAssaultCorner:_animate_text(text_panel, bg_box, color, color_functio
 			blend_mode = "add",
 			layer = 1,
 			text = text_string,
-			color = Color.black,
+			color = mod_color,
 			font_size = tweak_data.hud_corner.assault_size,
-			font = tweak_data.hud_corner.assault_font
+			font = font_type
 		})
 		local _, _, w, h = text:text_rect()
 

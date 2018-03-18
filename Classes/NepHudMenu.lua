@@ -165,12 +165,13 @@ function NepHudMenu:InitMenu()
     })
 
     self.HUDOptions = {}
-    self.HUDOptions.AssaultBar = self.MainMenu:Slider({
-        name = "AssaultBarThickness",
+    self.HUDOptions.AssaultBar = self.MainMenu:ComboBox({
+        name = "AssaultBarFont",
         border_color = BorderColor,
         border_left = true,
-        value = NepgearsyHUDReborn.Options:GetValue("AssaultBarThickness"),        
-        text = "NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBar",
+        items = NepgearsyHUDReborn.AssaultBarFonts,
+        value = NepgearsyHUDReborn.Options:GetValue("AssaultBarFont"),        
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont",
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
         position = function(item) 
@@ -181,8 +182,6 @@ function NepHudMenu:InitMenu()
         text_align = "left",
         text_vertical = "center",
         font_size = 15,
-        min = 25,
-        max = 45,
         callback = ClassClbk(self, "MainClbk")
     })
 
