@@ -1,20 +1,7 @@
 NepHook:Post(HUDAssaultCorner, "init", function(self)
-    local assault_panel = self._hud_panel:child("assault_panel")
-    local hostages_panel = self._hud_panel:child("hostages_panel")
-    self._hostages_bg_box:set_visible(false)
-    self._hud_panel:child("casing_panel"):set_visible(false)
-    hostages_panel:set_visible(false)
-    self._bg_box:set_visible(false)
-    assault_panel:set_visible(false)
-    local icon_assaultbox = assault_panel:child("icon_assaultbox")
-    icon_assaultbox:set_visible(false)
-    self._bg_box:set_visible(false)
-    assault_panel:set_visible(false)
+    self:DisableOriginalHUDElements()
     
-    ------------------------------------------
-    ------------------------------------------
-
-    self._heartbeat = false
+    self.totalKilledSession = 0
 
     local assault_panel_v2 = self._hud_panel:panel({
         name = "assault_panel_v2",
@@ -22,19 +9,11 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         h = 40
     })
 
-    local thund_panel = self._hud_panel:panel({
-        w = 32,
-        h = 64
-    })
-
     self._assault_panel_v2 = assault_panel_v2
 
     assault_panel_v2:set_top(0)
     assault_panel_v2:set_right(self._hud_panel:w())
     
-    thund_panel:set_top(assault_panel_v2:bottom())
-    thund_panel:set_right(assault_panel_v2:right())
-
     self._assault_banner = assault_panel_v2:panel({
         w = 356,
         h = 40,
@@ -55,15 +34,6 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         visible = true
     })
 
-    local Thund = thund_panel:bitmap({
-        name = "Thund",
-        texture = "NepgearsyHUDReborn/HUD/Thund",
-        w = 32,
-        h = 64,
-        color = Color.white
-    })
-    self.Thund = Thund
-
     local textAssaultBanner = self._assault_banner:text({
         name = "textAssaultBanner",
         text = "",
@@ -79,16 +49,17 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     local trackerPanel = self._hud_panel:panel({
         name = "trackerPanel",
         w = 356,
-        h = 40
+        h = 40,
+        visible = NepgearsyHUDReborn.Options:GetValue("EnableTrackers")
     })
 
-    trackerPanel:set_right(thund_panel:left())
+    trackerPanel:set_right(assault_panel_v2:right())
     trackerPanel:set_top(assault_panel_v2:bottom() + 5)
 
     local killTracker = trackerPanel:panel({
         w = 80,
         h = 40,
-        right = trackerPanel:right(),
+        x = 276,
         top = trackerPanel:top()
     })
 
@@ -114,10 +85,10 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         font = "fonts/font_large_mf",
         font_size = 24,
         vertical = "center",
-        align = "right",
-        x = -5,
+        align = "center",
         y = 1,
-        text = "9999",
+        x = 10,
+        text = tostring(self.totalKilledSession),
         color = Color.black
     })
 
@@ -131,20 +102,11 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     end
 end)
 
-function HUDAssaultCorner:SetHeartbeat(status)
-    self._heartbeat = status
-end
-
-function HUDAssaultCorner:SetAssaultText(text)
-    self._assault_banner:child("textAssaultBanner"):set_text(managers.localization:to_upper_text(text))
-end
-
 function HUDAssaultCorner:_update_assault_hud_color(color)
     self._current_assault_color = color
     
     local assaultBanner = self._assault_banner:child("assaultBanner")
     assaultBanner:set_color(color)
-    self.Thund:set_color(color)
 end
 
 function HUDAssaultCorner:show_casing(mode)
@@ -426,4 +388,21 @@ function HUDAssaultCorner:_get_incoming_textlist()
             "hud_assault_end_line"
         }
     end
+end
+
+function HUDAssaultCorner:DisableOriginalHUDElements()
+    local assault_panel = self._hud_panel:child("assault_panel")
+    local hostages_panel = self._hud_panel:child("hostages_panel")
+    self._hostages_bg_box:set_visible(false)
+    self._hud_panel:child("casing_panel"):set_visible(false)
+    hostages_panel:set_visible(false)
+    self._bg_box:set_visible(false)
+    assault_panel:set_visible(false)
+    local icon_assaultbox = assault_panel:child("icon_assaultbox")
+    icon_assaultbox:set_visible(false)
+end
+
+function HUDAssaultCorner:IncreaseTotalKillsSession()
+    self.totalKilledSession = self.totalKilledSession + 1
+    self.killTrackerAmount:set_text(tostring(self.totalKilledSession))
 end

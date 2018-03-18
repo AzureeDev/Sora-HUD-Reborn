@@ -125,9 +125,22 @@ function NepHudMenu:InitBackground()
         name = "Background",
         w = self._menu_panel:w(),
         h = self._menu_panel:h() - self.TopBar:Panel():h(),
-        texture = "NepgearsyHUDReborn/Menu/NepHudMenu"
+        texture = "NepgearsyHUDReborn/Menu/NepHudMenu",
+        alpha = 0.9
     })
     Background:set_top(self.TopBar:Panel():bottom())
+
+    local ColorBG = self._menu_panel:bitmap({
+        name = "ColorBG",
+        w = self._menu_panel:w(),
+        h = self._menu_panel:h() - self.TopBar:Panel():h(),
+        texture = "NepgearsyHUDReborn/Menu/BGColor",
+        color = NepgearsyHUDReborn:StringToColor("cpcolor", NepgearsyHUDReborn.Options:GetValue("CPColor")),
+        layer = -2
+    })
+    ColorBG:set_top(self.TopBar:Panel():bottom())
+
+    self.ColorBG = ColorBG
 end
 
 function NepHudMenu:SetBackgroundVis(vis)
@@ -390,6 +403,25 @@ function NepHudMenu:InitMenu()
         font = Font
     })
     self.Extras = {}
+    self.Extras.CPColor = self.MainMenu:ComboBox({
+        name = "CPColor",
+        border_color = BorderColor,
+        border_left = true,
+        items = NepgearsyHUDReborn.CPColors,
+        value = NepgearsyHUDReborn.Options:GetValue("CPColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Extras/CPColor",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.ExtrasCat:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        localized = true,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "MainClbk")
+    })
     self.Extras.WaifuPicker = self.MainMenu:ComboBox({
         name = "WaifuPicker",
         border_color = BorderColor,
@@ -400,7 +432,7 @@ function NepHudMenu:InitMenu()
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
         position = function(item) 
-            item:Panel():set_top(self.ExtrasCat:Panel():bottom() + 5) 
+            item:Panel():set_top(self.Extras.CPColor:Panel():bottom() + 5) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         localized = true,
@@ -630,6 +662,11 @@ end
 function NepHudMenu:MainClbk(menu, item)
     if item then
         self:SetOption(item.name, item:Value())
+
+        if item.name == "CPColor" then
+            local new_color = NepgearsyHUDReborn:StringToColor("cpcolor", NepgearsyHUDReborn.Options:GetValue("CPColor"))
+            self.ColorBG:set_color(new_color)
+        end
     end
 end
 

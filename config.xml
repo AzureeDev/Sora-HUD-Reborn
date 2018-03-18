@@ -10,6 +10,7 @@
         <hook file="HUD/HUDManagerPD2.lua" source_file="lib/managers/hudmanagerpd2"/>
         <hook file="HUD/HUDAssaultCorner.lua" source_file="lib/managers/hud/hudassaultcorner"/>
         <hook file="HUD/GroupAIStateBase.lua" source_file="lib/managers/group_ai_states/groupaistatebesiege"/>
+        <hook file="HUD/StatisticsManager.lua" source_file="lib/managers/statisticsmanager"/>
     </Hooks>
 
     <Localization directory="Localization" default="english.txt">
@@ -30,12 +31,14 @@
             <option type="bool" default_value="true" name="EnableHorizontalLoadout"/>
 
             <option type="number" default_value="1" name="WaifuPicker"/>
+            <option type="number" default_value="1" name="CPColor"/>
             
         </options>
     </Options>
 
     <AddFiles directory="Assets">
         <texture path="NepgearsyHUDReborn/Menu/NepHudMenu"/>
+        <texture path="NepgearsyHUDReborn/Menu/BGColor"/>
         <texture path="NepgearsyHUDReborn/Menu/EnableBackground"/>
         <texture path="NepgearsyHUDReborn/Menu/DisableBackground"/>
         <texture path="NepgearsyHUDReborn/Menu/MWSProfile"/>

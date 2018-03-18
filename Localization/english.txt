@@ -19,6 +19,7 @@
 	
 	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Extra Options",
 	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Waifu Picker",
+	"NepgearsyHUDRebornMenu/Buttons/Extras/CPColor" : "Control Panel Background",
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Close",
 

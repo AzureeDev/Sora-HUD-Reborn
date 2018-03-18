@@ -36,6 +36,11 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "=PDTC= Splat",
 			steam_id = "76561198085683005",
 			action = "Helped with testing stuff."
+		},
+		[5] = {
+			name = "Babyforce",
+			steam_id = "76561198053887800",
+			action = "Giving me his thoughts and helping."
 		}
 	}
 end
@@ -57,6 +62,8 @@ function NepgearsyHUDReborn:InitTweakData()
 	}
 	if self.Dev then table.insert(self.StarringColors, "DEV") end -- hi :3
 
+	self.CPColors = deep_clone(self.StarringColors)
+	
 	self.Waifus = {
 		"None",
 		"Yourself (Steam Avatar)",
@@ -87,6 +94,8 @@ function NepgearsyHUDReborn:StringToColor(module, id)
 	stc["starring"][11] = Color("2f5ab7")
 	stc["starring"][12] = Color("ff006e")
 	stc["starring"][13] = Color(1, 0.63, 0.58, 0.95)
+
+	stc["cpcolor"] = deep_clone(stc["starring"])
 
 	return stc[module][id]
 end
