@@ -2,16 +2,15 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     self:DisableOriginalHUDElements()
     
     self.totalKilledSession = 0
-
+    
     local assault_panel_v2 = self._hud_panel:panel({
         name = "assault_panel_v2",
         w = 356,
-        h = 40
+        h = 40,
+        y = 13
     })
 
     self._assault_panel_v2 = assault_panel_v2
-
-    assault_panel_v2:set_top(0)
     assault_panel_v2:set_right(self._hud_panel:w())
     
     self._assault_banner = assault_panel_v2:panel({
@@ -53,12 +52,18 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     PointOfNoReturnPanel:set_top(0)
     PointOfNoReturnPanel:set_right(assault_panel_v2:left())
 
-    self.NoReturnText = PointOfNoReturnPanel:text({
+    local NoReturnChronoPanel = self._hud_panel:panel({
+		y = 0,
+		h = 40,
+		layer = 0,
+		valign = "top"
+	})
+
+    self.NoReturnText = NoReturnChronoPanel:text({
         font = "fonts/font_eurostile_ext",
         font_size = 28,
-        vertical = "center",
-        align = "right",
-        x = -20,
+        vertical = "top",
+        align = "center",
         text = "0:00",
         color = Color.red,
         alpha = 0
@@ -138,7 +143,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         valign = "scale"
     })
 
-    local num_hostages = hostages_panel:text({
+    self.num_hostages = hostages_panel:text({
 		layer = 1,
 		vertical = "center",
 		name = "num_hostages",
@@ -393,6 +398,11 @@ function HUDAssaultCorner:flash_point_of_no_return_timer(beep)
     end
     
 	self.NoReturnText:animate(flash_timer)
+end
+
+function HUDAssaultCorner:set_control_info(data)
+	self.num_hostages:set_text(data.nr_hostages)
+	self.num_hostages:animate(ClassClbk(self, "_show_blink"))
 end
 
 function HUDAssaultCorner:_show_icon_assaultbox(icon_assaultbox)

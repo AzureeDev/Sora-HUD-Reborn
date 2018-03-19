@@ -86,14 +86,12 @@ function HUDObjectives:init(hud)
 	end
 
 	local objectives_panel = self._hud_panel:panel({
-		y = 0,
 		name = "objectives_panel",
-		h = 300,
-		visible = true,
+		h = 24,
 		w = 500,
-		x = 0,
-		valign = "top"
+		y = 13
 	})
+
 	local icon_objectivebox = objectives_panel:bitmap({
 		texture = "guis/textures/pd2/hud_icon_objectivebox",
 		name = "icon_objectivebox",
@@ -112,68 +110,43 @@ function HUDObjectives:init(hud)
 	local objective_text = objectives_panel:text({
 		y = 0,
 		name = "objective_text",
-		vertical = "top",
+		vertical = "center",
 		align = "left",
 		text = "",
 		visible = true,
-		x = 30,
 		layer = 2,
 		color = Color.white,
 		font_size = tweak_data.hud.active_objective_title_font_size,
-		font = tweak_data.hud.medium_font_noshadow
+		font = "fonts/font_large_mf"
 	})
-
+	managers.hud:make_fine_text(objective_text)
 	self._text_objective_title = objective_text
+	self._text_objective_title:set_left(self.icon_objectivebox:right() + 5)
 
 	local objectives_panel = self._hud_panel:child("objectives_panel")
-	objectives_panel:set_left(managers.hud._hud_minimap._panel:right() + 10)
-	local text_objective_title = objectives_panel:child("objective_text")
-	text_objective_title:set_font(tweak_data.menu.pd2_large_font_id)
-	text_objective_title:set_font_size(24)
-	text_objective_title:set_color(Color(0.5, 0.5, 1))
-
-	local text_objective_desc = objectives_panel:text({
-		font = tweak_data.menu.pd2_large_font,
-		font_size = 16,
-		wrap = true,
-		word_wrap = true,
-		color = Color.white,
-		layer = 2,
-		y = 8,
-		w = 300,
-		h = 300,
-		text = ""
-	})
-	self._text_objective_desc = text_objective_desc
-
-	text_objective_desc:set_x(text_objective_title:x())
-	text_objective_desc:set_y((text_objective_title:y() + text_objective_title:font_size()) + 5)
+	managers.hud._hud_minimap._panel:set_top(self.icon_objectivebox:bottom() + 20)
 
 	local amount_text = objectives_panel:text({
 		y = 0,
 		name = "amount_text",
-		vertical = "top",
 		align = "left",
-		text = "1/4",
+		vertical = "center",
+		text = "9999999999",
 		visible = false,
-		x = 6,
 		layer = 2,
-		color = Color.white,
-		font_size = 16,
-		font = tweak_data.menu.pd2_large_font
+		color = Color(0.6, 0.6, 0.6),
+		font_size = tweak_data.hud.active_objective_title_font_size,
+		font = "fonts/font_large_mf"
 	})
-
-	amount_text:set_x(text_objective_desc:x())
-	amount_text:set_y((text_objective_desc:y() + text_objective_desc:font_size()) + 15)
+	managers.hud:make_fine_text(amount_text)
+	amount_text:set_left(objective_text:right() + 10)
+	amount_text:set_top(0)
 	self._amount_text = amount_text
 end
 
 function HUDObjectives:_set_objective_title(title)
 	self._text_objective_title:set_text(title)
-end
-
-function HUDObjectives:_set_objective_description(desc)
-	self._text_objective_desc:set_text(desc)
+	managers.hud:make_fine_text(self._text_objective_title)
 end
 
 function HUDObjectives:complete_objective(data)
@@ -193,16 +166,27 @@ function HUDObjectives:activate_objective(data)
 
 	objectives_panel:set_visible(true)
 	self._text_objective_title:set_visible(true)
-	self._text_objective_desc:set_visible(true)
 	self:_set_objective_title(utf8.to_upper(data.text))
-	self:_set_objective_description(managers.objectives._objectives[data.id].description)
-	self._amount_text:set_visible(false)
+	--self._amount_text:set_visible(false)
 
 	if data.amount then
-		self._amount_text:set_x(self._text_objective_desc:x())
-		self._amount_text:set_y((self._text_objective_desc:y() + self._text_objective_desc:font_size()) + 20)
 		self._amount_text:set_visible(true)
 		self:update_amount_objective(data)
+	end
+end
+
+function HUDObjectives:update_amount_objective(data)
+	if data.id == self._active_objective_id then
+		local current = data.current_amount or 0
+		local amount = data.amount
+		local objectives_panel = self._hud_panel:child("objectives_panel")
+		local amount_text = objectives_panel:child("amount_text")
+
+		if alive(amount_text) then
+			amount_text:set_text("( " .. current .. "/" .. amount .. " )")
+			managers.hud:make_fine_text(amount_text)
+			amount_text:set_left(self._text_objective_title:right() + 10)
+		end
 	end
 end
 
