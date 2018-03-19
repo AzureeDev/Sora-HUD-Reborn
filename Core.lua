@@ -120,6 +120,10 @@ function NepgearsyHUDReborn:Error(text, ...)
 	log("[NepgearsyHUDReborn] ERROR : " .. text, ...)
 end
 
+function NepgearsyHUDReborn:GetOption(option_name)
+	return NepgearsyHUDReborn.Options:GetValue(option_name)
+end
+
 -- Init NepHook functions based on Luffy's one. Hug to you if you read this :satanialove:
 NepHook = NepHook or {}
 

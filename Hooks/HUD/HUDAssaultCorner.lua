@@ -110,6 +110,48 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         color = Color.black
     })
 
+    local hostages_panel = self._hud_panel:panel({
+		name = "hostages_panel",
+		w = 60,
+		h = 24
+    })
+    hostages_panel:set_left(managers.hud._hud_heist_timer._heist_timer_panel:right() + 5)
+    hostages_panel:set_top(managers.hud._hud_heist_timer._heist_timer_panel:top())
+
+	local hostages_icon = hostages_panel:bitmap({
+		texture = "guis/textures/pd2/hud_icon_hostage",
+		name = "hostages_icon",
+		layer = 1,
+        w = 20,
+        h = 20,
+        x = 2,
+        y = 2,
+        color = Color.black
+    }) 
+    
+    local hostage_rect = hostages_panel:rect({
+        name = "hostage_rect",
+        color = Color.white,
+        alpha = 0.6,
+        layer = -1,
+        halign = "scale",
+        valign = "scale"
+    })
+
+    local num_hostages = hostages_panel:text({
+		layer = 1,
+		vertical = "center",
+		name = "num_hostages",
+		align = "right",
+		text = "0",
+        y = 1,
+		x = -10,
+		color = Color.black,
+		font = "fonts/font_large_mf",
+		font_size = 20
+	})
+    
+
     if managers.groupai:state():whisper_mode() then
         self._current_assault_color = Color.white
         self:_set_text_list(self:_get_stealth_textlist())

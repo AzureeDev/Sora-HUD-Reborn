@@ -146,6 +146,7 @@ end
 function NepHudMenu:SetBackgroundVis(vis)
     local Background = self._menu_panel:child("Background")
     Background:set_visible(vis)
+    self.ColorBG:set_visible(vis)
 end
 
 function NepHudMenu:InitMenu()
@@ -217,6 +218,70 @@ function NepHudMenu:InitMenu()
         callback = ClassClbk(self, "MainClbk")
     })
 
+    self.HUDOptions.MinimapForce = self.MainMenu:Toggle({
+        name = "MinimapForce",
+        border_color = BorderColor,
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("MinimapForce"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce",
+        help = "Force the minimap anytime, even if the current map doesn't have a texture for it.",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.HUDOptions.Minimap:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        localized = true,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.HUDOptions.MinimapSize = self.MainMenu:Slider({
+        name = "MinimapSize",
+        border_color = BorderColor,
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("MinimapSize"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.HUDOptions.MinimapForce:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        localized = true,
+        min = 150,
+        max = 200,
+        step = 1,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.HUDOptions.MinimapZoom = self.MainMenu:Slider({
+        name = "MinimapZoom",
+        border_color = BorderColor,
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("MinimapZoom"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.HUDOptions.MinimapSize:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        localized = true,
+        min = 0.25,
+        max = 1,
+        step = 0.01,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "MainClbk")
+    })
+
     self.HUDOptions.Trackers = self.MainMenu:Toggle({
         name = "EnableTrackers",
         border_color = BorderColor,
@@ -226,7 +291,7 @@ function NepHudMenu:InitMenu()
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
         position = function(item) 
-            item:Panel():set_top(self.HUDOptions.Minimap:Panel():bottom() + 5) 
+            item:Panel():set_top(self.HUDOptions.MinimapZoom:Panel():bottom() + 5) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         localized = true,
@@ -551,7 +616,8 @@ function NepHudMenu:InitCollab()
             color = Color(0.5, 0.5, 0.5),
             layer = BaseLayer,
             vertical = "center",
-            align = "right"
+            align = "right",
+            x = -5
         })
     end
 end
