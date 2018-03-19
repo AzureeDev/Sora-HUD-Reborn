@@ -46,6 +46,24 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         layer = 2
     })
 
+    local PointOfNoReturnPanel = self._hud_panel:panel({
+        w = 120,
+        h = 40
+    })
+    PointOfNoReturnPanel:set_top(0)
+    PointOfNoReturnPanel:set_right(assault_panel_v2:left())
+
+    self.NoReturnText = PointOfNoReturnPanel:text({
+        font = "fonts/font_eurostile_ext",
+        font_size = 28,
+        vertical = "center",
+        align = "right",
+        x = -20,
+        text = "0:00",
+        color = Color.red,
+        alpha = 0
+    })
+
     local trackerPanel = self._hud_panel:panel({
         name = "trackerPanel",
         w = 356,
@@ -73,7 +91,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     })
 
     local killTrackerSkull = killTracker:bitmap({
-        w = 20,
+        w = 23,
         h = 28,
         texture = "NepgearsyHUDReborn/HUD/Skull",
         color = Color.black,
@@ -87,7 +105,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         vertical = "center",
         align = "center",
         y = 1,
-        x = 10,
+        x = 13,
         text = tostring(self.totalKilledSession),
         color = Color.black
     })
@@ -213,7 +231,7 @@ function HUDAssaultCorner:_animate_text(text_panel, bg_box, color, color_functio
 		local text_id = text_list[text_index]
 		local text_string = ""
 
-		if type(text_id) == "string" then
+        if type(text_id) == "string" then
 			text_string = managers.localization:to_upper_text(text_id)
 		elseif text_id == Idstring("risk") then
 			local use_stars = true
@@ -296,6 +314,43 @@ function HUDAssaultCorner:_animate_text(text_panel, bg_box, color, color_functio
 			end
 		end
 	end
+end
+
+function HUDAssaultCorner:show_point_of_no_return_timer()
+    self._point_of_no_return = true
+    
+	local delay_time = self._assault and 1.2 or 0
+    local box_text_panel = self._assault_panel_v2:child("text_panel")
+    box_text_panel:stop()
+    box_text_panel:clear()
+    box_text_panel:animate(ClassClbk(self, "_animate_show_noreturn"), delay_time)
+    self.NoReturnText:animate(ClassClbk(self, "_show_blink"))
+	self:_set_feedback_color(self._noreturn_color)
+    self:_update_assault_hud_color(Color.red)
+    self:_start_assault(self:_get_no_return_textlist())
+end
+
+function HUDAssaultCorner:_animate_show_noreturn(point_of_no_return_panel, delay_time)
+    wait(delay_time)
+end
+
+function HUDAssaultCorner:flash_point_of_no_return_timer(beep)
+	local function flash_timer(o)
+		local t = 0
+
+		while t < 0.5 do
+			t = t + coroutine.yield()
+			local n = 1 - math.sin(t * 180)
+			local r = math.lerp(1 or self._point_of_no_return_color.r, 1, n)
+			local g = math.lerp(0 or self._point_of_no_return_color.g, 0.8, n)
+			local b = math.lerp(0 or self._point_of_no_return_color.b, 0.2, n)
+
+			o:set_color(Color(r, g, b))
+			o:set_font_size(math.lerp(tweak_data.hud_corner.noreturn_size, tweak_data.hud_corner.noreturn_size * 1.25, n))
+		end
+    end
+    
+	self.NoReturnText:animate(flash_timer)
 end
 
 function HUDAssaultCorner:_show_icon_assaultbox(icon_assaultbox)
@@ -388,6 +443,42 @@ function HUDAssaultCorner:_get_incoming_textlist()
             "hud_assault_end_line"
         }
     end
+end
+
+function HUDAssaultCorner:_get_no_return_textlist()
+    if managers.job:current_difficulty_stars() > 0 then
+        local ids_risk = Idstring("risk")
+
+        return {
+            "NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn",
+            "hud_assault_end_line",
+            ids_risk,
+            "hud_assault_end_line",
+            "NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn",
+            "hud_assault_end_line",
+            ids_risk,
+            "hud_assault_end_line"
+        }
+    else
+        return {
+            "NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn",
+            "hud_assault_end_line",
+            "NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn",
+            "hud_assault_end_line",
+            "NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn",
+            "hud_assault_end_line"
+        }
+    end
+end
+
+function HUDAssaultCorner:feed_point_of_no_return_timer(time, is_inside)
+	time = math.floor(time)
+	local minutes = math.floor(time / 60)
+	local seconds = math.round(time - minutes * 60)
+	local text = (minutes < 10 and "0" .. minutes or minutes) .. ":" .. (seconds < 10 and "0" .. seconds or seconds)
+
+    self.NoReturnText:set_visible(true)
+	self.NoReturnText:set_text(text)
 end
 
 function HUDAssaultCorner:DisableOriginalHUDElements()

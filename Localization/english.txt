@@ -28,6 +28,7 @@
 
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Stealth Mode",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Prepare for the next assault",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Point of no return",
 
 	"hud_instruct_mask_on" : ""
 }
