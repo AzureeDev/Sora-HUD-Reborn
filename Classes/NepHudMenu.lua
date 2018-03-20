@@ -411,13 +411,13 @@ function NepHudMenu:InitMenu()
         font = Font
     })
     self.Extras = {}
-    self.Extras.CPColor = self.MainMenu:ComboBox({
-        name = "CPColor",
+    self.Extras.WaifuPicker = self.MainMenu:ComboBox({
+        name = "WaifuPicker",
         border_color = BorderColor,
         border_left = true,
-        items = NepgearsyHUDReborn.CPColors,
-        value = NepgearsyHUDReborn.Options:GetValue("CPColor"),
-        text = "NepgearsyHUDRebornMenu/Buttons/Extras/CPColor",
+        items = NepgearsyHUDReborn.Waifus,
+        value = NepgearsyHUDReborn.Options:GetValue("WaifuPicker"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker",
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
         position = function(item) 
@@ -430,17 +430,74 @@ function NepHudMenu:InitMenu()
         font_size = 15,
         callback = ClassClbk(self, "MainClbk")
     })
-    self.Extras.WaifuPicker = self.MainMenu:ComboBox({
-        name = "WaifuPicker",
+
+    self.ColorsCat = self.MainMenu:Button({
+        name = "ColorsCat",
+        text = "NepgearsyHUDRebornMenu/Buttons/ColorsCat",
+        background_color = Color(0, 0, 0),
+        highlight_color = Color.black,
+        position = function(item) 
+            item:Panel():set_top(self.Extras.WaifuPicker:Panel():bottom() + 15) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        localized = true,
+        text_align = "center",
+        text_vertical = "center",
+        font_size = 20,
+        font = Font
+    })
+    self.Colors = {}
+    self.Colors.CPColor = self.MainMenu:ComboBox({
+        name = "CPColor",
         border_color = BorderColor,
         border_left = true,
-        items = NepgearsyHUDReborn.Waifus,
-        value = NepgearsyHUDReborn.Options:GetValue("WaifuPicker"),
-        text = "NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker",
+        items = NepgearsyHUDReborn.CPColors,
+        value = NepgearsyHUDReborn.Options:GetValue("CPColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/CPColor",
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
         position = function(item) 
-            item:Panel():set_top(self.Extras.CPColor:Panel():bottom() + 5) 
+            item:Panel():set_top(self.ColorsCat:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        localized = true,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.HealthColor = self.MainMenu:ComboBox({
+        name = "HealthColor",
+        border_color = BorderColor,
+        border_left = true,
+        items = NepgearsyHUDReborn.HealthColor,
+        value = NepgearsyHUDReborn.Options:GetValue("HealthColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.Colors.CPColor:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        localized = true,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.ShieldColor = self.MainMenu:ComboBox({
+        name = "ShieldColor",
+        border_color = BorderColor,
+        border_left = true,
+        items = NepgearsyHUDReborn.ArmorColor,
+        value = NepgearsyHUDReborn.Options:GetValue("ShieldColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.Colors.HealthColor:Panel():bottom() + 5) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         localized = true,

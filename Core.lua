@@ -76,6 +76,59 @@ function NepgearsyHUDReborn:InitTweakData()
 		"Normal",
 		"Eurostile"
 	}
+
+	self.HealthColor = {
+		"White",
+		"Green",
+		"Red",
+		"Orange",
+		"Yellow",
+		"Cyan",
+		"Blue Ocean",
+		"Blue",
+		"Purple",
+		"Pink",
+		"Fushia",
+		"Red Fushia"
+	}
+
+	self.ArmorColor = deep_clone(self.HealthColor)
+end
+
+function NepgearsyHUDReborn:TeammateRadialIDToPath(id, type)
+	local tritp = {}
+
+	for i = 1, 12 do
+		tritp[i] = {}
+	end
+
+	tritp[1]["Health"] = "NepgearsyHUDReborn/HUD/Health"
+	tritp[2]["Health"] = "NepgearsyHUDReborn/HUD/HealthGreen"
+	tritp[3]["Health"] = "NepgearsyHUDReborn/HUD/HealthRed"
+	tritp[4]["Health"] = "NepgearsyHUDReborn/HUD/HealthOrange"
+	tritp[5]["Health"] = "NepgearsyHUDReborn/HUD/HealthYellow"
+	tritp[6]["Health"] = "NepgearsyHUDReborn/HUD/HealthCyan"
+	tritp[7]["Health"] = "NepgearsyHUDReborn/HUD/HealthBlueOcean"
+	tritp[8]["Health"] = "NepgearsyHUDReborn/HUD/HealthBlue"
+	tritp[9]["Health"] = "NepgearsyHUDReborn/HUD/HealthPurple"
+	tritp[10]["Health"] = "NepgearsyHUDReborn/HUD/HealthPink"
+	tritp[11]["Health"] = "NepgearsyHUDReborn/HUD/HealthFushia"
+	tritp[12]["Health"] = "NepgearsyHUDReborn/HUD/HealthRedFushia"
+
+	tritp[1]["Armor"] = "NepgearsyHUDReborn/HUD/Shield"
+	tritp[2]["Armor"] = "NepgearsyHUDReborn/HUD/ShieldGreen"
+	tritp[3]["Armor"] = "NepgearsyHUDReborn/HUD/ShieldRed"
+	tritp[4]["Armor"] = "NepgearsyHUDReborn/HUD/ShieldOrange"
+	tritp[5]["Armor"] = "NepgearsyHUDReborn/HUD/ShieldYellow"
+	tritp[6]["Armor"] = "NepgearsyHUDReborn/HUD/ShieldCyan"
+	tritp[7]["Armor"] = "NepgearsyHUDReborn/HUD/ShieldBlueOcean"
+	tritp[8]["Armor"] = "NepgearsyHUDReborn/HUD/ShieldBlue"
+	tritp[9]["Armor"] = "NepgearsyHUDReborn/HUD/ShieldPurple"
+	tritp[10]["Armor"] = "NepgearsyHUDReborn/HUD/ShieldPink"
+	tritp[11]["Armor"] = "NepgearsyHUDReborn/HUD/ShieldFushia"
+	tritp[12]["Armor"] = "NepgearsyHUDReborn/HUD/ShieldRedFushia"
+
+	return tritp[id][type]
 end
 
 function NepgearsyHUDReborn:StringToColor(module, id)

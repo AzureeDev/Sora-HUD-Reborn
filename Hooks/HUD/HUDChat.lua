@@ -132,20 +132,14 @@ function HUDChat:_layout_output_panel()
 end
 
 function HUDChat:determinePeerId(color)
-    local color_to_string = tostring(color)
-    
-    if color_to_string == "Color(1 * (0.760784, 0.988235, 0.592157))" then
-        return 1
-	elseif color_to_string == "Color(1 * (0.470588, 0.717647, 0.8))" then
-		return 2
-	elseif color_to_string == "Color(1 * (0.698039, 0.407843, 0.34902))" then
-		return 3
-	elseif color_to_string == "Color(1 * (0.8, 0.631373, 0.4))" then
-		return 4
+	local id = table.get_key(tweak_data.chat_colors, color)
+
+	if not id then
+		NepgearsyHUDReborn:Error("HUDChat:determinePeerId - No id found for this color. ID-Color = ", tostring(id), tostring(color))
+		return
 	end
 
-	NepgearsyHUDReborn:Error("HUDChat:determinePeerId - No color matching any known peer id. Color = ", tostring(color))
-    return 
+    return id
 end
 
 function HUDChat:receive_message(name, message, color, icon)
@@ -157,9 +151,11 @@ function HUDChat:receive_message(name, message, color, icon)
 
     local PeerAvatar = output_panel:bitmap({
         texture = "guis/textures/pd2/none_icon",
-        h = 22,
-        w = 22,
-        visible = false
+        h = 20,
+        w = 20,
+		visible = false,
+		x = 1,
+		y = 1
     })  
 
 	if peer_id then
@@ -199,7 +195,7 @@ function HUDChat:receive_message(name, message, color, icon)
 		word_wrap = true,
 		y = 0,
 		layer = 1,
-		text = string.format("%s: %s", name, message),
+		text = string.format("%s     %s", name, message),
 		font = "fonts/font_large_mf",
 		font_size = 22,
 		x = x,

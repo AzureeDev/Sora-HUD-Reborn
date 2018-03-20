@@ -22,7 +22,11 @@
 	
 	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Extra Options",
 	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Waifu Picker",
-	"NepgearsyHUDRebornMenu/Buttons/Extras/CPColor" : "Control Panel Background",
+
+	"NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Color Options",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Control Panel Background",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Radial Health Color",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Radial Shield Color",
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Close",
 
