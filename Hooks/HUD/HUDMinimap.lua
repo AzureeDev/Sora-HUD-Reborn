@@ -791,6 +791,10 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 
         local sizes = { NepgearsyHUDReborn:GetOption("MinimapSize"), NepgearsyHUDReborn:GetOption("MinimapSize") }
         
+        if not self._minimap_enabled then
+            sizes = { 0, 0 }
+        end
+
         if HUDMiniMap.DEBUG then
             self._debug_log_access = false
             self._debug_access_map = {}

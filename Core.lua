@@ -124,6 +124,10 @@ function NepgearsyHUDReborn:GetOption(option_name)
 	return NepgearsyHUDReborn.Options:GetValue(option_name)
 end
 
+function NepgearsyHUDReborn:SetOption(option_name, value)
+	return NepgearsyHUDReborn.Options:SetValue(option_name, value)
+end
+
 -- Init NepHook functions based on Luffy's one. Hug to you if you read this :satanialove:
 NepHook = NepHook or {}
 

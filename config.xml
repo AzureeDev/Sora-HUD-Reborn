@@ -4,6 +4,8 @@
         <class file="NepHudMenu.lua"/>
     </Classes>
     <Hooks directory="Hooks">
+        <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
+
         <hook file="HUD/HUDMissionBriefing.lua" source_file="lib/managers/hud/hudmissionbriefing"/>
         <hook file="HUD/HUDBlackScreen.lua" source_file="lib/managers/hud/hudblackscreen"/>
         <hook file="HUD/HUDObjectives.lua" source_file="lib/managers/hud/hudobjectives"/>
@@ -11,7 +13,8 @@
         <hook file="HUD/HUDAssaultCorner.lua" source_file="lib/managers/hud/hudassaultcorner"/>
         <hook file="HUD/HUDHeistTimer.lua" source_file="lib/managers/hud/hudheisttimer"/>
         <hook file="HUD/GroupAIStateBase.lua" source_file="lib/managers/group_ai_states/groupaistatebesiege"/>
-        <hook file="HUD/StatisticsManager.lua" source_file="lib/managers/statisticsmanager"/>
+        <hook file="HUD/StatisticsManager.lua" source_file="lib/managers/statisticsmanager"/>        
+        <hook file="HUD/HUDChat.lua" source_file="lib/managers/hud/hudchat"/>        
 
         <hook file="HUD/HUDMinimap.lua" source_file="lib/managers/hudmanagerpd2"/>
         <hook file="HUD/HUDMinimap.lua" source_file="lib/managers/criminalsmanager"/>
@@ -32,9 +35,6 @@
             <option type="number" min="150" max="200" default_value="150" name="MinimapSize"/>
             <option type="number" min="0.25" max="1" step="0.01" default_value="1" name="MinimapZoom"/>
             <option type="bool" default_value="true" name="EnableTrackers"/>
-            <option type="bool" default_value="true" name="EnableObjective"/>
-            <option type="bool" default_value="true" name="EnableTeammate"/>
-            <option type="bool" default_value="true" name="EnableCleanFont"/>
 
             <option type="bool" default_value="true" name="EnableStarring"/>
             <option type="number" default_value="1" name="StarringColor"/>            
@@ -59,6 +59,8 @@
         <texture path="NepgearsyHUDReborn/HUD/Thund"/>
         <texture path="NepgearsyHUDReborn/HUD/Skull"/>
         <texture path="NepgearsyHUDReborn/HUD/TimeR"/>
+        <texture path="NepgearsyHUDReborn/HUD/ChatBG"/>
+        
         <texture path="NepgearsyHUDReborn/Minimap/kenaz_loc_b_df"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_1"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_2"/>

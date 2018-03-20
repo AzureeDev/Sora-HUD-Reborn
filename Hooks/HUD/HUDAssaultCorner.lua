@@ -80,10 +80,9 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     trackerPanel:set_top(assault_panel_v2:bottom() + 5)
 
     local killTracker = trackerPanel:panel({
-        w = 80,
-        h = 40,
-        x = 276,
-        top = trackerPanel:top()
+        w = 60,
+        h = 24,
+        x = 295
     })
 
     local killTrackerRect = killTracker:rect({
@@ -96,21 +95,22 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     })
 
     local killTrackerSkull = killTracker:bitmap({
-        w = 23,
-        h = 28,
+        w = 15,
+        h = 20,
         texture = "NepgearsyHUDReborn/HUD/Skull",
         color = Color.black,
-        x = 5
+        x = 2,
+        y = 2
     })
     killTrackerSkull:set_center_y(killTracker:center_y())
 
     self.killTrackerAmount = killTracker:text({
         font = "fonts/font_large_mf",
-        font_size = 24,
+        font_size = 20,
         vertical = "center",
-        align = "center",
+        align = "right",
         y = 1,
-        x = 13,
+        x = -10,
         text = tostring(self.totalKilledSession),
         color = Color.black
     })

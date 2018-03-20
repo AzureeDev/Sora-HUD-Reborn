@@ -7,6 +7,8 @@ NepHook:Post(HUDHeistTimer, "init", function(self)
     
     if managers.hud._hud_minimap._minimap_enabled then
         self._heist_timer_panel:set_top(managers.hud._hud_minimap._panel:bottom() + 5)
+    else
+        self._heist_timer_panel:set_top(managers.hud._hud_minimap._panel:bottom())
     end
 
     self._timer_text = self._heist_timer_panel:text({

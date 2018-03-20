@@ -301,70 +301,13 @@ function NepHudMenu:InitMenu()
         callback = ClassClbk(self, "MainClbk")
     })
 
-    self.HUDOptions.Objectives = self.MainMenu:Toggle({
-        name = "EnableObjective",
-        border_color = BorderColor,
-        border_left = true,
-        value = NepgearsyHUDReborn.Options:GetValue("EnableObjective"),
-        text = "NepgearsyHUDRebornMenu/Buttons/HUD/Objectives",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.Trackers:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
-    })
-
-    self.HUDOptions.Teammate = self.MainMenu:Toggle({
-        name = "EnableTeammate",
-        border_color = BorderColor,
-        border_left = true,
-        value = NepgearsyHUDReborn.Options:GetValue("EnableTeammate"),
-        text = "NepgearsyHUDRebornMenu/Buttons/HUD/Teammate",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.Objectives:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
-    })
-
-    self.HUDOptions.CleanFont = self.MainMenu:Toggle({
-        name = "EnableCleanFont",
-        border_color = BorderColor,
-        border_left = true,
-        value = NepgearsyHUDReborn.Options:GetValue("EnableCleanFont"),
-        text = "NepgearsyHUDRebornMenu/Buttons/HUD/CleanFont",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.Teammate:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
-    })
-
     self.MenuLobbyOptionsCat = self.MainMenu:Button({
         name = "MenuLobbyOptionsCat",
         text = "NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat",
         background_color = Color(0, 0, 0),
         highlight_color = Color.black,
         position = function(item) 
-            item:Panel():set_top(self.HUDOptions.CleanFont:Panel():bottom() + 15) 
+            item:Panel():set_top(self.HUDOptions.Trackers:Panel():bottom() + 15) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         localized = true,
