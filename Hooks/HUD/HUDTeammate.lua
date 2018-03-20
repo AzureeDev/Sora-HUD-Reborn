@@ -26,9 +26,10 @@ function HUDTeammate:init(i, teammates_panel, is_player, width)
         name = "subpanel_bg",
         color = Color.green,
         layer = -1,
-        texture = "NepgearsyHUDReborn/HUD/AssaultBar",
+        texture = "NepgearsyHUDReborn/HUD/Teammate",
         w = 309,
-        h = 120
+        h = 90,
+        y = 30
     })
 
 	if not main_player then
@@ -174,7 +175,7 @@ function HUDTeammate:init(i, teammates_panel, is_player, width)
 		y = mask:y()
 	})
 
-    radial_health_panel:set_bottom(self._panel:h() - 16)
+    radial_health_panel:set_bottom(self._panel:h() - 11)
     
     self._radial_health_panel = radial_health_panel
 	self:_create_radial_health(radial_health_panel, main_player)
@@ -261,7 +262,7 @@ function HUDTeammate:init(i, teammates_panel, is_player, width)
         w = 60,
         layer = 1
     })
-    self.BGAvatar:set_bottom(self._radial_health_panel:bottom() - 5)
+    self.BGAvatar:set_bottom(self._radial_health_panel:bottom() - 2)
     self.Avatar:set_bottom(self.BGAvatar:bottom() - 2)
     self.Avatar:set_left(self.BGAvatar:left() + 2)
 
@@ -325,10 +326,10 @@ function HUDTeammate:set_state(state)
     
     if is_player then
         teammate_panel:set_h(120)
-        teammate_panel:child("subpanel_bg"):set_h(120)
+        teammate_panel:child("subpanel_bg"):set_h(90)
         teammate_panel:set_bottom(self.teammates:h())
         name:set_left(self.Avatar:left())
-        name:set_top(teammate_panel:top() + 12)
+        name:set_top(teammate_panel:top() + 8)
         self._panel:set_visible(true)    
         self._steam_id = self:GetSteamIDByPeer()
         self:SetupAvatar()
@@ -336,7 +337,6 @@ function HUDTeammate:set_state(state)
         teammate_panel:set_h(35)
         teammate_panel:child("subpanel_bg"):set_h(35)
         teammate_panel:set_bottom(self.teammates:h())
-        name:set_right(teammate_panel:w() - 5)
         name:set_bottom(teammate_panel:h() - 8)
         self.Avatar:set_visible(false)
         self.BGAvatar:set_visible(false)
@@ -354,7 +354,7 @@ function HUDTeammate:ApplyNepgearsyHUD()
     local callsign = self._panel:child("callsign")
     
     name:set_left(self.Avatar:left())
-    name:set_top(self._panel:top() + 12)
+    name:set_top(self._panel:top() + 8)
 
     self._player_panel:set_w(309)
 
