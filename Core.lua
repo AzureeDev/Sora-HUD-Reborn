@@ -65,9 +65,7 @@ function NepgearsyHUDReborn:InitTweakData()
 	self.CPColors = deep_clone(self.StarringColors)
 	
 	self.Waifus = {
-		"None",
-		"Yourself (Steam Avatar)",
-		"Custom",
+		"None (Steam Avatar used)",
 		"Neptune",
 		"Nepgear"
 	}

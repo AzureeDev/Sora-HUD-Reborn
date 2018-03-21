@@ -132,6 +132,10 @@ function HUDChat:_layout_output_panel()
 end
 
 function HUDChat:determinePeerId(color)
+	if tostring(color) == "Color(1 * (1, 0.831373, 0))" then
+		return -- System Message
+	end
+
 	local id = table.get_key(tweak_data.chat_colors, color)
 
 	if not id then

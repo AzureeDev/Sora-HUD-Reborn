@@ -154,8 +154,10 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
 		color = Color.black,
 		font = "fonts/font_large_mf",
 		font_size = 20
-	})
+    })
     
+    self._vip_bg_box:set_right(self._assault_panel_v2:left() + 5)
+    self._vip_bg_box:set_top(self._assault_panel_v2:top())
 
     if managers.groupai:state():whisper_mode() then
         self._current_assault_color = Color.white

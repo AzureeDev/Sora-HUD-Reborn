@@ -137,6 +137,11 @@ NepHook:Post(HUDTeammate, "set_health", function(self, data)
 	HealthNumber:set_text(health)
 end)
 
+NepHook:Post(HUDTeammate, "set_carry_info", function(self, carry_id, value)
+	local carry_panel = self._carry_panel
+	carry_panel:set_visible(false)
+end)
+
 function HUDTeammate:GetSteamIDByPeer()
     local peer = self:peer_id() or managers.network:session():local_peer():id()
     local steam_id = managers.network:session():peer(peer):user_id()
@@ -182,4 +187,5 @@ function HUDTeammate:ApplyNepgearsyHUD()
 	interact_panel:set_shape(self._weapons_panel:shape())
 	interact_panel:set_shape(self._radial_health_panel:shape())
 	interact_panel:set_size(radial_size * 1.25, radial_size * 1.25)
+	interact_panel:set_center(self._radial_health_panel:center())
 end
