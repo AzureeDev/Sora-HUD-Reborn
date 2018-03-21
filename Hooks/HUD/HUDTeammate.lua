@@ -296,7 +296,8 @@ NepHook:Post(HUDTeammate, "_create_radial_health", function (self, radial_health
 end)
 
 function HUDTeammate:GetSteamIDByPeer()
-    local peer = self:peer_id() or 1
+    local peer = self:peer_id() or managers.network:session():local_peer():id()
+    log("PEER / LOCAL_PEER ", tostring(self:peer_id()), tostring(managers.network:session():local_peer():id()))
     local steam_id = managers.network:session():peer(peer):user_id()
 
     return tostring(steam_id)
@@ -307,9 +308,9 @@ function HUDTeammate:SetupBotAvatar()
 end
 
 function HUDTeammate:SetupAvatar()
+    log("STEAM ID IS ", self._steam_id)
     Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
         self.Avatar:animate(function()
-            wait(0.25)
             Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
                 self.Avatar:set_image(texture or "guis/textures/pd2/none_icon")
                 self.Avatar:set_visible(true)
