@@ -6,7 +6,7 @@ end
 NepgearsyHUDReborn = NepgearsyHUDReborn or ModCore:new(ModPath .. "config.xml", true, true)
 
 function NepgearsyHUDReborn:Init()
-	self.Dev = true
+	self.Dev = false
 	self.Version = "1.0.0"
 	self.Changelog = "- Initial release"
 	self.Initialized = true;
