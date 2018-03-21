@@ -5,8 +5,8 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
 	name:configure({
 		vertical = "center",
 		layer = 1,
-		font = "fonts/font_large_mf",
-		font_size = tweak_data.hud_players.name_size
+		font = "fonts/font_eurostile_ext",
+		font_size = tweak_data.hud_players.name_size - 2
 	})
 
 	local subpanel_bg = self._panel:bitmap({
@@ -18,9 +18,19 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
         h = 90,
         y = 30
 	})
-	
+
 	self._radial_health_panel = self._player_panel:child("radial_health_panel")
 	self._radial_health_panel:set_bottom(self._panel:h() - 11)
+
+	local HealthNumber = self._radial_health_panel:text({
+		name = "HealthNumber",
+		font = "fonts/font_large_mf",
+		font_size = 16,
+		text = "",
+		align = "center",
+		vertical = "center",
+		layer = 3
+	})
 
 	self._weapons_panel = self._player_panel:child("weapons_panel")
 
@@ -34,15 +44,15 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
         color = Color.black,
         layer = 0,
         h = 64,
-        w = 64
+		w = 64,
+		x = 2
     })
 
     self.Avatar = self._panel:bitmap({
         texture = "guis/textures/pd2/none_icon",
         h = 60,
         w = 60,
-		layer = 1,
-		x = 2
+		layer = 1
     })
     self.BGAvatar:set_bottom(self._radial_health_panel:bottom() - 2)
     self.Avatar:set_bottom(self.BGAvatar:bottom() - 2)
@@ -77,6 +87,56 @@ NepHook:Post(HUDTeammate, "_create_radial_health", function (self, radial_health
     damage_indicator:hide() -- Thats a buggy mess anyways
 end)
 
+NepHook:Post(HUDTeammate, "set_state", function(self, state)
+	local teammate_panel = self._panel
+    local is_player = state == "player"
+	local name = teammate_panel:child("name")
+
+	teammate_panel:child("player"):set_alpha(is_player and 1 or 0)
+    
+    if is_player then
+        teammate_panel:set_h(120)
+        teammate_panel:child("subpanel_bg"):set_h(90)
+        teammate_panel:set_bottom(self.teammates:h())
+        name:set_left(self.Avatar:left())
+        name:set_top(teammate_panel:top() + 10)
+        self._steam_id = self:GetSteamIDByPeer()
+        self:SetupAvatar()
+    else
+        teammate_panel:set_h(35)
+        teammate_panel:child("subpanel_bg"):set_h(35)
+        teammate_panel:set_bottom(self.teammates:h())
+        name:set_bottom(teammate_panel:h() - 6)
+        name:set_x(0)
+        self.Avatar:set_visible(false)
+		self.BGAvatar:set_visible(false)
+    end
+end)
+
+NepHook:Post(HUDTeammate, "set_callsign", function(self, id)
+	local name = self._panel:child("name")
+	name:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
+    self._panel:child("subpanel_bg"):set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
+    self.BGAvatar:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
+end)
+
+NepHook:Post(HUDTeammate, "set_name", function(self, teammate_name)
+    local teammate_panel = self._panel
+    local name = teammate_panel:child("name")
+    
+    name:set_text(teammate_name)
+    local h = name:h()
+	managers.hud:make_fine_text(name)
+	name:set_h(h)
+end)
+
+NepHook:Post(HUDTeammate, "set_health", function(self, data)
+	local health = math.floor(data.current * 10)
+	local HealthNumber = self._radial_health_panel:child("HealthNumber")
+
+	HealthNumber:set_text(health)
+end)
+
 function HUDTeammate:GetSteamIDByPeer()
     local peer = self:peer_id() or managers.network:session():local_peer():id()
     local steam_id = managers.network:session():peer(peer):user_id()
@@ -97,55 +157,14 @@ function HUDTeammate:SetupAvatar()
     end)
 end
 
-function HUDTeammate:set_state(state)
-	local teammate_panel = self._panel
-    local is_player = state == "player"
-	local name = teammate_panel:child("name")
-
-	teammate_panel:child("player"):set_alpha(is_player and 1 or 0)
-    
-    if is_player then
-        teammate_panel:set_h(120)
-        teammate_panel:child("subpanel_bg"):set_h(90)
-        teammate_panel:set_bottom(self.teammates:h())
-        name:set_left(self.Avatar:left())
-        name:set_top(teammate_panel:top() + 8)
-        self._steam_id = self:GetSteamIDByPeer()
-        self:SetupAvatar()
-    else
-        teammate_panel:set_h(35)
-        teammate_panel:child("subpanel_bg"):set_h(35)
-        teammate_panel:set_bottom(self.teammates:h())
-        name:set_bottom(teammate_panel:h() - 8)
-        self.Avatar:set_visible(false)
-		self.BGAvatar:set_visible(false)
-    end
-end
-
-NepHook:Post(HUDTeammate, "set_callsign", function(self, id)
-	local name = self._panel:child("name")
-	name:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
-    self._panel:child("subpanel_bg"):set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
-    self.BGAvatar:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
-end)
-
-NepHook:Post(HUDTeammate, "set_name", function(self, teammate_name)
-    local teammate_panel = self._panel
-    local name = teammate_panel:child("name")
-    
-    name:set_text(teammate_name)
-    local h = name:h()
-	managers.hud:make_fine_text(name)
-	name:set_h(h)
-end)
-
 function HUDTeammate:ApplyNepgearsyHUD()
     local name = self._panel:child("name")
-	local interact_panel = self._player_panel:child("interact_panel")	
+	local interact_panel = self._player_panel:child("interact_panel")
+	local HealthNumber = self._radial_health_panel:child("HealthNumber")
 	local radial_size = 64
 	
     name:set_left(self.Avatar:left())
-    name:set_top(self._panel:top() + 8)
+    name:set_top(self._panel:top() + 10)
 
     self._player_panel:set_w(309)
 
@@ -163,5 +182,4 @@ function HUDTeammate:ApplyNepgearsyHUD()
 	interact_panel:set_shape(self._weapons_panel:shape())
 	interact_panel:set_shape(self._radial_health_panel:shape())
 	interact_panel:set_size(radial_size * 1.25, radial_size * 1.25)
-	interact_panel:set_center(self._radial_health_panel:center())
 end
