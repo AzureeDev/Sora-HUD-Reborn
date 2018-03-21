@@ -15,17 +15,19 @@ function HUDManager:_create_teammates_panel(hud)
 		h = h,
 		y = hud.panel:h() - h
 	})
-	local teammate_w = 270
-	local player_gap = 190
+	local teammate_w = 309
+	local player_gap = 0
 	local small_gap = ((teammates_panel:w() - player_gap) - teammate_w * 4) / 3
 
 	for i = 1, 4, 1 do
-		local is_player = i == HUDManager.PLAYER_PANEL
+		local is_player = true
+		local is_four = i == 4
 		self._hud.teammate_panels_data[i] = {
 			taken = false and is_player,
 			special_equipments = {}
 		}
-		local pw = teammate_w + (is_player and 0 or 64)
+		local pw = teammate_w + (is_player and not is_four and 0 or 10)
+		HUDManager.PLAYER_PANEL = i
 		local teammate = HUDTeammate:new(i, teammates_panel, is_player, pw)
 
 		if not _G.IS_VR then
