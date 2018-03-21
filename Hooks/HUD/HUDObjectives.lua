@@ -167,7 +167,7 @@ function HUDObjectives:activate_objective(data)
 	objectives_panel:set_visible(true)
 	self._text_objective_title:set_visible(true)
 	self:_set_objective_title(utf8.to_upper(data.text))
-	--self._amount_text:set_visible(false)
+	self._amount_text:set_visible(false)
 
 	if data.amount then
 		self._amount_text:set_visible(true)
