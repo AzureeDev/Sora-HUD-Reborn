@@ -1,0 +1,40 @@
+{
+	"NepgearsyHUDReborn" : "Nepgearsy HUD Reborn",
+	"NepgearsyHUDReborn/Version" : "Version $version",
+	"NepgearsyHUDRebornMenu" : "Nepgearsy HUD Control Panel",
+
+	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Ayarlari",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Assault Bar Yazi Tipi",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Haritayi Aktive Et",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Haritayi Calismasina Zorla",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Harita Boyutu",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Harita Yakinligi",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Takip Elementlerini Aktive Et",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "HUD Boyutu",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "HUD Boslugu",
+
+	"NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Menu & Lobi Ayarlari",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen" : "Oyuncular Ozelligini Aktive Et",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "Oyuncular Renk Ayari",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Oyuncular Metni",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Yatay Hazirlik Ekranini Aktive Et",
+	
+	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Ekstra Ayarlar",
+	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Waifu Gostergesi",
+
+	"NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Renk Ayarlari",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Kontrol Paneli Renk Gostergesi",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Can Paneli Renk Ayari",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Zirh Paneli Renk Ayari",
+
+	"NepgearsyHUDRebornMenu/Buttons/Close" : "Kapat",
+
+	"NepgearsyHUDRebornMenu/Collaborators/Header" : "Yaratici & Katkida Bulunanlar",
+	"NepgearsyHUDRebornMenu/Changelog/Header" : "Degisiklik Gunlugu: $version",
+
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Stealth Modu",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Siradaki saldiriya hazirlan",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Geriye donus olmayan nokta",
+
+	"hud_instruct_mask_on" : ""
+}
