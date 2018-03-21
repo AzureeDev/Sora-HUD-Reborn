@@ -30,7 +30,7 @@ function NepgearsyHUDReborn:InitCollabs()
 		[3] = {
 			name = "Luffy",
 			steam_id = "76561198075720845",
-			action = "Helped with LUA stuff when I needed."
+			action = "Helped with LUA stuff when I needed. He also made the HUD scaling options."
 		},
 		[4] = {
 			name = "=PDTC= Splat",
@@ -65,9 +65,7 @@ function NepgearsyHUDReborn:InitTweakData()
 	self.CPColors = deep_clone(self.StarringColors)
 	
 	self.Waifus = {
-		"None (Steam Avatar used)",
-		"Neptune",
-		"Nepgear"
+		"None (Steam Avatar used)"
 	}
 
 	self.AssaultBarFonts = {

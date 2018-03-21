@@ -10,9 +10,8 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Minimap Size",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Minimap Zoom",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Enable the Trackers",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/Objectives" : "Enable the custom Objective Panel",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/Teammate" : "Enable the custom Teammate Panel",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/CleanFont" : "Enable Clean Font",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "HUD Scale",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "HUD Spacing",
 
 	"NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Menu & Lobby Options",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen" : "Enable the Starring Screen feature",

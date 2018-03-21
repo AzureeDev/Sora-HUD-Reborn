@@ -301,13 +301,59 @@ function NepHudMenu:InitMenu()
         callback = ClassClbk(self, "MainClbk")
     })
 
+    self.HUDOptions.Scale = self.MainMenu:Slider({
+        name = "Scale",
+        border_color = BorderColor,
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("Scale"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/Scale",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.HUDOptions.Trackers:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        help = "If in-game, restart the map to take effect",
+        localized = true,
+        min = 0.1,
+        max = 1.5,
+        step = 0.01,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "SetHudScaleSpacing")
+    })
+
+    self.HUDOptions.Spacing = self.MainMenu:Slider({
+        name = "Spacing",
+        border_color = BorderColor,
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("Spacing"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/Spacing",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.HUDOptions.Scale:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        help = "If in-game, restart the map to take effect",
+        localized = true,
+        min = 0.1,
+        max = 1,
+        step = 0.01,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "SetHudScaleSpacing")
+    })
+
     self.MenuLobbyOptionsCat = self.MainMenu:Button({
         name = "MenuLobbyOptionsCat",
         text = "NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat",
         background_color = Color(0, 0, 0),
         highlight_color = Color.black,
         position = function(item) 
-            item:Panel():set_top(self.HUDOptions.Trackers:Panel():bottom() + 15) 
+            item:Panel():set_top(self.HUDOptions.Spacing:Panel():bottom() + 15) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         localized = true,
@@ -735,6 +781,15 @@ function NepHudMenu:MainClbk(menu, item)
         end
     end
 end
+
+function NepHudMenu:SetHudScaleSpacing(menu, item)
+	NepgearsyHUDReborn.Options:SetValue(item:Name(), item:Value())
+	if managers.hud and managers.hud.recreate_player_info_hud_pd2 then
+		managers.gui_data:layout_scaled_fullscreen_workspace(managers.hud._saferect, NepgearsyHUDReborn.Options:GetValue("Scale"), NepgearsyHUDReborn.Options:GetValue("Spacing"))		
+		managers.hud:recreate_player_info_hud_pd2()
+	end
+end
+
 
 function NepHudMenu:should_close()
     return self._menu:ShouldClose()

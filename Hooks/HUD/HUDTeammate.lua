@@ -8,6 +8,7 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
 		font = "fonts/font_eurostile_ext",
 		font_size = tweak_data.hud_players.name_size - 2
 	})
+	managers.hud:make_fine_text(name)
 
 	local subpanel_bg = self._panel:bitmap({
         name = "subpanel_bg",
@@ -99,7 +100,9 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
         teammate_panel:child("subpanel_bg"):set_h(90)
         teammate_panel:set_bottom(self.teammates:h())
         name:set_left(self.Avatar:left())
-        name:set_top(teammate_panel:top() + 10)
+		name:set_top(teammate_panel:top() + 10)
+		managers.hud:make_fine_text(name)
+
         self._steam_id = self:GetSteamIDByPeer()
         self:SetupAvatar()
     else
@@ -107,7 +110,7 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
         teammate_panel:child("subpanel_bg"):set_h(35)
         teammate_panel:set_bottom(self.teammates:h())
         name:set_bottom(teammate_panel:h() - 6)
-        name:set_x(0)
+		name:set_x(0)
         self.Avatar:set_visible(false)
 		self.BGAvatar:set_visible(false)
     end
@@ -163,13 +166,13 @@ function HUDTeammate:SetupAvatar()
 end
 
 function HUDTeammate:ApplyNepgearsyHUD()
-    local name = self._panel:child("name")
+	local name = self._panel:child("name")
 	local interact_panel = self._player_panel:child("interact_panel")
 	local HealthNumber = self._radial_health_panel:child("HealthNumber")
 	local radial_size = 64
 	
     name:set_left(self.Avatar:left())
-    name:set_top(self._panel:top() + 10)
+	name:set_top(self._panel:top() + 10)
 
     self._player_panel:set_w(309)
 
