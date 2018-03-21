@@ -84,7 +84,7 @@ function NepHudMenu:InitTopBar()
             item:Panel():set_left(self.BackgroundEnabler:Panel():right() + 5)
         end,
         help = "Go to the mod's page.",
-        callback = ClassClbk(self, "open_url", "https://modworkshop.net/member.php?action=profile&uid=1923")
+        callback = ClassClbk(self, "open_url", "https://modworkshop.net/mydownloads.php?action=view_down&did=22152")
     })
     self.MWSProfile = MWSProfile
     local Discord = self.TopBar:ImageButton({

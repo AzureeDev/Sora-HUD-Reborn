@@ -7,8 +7,8 @@ NepgearsyHUDReborn = NepgearsyHUDReborn or ModCore:new(ModPath .. "config.xml", 
 
 function NepgearsyHUDReborn:Init()
 	self.Dev = false
-	self.Version = "1.0.0"
-	self.Changelog = "- Initial release"
+	self.Version = "1.0.1"
+	self.Changelog = "- Fixed an issue with the objective panel and amounts.\n- Added the correct link for the mod's page in the Control Panel.\n- Added Turkish localization by sydch pasha."
 	self.Initialized = true;
 	self:InitCollabs()
 	self:InitTweakData()
@@ -41,6 +41,11 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "Babyforce",
 			steam_id = "76561198053887800",
 			action = "Giving me his thoughts and helping."
+		},
+		[6] = {
+			name = "sydch pasha",
+			steam_id = "76561198063913184",
+			action = "Made the Turkish localization"
 		}
 	}
 end
