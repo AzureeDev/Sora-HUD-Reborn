@@ -13,7 +13,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Tamanho do HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaçamento do HUD",
 
-	"NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Opções do Menu e do Lobby,
+	"NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Opções do Menu e do Lobby",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen" : "Ativar o Starring Screen",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "Cor do Starring",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Texto do Starring",

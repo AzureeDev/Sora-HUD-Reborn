@@ -2,7 +2,7 @@
     <Classes directory="Classes">
         <class file="NepHudMenu.lua"/>
     </Classes>
-    <AssetUpdates id="22152" version="1.0.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="1.0.1" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
     <Hooks directory="Hooks">
         <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
         <hook file="MissionBriefingGUI.lua" source_file="lib/managers/menu/missionbriefinggui"/>
@@ -28,6 +28,7 @@
 
     <Localization directory="Localization" default="english.txt">
         <loc language="turkish" file="turkish.txt"/>
+        <loc language="portuguese" file="portuguese.txt"/>
     </Localization>
 
     <Options name="Options" auto_load="true" auto_build_menu="false">

@@ -7,11 +7,11 @@ NepgearsyHUDReborn = NepgearsyHUDReborn or ModCore:new(ModPath .. "config.xml", 
 
 function NepgearsyHUDReborn:Init()
 	self.Dev = false
-	self.Version = "1.0.1"
-	self.Changelog = "- Fixed an issue with the objective panel and amounts.\n- Added the correct link for the mod's page in the Control Panel.\n- Added Turkish localization by sydch pasha."
+	self.Version = NepgearsyHUDReborn.update_module_data.module.version
 	self.Initialized = true;
 	self:InitCollabs()
 	self:InitTweakData()
+	self:InitChangelog()
 	self:Log("Initialized.")
 end
 
@@ -46,6 +46,11 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "sydch pasha",
 			steam_id = "76561198063913184",
 			action = "Made the Turkish localization"
+		},
+		[7] = {
+			name = "AldoRaine",
+			steam_id = "76561198079386949",
+			action = "Made the Portuguese localization"
 		}
 	}
 end
@@ -152,6 +157,17 @@ function NepgearsyHUDReborn:StringToColor(module, id)
 	stc["cpcolor"] = deep_clone(stc["starring"])
 
 	return stc[module][id]
+end
+
+function NepgearsyHUDReborn:InitChangelog()
+	if SystemFS:exists(ModPath .. "Changelog.txt") then
+		local file = io.open( ModPath .. "Changelog.txt", "r")
+		self.Changelog = file:read("*all")
+		return
+	end
+
+	self.Changelog = ""
+	return
 end
 
 function NepgearsyHUDReborn:InitMenu()

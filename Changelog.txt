@@ -1,0 +1,5 @@
+- Fixed an issue with the objective panel and amounts.
+- Fixed a crash that could happen on linux (TBC) when starting a heist.
+- Added the correct link for the mod's page in the Control Panel.
+- Added Turkish localization by sydch pasha.
+- Added Portuguese localization by AldoRaine.
