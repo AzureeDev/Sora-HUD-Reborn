@@ -9,9 +9,11 @@ function NepgearsyHUDReborn:Init()
 	self.Dev = false
 	self.Version = NepgearsyHUDReborn.update_module_data.module.version
 	self.Initialized = true;
+	self.ModPath = ModPath
 	self:InitCollabs()
 	self:InitTweakData()
 	self:InitChangelog()
+	self:InitLocalization()
 	self:Log("Initialized.")
 end
 
@@ -170,6 +172,25 @@ function NepgearsyHUDReborn:InitChangelog()
 	return
 end
 
+function NepgearsyHUDReborn:InitLocalization()
+	self.Localization = {}
+	self.Localization[1] = "english.txt"
+	self.Localization[2] = "turkish.txt"
+	self.Localization[3] = "portuguese.txt"
+end
+
+function NepgearsyHUDReborn:GetForcedLocalization()
+	local Chosen = self:GetOption("ForcedLocalization")
+	local Folder = self.ModPath .. "Localization/"
+
+	if not self.Localization[Chosen] then
+		self:Error("Can't load a localization file if there's no ID for it! Returning english.")
+		return Folder .. self.Localization[1]
+	end
+	
+	return Folder .. self.Localization[Chosen]
+end
+
 function NepgearsyHUDReborn:InitMenu()
 	self.Menu = NepHudMenu:new()
 end
@@ -218,4 +239,7 @@ end
 
 if Hooks then
 	Hooks:Add("MenuManagerPopulateCustomMenus", "InitNepHudMenu", callback(NepgearsyHUDReborn, NepgearsyHUDReborn, "InitMenu"))
+	Hooks:Add("LocalizationManagerPostInit", "PostInitLocalizationNepHud", function(loc)
+		loc:load_localization_file( NepgearsyHUDReborn:GetForcedLocalization() )
+	end)
 end

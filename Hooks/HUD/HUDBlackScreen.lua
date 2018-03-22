@@ -12,8 +12,7 @@ NepHook:Post( HUDBlackScreen, "init", function(self, hud)
 
 		return x, y, w, h
 	end
-
-	local Net = _G.LuaNetworking
+	
 	local stage_data = managers.job:current_stage_data()
 	local level_data = managers.job:current_level_data()
 	local name_id = stage_data and stage_data.name_id or level_data and level_data.name_id or nil

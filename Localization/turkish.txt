@@ -3,6 +3,8 @@
 	"NepgearsyHUDReborn/Version" : "Version $version",
 	"NepgearsyHUDRebornMenu" : "Nepgearsy HUD Control Panel",
 
+	"NepgearsyHUDRebornMenu/ForcedLocalization" : "Language",
+
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Ayarlari",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Assault Bar Yazi Tipi",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Haritayi Aktive Et",

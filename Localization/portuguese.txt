@@ -3,6 +3,8 @@
 	"NepgearsyHUDReborn/Version" : "Versao $version",
 	"NepgearsyHUDRebornMenu" : "Painel de Controle do Nepgearsy HUD",
 
+	"NepgearsyHUDRebornMenu/ForcedLocalization" : "Language",
+
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Opcoes do HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Fonte da barra de Assault",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Ativar o Minimapa",

@@ -26,13 +26,10 @@
         <hook file="HUD/HUDMinimap.lua" source_file="lib/managers/hudmanager"/>
     </Hooks>
 
-    <Localization directory="Localization" default="english.txt">
-        <loc language="turkish" file="turkish.txt"/>
-        <loc language="portuguese" file="portuguese.txt"/>
-    </Localization>
-
     <Options name="Options" auto_load="true" auto_build_menu="false">
         <options>
+            <option type="number" default_value="1" name="ForcedLocalization"/>
+
             <option type="number" default_value="1" name="AssaultBarFont"/>
             <option type="bool" default_value="true" name="EnableMinimap"/>
             <option type="bool" default_value="false" name="MinimapForce"/>

@@ -162,13 +162,33 @@ function NepHudMenu:InitMenu()
         end
     })
 
+    self.ForcedLocalization = self.MainMenu:ComboBox({
+        name = "ForcedLocalization",
+        border_color = BorderColor,
+        border_left = true,
+        items = NepgearsyHUDReborn.Localization,
+        value = NepgearsyHUDReborn.Options:GetValue("ForcedLocalization"),        
+        text = "NepgearsyHUDRebornMenu/ForcedLocalization",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(item:Panel():parent():top() + 10) 
+            item:Panel():set_right(item:Panel():parent():right())
+        end,
+        localized = true,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "MainClbk")
+    })
+
     self.HUDOptionsCat = self.MainMenu:Button({
         name = "HUDOptionsCat",
         text = "NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat",
         background_color = Color(0, 0, 0),
         highlight_color = Color.black,
         position = function(item) 
-            item:Panel():set_top(item:Panel():parent():top() + 10) 
+            item:Panel():set_top(self.ForcedLocalization:Panel():bottom() + 5) 
             item:Panel():set_right(item:Panel():parent():right())
         end,
         localized = true,
