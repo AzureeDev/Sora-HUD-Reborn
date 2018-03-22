@@ -1,7 +1,5 @@
 NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, width)
     local MyPanel = i == HUDManager.PLAYER_PANEL
-    self._id = i
-    self._waifu = ""
 	local name = self._panel:child("name")
 	
 	name:configure({
@@ -175,7 +173,7 @@ function HUDTeammate:GetSteamIDByPeer()
 end
 
 function HUDTeammate:SetupAvatar()
-    --[[Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
+    Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
 		self.Avatar:animate(function()
 			wait(0.25)
             Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
@@ -184,27 +182,7 @@ function HUDTeammate:SetupAvatar()
                 self.BGAvatar:set_visible(true)
             end)
         end)
-    end)--]]
-end
-
-function HUDTeammate:SetupWaifu()
-    local WaifuData = NepgearsyHUDReborn:GetOption("WaifuPicker")
-    local MyID = self:peer_id() or managers.network:session():local_peer():id()
-    log("id = ", tostring(id), "self_id = ", tostring(self._id))
-
-    if WaifuData > 1 and WaifuData < 13 then
-        if MyID and not NepgearsyHUDReborn.WaifuSend then
-            local tbl = {}
-            tbl.id = MyID
-            tbl.waifu = WaifuData
-
-            local str = LuaNetworking:TableToString(tbl)
-            LuaNetworking:SendToPeers("NHR_WaifuData", str)
-
-            self.Avatar:set_image(NepgearsyHUDReborn:GetWaifuPathById(WaifuData))
-            NepgearsyHUDReborn.WaifuSend = true
-        end
-    end
+    end)
 end
 
 function HUDTeammate:ApplyNepgearsyHUD()

@@ -78,21 +78,6 @@ function NepgearsyHUDReborn:InitTweakData()
 	if self.Dev then table.insert(self.StarringColors, "DEV") end -- hi :3
 
 	self.CPColors = deep_clone(self.StarringColors)
-	
-	self.Waifus = {
-		"None (Steam Avatar used)",
-		"Neptune",
-		"Noire",
-		"Blanc",
-		"Vert",
-		"Nepgear",
-		"Uni",
-		"Rom",
-		"Ram",
-		"Compa",
-		"IF",
-		"5pb"
-	}
 
 	self.AssaultBarFonts = {
 		"Normal",
@@ -173,27 +158,6 @@ function NepgearsyHUDReborn:StringToColor(module, id)
 	stc["cpcolor"] = deep_clone(stc["starring"])
 
 	return stc[module][id]
-end
-
-function NepgearsyHUDReborn:GetWaifuPathById(id)
-	if id == 1 then
-		return
-	end
-
-	local waifu_path = {}
-	waifu_path[2] = "NepgearsyHUDReborn/HUD/Waifu/Neptune"
-	waifu_path[3] = "NepgearsyHUDReborn/HUD/Waifu/Noire"
-	waifu_path[4] = "NepgearsyHUDReborn/HUD/Waifu/Blanc"
-	waifu_path[5] = "NepgearsyHUDReborn/HUD/Waifu/Vert"
-	waifu_path[6] = "NepgearsyHUDReborn/HUD/Waifu/Nepgear"
-	waifu_path[7] = "NepgearsyHUDReborn/HUD/Waifu/Uni"
-	waifu_path[8] = "NepgearsyHUDReborn/HUD/Waifu/Rom"
-	waifu_path[9] = "NepgearsyHUDReborn/HUD/Waifu/Ram"
-	waifu_path[10] = "NepgearsyHUDReborn/HUD/Waifu/Compa"
-	waifu_path[11] = "NepgearsyHUDReborn/HUD/Waifu/IF"
-	waifu_path[12] = "NepgearsyHUDReborn/HUD/Waifu/5pb"
-
-	return waifu_path[id]
 end
 
 function NepgearsyHUDReborn:InitChangelog()

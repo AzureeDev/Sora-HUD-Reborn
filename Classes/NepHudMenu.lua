@@ -481,49 +481,13 @@ function NepHudMenu:InitMenu()
         callback = ClassClbk(self, "MainClbk")
     })
 
-    self.ExtrasCat = self.MainMenu:Button({
-        name = "ExtrasCat",
-        text = "NepgearsyHUDRebornMenu/Buttons/ExtrasCat",
-        background_color = Color(0, 0, 0),
-        highlight_color = Color.black,
-        position = function(item) 
-            item:Panel():set_top(self.MenuLobbyOptions.HorizontalLoadout:Panel():bottom() + 15) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "center",
-        text_vertical = "center",
-        font_size = 20,
-        font = Font
-    })
-    self.Extras = {}
-    self.Extras.WaifuPicker = self.MainMenu:ComboBox({
-        name = "WaifuPicker",
-        border_color = BorderColor,
-        border_left = true,
-        items = NepgearsyHUDReborn.Waifus,
-        value = NepgearsyHUDReborn.Options:GetValue("WaifuPicker"),
-        text = "NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.ExtrasCat:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
-    })
-
     self.ColorsCat = self.MainMenu:Button({
         name = "ColorsCat",
         text = "NepgearsyHUDRebornMenu/Buttons/ColorsCat",
         background_color = Color(0, 0, 0),
         highlight_color = Color.black,
         position = function(item) 
-            item:Panel():set_top(self.Extras.WaifuPicker:Panel():bottom() + 15) 
+            item:Panel():set_top(self.MenuLobbyOptions.HorizontalLoadout:Panel():bottom() + 15) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         localized = true,
