@@ -52,7 +52,15 @@ NepHook:Post(HUDMissionBriefing, "set_player_slot", function(self, nr, params)
         end
     end
 
+    if not NepgearsyHUDReborn.WaifuSend then
+        local tbl = {}
+        tbl.id = peer_id or managers.network:session():local_peer():id()
+        tbl.waifu = WaifuData
 
+        local str = LuaNetworking:TableToString(tbl)
+        LuaNetworking:SendToPeers("NHR_WaifuData", str)
+        NepgearsyHUDReborn.WaifuSend = true
+    end
 end)
 
 function HUDMissionBriefing:_update_avatar_slot(peer_id)
@@ -111,4 +119,23 @@ Hooks:Add("NetworkReceivedData", "NepgearsyHUDReborn_StarringSync", function(sen
             managers.hud._hud_mission_briefing._player_connected[sender] = true
         end
     end
+
+    if id == "NHR_WaifuData" then
+
+        local tbl = LuaNetworking:StringToTable( data )
+        local peer_id = tbl.id
+        local waifu_id = tbl.waifu
+
+        log("TBL = ", tostring(tbl))
+        log("peer_id = " , tostring(peer_id))
+        log("WAIFU ID = ", tostring(waifu_id))
+
+        local GetWaifuPath = NepgearsyHUDReborn:GetWaifuPathById(waifu_id)
+
+        for i, panel in ipairs(managers.hud._teammate_panels) do
+            if panel._peer_id == peer_id then
+                panel.Avatar:set_image(GetWaifuPath)
+            end
+        end
+	end
 end)
