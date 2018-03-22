@@ -197,8 +197,8 @@ function NepgearsyHUDReborn:GetWaifuPathById(id)
 end
 
 function NepgearsyHUDReborn:InitChangelog()
-	if SystemFS:exists(ModPath .. "Changelog.txt") then
-		local file = io.open( ModPath .. "Changelog.txt", "r")
+	if SystemFS:exists(self.ModPath .. "Changelog.txt") then
+		local file = io.open( self.ModPath .. "Changelog.txt", "r")
 		self.Changelog = file:read("*all")
 		return
 	end
