@@ -1,5 +1,7 @@
 NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, width)
-	local MyPanel = i == HUDManager.PLAYER_PANEL
+    local MyPanel = i == HUDManager.PLAYER_PANEL
+    self._id = i
+
 	local name = self._panel:child("name")
 	
 	name:configure({
@@ -29,8 +31,7 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
 		font_size = 16,
 		text = "",
 		align = "center",
-		vertical = "center",
-		layer = 3
+		vertical = "center"
 	})
 
 	self._weapons_panel = self._player_panel:child("weapons_panel")
@@ -98,21 +99,27 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
     if is_player then
         teammate_panel:set_h(120)
         teammate_panel:child("subpanel_bg"):set_h(90)
+        teammate_panel:child("subpanel_bg"):set_y(30)        
         teammate_panel:set_bottom(self.teammates:h())
         name:set_left(self.Avatar:left())
 		name:set_top(teammate_panel:top() + 10)
 		managers.hud:make_fine_text(name)
-
+        self._condition_icon:set_shape(self._radial_health_panel:shape())
+        self._panel:child("condition_timer"):set_shape(self._radial_health_panel:shape())
         self._steam_id = self:GetSteamIDByPeer()
         self:SetupAvatar()
     else
-        teammate_panel:set_h(35)
+        teammate_panel:set_h(120)
         teammate_panel:child("subpanel_bg"):set_h(35)
+        teammate_panel:child("subpanel_bg"):set_y(115)
         teammate_panel:set_bottom(self.teammates:h())
         name:set_bottom(teammate_panel:h() - 6)
 		name:set_x(0)
         self.Avatar:set_visible(false)
-		self.BGAvatar:set_visible(false)
+        self.BGAvatar:set_visible(false)
+        self._condition_icon:set_bottom(name:bottom())
+        self._condition_icon:set_left(name:right() + 30)
+        self._panel:child("condition_timer"):set_shape(self._condition_icon:shape())
     end
 end)
 
@@ -121,6 +128,24 @@ NepHook:Post(HUDTeammate, "set_callsign", function(self, id)
 	name:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
     self._panel:child("subpanel_bg"):set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
     self.BGAvatar:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
+
+    local WaifuData = NepgearsyHUDReborn:GetOption("WaifuPicker")
+    local MyID = self._id
+    log("id = ", tostring(id), "self_id = ", tostring(self._id))
+
+    if WaifuData > 1 and WaifuData < 13 then
+        if MyID and not NepgearsyHUDReborn.WaifuSend then
+            local tbl = {}
+            tbl.id = MyID
+            tbl.waifu = WaifuData
+
+            local str = LuaNetworking:TableToString(tbl)
+            LuaNetworking:SendToPeers("NHR_WaifuData", str)
+
+            self.Avatar:set_image(NepgearsyHUDReborn:GetWaifuPathById(WaifuData))
+            NepgearsyHUDReborn.WaifuSend = true
+        end
+    end
 end)
 
 NepHook:Post(HUDTeammate, "set_name", function(self, teammate_name)
@@ -155,7 +180,7 @@ end
 function HUDTeammate:SetupAvatar()
     Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
 		self.Avatar:animate(function()
-			wait(0.1)
+			wait(0.25)
             Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
                 self.Avatar:set_image(texture or "guis/textures/pd2/none_icon")
                 self.Avatar:set_visible(true)
@@ -187,8 +212,28 @@ function HUDTeammate:ApplyNepgearsyHUD()
     self._cable_ties_panel:set_y(self._deployable_equipment_panel:bottom() + 2)
 	self._grenades_panel:set_y(self._cable_ties_panel:bottom() + 2)
 	
-	interact_panel:set_shape(self._weapons_panel:shape())
 	interact_panel:set_shape(self._radial_health_panel:shape())
 	interact_panel:set_size(radial_size * 1.25, radial_size * 1.25)
-	interact_panel:set_center(self._radial_health_panel:center())
+    interact_panel:set_center(self._radial_health_panel:center())
+    
+    self._condition_icon:set_color(Color("ff2634"))
+    self._condition_icon:set_shape(self._radial_health_panel:shape())
+    self._panel:child("condition_timer"):set_color(Color.black)
+    self._panel:child("condition_timer"):set_shape(self._radial_health_panel:shape())
+    self._panel:child("condition_timer"):set_font(Idstring("fonts/font_large_mf"))
+    self._panel:child("condition_timer"):set_font_size(20)
 end
+
+Hooks:Add("NetworkReceivedData", "NetworkReceivedData_WaifuDataNepgearsyHUDReborn", function(sender, id, data)
+
+	if id == "NHR_WaifuData" then
+
+        local tbl = LuaNetworking:StringToTable( data )
+        local panel_id = tbl.id
+        local waifu_id = tbl.waifu
+        local GetWaifuPath = NepgearsyHUDReborn:GetWaifuPathById(waifu_id)
+
+        managers.hud._teammate_panels[panel_id].Avatar:set_image(GetWaifuPath)
+	end
+
+end)

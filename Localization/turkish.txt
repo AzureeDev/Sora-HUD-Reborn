@@ -2,6 +2,7 @@
 	"NepgearsyHUDReborn" : "Nepgearsy HUD Reborn",
 	"NepgearsyHUDReborn/Version" : "Version $version",
 	"NepgearsyHUDRebornMenu" : "Nepgearsy HUD Control Panel",
+	"NepgearsyHUDReborn/PostRequestIssue" : "Ask a request or report an issue",	
 
 	"NepgearsyHUDRebornMenu/ForcedLocalization" : "Language",
 

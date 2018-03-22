@@ -1,1 +1,4 @@
 - Added custom loc combobox (Not all game languages support specific languages.)
+- Added "Ask a request or report an issue" button in the Control Panel
+- Added waifus :3 and potential sync with players that has the mod too.
+- Fixed the issue #5. Status effects are now displayed for bots, and is correctly assigned to be on the health circle now.
