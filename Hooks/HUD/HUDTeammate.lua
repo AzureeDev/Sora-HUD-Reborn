@@ -130,7 +130,7 @@ NepHook:Post(HUDTeammate, "set_callsign", function(self, id)
     self.BGAvatar:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
 
     local WaifuData = NepgearsyHUDReborn:GetOption("WaifuPicker")
-    local MyID = self._id
+    local MyID = id
     log("id = ", tostring(id), "self_id = ", tostring(self._id))
 
     if WaifuData > 1 and WaifuData < 13 then
@@ -168,6 +168,21 @@ end)
 NepHook:Post(HUDTeammate, "set_carry_info", function(self, carry_id, value)
 	local carry_panel = self._carry_panel
 	carry_panel:set_visible(false)
+end)
+
+NepHook:Post(HUDTeammate, "set_ammo_amount_by_type", function(self, type, max_clip, current_clip, current_left, max, weapon_panel)
+    --[[local weapon_panel = self._player_panel:child("weapons_panel"):child(type .. "_weapon_panel")
+    local ammo_total = weapon_panel:child("ammo_total")
+    local total_left = current_left - current_clip
+    local zero = total_left < 10 and "00" or total_left < 100 and "0" or ""
+    local out_of_ammo = total_left <= 0
+    local low_ammo = total_left <= math.round(max_clip / 2)
+    local color_total = out_of_ammo and Color(1, 0.9, 0.3, 0.3)
+	color_total = color_total or low_ammo and Color(1, 0.9, 0.9, 0.3)
+    
+    ammo_total:set_text(zero .. tostring(total_left))
+    ammo_total:set_color(color_total)
+	ammo_total:set_range_color(0, string.len(zero), color_total:with_alpha(0.5))--]]
 end)
 
 function HUDTeammate:GetSteamIDByPeer()
@@ -231,9 +246,18 @@ Hooks:Add("NetworkReceivedData", "NetworkReceivedData_WaifuDataNepgearsyHUDRebor
         local tbl = LuaNetworking:StringToTable( data )
         local panel_id = tbl.id
         local waifu_id = tbl.waifu
+
+        log("TBL = ", tostring(tbl))
+        log("PANEL ID = " , tostring(panel_id))
+        log("WAIFU ID = ", tostring(waifu_id))
+
         local GetWaifuPath = NepgearsyHUDReborn:GetWaifuPathById(waifu_id)
 
-        managers.hud._teammate_panels[panel_id].Avatar:set_image(GetWaifuPath)
+        for i, panel in ipairs(managers.hud._teammate_panels) do
+            if panel._peer_id == peer_id then
+                panel.Avatar:set_image(GetWaifuPath)
+            end
+        end
 	end
 
 end)
