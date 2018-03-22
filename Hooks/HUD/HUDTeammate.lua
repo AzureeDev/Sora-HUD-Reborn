@@ -255,7 +255,9 @@ Hooks:Add("NetworkReceivedData", "NetworkReceivedData_WaifuDataNepgearsyHUDRebor
 
         for i, panel in ipairs(managers.hud._teammate_panels) do
             if panel._peer_id == peer_id then
-                panel.Avatar:set_image(GetWaifuPath)
+                DelayedCalls:Add("DelayedCallAvatarSwitch", 0.5, function()
+                    panel.Avatar:set_image(GetWaifuPath)
+                end)
             end
         end
 	end
