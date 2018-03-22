@@ -53,6 +53,7 @@ NepHook:Post(HUDMissionBriefing, "set_player_slot", function(self, nr, params)
     end
 
     if not NepgearsyHUDReborn.WaifuSend then
+        local WaifuData = NepgearsyHUDReborn:GetOption("WaifuPicker")
         local tbl = {}
         tbl.id = peer_id or managers.network:session():local_peer():id()
         tbl.waifu = WaifuData
