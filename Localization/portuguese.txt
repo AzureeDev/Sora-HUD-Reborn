@@ -1,9 +1,9 @@
 {
 	"NepgearsyHUDReborn" : "Nepgearsy HUD Reborn",
-	"NepgearsyHUDReborn/Version" : "Versão $version",
+	"NepgearsyHUDReborn/Version" : "Versao $version",
 	"NepgearsyHUDRebornMenu" : "Painel de Controle do Nepgearsy HUD",
 
-	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Opções do HUD",
+	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Opcoes do HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Fonte da barra de Assault",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Ativar o Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Forçar o Minimapa",
@@ -13,16 +13,16 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Tamanho do HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaçamento do HUD",
 
-	"NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Opções do Menu e do Lobby",
+	"NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Opcoes do Menu e Lobby",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen" : "Ativar o Starring Screen",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "Cor do Starring",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Texto do Starring",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Ativar o loadout horizontal",
 	
-	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Opções Extras",
+	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Opcoes Extras",
 	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Waifu Picker",
 
-	"NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Opções de Cor",
+	"NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Opcoes de Cor",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Plano de fundo",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Cor da barra de saúde",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Cor da barra de colete",
@@ -30,7 +30,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Fechar",
 
 	"NepgearsyHUDRebornMenu/Collaborators/Header" : "Criador e colaboradores",
-	"NepgearsyHUDRebornMenu/Changelog/Header" : "Changelog: $version",
+	"NepgearsyHUDRebornMenu/Changelog/Header" : "Log de Mudancas: $version",
 
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Modo Stealth",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Preparar para o próximo assault",
