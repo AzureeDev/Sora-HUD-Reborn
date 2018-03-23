@@ -687,6 +687,7 @@ function HUDTeammate:ApplyNepgearsyHUD()
 	local name = self._panel:child("name")
 	local weapons_panel = self._player_panel:child("weapons_panel")
 	local radial_size = 64
+	local interact_panel = self._player_panel:child("interact_panel")
 	
     self._player_panel:set_w(309)
 
