@@ -1,0 +1,42 @@
+{
+	"NepgearsyHUDReborn" : "Nepgearsy HUD Reborn",
+	"NepgearsyHUDReborn/Version" : "Versión $version",
+	"NepgearsyHUDRebornMenu" : "Panel de control de Nepgearsy HUD",
+	"NepgearsyHUDReborn/PostRequestIssue" : "Haz una sugerencia o reporta acerca de un error",
+
+	"NepgearsyHUDRebornMenu/ForcedLocalization" : "Idioma",
+
+	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Opciones de HUD",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Fuente de la barra de asaltos",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Activa el Minimapa",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Fuerza el Minimapa",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Zoom del Minimapa",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Habilita los rastreadores",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Escala del HUD",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaciado del HUD",
+
+	"NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Opciones del Menú & Lobby",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen" : "Habilita la pantalla de Actuación",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "Color del "Actúa como",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Texto del Actor",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Habilita la función para ver el Equipamiento horizontal",
+	
+	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Opciones Extra",
+	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Selector de Waifu",
+
+	"NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Opciones de Color",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Panel de control del fondo",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Color de la Salud",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Color del Escudo",
+
+	"NepgearsyHUDRebornMenu/Buttons/Close" : "Cerrar",
+
+	"NepgearsyHUDRebornMenu/Collaborators/Header" : "Autor & Colaboradores",
+	"NepgearsyHUDRebornMenu/Changelog/Header" : "Changelog: $version",
+
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Modo Sigilo",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Prepárate para el siguente Asalto",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Punto sin retorno",
+
+	"hud_instruct_mask_on" : ""
+}
