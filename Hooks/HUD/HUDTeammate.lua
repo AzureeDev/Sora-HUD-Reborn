@@ -65,7 +65,7 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
 	
     self._panel:child("name_bg"):set_visible(false)
 	self._panel:child("callsign_bg"):set_visible(false)
-    self._panel:child("callsign"):set_visible(false)
+	self._panel:child("callsign"):set_visible(false)
     
     self:ApplyNepgearsyHUD()
 end)
@@ -648,6 +648,16 @@ NepHook:Post(HUDTeammate, "layout_special_equipments", function(self)
     end
 end)
 
+function HUDTeammate:teammate_progress(enabled, tweak_data_id, timer, success)
+	self._player_panel:child("radial_health_panel"):set_alpha(enabled and 0.2 or 1)
+	self._player_panel:child("interact_panel"):stop()
+	self._player_panel:child("interact_panel"):set_visible(enabled)
+
+	if enabled then
+		self._player_panel:child("interact_panel"):animate(callback(HUDManager, HUDManager, "_animate_label_interact"), self._interact, timer)
+	end
+end
+
 NepHook:Post(HUDTeammate, "set_ammo_amount_by_type", function(self, type, max_clip, current_clip, current_left, max, weapon_panel)
     --[[local weapon_panel = self._player_panel:child("weapons_panel"):child(type .. "_weapon_panel")
     local ammo_total = weapon_panel:child("ammo_total")
@@ -686,7 +696,7 @@ end
 function HUDTeammate:ApplyNepgearsyHUD()
 	local name = self._panel:child("name")
 	local weapons_panel = self._player_panel:child("weapons_panel")
-	local radial_size = 64
+	local radial_size = 60
 	local interact_panel = self._player_panel:child("interact_panel")
 	
     self._player_panel:set_w(309)
@@ -716,4 +726,14 @@ function HUDTeammate:ApplyNepgearsyHUD()
 	interact_panel:set_shape(self._radial_health_panel:shape())
 	interact_panel:set_size(radial_size * 1.25, radial_size * 1.25)
 	interact_panel:set_center(self._radial_health_panel:center())
+
+	local radius = interact_panel:h() / 2 - 4
+	self._interact = CircleBitmapGuiObject:new(interact_panel, {
+		blend_mode = "add",
+		use_bg = true,
+		rotation = 360,
+		layer = 0,
+		radius = radius,
+		color = Color.white
+	})
 end
