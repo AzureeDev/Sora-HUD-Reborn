@@ -1,5 +1,2 @@
-- Added custom loc combobox (Not all game languages support specific languages.)
-- Added "Ask a request or report an issue" button in the Control Panel
-- Fixed the issue #5. Status effects are now displayed for bots, and is correctly assigned to be on the health circle now.
-- Hopefully fixed the changelog (FUCK YOU MODPATH :rage:)
-- Removed waifu picker
+- Fixed a network overflow issue if 3 or more people have the HUD in the same lobby.
+- Added spanish localization.

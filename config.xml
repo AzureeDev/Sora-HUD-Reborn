@@ -3,7 +3,7 @@
         <class file="NepHudMenu.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="1.0.2" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="1.1.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
@@ -95,18 +95,6 @@
         <texture path="NepgearsyHUDReborn/HUD/ShieldRedFushia"/>
         <texture path="NepgearsyHUDReborn/HUD/AI"/>
         <texture path="NepgearsyHUDReborn/HUD/Teammate"/>
-
-        <texture path="NepgearsyHUDReborn/HUD/Waifu/Neptune"/>
-        <texture path="NepgearsyHUDReborn/HUD/Waifu/Noire"/>
-        <texture path="NepgearsyHUDReborn/HUD/Waifu/Blanc"/>
-        <texture path="NepgearsyHUDReborn/HUD/Waifu/Vert"/>
-        <texture path="NepgearsyHUDReborn/HUD/Waifu/Nepgear"/>
-        <texture path="NepgearsyHUDReborn/HUD/Waifu/Uni"/>
-        <texture path="NepgearsyHUDReborn/HUD/Waifu/Rom"/>
-        <texture path="NepgearsyHUDReborn/HUD/Waifu/Ram"/>
-        <texture path="NepgearsyHUDReborn/HUD/Waifu/Compa"/>
-        <texture path="NepgearsyHUDReborn/HUD/Waifu/IF"/>
-        <texture path="NepgearsyHUDReborn/HUD/Waifu/5pb"/>
         
         <texture path="NepgearsyHUDReborn/Minimap/kenaz_loc_b_df"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_1"/>
