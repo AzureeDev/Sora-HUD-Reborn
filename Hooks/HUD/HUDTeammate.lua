@@ -20,7 +20,6 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
         y = 30
 	})
 
-	self._radial_health_panel = self._player_panel:child("radial_health_panel")
 	self._radial_health_panel:set_bottom(self._panel:h() - 11)
 
 	local HealthNumber = self._radial_health_panel:text({
@@ -71,21 +70,207 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
     self:ApplyNepgearsyHUD()
 end)
 
-NepHook:Post(HUDTeammate, "_create_radial_health", function (self, radial_health_panel)
-    local radial_bg = radial_health_panel:child("radial_bg")
-    local radial_health = radial_health_panel:child("radial_health")
-    local radial_shield = radial_health_panel:child("radial_shield")
-    local damage_indicator = radial_health_panel:child("damage_indicator")
-    local radial_custom = radial_health_panel:child("radial_custom")
-    local radial_ability_meter = radial_health_panel:child("radial_ability"):child("ability_meter")
-    local ability_icon = radial_health_panel:child("radial_ability"):child("ability_icon")
-    local radial_absorb_shield_active = radial_health_panel:child("radial_absorb_shield_active")
-    local radial_absorb_health_active = radial_health_panel:child("radial_absorb_health_active")
-    local radial_info_meter = radial_health_panel:child("radial_info_meter")
-    local radial_info_meter_bg = radial_health_panel:child("radial_info_meter_bg")
-    
+function HUDTeammate:_create_radial_health(radial_health_panel)
+	self._radial_health_panel = radial_health_panel
+	self._radial_health_panel:set_w(68)
+	self._radial_health_panel:set_h(68)
 
-    local function set_texture(o, texture) --set using the texture's actual size not a hardcoded size like 64/128.
+	local radial_size = 64
+	local radial_bg = radial_health_panel:bitmap({
+		texture = "guis/textures/pd2/hud_radialbg",
+		name = "radial_bg",
+		alpha = 1,
+		layer = 0,
+		w = radial_health_panel:w(),
+		h = radial_health_panel:h()
+	})
+	local radial_health = radial_health_panel:bitmap({
+		texture = "guis/textures/pd2/hud_health",
+		name = "radial_health",
+		layer = 2,
+		blend_mode = "add",
+		render_template = "VertexColorTexturedRadial",
+		texture_rect = {
+			128,
+			0,
+			-128,
+			128
+		},
+		color = Color(1, 0, 1, 1),
+		w = radial_health_panel:w(),
+		h = radial_health_panel:h()
+	})
+	local radial_shield = radial_health_panel:bitmap({
+		texture = "guis/textures/pd2/hud_shield",
+		name = "radial_shield",
+		layer = 1,
+		blend_mode = "add",
+		render_template = "VertexColorTexturedRadial",
+		texture_rect = {
+			128,
+			0,
+			-128,
+			128
+		},
+		color = Color(1, 0, 1, 1),
+		w = radial_health_panel:w(),
+		h = radial_health_panel:h()
+	})
+	local damage_indicator = radial_health_panel:bitmap({
+		blend_mode = "add",
+		name = "damage_indicator",
+		alpha = 0,
+		texture = "guis/textures/pd2/hud_radial_rim",
+		layer = 1,
+		color = Color(1, 1, 1, 1),
+		w = radial_health_panel:w(),
+		h = radial_health_panel:h()
+	})
+	local radial_custom = radial_health_panel:bitmap({
+		texture = "guis/textures/pd2/hud_swansong",
+		name = "radial_custom",
+		blend_mode = "add",
+		visible = false,
+		render_template = "VertexColorTexturedRadial",
+		layer = 5,
+		color = Color(1, 0, 0, 0),
+		w = radial_health_panel:w(),
+		h = radial_health_panel:h()
+	})
+	local radial_ability_panel = radial_health_panel:panel({
+		visible = false,
+		name = "radial_ability"
+	})
+	local radial_ability_meter = radial_ability_panel:bitmap({
+		blend_mode = "add",
+		name = "ability_meter",
+		texture = "guis/textures/pd2/hud_fearless",
+		render_template = "VertexColorTexturedRadial",
+		layer = 5,
+		color = Color(1, 0, 0, 0),
+		w = radial_health_panel:w(),
+		h = radial_health_panel:h()
+	})
+	local radial_ability_icon = radial_ability_panel:bitmap({
+		blend_mode = "add",
+		name = "ability_icon",
+		alpha = 1,
+		layer = 5,
+		w = radial_size * 0.5,
+		h = radial_size * 0.5
+	})
+
+	radial_ability_icon:set_center(radial_ability_panel:center())
+
+	local radial_delayed_damage_panel = radial_health_panel:panel({name = "radial_delayed_damage"})
+	local radial_delayed_damage_armor = radial_delayed_damage_panel:bitmap({
+		texture = "guis/textures/pd2/hud_dot_shield",
+		name = "radial_delayed_damage_armor",
+		visible = false,
+		render_template = "VertexColorTexturedRadialFlex",
+		layer = 5,
+		w = radial_delayed_damage_panel:w(),
+		h = radial_delayed_damage_panel:h()
+	})
+	local radial_delayed_damage_health = radial_delayed_damage_panel:bitmap({
+		texture = "guis/textures/pd2/hud_dot",
+		name = "radial_delayed_damage_health",
+		visible = false,
+		render_template = "VertexColorTexturedRadialFlex",
+		layer = 5,
+		w = radial_delayed_damage_panel:w(),
+		h = radial_delayed_damage_panel:h()
+	})
+
+	if self._main_player then
+		local radial_rip = radial_health_panel:bitmap({
+			texture = "guis/textures/pd2/hud_rip",
+			name = "radial_rip",
+			layer = 3,
+			blend_mode = "add",
+			visible = false,
+			render_template = "VertexColorTexturedRadial",
+			texture_rect = {
+				128,
+				0,
+				-128,
+				128
+			},
+			color = Color(1, 0, 0, 0),
+			w = radial_health_panel:w(),
+			h = radial_health_panel:h()
+		})
+		local radial_rip_bg = radial_health_panel:bitmap({
+			texture = "guis/textures/pd2/hud_rip_bg",
+			name = "radial_rip_bg",
+			layer = 1,
+			visible = false,
+			render_template = "VertexColorTexturedRadial",
+			texture_rect = {
+				128,
+				0,
+				-128,
+				128
+			},
+			color = Color(1, 0, 0, 0),
+			w = radial_health_panel:w(),
+			h = radial_health_panel:h()
+		})
+	end
+
+	radial_health_panel:bitmap({
+		texture = "guis/dlcs/coco/textures/pd2/hud_absorb_shield",
+		name = "radial_absorb_shield_active",
+		visible = false,
+		render_template = "VertexColorTexturedRadial",
+		layer = 5,
+		color = Color(1, 0, 0, 0),
+		w = radial_health_panel:w(),
+		h = radial_health_panel:h()
+	})
+
+	local radial_absorb_health_active = radial_health_panel:bitmap({
+		texture = "guis/dlcs/coco/textures/pd2/hud_absorb_health",
+		name = "radial_absorb_health_active",
+		visible = false,
+		render_template = "VertexColorTexturedRadial",
+		layer = 5,
+		color = Color(1, 0, 0, 0),
+		w = radial_health_panel:w(),
+		h = radial_health_panel:h()
+	})
+
+	radial_absorb_health_active:animate(callback(self, self, "animate_update_absorb_active"))
+	radial_health_panel:bitmap({
+		texture = "guis/dlcs/coco/textures/pd2/hud_absorb_stack_fg",
+		name = "radial_info_meter",
+		blend_mode = "add",
+		visible = false,
+		render_template = "VertexColorTexturedRadial",
+		layer = 3,
+		color = Color(1, 0, 0, 0),
+		w = radial_health_panel:w(),
+		h = radial_health_panel:h()
+	})
+	radial_health_panel:bitmap({
+		texture = "guis/dlcs/coco/textures/pd2/hud_absorb_stack_bg",
+		name = "radial_info_meter_bg",
+		layer = 1,
+		visible = false,
+		render_template = "VertexColorTexturedRadial",
+		texture_rect = {
+			128,
+			0,
+			-128,
+			128
+		},
+		color = Color(1, 0, 0, 0),
+		w = radial_health_panel:w(),
+		h = radial_health_panel:h()
+	})
+	self:_create_condition(radial_health_panel)
+
+	local function set_texture(o, texture) --set using the texture's actual size not a hardcoded size like 64/128.
         local w,h = o:texture_width(), o:texture_height()
         o:set_image(texture, w, 0, -w, h)
     end
@@ -94,33 +279,11 @@ NepHook:Post(HUDTeammate, "_create_radial_health", function (self, radial_health
     set_texture(radial_health, NepgearsyHUDReborn:TeammateRadialIDToPath(NepgearsyHUDReborn:GetOption("HealthColor"), "Health"))
     set_texture(radial_shield, NepgearsyHUDReborn:TeammateRadialIDToPath(NepgearsyHUDReborn:GetOption("ShieldColor"), "Armor"))
     damage_indicator:hide() -- Thats a buggy mess anyways
-
-    radial_bg:set_h(68)
-    radial_bg:set_w(68)
-    radial_health:set_h(68)
-    radial_health:set_w(68)
-    radial_shield:set_h(68)
-    radial_shield:set_w(68)
-    radial_custom:set_h(68)
-    radial_custom:set_w(68)
-    radial_ability_meter:set_h(68)
-    radial_ability_meter:set_w(68)
-    radial_absorb_shield_active:set_h(68)
-    radial_absorb_shield_active:set_w(68)
-    radial_absorb_health_active:set_h(68)
-    radial_absorb_health_active:set_w(68)
-    radial_info_meter:set_h(68)
-    radial_info_meter:set_w(68)
-    radial_info_meter_bg:set_h(68)
-    radial_info_meter_bg:set_w(68)
-    radial_ability_meter:set_h(68)
-    radial_ability_meter:set_w(68)
-    ability_icon:set_h(68 * 0.5)
-    ability_icon:set_w(68 * 0.5)
-    ability_icon:set_center(radial_health_panel:child("radial_ability"):center())
-end)
+end
 
 function HUDTeammate:_create_weapon_panels(weapons_panel)
+    weapons_panel:set_h(68)
+
 	local bg_color = Color.white / 3
 	local w_selection_w = 12
 	local weapon_panel_w = 80
@@ -180,7 +343,7 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		w = ammo_text_w + extra_clip_w,
 		h = primary_weapon_panel:h(),
 		y = 0 + font_bottom_align_correction,
-		font = tweak_data.hud_players.ammo_font
+		font = "fonts/font_large_mf"
 	})
 	primary_weapon_panel:text({
 		text = "000",
@@ -196,7 +359,7 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		h = primary_weapon_panel:h(),
 		x = ammo_text_w + extra_clip_w,
 		y = 0 + font_bottom_align_correction,
-		font = tweak_data.hud_players.ammo_font
+		font = "fonts/font_large_mf"
 	})
 
 	local weapon_selection_panel = primary_weapon_panel:panel({
@@ -250,7 +413,7 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		w = ammo_text_w + extra_clip_w,
 		h = secondary_weapon_panel:h(),
 		y = 0 + font_bottom_align_correction,
-		font = tweak_data.hud_players.ammo_font
+		font = "fonts/font_large_mf"
 	})
 	secondary_weapon_panel:text({
 		text = "000",
@@ -266,7 +429,7 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		h = secondary_weapon_panel:h(),
 		x = ammo_text_w + extra_clip_w,
 		y = 0 + font_bottom_align_correction,
-		font = tweak_data.hud_players.ammo_font
+		font = "fonts/font_large_mf"
 	})
 
 	local weapon_selection_panel = secondary_weapon_panel:panel({
@@ -286,9 +449,101 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 	})
 	secondary_weapon_panel:set_bottom(weapons_panel:h())
     self:_create_secondary_weapon_firemode()
-    
-    weapons_panel:set_h(68)
 end
+
+NepHook:Post(HUDTeammate, "_create_primary_weapon_firemode", function(self)
+	local primary_weapon_panel = self._player_panel:child("weapons_panel"):child("primary_weapon_panel")
+	local weapon_selection_panel = primary_weapon_panel:child("weapon_selection")
+	local old_single = weapon_selection_panel:child("firemode_single")
+	local old_auto = weapon_selection_panel:child("firemode_auto")
+
+	local equipped_primary = managers.blackmarket:equipped_primary()
+	local weapon_tweak_data = tweak_data.weapon[equipped_primary.weapon_id]
+	local fire_mode = weapon_tweak_data.FIRE_MODE
+	local can_toggle_firemode = weapon_tweak_data.CAN_TOGGLE_FIREMODE
+	local locked_to_auto = managers.weapon_factory:has_perk("fire_mode_auto", equipped_primary.factory_id, equipped_primary.blueprint)
+	local locked_to_single = managers.weapon_factory:has_perk("fire_mode_single", equipped_primary.factory_id, equipped_primary.blueprint)
+	local single_id = "firemode_single" .. ((not can_toggle_firemode or locked_to_single) and "_locked" or "")
+	local texture, texture_rect = tweak_data.hud_icons:get_icon_data(single_id)
+	local firemode_single = weapon_selection_panel:bitmap({
+		name = "firemode_single",
+		blend_mode = "mul",
+		layer = 1,
+		x = 2,
+		texture = texture,
+		texture_rect = texture_rect
+	})
+
+	firemode_single:set_bottom(weapon_selection_panel:h() - 2)
+	firemode_single:hide()
+
+	local auto_id = "firemode_auto" .. ((not can_toggle_firemode or locked_to_auto) and "_locked" or "")
+	local texture, texture_rect = tweak_data.hud_icons:get_icon_data(auto_id)
+	local firemode_auto = weapon_selection_panel:bitmap({
+		name = "firemode_auto",
+		blend_mode = "mul",
+		layer = 1,
+		x = 2,
+		texture = texture,
+		texture_rect = texture_rect
+	})
+
+	firemode_auto:set_bottom(weapon_selection_panel:h() - 2)
+	firemode_auto:hide()
+
+	if locked_to_single or not locked_to_auto and fire_mode == "single" then
+		firemode_single:show()
+	else
+		firemode_auto:show()
+	end
+end)
+
+NepHook:Post(HUDTeammate, "_create_secondary_weapon_firemode", function(self)
+	local secondary_weapon_panel = self._player_panel:child("weapons_panel"):child("secondary_weapon_panel")
+	local weapon_selection_panel = secondary_weapon_panel:child("weapon_selection")
+	local old_single = weapon_selection_panel:child("firemode_single")
+	local old_auto = weapon_selection_panel:child("firemode_auto")
+
+	local equipped_secondary = managers.blackmarket:equipped_secondary()
+	local weapon_tweak_data = tweak_data.weapon[equipped_secondary.weapon_id]
+	local fire_mode = weapon_tweak_data.FIRE_MODE
+	local can_toggle_firemode = weapon_tweak_data.CAN_TOGGLE_FIREMODE
+	local locked_to_auto = managers.weapon_factory:has_perk("fire_mode_auto", equipped_secondary.factory_id, equipped_secondary.blueprint)
+	local locked_to_single = managers.weapon_factory:has_perk("fire_mode_single", equipped_secondary.factory_id, equipped_secondary.blueprint)
+	local single_id = "firemode_single" .. ((not can_toggle_firemode or locked_to_single) and "_locked" or "")
+	local texture, texture_rect = tweak_data.hud_icons:get_icon_data(single_id)
+	local firemode_single = weapon_selection_panel:bitmap({
+		name = "firemode_single",
+		blend_mode = "mul",
+		layer = 1,
+		x = 2,
+		texture = texture,
+		texture_rect = texture_rect
+	})
+
+	firemode_single:set_bottom(weapon_selection_panel:h() - 2)
+	firemode_single:hide()
+
+	local auto_id = "firemode_auto" .. ((not can_toggle_firemode or locked_to_auto) and "_locked" or "")
+	local texture, texture_rect = tweak_data.hud_icons:get_icon_data(auto_id)
+	local firemode_auto = weapon_selection_panel:bitmap({
+		name = "firemode_auto",
+		blend_mode = "mul",
+		layer = 1,
+		x = 2,
+		texture = texture,
+		texture_rect = texture_rect
+	})
+
+	firemode_auto:set_bottom(weapon_selection_panel:h() - 2)
+	firemode_auto:hide()
+
+	if locked_to_single or not locked_to_auto and fire_mode == "single" then
+		firemode_single:show()
+	else
+		firemode_auto:show()
+	end
+end)
 
 NepHook:Post(HUDTeammate, "set_state", function(self, state)
     local teammate_panel = self._panel
@@ -313,17 +568,11 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
         name:set_left(self.Avatar:left())
 		name:set_top(teammate_panel:top() + 10)
 		managers.hud:make_fine_text(name)
-        self._condition_icon:set_shape(self._radial_health_panel:shape())
-        self._panel:child("condition_timer"):set_shape(self._radial_health_panel:shape())
         self._player_panel:set_h(self._panel:h())
-        self._radial_health_panel:set_w(68)
-        self._radial_health_panel:set_h(68)
-        self._radial_health_panel:set_bottom(self._panel:h() - 11)
-        self.HealthNumber:set_shape(self._radial_health_panel:shape())
-        self.HealthNumber:set_center(self._radial_health_panel:center())
-        interact_panel:set_shape(self._radial_health_panel:shape())
-        interact_panel:set_size(radial_size * 1.25, radial_size * 1.25)
-        interact_panel:set_center(self._radial_health_panel:center())
+		self._radial_health_panel:set_bottom(self._panel:h() - 11)
+		self._condition_icon:set_shape(self._radial_health_panel:shape())
+		self._panel:child("condition_timer"):set_shape(self._radial_health_panel:shape())
+		interact_panel:set_shape(self._radial_health_panel:shape())
         weapons_panel:set_bottom(self._radial_health_panel:bottom())
         weapons_panel:set_x(self._radial_health_panel:right() + 4)
         deployable_equipment_panel:set_top(weapons_panel:top())
@@ -436,10 +685,9 @@ end
 
 function HUDTeammate:ApplyNepgearsyHUD()
 	local name = self._panel:child("name")
-	local interact_panel = self._player_panel:child("interact_panel")
-	local HealthNumber = self._radial_health_panel:child("HealthNumber")
-    local radial_size = 64
-
+	local weapons_panel = self._player_panel:child("weapons_panel")
+	local radial_size = 64
+	
     self._player_panel:set_w(309)
 
     name:set_left(self.Avatar:left())
@@ -455,15 +703,16 @@ function HUDTeammate:ApplyNepgearsyHUD()
     self._deployable_equipment_panel:set_y(self._weapons_panel:top())
     self._cable_ties_panel:set_y(self._deployable_equipment_panel:bottom() + 2)
 	self._grenades_panel:set_y(self._cable_ties_panel:bottom() + 2)
-	
-	interact_panel:set_shape(self._radial_health_panel:shape())
-	interact_panel:set_size(radial_size * 1.25, radial_size * 1.25)
-    interact_panel:set_center(self._radial_health_panel:center())
     
     self._condition_icon:set_color(Color("ff2634"))
     self._condition_icon:set_shape(self._radial_health_panel:shape())
     self._panel:child("condition_timer"):set_color(Color.black)
     self._panel:child("condition_timer"):set_shape(self._radial_health_panel:shape())
     self._panel:child("condition_timer"):set_font(Idstring("fonts/font_large_mf"))
-    self._panel:child("condition_timer"):set_font_size(20)
+	self._panel:child("condition_timer"):set_font_size(20)
+	
+	interact_panel:set_shape(weapons_panel:shape())
+	interact_panel:set_shape(self._radial_health_panel:shape())
+	interact_panel:set_size(radial_size * 1.25, radial_size * 1.25)
+	interact_panel:set_center(self._radial_health_panel:center())
 end
