@@ -27,7 +27,6 @@ function HUDManager:_create_teammates_panel(hud)
 			special_equipments = {}
 		}
 		local pw = teammate_w + (is_player and not is_four and 0 or 10)
-		HUDManager.PLAYER_PANEL = i
 		local teammate = HUDTeammate:new(i, teammates_panel, is_player, pw)
 
 		if not _G.IS_VR then

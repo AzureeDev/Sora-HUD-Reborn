@@ -8,7 +8,7 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
 		font = "fonts/font_eurostile_ext",
 		font_size = tweak_data.hud_players.name_size - 2
 	})
-	managers.hud:make_fine_text(name)
+    managers.hud:make_fine_text(name)
 
 	local subpanel_bg = self._panel:bitmap({
         name = "subpanel_bg",
@@ -75,6 +75,14 @@ NepHook:Post(HUDTeammate, "_create_radial_health", function (self, radial_health
     local radial_health = radial_health_panel:child("radial_health")
     local radial_shield = radial_health_panel:child("radial_shield")
     local damage_indicator = radial_health_panel:child("damage_indicator")
+    local radial_custom = radial_health_panel:child("radial_custom")
+    local radial_ability_meter = radial_health_panel:child("radial_ability"):child("ability_meter")
+    local ability_icon = radial_health_panel:child("radial_ability"):child("ability_icon")
+    local radial_absorb_shield_active = radial_health_panel:child("radial_absorb_shield_active")
+    local radial_absorb_health_active = radial_health_panel:child("radial_absorb_health_active")
+    local radial_info_meter = radial_health_panel:child("radial_info_meter")
+    local radial_info_meter_bg = radial_health_panel:child("radial_info_meter_bg")
+    
 
     local function set_texture(o, texture) --set using the texture's actual size not a hardcoded size like 64/128.
         local w,h = o:texture_width(), o:texture_height()
@@ -85,10 +93,44 @@ NepHook:Post(HUDTeammate, "_create_radial_health", function (self, radial_health
     set_texture(radial_health, NepgearsyHUDReborn:TeammateRadialIDToPath(NepgearsyHUDReborn:GetOption("HealthColor"), "Health"))
     set_texture(radial_shield, NepgearsyHUDReborn:TeammateRadialIDToPath(NepgearsyHUDReborn:GetOption("ShieldColor"), "Armor"))
     damage_indicator:hide() -- Thats a buggy mess anyways
+
+    radial_bg:set_h(68)
+    radial_bg:set_w(68)
+    radial_health:set_h(68)
+    radial_health:set_w(68)
+    radial_shield:set_h(68)
+    radial_shield:set_h(68)
+    radial_custom:set_h(68)
+    radial_custom:set_w(68)
+    radial_ability_meter:set_h(68)
+    radial_ability_meter:set_w(68)
+    radial_absorb_shield_active:set_h(68)
+    radial_absorb_shield_active:set_w(68)
+    radial_absorb_health_active:set_h(68)
+    radial_absorb_health_active:set_w(68)
+    radial_info_meter:set_h(68)
+    radial_info_meter:set_w(68)
+    radial_info_meter_bg:set_h(68)
+    radial_info_meter_bg:set_w(68)
+    radial_ability_meter:set_h(68)
+    radial_ability_meter:set_w(68)
+    ability_icon:set_h(68 * 0.5)
+    ability_icon:set_w(68 * 0.5)
+    ability_icon:set_center(radial_health_panel:child("radial_ability"):center())
+end)
+
+NepHook:Post(HUDTeammate, "_create_weapon_panels", function(self, weapons_panel)
+    weapons_panel:set_h(68)
 end)
 
 NepHook:Post(HUDTeammate, "set_state", function(self, state)
-	local teammate_panel = self._panel
+    local teammate_panel = self._panel
+    local weapons_panel = self._player_panel:child("weapons_panel")
+    local deployable_equipment_panel = self._player_panel:child("deployable_equipment_panel")
+    local cable_ties_panel = self._player_panel:child("cable_ties_panel")
+    if PlayerBase.USE_GRENADES then
+        local grenades_panel = self._player_panel:child("grenades_panel")
+    end
     local is_player = state == "player"
 	local name = teammate_panel:child("name")
 
@@ -104,6 +146,24 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
 		managers.hud:make_fine_text(name)
         self._condition_icon:set_shape(self._radial_health_panel:shape())
         self._panel:child("condition_timer"):set_shape(self._radial_health_panel:shape())
+        self._player_panel:set_h(self._panel:h())
+        self._radial_health_panel:set_w(68)
+        self._radial_health_panel:set_h(68)
+        self._radial_health_panel:set_bottom(self._panel:h() - 11)
+        weapons_panel:set_bottom(self._radial_health_panel:bottom())
+        weapons_panel:set_x(self._radial_health_panel:right() + 4)
+        deployable_equipment_panel:set_top(weapons_panel:top())
+        deployable_equipment_panel:set_left(weapons_panel:right() + 2)
+        cable_ties_panel:set_top(deployable_equipment_panel:bottom() + 1)
+        cable_ties_panel:set_left(weapons_panel:right() + 2)
+        if PlayerBase.USE_GRENADES then
+            local grenades_panel = self._player_panel:child("grenades_panel")
+            grenades_panel:set_top(cable_ties_panel:bottom() + 1)
+            grenades_panel:set_left(weapons_panel:right() + 2)
+        end
+        self.BGAvatar:set_bottom(self._radial_health_panel:bottom() - 2)
+        self.Avatar:set_bottom(self.BGAvatar:bottom() - 2)
+        self.Avatar:set_left(self.BGAvatar:left() + 2)
         self._steam_id = self:GetSteamIDByPeer()
         self:SetupAvatar()
     else
@@ -150,6 +210,21 @@ NepHook:Post(HUDTeammate, "set_carry_info", function(self, carry_id, value)
 	carry_panel:set_visible(false)
 end)
 
+NepHook:Post(HUDTeammate, "layout_special_equipments", function(self)
+    local teammate_panel = self._panel
+	local special_equipment = self._special_equipment
+	local container_width = teammate_panel:w()
+    local row_width = math.floor(container_width / 32)
+    
+    for i, panel in ipairs(special_equipment) do
+        local zi = i - 1
+        local y_pos = -math.floor(zi / row_width) * panel:h()
+        
+        panel:set_x(container_width - (panel:w() + 0) * (zi % row_width + 1))
+        panel:set_y(y_pos)
+    end
+end)
+
 NepHook:Post(HUDTeammate, "set_ammo_amount_by_type", function(self, type, max_clip, current_clip, current_left, max, weapon_panel)
     --[[local weapon_panel = self._player_panel:child("weapons_panel"):child(type .. "_weapon_panel")
     local ammo_total = weapon_panel:child("ammo_total")
@@ -189,12 +264,12 @@ function HUDTeammate:ApplyNepgearsyHUD()
 	local name = self._panel:child("name")
 	local interact_panel = self._player_panel:child("interact_panel")
 	local HealthNumber = self._radial_health_panel:child("HealthNumber")
-	local radial_size = 64
-	
-    name:set_left(self.Avatar:left())
-	name:set_top(self._panel:top() + 10)
+    local radial_size = 64
 
     self._player_panel:set_w(309)
+
+    name:set_left(self.Avatar:left())
+	name:set_top(self._panel:top() + 10)
 
     self._radial_health_panel:set_x(self._radial_health_panel:x() + 70)
     self._weapons_panel:set_x(self._radial_health_panel:right() + 2)
