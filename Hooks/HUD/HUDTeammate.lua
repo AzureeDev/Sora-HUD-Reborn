@@ -31,6 +31,7 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
 		align = "center",
 		vertical = "center"
 	})
+    self.HealthNumber = HealthNumber
 
 	self._weapons_panel = self._player_panel:child("weapons_panel")
 
@@ -99,7 +100,7 @@ NepHook:Post(HUDTeammate, "_create_radial_health", function (self, radial_health
     radial_health:set_h(68)
     radial_health:set_w(68)
     radial_shield:set_h(68)
-    radial_shield:set_h(68)
+    radial_shield:set_w(68)
     radial_custom:set_h(68)
     radial_custom:set_w(68)
     radial_ability_meter:set_h(68)
@@ -119,14 +120,182 @@ NepHook:Post(HUDTeammate, "_create_radial_health", function (self, radial_health
     ability_icon:set_center(radial_health_panel:child("radial_ability"):center())
 end)
 
-NepHook:Post(HUDTeammate, "_create_weapon_panels", function(self, weapons_panel)
+function HUDTeammate:_create_weapon_panels(weapons_panel)
+	local bg_color = Color.white / 3
+	local w_selection_w = 12
+	local weapon_panel_w = 80
+	local extra_clip_w = 4
+	local ammo_text_w = (weapon_panel_w - w_selection_w) / 2
+	local font_bottom_align_correction = 3
+	local tabs_texture = "guis/textures/pd2/hud_tabs"
+	local bg_rect = {
+		0,
+		0,
+		67,
+		32
+	}
+	local weapon_selection_rect1 = {
+		68,
+		0,
+		12,
+		32
+	}
+	local weapon_selection_rect2 = {
+		68,
+		32,
+		12,
+		32
+	}
+	local primary_weapon_panel = weapons_panel:panel({
+		y = 0,
+		name = "primary_weapon_panel",
+		h = 32,
+		visible = false,
+		x = 0,
+		layer = 1,
+		w = weapon_panel_w
+	})
+
+	primary_weapon_panel:bitmap({
+		name = "bg",
+		layer = 0,
+		visible = true,
+		x = 0,
+		texture = tabs_texture,
+		texture_rect = bg_rect,
+		color = bg_color,
+		w = weapon_panel_w
+	})
+	primary_weapon_panel:text({
+		name = "ammo_clip",
+		align = "center",
+		vertical = "bottom",
+		font_size = 32,
+		blend_mode = "normal",
+		x = 0,
+		layer = 1,
+		visible = true,
+		text = "0" .. math.random(40),
+		color = Color.white,
+		w = ammo_text_w + extra_clip_w,
+		h = primary_weapon_panel:h(),
+		y = 0 + font_bottom_align_correction,
+		font = tweak_data.hud_players.ammo_font
+	})
+	primary_weapon_panel:text({
+		text = "000",
+		name = "ammo_total",
+		align = "center",
+		vertical = "bottom",
+		font_size = 24,
+		blend_mode = "normal",
+		visible = true,
+		layer = 1,
+		color = Color.white,
+		w = ammo_text_w - extra_clip_w,
+		h = primary_weapon_panel:h(),
+		x = ammo_text_w + extra_clip_w,
+		y = 0 + font_bottom_align_correction,
+		font = tweak_data.hud_players.ammo_font
+	})
+
+	local weapon_selection_panel = primary_weapon_panel:panel({
+		name = "weapon_selection",
+		layer = 1,
+		visible = true,
+		w = w_selection_w,
+		x = weapon_panel_w - w_selection_w
+	})
+
+	weapon_selection_panel:bitmap({
+		name = "weapon_selection",
+		texture = tabs_texture,
+		texture_rect = weapon_selection_rect1,
+		color = Color.white,
+		w = w_selection_w
+	})
+	self:_create_primary_weapon_firemode()
+
+	local secondary_weapon_panel = weapons_panel:panel({
+		name = "secondary_weapon_panel",
+		h = 32,
+		visible = false,
+		x = 0,
+		layer = 1,
+		w = weapon_panel_w,
+		y = primary_weapon_panel:bottom()
+	})
+
+	secondary_weapon_panel:bitmap({
+		name = "bg",
+		layer = 0,
+		visible = true,
+		x = 0,
+		texture = tabs_texture,
+		texture_rect = bg_rect,
+		color = bg_color,
+		w = weapon_panel_w
+	})
+	secondary_weapon_panel:text({
+		name = "ammo_clip",
+		align = "center",
+		vertical = "bottom",
+		font_size = 32,
+		blend_mode = "normal",
+		x = 0,
+		layer = 1,
+		visible = true,
+		text = "" .. math.random(40),
+		color = Color.white,
+		w = ammo_text_w + extra_clip_w,
+		h = secondary_weapon_panel:h(),
+		y = 0 + font_bottom_align_correction,
+		font = tweak_data.hud_players.ammo_font
+	})
+	secondary_weapon_panel:text({
+		text = "000",
+		name = "ammo_total",
+		align = "center",
+		vertical = "bottom",
+		font_size = 24,
+		blend_mode = "normal",
+		visible = true,
+		layer = 1,
+		color = Color.white,
+		w = ammo_text_w - extra_clip_w,
+		h = secondary_weapon_panel:h(),
+		x = ammo_text_w + extra_clip_w,
+		y = 0 + font_bottom_align_correction,
+		font = tweak_data.hud_players.ammo_font
+	})
+
+	local weapon_selection_panel = secondary_weapon_panel:panel({
+		name = "weapon_selection",
+		layer = 1,
+		visible = true,
+		w = w_selection_w,
+		x = weapon_panel_w - w_selection_w
+	})
+
+	weapon_selection_panel:bitmap({
+		name = "weapon_selection",
+		texture = tabs_texture,
+		texture_rect = weapon_selection_rect2,
+		color = Color.white,
+		w = w_selection_w
+	})
+	secondary_weapon_panel:set_bottom(weapons_panel:h())
+    self:_create_secondary_weapon_firemode()
+    
     weapons_panel:set_h(68)
-end)
+end
 
 NepHook:Post(HUDTeammate, "set_state", function(self, state)
     local teammate_panel = self._panel
     local weapons_panel = self._player_panel:child("weapons_panel")
     local deployable_equipment_panel = self._player_panel:child("deployable_equipment_panel")
+    local interact_panel = self._player_panel:child("interact_panel")
+    local radial_size = 64
     local cable_ties_panel = self._player_panel:child("cable_ties_panel")
     if PlayerBase.USE_GRENADES then
         local grenades_panel = self._player_panel:child("grenades_panel")
@@ -150,6 +319,11 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
         self._radial_health_panel:set_w(68)
         self._radial_health_panel:set_h(68)
         self._radial_health_panel:set_bottom(self._panel:h() - 11)
+        self.HealthNumber:set_shape(self._radial_health_panel:shape())
+        self.HealthNumber:set_center(self._radial_health_panel:center())
+        interact_panel:set_shape(self._radial_health_panel:shape())
+        interact_panel:set_size(radial_size * 1.25, radial_size * 1.25)
+        interact_panel:set_center(self._radial_health_panel:center())
         weapons_panel:set_bottom(self._radial_health_panel:bottom())
         weapons_panel:set_x(self._radial_health_panel:right() + 4)
         deployable_equipment_panel:set_top(weapons_panel:top())
