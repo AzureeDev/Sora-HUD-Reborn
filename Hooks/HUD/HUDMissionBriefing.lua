@@ -97,21 +97,20 @@ Hooks:Add("NetworkReceivedData", "NepgearsyHUDReborn_StarringSync", function(sen
         local blackscreen_panel = blackscreen._blackscreen_panel
         if blackscreen_panel then
             local starring_panel = blackscreen_panel:child("starring_panel")
-                if starring_panel then
-                    local player_slot = starring_panel:child("player_" .. sender)
+            if starring_panel then
+                local player_slot = starring_panel:child("player_" .. sender)
 
-                    if id == StarringColorSyncID then
-                        local data_to_number = tonumber(data)
-                        player_slot:set_color(NepgearsyHUDReborn:StringToColor("starring", data_to_number))
-                    end
+                if id == StarringColorSyncID then
+                    local data_to_number = tonumber(data)
+                    player_slot:set_color(NepgearsyHUDReborn:StringToColor("starring", data_to_number))
+                end
 
-                    if id == StarringTextSyncID then
-                        local data_to_string = tostring(data)
-                        
-                        if not managers.hud._hud_mission_briefing._player_connected[sender] then
-                            managers.hud._hud_mission_briefing._custom_starring[sender] = ", " .. data_to_string
-                            managers.hud._hud_mission_briefing._player_connected[sender] = true
-                        end
+                if id == StarringTextSyncID then
+                    local data_to_string = tostring(data)
+                    
+                    if not managers.hud._hud_mission_briefing._player_connected[sender] then
+                        managers.hud._hud_mission_briefing._custom_starring[sender] = ", " .. data_to_string
+                        managers.hud._hud_mission_briefing._player_connected[sender] = true
                     end
                 end
             end
