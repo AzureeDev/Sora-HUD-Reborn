@@ -66,6 +66,11 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "Blake Langermann",
 			steam_id = "76561198015483064",
 			action = "Made the Russian localization"
+		},
+		[10] = {
+			name = "=PDTC= Dobby Senpai",
+			steam_id = "76561198040053543",
+			action = "Helped with testing stuff."
 		}
 	}
 end

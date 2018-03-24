@@ -8,8 +8,10 @@
     <Hooks directory="Hooks">
         <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
         <hook file="MissionBriefingGUI.lua" source_file="lib/managers/menu/missionbriefinggui"/>
+        <hook file="CopDamage.lua" source_file="lib/units/enemies/cop/copdamage"/>
 
         <hook file="HUD/HUDMissionBriefing.lua" source_file="lib/managers/hud/hudmissionbriefing"/>
+        <hook file="HUD/HUDPlayerCustody.lua" source_file="lib/managers/hud/hudplayercustody"/>
         <hook file="HUD/HUDBlackScreen.lua" source_file="lib/managers/hud/hudblackscreen"/>
         <hook file="HUD/HUDObjectives.lua" source_file="lib/managers/hud/hudobjectives"/>
         <hook file="HUD/HUDManagerPD2.lua" source_file="lib/managers/hudmanagerpd2"/>
@@ -95,6 +97,7 @@
         <texture path="NepgearsyHUDReborn/HUD/ShieldRedFushia"/>
         <texture path="NepgearsyHUDReborn/HUD/AI"/>
         <texture path="NepgearsyHUDReborn/HUD/Teammate"/>
+        <texture path="NepgearsyHUDReborn/HUD/CivilianKilled"/>
         
         <texture path="NepgearsyHUDReborn/Minimap/kenaz_loc_b_df"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_1"/>

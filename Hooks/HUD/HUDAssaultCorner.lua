@@ -155,7 +155,48 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
 		font = "fonts/font_large_mf",
 		font_size = 20
     })
-    
+
+    local hostageKilledPanel = self._hud_panel:panel({
+        name = "hostageKilledPanel",
+        w = 60,
+        h = 24
+    })
+    hostageKilledPanel:set_left(hostages_panel:right() + 5)
+    hostageKilledPanel:set_top(hostages_panel:top())
+
+    self.hostageKilledBg = hostageKilledPanel:rect({
+        name = "hostageKilledBg",
+        color = Color.white,
+        alpha = 0.6,
+        layer = -1,
+        halign = "scale",
+        valign = "scale"
+    })
+
+    local hostageKilledIcon = hostageKilledPanel:bitmap({
+		texture = "NepgearsyHUDReborn/HUD/CivilianKilled",
+		name = "hostageKilledIcon",
+		layer = 1,
+        w = 20,
+        h = 20,
+        x = 2,
+        y = 2,
+        color = Color.black
+    }) 
+
+    self.hostageKilledCounter = hostageKilledPanel:text({
+		layer = 1,
+		vertical = "center",
+		name = "hostageKilledCounter",
+		align = "right",
+		text = "0:05",
+        y = 1,
+		x = -5,
+		color = Color.black,
+		font = "fonts/font_large_mf",
+		font_size = 20
+    })
+
     self._hud_panel:child("buffs_panel"):set_size(40, 40)
     self._hud_panel:child("buffs_panel"):set_top(assault_panel_v2:top())
     self._hud_panel:child("buffs_panel"):set_right(assault_panel_v2:left() - 5)
@@ -303,6 +344,44 @@ function HUDAssaultCorner:_end_assault()
         self._wave_bg_box:stop()
         self._wave_bg_box:animate(callback(self, self, "_animate_wave_completed"), self)
     end
+end
+
+function HUDAssaultCorner:UpdateCivKilled()
+    local total_civ_kills = managers.statistics:session_total_civilian_kills()
+    local base_timer = 5
+    local civ_kill_penalty = 30 * total_civ_kills
+    local addition = base_timer + civ_kill_penalty
+    
+    local time_text = self:_get_time_text(addition)
+
+    if (total_civ_kills == 0) then
+        self.hostageKilledBg:set_color(Color.white)
+    else
+        self.hostageKilledBg:set_color(Color.red)        
+    end
+
+    self.hostageKilledCounter:set_text(time_text)
+    self.hostageKilledCounter:animate(ClassClbk(self, "_show_blink"))
+end
+
+function HUDAssaultCorner:UpdateCivKilledTimer(time)
+    if time < 5 then
+        self.hostageKilledBg:set_color(Color.white)
+        return
+    end
+
+    local timer_to_text = self:_get_time_text(time)
+    self.hostageKilledCounter:set_text(timer_to_text)
+end
+
+function HUDAssaultCorner:_get_time_text(time)
+	time = math.max(math.floor(time), 0)
+	local minutes = math.floor(time / 60)
+	time = time - minutes * 60
+	local seconds = math.round(time)
+	local text = ""
+
+	return text .. (minutes < 10 and "0" .. minutes or minutes) .. ":" .. (seconds < 10 and "0" .. seconds or seconds)
 end
 
 function HUDAssaultCorner:_set_text_list(text_list)
