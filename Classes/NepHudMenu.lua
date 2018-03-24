@@ -27,6 +27,7 @@ function NepHudMenu:init()
     self:InitMenu()
     self:InitCollab()
     self:InitChangelog()
+    self:InitBack()
 
     MenuCallbackHandler.NepgearsyHUDRebornMenu = callback(self, self, "set_enabled", true)
     MenuHelperPlus:AddButton({
@@ -208,7 +209,7 @@ function NepHudMenu:InitMenu()
         background_color = Color(0, 0, 0),
         highlight_color = Color.black,
         position = function(item) 
-            item:Panel():set_top(self.ForcedLocalization:Panel():bottom() + 5) 
+            item:Panel():set_top(self.ForcedLocalization:Panel():bottom() + 15) 
             item:Panel():set_right(item:Panel():parent():right())
         end,
         localized = true,
@@ -248,7 +249,7 @@ function NepHudMenu:InitMenu()
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
         position = function(item) 
-            item:Panel():set_top(self.HUDOptions.AssaultBar:Panel():bottom() + 5) 
+            item:Panel():set_top(self.HUDOptions.AssaultBar:Panel():bottom() + 20) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         localized = true,
@@ -331,7 +332,7 @@ function NepHudMenu:InitMenu()
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
         position = function(item) 
-            item:Panel():set_top(self.HUDOptions.MinimapZoom:Panel():bottom() + 5) 
+            item:Panel():set_top(self.HUDOptions.MinimapZoom:Panel():bottom() + 20) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         localized = true,
@@ -350,7 +351,7 @@ function NepHudMenu:InitMenu()
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
         position = function(item) 
-            item:Panel():set_top(self.HUDOptions.Trackers:Panel():bottom() + 5) 
+            item:Panel():set_top(self.HUDOptions.Trackers:Panel():bottom() + 20) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         help = "If in-game, restart the map to take effect",
@@ -556,24 +557,6 @@ function NepHudMenu:InitMenu()
         font_size = 15,
         callback = ClassClbk(self, "MainClbk")
     })
-
-    self.BackButton = self.MainMenu:Button({
-        name = "BackButton",
-        border_color = BorderColor,
-        border_left = true,
-        text = "NepgearsyHUDRebornMenu/Buttons/Close",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_bottom(item:Panel():parent():bottom() - 10) 
-            item:Panel():set_right(item:Panel():parent():right())
-        end,
-        localized = true,
-        text_align = "center",
-        text_vertical = "center",
-        font_size = 20,
-        callback = callback(self, self, "set_enabled", false)
-    })
 end
 
 function NepHudMenu:InitCollab()
@@ -676,7 +659,7 @@ function NepHudMenu:InitChangelog()
     self.ChangelogMenu = self._menu:Menu({
         name = "ChangelogMenu",
         background_color = Color(0.3, 0, 0, 0),
-        h = 300,
+        h = 240,
         w = self._menu_panel:w() / 2.1, 
         align_method = "normal",
         position = function(item)
@@ -704,7 +687,7 @@ function NepHudMenu:InitChangelog()
     self.ChangelogTextMenu = self._menu:Menu({
         name = "ChangelogTextMenu",
         background_color = Color(0.3, 0, 0, 0),
-        h = 250,
+        h = 190,
         w = self.ChangelogMenuHeader:Panel():w(), 
         align_method = "normal",
         position = function(item)
@@ -722,6 +705,38 @@ function NepHudMenu:InitChangelog()
         y = 10,
         wrap = true,
         word_wrap = true
+    })
+end
+
+function NepHudMenu:InitBack()
+    self.BackMenu = self._menu:Menu({
+        name = "BackMenu",
+        background_color = Color(0.3, 0, 0, 0),
+        h = 50,
+        w = self._menu_panel:w() / 2.1, 
+        align_method = "normal",
+        position = function(item)
+            item:Panel():set_top(self.ChangelogMenu:Panel():bottom() + 10)
+            item:Panel():set_right(self.MainMenu:Panel():left() - 10)
+        end
+    })
+
+    self.BackButton = self.BackMenu:Button({
+        name = "BackButton",
+        border_color = BorderColor,
+        border_left = true,
+        text = "NepgearsyHUDRebornMenu/Buttons/Close",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_x(10) 
+            item:Panel():set_y(10)
+        end,
+        localized = true,
+        text_align = "center",
+        text_vertical = "center",
+        font_size = 20,
+        callback = callback(self, self, "set_enabled", false)
     })
 end
 

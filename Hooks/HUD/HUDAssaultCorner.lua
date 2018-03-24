@@ -156,8 +156,60 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
 		font_size = 20
     })
     
-    self._vip_bg_box:set_right(self._assault_panel_v2:left() + 5)
-    self._vip_bg_box:set_top(self._assault_panel_v2:top())
+    self._vip_bg_box:set_right(assaultBanner:left() + 5)
+    self._vip_bg_box:set_top(assaultBanner:top())
+
+    if self:is_safehouse_raid() then
+        local wave_panel = self._hud_panel:child("wave_panel"):set_visible(false)
+        self._wave_bg_box:set_visible(false)
+    end
+    
+    self.WaveTracker = trackerPanel:panel({
+        w = 90,
+        h = 24,
+        visible = self:is_safehouse_raid()
+    })
+    self.WaveTracker:set_right(killTracker:left() - 5)
+    self.WaveTracker:set_top(killTracker:top())
+
+    local waveBG = self.WaveTracker:rect({
+        name = "background",
+        color = Color.white,
+        alpha = 0.6,
+        layer = -1,
+        halign = "scale",
+        valign = "scale"
+    })
+
+    local waveIcon = self.WaveTracker:bitmap({
+        texture = "guis/textures/pd2/specialization/icons_atlas",
+        name = "wave_icon",
+        layer = 1,
+        valign = "top",
+        y = 2,
+        x = 2,
+        texture_rect = {
+            192,
+            64,
+            64,
+            64
+        },
+        w = 20,
+        h = 20,
+        color = Color.black
+    })
+    waveIcon:set_center_y(self.WaveTracker:center_y())
+
+    self.waveTrackerAmount = self.WaveTracker:text({
+        font = "fonts/font_large_mf",
+        font_size = 20,
+        vertical = "center",
+        align = "right",
+        y = 1,
+        x = -10,
+        text = self:get_completed_waves_string(),
+        color = Color.black
+    })
 
     if managers.groupai:state():whisper_mode() then
         self._current_assault_color = Color.white
@@ -166,6 +218,12 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         box_text_panel:stop()
         box_text_panel:animate(callback(self, self, "_animate_text"), nil, nil, callback(self, self, "assault_attention_color_function"), 35)
         box_text_panel:animate(ClassClbk(self, "_show_blink"))
+    end
+end)
+
+NepHook:Post(HUDAssaultCorner, "set_assault_wave_number", function(self, assault_number)
+    if alive(self.waveTrackerAmount) then
+        self.waveTrackerAmount:set_text(self:get_completed_waves_string())
     end
 end)
 
