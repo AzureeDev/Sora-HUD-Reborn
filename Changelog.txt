@@ -1,3 +1,4 @@
 - Fixed a crash when someone with the HUD tries to join you mid-heist.
 - Added Russian localization.
 - Added the Wave panel (safe house raid)
+- Added the buff panel (Captain Winters shield buff)
