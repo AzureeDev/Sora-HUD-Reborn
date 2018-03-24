@@ -1,2 +1,2 @@
-- Fixed a network overflow issue if 3 or more people have the HUD in the same lobby.
-- Added spanish localization.
+- Fixed a crash when someone with the HUD tries to join you mid-heist.
+- Added Russian localization

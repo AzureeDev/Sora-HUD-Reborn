@@ -61,7 +61,12 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "ElReyZero",
 			steam_id = "76561198143859174",
 			action = "Made the Spanish localization"
-		}	
+		},
+		[9] = {
+			name = "Blake Langermann",
+			steam_id = "76561198015483064",
+			action = "Made the Russian localization"
+		}
 	}
 end
 
@@ -182,6 +187,7 @@ function NepgearsyHUDReborn:InitLocalization()
 	self.Localization[2] = "turkish.txt"
 	self.Localization[3] = "portuguese.txt"
 	self.Localization[4] = "spanish.txt"
+	self.Localization[5] = "russian.txt"
 end
 
 function NepgearsyHUDReborn:GetForcedLocalization()
