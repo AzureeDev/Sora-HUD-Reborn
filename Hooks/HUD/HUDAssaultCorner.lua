@@ -156,8 +156,14 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
 		font_size = 20
     })
     
-    self._vip_bg_box:set_right(assaultBanner:left() + 5)
-    self._vip_bg_box:set_top(assaultBanner:top())
+    self._hud_panel:child("buffs_panel"):set_size(40, 40)
+    self._hud_panel:child("buffs_panel"):set_top(assault_panel_v2:top())
+    self._hud_panel:child("buffs_panel"):set_right(assault_panel_v2:left() - 5)
+    
+    self._vip_bg_box:set_w(40)
+    self._vip_bg_box:set_h(40)
+    self._vip_bg_box:set_x(0)
+    self._vip_bg_box:child("vip_icon"):set_center(self._vip_bg_box:w() / 2, self._vip_bg_box:h() / 2)
 
     if self:is_safehouse_raid() then
         local wave_panel = self._hud_panel:child("wave_panel"):set_visible(false)
