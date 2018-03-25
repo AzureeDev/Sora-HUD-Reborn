@@ -184,9 +184,6 @@ function HUDObjectives:update_amount_objective(data)
 
 		if alive(amount_text) then
 			amount_text:set_text("( " .. current .. "/" .. amount .. " )")
-			managers.hud:make_fine_text(amount_text)
-			local _, _, w, _ = amount_text:text_rect()
-			self._w_obj = self._w_obj + w
 			amount_text:set_left(self._text_objective_title:right() + 10)
 		end
 	end

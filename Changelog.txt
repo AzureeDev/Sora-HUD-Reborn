@@ -1,3 +1,7 @@
+1.2.1
+- Fixed a crash because of the objective panel.
+
+1.2.0
 - Fixed a crash when someone with the HUD tries to join you mid-heist.
 - Added Russian localization.
 - Added the Wave panel (safe house raid)
