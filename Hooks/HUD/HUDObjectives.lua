@@ -92,11 +92,6 @@ function HUDObjectives:init(hud)
 		y = 13
 	})
 
-	self._bg_box = HUDBGBox_create(objectives_panel, {
-		w = 200,
-		h = 28
-	})
-
 	local icon_objectivebox = objectives_panel:bitmap({
 		texture = "NepgearsyHUDReborn/HUD/ObjectiveSquare",
 		name = "icon_objectivebox",
@@ -133,20 +128,18 @@ function HUDObjectives:init(hud)
 	managers.hud._hud_minimap._panel:set_top(self.icon_objectivebox:bottom() + 20)
 
 	local amount_text = objectives_panel:text({
-		y = 0,
+		y = 2,
 		name = "amount_text",
 		align = "left",
 		vertical = "center",
-		text = "9999999999",
+		text = "",
 		visible = false,
 		layer = 2,
 		color = Color(0.6, 0.6, 0.6),
 		font_size = tweak_data.hud.active_objective_title_font_size,
 		font = "fonts/font_large_mf"
 	})
-	managers.hud:make_fine_text(amount_text)
 	amount_text:set_left(objective_text:right() + 10)
-	amount_text:set_top(0)
 	self._amount_text = amount_text
 end
 
@@ -172,16 +165,9 @@ function HUDObjectives:activate_objective(data)
 
 	objectives_panel:set_visible(true)
 
-	local _, _, w, _ = objective_text:text_rect()
-	local w_amount = self._amount_text:text_rect()
-	w = w + w_amount
-
-	self._text_objective_title:set_visible(false)
+	self._text_objective_title:set_visible(true)
 	self:_set_objective_title(utf8.to_upper(data.text))
 	self._amount_text:set_visible(false)
-
-	self._bg_box:stop()
-	self._bg_box:animate(callback(nil, _G, "HUDBGBox_animate_open_right"), 0.66, w + 2, callback(self, self, "open_right_done", data.amount and true or false))
 
 	if data.amount then
 		self._amount_text:set_visible(true)
@@ -199,6 +185,8 @@ function HUDObjectives:update_amount_objective(data)
 		if alive(amount_text) then
 			amount_text:set_text("( " .. current .. "/" .. amount .. " )")
 			managers.hud:make_fine_text(amount_text)
+			local _, _, w, _ = amount_text:text_rect()
+			self._w_obj = self._w_obj + w
 			amount_text:set_left(self._text_objective_title:right() + 10)
 		end
 	end

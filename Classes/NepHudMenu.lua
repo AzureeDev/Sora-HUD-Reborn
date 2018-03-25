@@ -119,15 +119,16 @@ function NepHudMenu:InitTopBar()
         callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/commits/master")
     })
 
-    local PostRequestIssue = self.TopBar:Button({
-        name = "PostRequestIssue",
-        text = managers.localization:to_upper_text("NepgearsyHUDReborn/PostRequestIssue"),
+    local PostIssue = self.TopBar:Button({
+        name = "PostIssue",
+        text = managers.localization:to_upper_text("NepgearsyHUDReborn/PostIssue"),
         background_color = Color.transparent,
         highlight_color = Color.transparent,
-        foreground = Color(1, 1, 1),
-        foreground_highlight = BorderColor,
+        foreground = Color(1, 0, 0),
+        foreground_highlight = Color(1, 0, 0),
         position = function(item) 
             item:Panel():set_right(HUDVersion:Panel():left() - 15)
+            item:Panel():set_world_center_y(self.TopBar:Panel():world_center_y())
         end,
         localized = false,
         size_by_text = true,
@@ -137,7 +138,26 @@ function NepHudMenu:InitTopBar()
         font = Font,
         callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/issues")
     })
-    PostRequestIssue:Panel():set_world_center_y(self.TopBar:Panel():world_center_y() + 2)
+
+    local PostRequest = self.TopBar:Button({
+        name = "PostRequest",
+        text = managers.localization:to_upper_text("NepgearsyHUDReborn/PostRequest"),
+        background_color = Color.transparent,
+        highlight_color = Color.transparent,
+        foreground = Color(1, 1, 1),
+        foreground_highlight = BorderColor,
+        position = function(item) 
+            item:Panel():set_right(PostIssue:Panel():left() - 15)
+        end,
+        localized = false,
+        size_by_text = true,
+        text_align = "right",
+        text_vertical = "center",
+        font_size = 15,
+        font = Font,
+        callback = ClassClbk(self, "open_url", "https://feathub.com/Nepgearsy/Nepgearsy-HUD-Reborn")
+    })
+    PostRequest:Panel():set_world_center_y(self.TopBar:Panel():world_center_y())
 end
 
 

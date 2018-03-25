@@ -6,4 +6,4 @@
 - Fixed an issue with non-infamous player names overlapping their avatar.
 - Made a new look for the weapon panel!
 - Added the True Ammo option. [This was a request!]
-- Updated the objective panel.
+- Added the Bag Panel back. [This was a request!]
