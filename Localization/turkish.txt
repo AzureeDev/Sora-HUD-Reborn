@@ -13,6 +13,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Harita Boyutu",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Harita Yakinligi",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Takip Elementlerini Aktive Et",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Enable the True Ammo feature",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "HUD Boyutu",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "HUD Boslugu",
 
@@ -29,6 +30,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Kontrol Paneli Renk Gostergesi",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Can Paneli Renk Ayari",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Zirh Paneli Renk Ayari",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",	
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Kapat",
 

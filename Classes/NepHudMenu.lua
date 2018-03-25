@@ -342,6 +342,25 @@ function NepHudMenu:InitMenu()
         callback = ClassClbk(self, "MainClbk")
     })
 
+    self.HUDOptions.TrueAmmo = self.MainMenu:Toggle({
+        name = "EnableTrueAmmo",
+        border_color = BorderColor,
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("EnableTrueAmmo"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.HUDOptions.Trackers:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        localized = true,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "MainClbk")
+    })
+
     self.HUDOptions.Scale = self.MainMenu:Slider({
         name = "Scale",
         border_color = BorderColor,
@@ -351,7 +370,7 @@ function NepHudMenu:InitMenu()
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
         position = function(item) 
-            item:Panel():set_top(self.HUDOptions.Trackers:Panel():bottom() + 20) 
+            item:Panel():set_top(self.HUDOptions.TrueAmmo:Panel():bottom() + 20) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         help = "If in-game, restart the map to take effect",
@@ -549,6 +568,26 @@ function NepHudMenu:InitMenu()
         highlight_color = HighlightColor,
         position = function(item) 
             item:Panel():set_top(self.Colors.HealthColor:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        localized = true,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.ObjectiveColor = self.MainMenu:ComboBox({
+        name = "ObjectiveColor",
+        border_color = BorderColor,
+        border_left = true,
+        items = NepgearsyHUDReborn.ObjectiveColor,
+        value = NepgearsyHUDReborn.Options:GetValue("ObjectiveColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.Colors.ShieldColor:Panel():bottom() + 5) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         localized = true,

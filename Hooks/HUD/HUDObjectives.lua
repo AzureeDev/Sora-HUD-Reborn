@@ -87,28 +87,34 @@ function HUDObjectives:init(hud)
 
 	local objectives_panel = self._hud_panel:panel({
 		name = "objectives_panel",
-		h = 24,
+		h = 28,
 		w = 500,
 		y = 13
 	})
 
+	self._bg_box = HUDBGBox_create(objectives_panel, {
+		w = 200,
+		h = 28
+	})
+
 	local icon_objectivebox = objectives_panel:bitmap({
-		texture = "guis/textures/pd2/hud_icon_objectivebox",
+		texture = "NepgearsyHUDReborn/HUD/ObjectiveSquare",
 		name = "icon_objectivebox",
 		h = 24,
 		layer = 0,
 		w = 24,
-		y = 0,
+		y = 2,
 		visible = false,
 		blend_mode = "normal",
 		halign = "left",
-		x = 0,
-		valign = "top"
+		x = 2,
+		valign = "center",
+		color = NepgearsyHUDReborn:StringToColor("objective_color", NepgearsyHUDReborn:GetOption("ObjectiveColor"))
 	})
 	self.icon_objectivebox = icon_objectivebox
 
 	local objective_text = objectives_panel:text({
-		y = 0,
+		y = 3,
 		name = "objective_text",
 		vertical = "center",
 		align = "left",
@@ -165,9 +171,17 @@ function HUDObjectives:activate_objective(data)
 	objective_text:set_text(utf8.to_upper(data.text))
 
 	objectives_panel:set_visible(true)
-	self._text_objective_title:set_visible(true)
+
+	local _, _, w, _ = objective_text:text_rect()
+	local w_amount = self._amount_text:text_rect()
+	w = w + w_amount
+
+	self._text_objective_title:set_visible(false)
 	self:_set_objective_title(utf8.to_upper(data.text))
 	self._amount_text:set_visible(false)
+
+	self._bg_box:stop()
+	self._bg_box:animate(callback(nil, _G, "HUDBGBox_animate_open_right"), 0.66, w + 2, callback(self, self, "open_right_done", data.amount and true or false))
 
 	if data.amount then
 		self._amount_text:set_visible(true)

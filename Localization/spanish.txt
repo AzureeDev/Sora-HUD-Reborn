@@ -10,8 +10,9 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Fuente de la barra de asaltos",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Activa el Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Fuerza el Minimapa",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Zoom del Minimapa",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Zoom del Minimapa",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Habilita los rastreadores",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Enable the True Ammo feature",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Escala del HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaciado del HUD",
 
@@ -28,6 +29,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Panel de control del fondo",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Color de la Salud",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Color del Escudo",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",	
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Cerrar",
 

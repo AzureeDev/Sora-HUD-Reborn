@@ -13,6 +13,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Minimap Size",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Minimap Zoom",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Enable the Trackers",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Enable the True Ammo feature",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "HUD Scale",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "HUD Spacing",
 
@@ -29,6 +30,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Control Panel Background",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Radial Health Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Radial Shield Color",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Close",
 

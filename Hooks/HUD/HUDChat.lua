@@ -1,7 +1,9 @@
 HUDChat.line_height = 22
 
 NepHook:Post(HUDChat, "init", function(self)
-    self._panel:set_bottom(self._panel:parent():h() - 160)
+	self._panel:set_bottom(self._panel:parent():h() - 160)
+	self._panel:set_w(600)	
+	self._panel:child("output_panel"):set_w(600)
 end)
 
 function HUDChat:_create_input_panel()
@@ -157,14 +159,13 @@ function HUDChat:receive_message(name, message, color, icon)
         texture = "guis/textures/pd2/none_icon",
         h = 20,
         w = 20,
-		visible = false,
+		visible = true,
 		x = 1,
 		y = 1
-    })  
+	})
 
 	if peer_id then
 		if managers.chat._player_steam_id[peer_id] then
-			PeerAvatar:set_visible(true)    
 			Steam:friend_avatar(1, managers.chat._player_steam_id[peer_id], function (texture)
 				local avatar = texture or "guis/textures/pd2/none_icon"
 				PeerAvatar:set_image(avatar)
@@ -174,6 +175,8 @@ function HUDChat:receive_message(name, message, color, icon)
 				PeerAvatar:set_image(avatar)
 			end)
 		end
+	else
+		PeerAvatar:set_image("NepgearsyHUDReborn/HUD/SystemMessageIcon")
 	end
 
 	if icon then
@@ -186,8 +189,9 @@ function HUDChat:receive_message(name, message, color, icon)
             visible = false
         })
         icon_bitmap:set_left(PeerAvatar:right())
-		x = PeerAvatar:right() + 5
-    end
+	end
+	
+	x = PeerAvatar:right() + 5
 
     local message_text = output_panel:text({
         halign = "left",
@@ -199,7 +203,7 @@ function HUDChat:receive_message(name, message, color, icon)
 		word_wrap = true,
 		y = 0,
 		layer = 1,
-		text = string.format("%s     %s", name, message),
+		text = string.format("%s: %s", name, message),
 		font = "fonts/font_large_mf",
 		font_size = 22,
 		x = x,

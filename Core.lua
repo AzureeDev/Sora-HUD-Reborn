@@ -70,7 +70,7 @@ function NepgearsyHUDReborn:InitCollabs()
 		[10] = {
 			name = "=PDTC= Dobby Senpai",
 			steam_id = "76561198040053543",
-			action = "Helped with testing stuff."
+			action = "Helped with finding a sock."
 		}
 	}
 end
@@ -115,6 +115,7 @@ function NepgearsyHUDReborn:InitTweakData()
 	}
 
 	self.ArmorColor = deep_clone(self.HealthColor)
+	self.ObjectiveColor = deep_clone(self.StarringColors)
 end
 
 function NepgearsyHUDReborn:TeammateRadialIDToPath(id, type)
@@ -171,6 +172,7 @@ function NepgearsyHUDReborn:StringToColor(module, id)
 	stc["starring"][13] = Color(1, 0.63, 0.58, 0.95)
 
 	stc["cpcolor"] = deep_clone(stc["starring"])
+	stc["objective_color"] = deep_clone(stc["starring"])
 
 	return stc[module][id]
 end

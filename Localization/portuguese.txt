@@ -13,6 +13,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Tamanho do Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Zoom do Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Ativar os rastreadores",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Enable the True Ammo feature",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Tamanho do HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaçamento do HUD",
 
@@ -29,6 +30,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Plano de fundo",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Cor da barra de saúde",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Cor da barra de colete",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",	
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Fechar",
 

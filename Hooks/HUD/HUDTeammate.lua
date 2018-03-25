@@ -286,7 +286,7 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 
 	local bg_color = Color.white / 3
 	local w_selection_w = 12
-	local weapon_panel_w = 80
+	local weapon_panel_w = 90
 	local extra_clip_w = 4
 	local ammo_text_w = (weapon_panel_w - w_selection_w) / 2
 	local font_bottom_align_correction = 3
@@ -324,33 +324,34 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		layer = 0,
 		visible = true,
 		x = 0,
-		texture = tabs_texture,
-		texture_rect = bg_rect,
-		color = bg_color,
-		w = weapon_panel_w
+		texture = "NepgearsyHUDReborn/HUD/Teammate",
+		color = Color(0.25, 0.25, 0.25),
+		w = weapon_panel_w,
+		h = 32
 	})
+	self.BGWeaponPanelPrimary = primary_weapon_panel:child("bg")
 	primary_weapon_panel:text({
 		name = "ammo_clip",
-		align = "center",
+		align = "right",
 		vertical = "bottom",
-		font_size = 32,
+		font_size = 30,
 		blend_mode = "normal",
-		x = 0,
+		x = -2,
 		layer = 1,
 		visible = true,
 		text = "0" .. math.random(40),
 		color = Color.white,
 		w = ammo_text_w + extra_clip_w,
 		h = primary_weapon_panel:h(),
-		y = 0 + font_bottom_align_correction,
+		y = 0,
 		font = "fonts/font_large_mf"
 	})
 	primary_weapon_panel:text({
 		text = "000",
 		name = "ammo_total",
-		align = "center",
+		align = "left",
 		vertical = "bottom",
-		font_size = 24,
+		font_size = 20,
 		blend_mode = "normal",
 		visible = true,
 		layer = 1,
@@ -358,14 +359,14 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		w = ammo_text_w - extra_clip_w,
 		h = primary_weapon_panel:h(),
 		x = ammo_text_w + extra_clip_w,
-		y = 0 + font_bottom_align_correction,
+		y = -2,
 		font = "fonts/font_large_mf"
 	})
 
 	local weapon_selection_panel = primary_weapon_panel:panel({
 		name = "weapon_selection",
 		layer = 1,
-		visible = true,
+		visible = false,
 		w = w_selection_w,
 		x = weapon_panel_w - w_selection_w
 	})
@@ -375,9 +376,9 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		texture = tabs_texture,
 		texture_rect = weapon_selection_rect1,
 		color = Color.white,
-		w = w_selection_w
+		w = w_selection_w,
+		visible = false
 	})
-	self:_create_primary_weapon_firemode()
 
 	local secondary_weapon_panel = weapons_panel:panel({
 		name = "secondary_weapon_panel",
@@ -394,33 +395,34 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		layer = 0,
 		visible = true,
 		x = 0,
-		texture = tabs_texture,
-		texture_rect = bg_rect,
-		color = bg_color,
-		w = weapon_panel_w
+		texture = "NepgearsyHUDReborn/HUD/Teammate",
+		color = Color(0.25, 0.25, 0.25),
+		w = weapon_panel_w,
+		h = 32
 	})
+	self.BGWeaponPanelSecondary = secondary_weapon_panel:child("bg")
 	secondary_weapon_panel:text({
 		name = "ammo_clip",
-		align = "center",
+		align = "right",
 		vertical = "bottom",
-		font_size = 32,
+		font_size = 30,
 		blend_mode = "normal",
-		x = 0,
+		x = -2,
 		layer = 1,
 		visible = true,
 		text = "" .. math.random(40),
 		color = Color.white,
 		w = ammo_text_w + extra_clip_w,
 		h = secondary_weapon_panel:h(),
-		y = 0 + font_bottom_align_correction,
+		y = 0,
 		font = "fonts/font_large_mf"
 	})
 	secondary_weapon_panel:text({
 		text = "000",
 		name = "ammo_total",
-		align = "center",
+		align = "left",
 		vertical = "bottom",
-		font_size = 24,
+		font_size = 20,
 		blend_mode = "normal",
 		visible = true,
 		layer = 1,
@@ -428,14 +430,14 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		w = ammo_text_w - extra_clip_w,
 		h = secondary_weapon_panel:h(),
 		x = ammo_text_w + extra_clip_w,
-		y = 0 + font_bottom_align_correction,
+		y = -2,
 		font = "fonts/font_large_mf"
 	})
 
 	local weapon_selection_panel = secondary_weapon_panel:panel({
 		name = "weapon_selection",
 		layer = 1,
-		visible = true,
+		visible = false,
 		w = w_selection_w,
 		x = weapon_panel_w - w_selection_w
 	})
@@ -448,102 +450,7 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		w = w_selection_w
 	})
 	secondary_weapon_panel:set_bottom(weapons_panel:h())
-    self:_create_secondary_weapon_firemode()
 end
-
-NepHook:Post(HUDTeammate, "_create_primary_weapon_firemode", function(self)
-	local primary_weapon_panel = self._player_panel:child("weapons_panel"):child("primary_weapon_panel")
-	local weapon_selection_panel = primary_weapon_panel:child("weapon_selection")
-	local old_single = weapon_selection_panel:child("firemode_single")
-	local old_auto = weapon_selection_panel:child("firemode_auto")
-
-	local equipped_primary = managers.blackmarket:equipped_primary()
-	local weapon_tweak_data = tweak_data.weapon[equipped_primary.weapon_id]
-	local fire_mode = weapon_tweak_data.FIRE_MODE
-	local can_toggle_firemode = weapon_tweak_data.CAN_TOGGLE_FIREMODE
-	local locked_to_auto = managers.weapon_factory:has_perk("fire_mode_auto", equipped_primary.factory_id, equipped_primary.blueprint)
-	local locked_to_single = managers.weapon_factory:has_perk("fire_mode_single", equipped_primary.factory_id, equipped_primary.blueprint)
-	local single_id = "firemode_single" .. ((not can_toggle_firemode or locked_to_single) and "_locked" or "")
-	local texture, texture_rect = tweak_data.hud_icons:get_icon_data(single_id)
-	local firemode_single = weapon_selection_panel:bitmap({
-		name = "firemode_single",
-		blend_mode = "mul",
-		layer = 1,
-		x = 2,
-		texture = texture,
-		texture_rect = texture_rect
-	})
-
-	firemode_single:set_bottom(weapon_selection_panel:h() - 2)
-	firemode_single:hide()
-
-	local auto_id = "firemode_auto" .. ((not can_toggle_firemode or locked_to_auto) and "_locked" or "")
-	local texture, texture_rect = tweak_data.hud_icons:get_icon_data(auto_id)
-	local firemode_auto = weapon_selection_panel:bitmap({
-		name = "firemode_auto",
-		blend_mode = "mul",
-		layer = 1,
-		x = 2,
-		texture = texture,
-		texture_rect = texture_rect
-	})
-
-	firemode_auto:set_bottom(weapon_selection_panel:h() - 2)
-	firemode_auto:hide()
-
-	if locked_to_single or not locked_to_auto and fire_mode == "single" then
-		firemode_single:show()
-	else
-		firemode_auto:show()
-	end
-end)
-
-NepHook:Post(HUDTeammate, "_create_secondary_weapon_firemode", function(self)
-	local secondary_weapon_panel = self._player_panel:child("weapons_panel"):child("secondary_weapon_panel")
-	local weapon_selection_panel = secondary_weapon_panel:child("weapon_selection")
-	local old_single = weapon_selection_panel:child("firemode_single")
-	local old_auto = weapon_selection_panel:child("firemode_auto")
-
-	local equipped_secondary = managers.blackmarket:equipped_secondary()
-	local weapon_tweak_data = tweak_data.weapon[equipped_secondary.weapon_id]
-	local fire_mode = weapon_tweak_data.FIRE_MODE
-	local can_toggle_firemode = weapon_tweak_data.CAN_TOGGLE_FIREMODE
-	local locked_to_auto = managers.weapon_factory:has_perk("fire_mode_auto", equipped_secondary.factory_id, equipped_secondary.blueprint)
-	local locked_to_single = managers.weapon_factory:has_perk("fire_mode_single", equipped_secondary.factory_id, equipped_secondary.blueprint)
-	local single_id = "firemode_single" .. ((not can_toggle_firemode or locked_to_single) and "_locked" or "")
-	local texture, texture_rect = tweak_data.hud_icons:get_icon_data(single_id)
-	local firemode_single = weapon_selection_panel:bitmap({
-		name = "firemode_single",
-		blend_mode = "mul",
-		layer = 1,
-		x = 2,
-		texture = texture,
-		texture_rect = texture_rect
-	})
-
-	firemode_single:set_bottom(weapon_selection_panel:h() - 2)
-	firemode_single:hide()
-
-	local auto_id = "firemode_auto" .. ((not can_toggle_firemode or locked_to_auto) and "_locked" or "")
-	local texture, texture_rect = tweak_data.hud_icons:get_icon_data(auto_id)
-	local firemode_auto = weapon_selection_panel:bitmap({
-		name = "firemode_auto",
-		blend_mode = "mul",
-		layer = 1,
-		x = 2,
-		texture = texture,
-		texture_rect = texture_rect
-	})
-
-	firemode_auto:set_bottom(weapon_selection_panel:h() - 2)
-	firemode_auto:hide()
-
-	if locked_to_single or not locked_to_auto and fire_mode == "single" then
-		firemode_single:show()
-	else
-		firemode_auto:show()
-	end
-end)
 
 NepHook:Post(HUDTeammate, "set_state", function(self, state)
     local teammate_panel = self._panel
@@ -629,8 +536,12 @@ NepHook:Post(HUDTeammate, "set_health", function(self, data)
 end)
 
 NepHook:Post(HUDTeammate, "set_carry_info", function(self, carry_id, value)
+	local teammate_panel = self._panel
+    local name = teammate_panel:child("name")
 	local carry_panel = self._carry_panel
-	carry_panel:set_visible(false)
+
+	carry_panel:set_bottom(name:bottom())
+	carry_panel:set_left(name:right() + 5)
 end)
 
 NepHook:Post(HUDTeammate, "layout_special_equipments", function(self)
@@ -658,20 +569,51 @@ function HUDTeammate:teammate_progress(enabled, tweak_data_id, timer, success)
 	end
 end
 
-NepHook:Post(HUDTeammate, "set_ammo_amount_by_type", function(self, type, max_clip, current_clip, current_left, max, weapon_panel)
-    --[[local weapon_panel = self._player_panel:child("weapons_panel"):child(type .. "_weapon_panel")
-    local ammo_total = weapon_panel:child("ammo_total")
-    local total_left = current_left - current_clip
-    local zero = total_left < 10 and "00" or total_left < 100 and "0" or ""
-    local out_of_ammo = total_left <= 0
-    local low_ammo = total_left <= math.round(max_clip / 2)
-    local color_total = out_of_ammo and Color(1, 0.9, 0.3, 0.3)
-	color_total = color_total or low_ammo and Color(1, 0.9, 0.9, 0.3)
-    
-    ammo_total:set_text(zero .. tostring(total_left))
-    ammo_total:set_color(color_total)
-	ammo_total:set_range_color(0, string.len(zero), color_total:with_alpha(0.5))--]]
-end)
+function HUDTeammate:set_ammo_amount_by_type(type, max_clip, current_clip, current_left, max, weapon_panel)
+	local weapon_panel = weapon_panel or self._player_panel:child("weapons_panel"):child(type .. "_weapon_panel")
+	weapon_panel:set_visible(true)
+
+	local TrueAmmo = NepgearsyHUDReborn:GetOption("EnableTrueAmmo")
+
+	local weapon_panel = self._player_panel:child("weapons_panel"):child(type .. "_weapon_panel")
+	local ammo_total = weapon_panel:child("ammo_total")
+	local ammo_clip = weapon_panel:child("ammo_clip")
+	local total_left = current_left - current_clip
+
+	if not TrueAmmo then
+		total_left = current_left
+	end
+
+	local low_ammo = total_left <= math.round(max_clip / 2)
+	local low_ammo_clip = current_clip <= math.round(max_clip / 4)
+	local out_of_ammo_clip = current_clip <= 0
+	local out_of_ammo = total_left <= 0
+	local no_ammo_color = Color(1, 0.9, 0.3, 0.3)
+	local low_ammo_color = Color(1, 0.9, 0.9, 0.3)
+
+	ammo_total:set_color(Color.white)
+	ammo_clip:set_color(Color.white)
+
+	if low_ammo then
+		ammo_total:set_color(low_ammo_color)
+	end
+
+	if low_ammo_clip then
+		ammo_clip:set_color(low_ammo_color)
+	end
+
+	if out_of_ammo_clip then
+		ammo_clip:set_color(no_ammo_color)
+	end
+
+	if out_of_ammo then
+		ammo_total:set_color(no_ammo_color)
+	end
+
+	ammo_clip:set_text(tostring(current_clip))
+	ammo_total:set_text(" / " .. tostring(total_left))
+	ammo_total:set_range_color(0, 1, Color(0.8, 0.8, 0.8))
+end
 
 function HUDTeammate:GetSteamIDByPeer()
     local peer = self:peer_id() or managers.network:session():local_peer():id()
