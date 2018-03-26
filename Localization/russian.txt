@@ -15,6 +15,7 @@
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Масштаб миникарты",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Включить трекеры",
     "NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Enable the True Ammo feature",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",    
     "NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Размер HUD'а",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Интервал элементов HUD'а",
 

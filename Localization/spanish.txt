@@ -14,6 +14,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Zoom del Minimapa",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Habilita los rastreadores",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Enable the True Ammo feature",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Escala del HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaciado del HUD",
 

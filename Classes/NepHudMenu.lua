@@ -381,6 +381,26 @@ function NepHudMenu:InitMenu()
         callback = ClassClbk(self, "MainClbk")
     })
 
+    self.HUDOptions.HealthStyle = self.MainMenu:ComboBox({
+        name = "HealthStyle",
+        items = NepgearsyHUDReborn.HealthStyle,
+        border_color = BorderColor,
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("HealthStyle"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.HUDOptions.TrueAmmo:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        localized = true,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "MainClbk")
+    })
+
     self.HUDOptions.Scale = self.MainMenu:Slider({
         name = "Scale",
         border_color = BorderColor,
@@ -390,7 +410,7 @@ function NepHudMenu:InitMenu()
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
         position = function(item) 
-            item:Panel():set_top(self.HUDOptions.TrueAmmo:Panel():bottom() + 20) 
+            item:Panel():set_top(self.HUDOptions.HealthStyle:Panel():bottom() + 20) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         help = "If in-game, restart the map to take effect",

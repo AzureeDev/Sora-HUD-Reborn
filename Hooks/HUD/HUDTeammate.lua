@@ -270,15 +270,17 @@ function HUDTeammate:_create_radial_health(radial_health_panel)
 	})
 	self:_create_condition(radial_health_panel)
 
-	local function set_texture(o, texture) --set using the texture's actual size not a hardcoded size like 64/128.
-        local w,h = o:texture_width(), o:texture_height()
-        o:set_image(texture, w, 0, -w, h)
-    end
+	if NepgearsyHUDReborn.Options:GetValue("HealthStyle") == 1 then
+		local function set_texture(o, texture) --set using the texture's actual size not a hardcoded size like 64/128.
+			local w,h = o:texture_width(), o:texture_height()
+			o:set_image(texture, w, 0, -w, h)
+		end
 
-    set_texture(radial_bg, "NepgearsyHUDReborn/HUD/HealthBG")
-    set_texture(radial_health, NepgearsyHUDReborn:TeammateRadialIDToPath(NepgearsyHUDReborn:GetOption("HealthColor"), "Health"))
-    set_texture(radial_shield, NepgearsyHUDReborn:TeammateRadialIDToPath(NepgearsyHUDReborn:GetOption("ShieldColor"), "Armor"))
-    damage_indicator:hide() -- Thats a buggy mess anyways
+		set_texture(radial_bg, "NepgearsyHUDReborn/HUD/HealthBG")
+		set_texture(radial_health, NepgearsyHUDReborn:TeammateRadialIDToPath(NepgearsyHUDReborn:GetOption("HealthColor"), "Health"))
+		set_texture(radial_shield, NepgearsyHUDReborn:TeammateRadialIDToPath(NepgearsyHUDReborn:GetOption("ShieldColor"), "Armor"))
+		damage_indicator:hide() -- Thats a buggy mess anyways
+	end
 end
 
 function HUDTeammate:_create_weapon_panels(weapons_panel)
