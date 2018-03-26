@@ -121,6 +121,11 @@ function NepgearsyHUDReborn:InitTweakData()
 		"Thin",
 		"Vanilla"
 	}
+
+	self.StatusNumberType = {
+		"Health Counter",
+		"Shield Counter"
+	}
 end
 
 function NepgearsyHUDReborn:TeammateRadialIDToPath(id, type)

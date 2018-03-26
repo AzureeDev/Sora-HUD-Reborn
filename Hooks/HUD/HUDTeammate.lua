@@ -531,10 +531,21 @@ NepHook:Post(HUDTeammate, "set_name", function(self, teammate_name)
 end)
 
 NepHook:Post(HUDTeammate, "set_health", function(self, data)
-	local health = math.floor(data.current * 10)
-	local HealthNumber = self._radial_health_panel:child("HealthNumber")
+	if NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 1 then
+		local health = math.floor(data.current * 10)
+		local HealthNumber = self._radial_health_panel:child("HealthNumber")
 
-	HealthNumber:set_text(health)
+		HealthNumber:set_text(health)
+	end
+end)
+
+NepHook:Post(HUDTeammate, "set_armor", function(self, data)
+	if NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 2 then
+		local armor = math.floor(data.current * 10)
+		local HealthNumber = self._radial_health_panel:child("HealthNumber")
+
+		HealthNumber:set_text(armor)
+	end
 end)
 
 NepHook:Post(HUDTeammate, "set_carry_info", function(self, carry_id, value)
