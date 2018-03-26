@@ -15,7 +15,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Habilita los rastreadores",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Habilita la Munición Real",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Estilo de la Salud",	
-	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Tipo de número de Estado",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Escala del HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaciado del HUD",
 
