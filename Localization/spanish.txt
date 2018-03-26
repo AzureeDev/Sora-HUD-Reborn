@@ -13,8 +13,8 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Fuerza el Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Zoom del Minimapa",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Habilita los rastreadores",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Enable the True Ammo feature",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",	
+	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Habilita la Munición Real",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Estilo de la Salud",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Escala del HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaciado del HUD",
 
@@ -31,7 +31,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Panel de control del fondo",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Color de la Salud",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Color del Escudo",
-	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",	
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Color del Ícono del Objetivo",	
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Cerrar",
 
