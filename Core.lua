@@ -116,6 +116,16 @@ function NepgearsyHUDReborn:InitTweakData()
 
 	self.ArmorColor = deep_clone(self.HealthColor)
 	self.ObjectiveColor = deep_clone(self.StarringColors)
+
+	self.HealthStyle = {
+		"Thin",
+		"Vanilla"
+	}
+
+	self.StatusNumberType = {
+		"Health Counter",
+		"Shield Counter"
+	}
 end
 
 function NepgearsyHUDReborn:TeammateRadialIDToPath(id, type)
