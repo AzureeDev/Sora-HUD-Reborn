@@ -37,7 +37,7 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Fermer",
 
-	"NepgearsyHUDRebornMenu/Collaborators/Header" : "Créateur & Collaborateurs",
+	"NepgearsyHUDRebornMenu/Collaborators/Header" : "Createur & Collaborateurs",
 	"NepgearsyHUDRebornMenu/Changelog/Header" : "Changelog: $version",
 
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Mode Discret",

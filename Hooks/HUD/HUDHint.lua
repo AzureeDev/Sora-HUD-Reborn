@@ -14,7 +14,8 @@ NepHook:Post(HUDHint, "init", function(self, hud)
 		text = "",
 		layer = 1,
 		font = "fonts/font_large_mf",
-		color = Color.white
+        color = Color.white,
+        alpha = 0
 	})
 
     local y = 105
@@ -34,52 +35,10 @@ function HUDHint:show(params)
 end
 
 function HUDHint:_animate_show(o, done_cb, seconds)
-	local from = Color(0, 1, 1, 1)
-    local to = Color(1, 1, 1, 1)
-    local t = 0
-
-    o:set_color(from)
-
-    while t < 0 do
-        local dt = coroutine.yield()
-        t = t + dt
-    end
-
-    t = 0
-
-    while t < 1 do
-        local dt = coroutine.yield()
-        t = t + dt
-
-        o:set_color(from * (1 - t) + to * t)
-    end
-
-    o:set_color(to)
-
+	play_value(o, "alpha", 1)
     wait(seconds)
-
-    local from = Color(1, 1, 1, 1)
-    local to = Color(0, 1, 1, 1)
-    local t = 0
-
-    o:set_color(from)
-
-    while t < 0 do
-        local dt = coroutine.yield()
-        t = t + dt
-    end
-
-    t = 0
-
-    while t < 1 do
-        local dt = coroutine.yield()
-        t = t + dt
-
-        o:set_color(from * (1 - t) + to * t)
-    end
-
-    o:set_color(to)
-
+    play_value(o, "alpha", 0)
+    
 	hint_panel:set_visible(false)
 	done_cb()
 end
