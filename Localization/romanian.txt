@@ -1,0 +1,49 @@
+{
+    "NepgearsyHUDReborn" : "Nepgearsy HUD Renascut",
+    "NepgearsyHUDReborn/Version" : "Versiune $version",
+    "NepgearsyHUDRebornMenu" : "Panou de control",
+    "NepgearsyHUDReborn/PostIssue" : "Raporteaza o problema",
+    "NepgearsyHUDReborn/PostRequest" : "Posteaza o cerere",
+
+    "NepgearsyHUDRebornMenu/ForcedLocalization" : "Limba",
+
+    "NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Optiuni HUD",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Font pentru bara de asalt",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Activeaza minimap",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Forteaza minimap",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Dimensiuni minimap",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Zoom minimap",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Activeaza countere(ostatici, kill-uri etc.)",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Activeaza optiunea de munitie reala",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Dimensiuni HUD",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Spatiere HUD",
+
+    "NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Optiuni meniu & camera",
+    "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen" : "Activeaza optiunea de 'Impreuna cu...'",
+    "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "Culoare 'Impreuna cu...'",
+    "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Ce sa apara langa numele tau",
+    "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Activeaza Loadout-ul orizontal",
+
+    "NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Optiuni Extra",
+    "NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Alegator de Waifu",
+
+    "NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Optiuni culori",
+    "NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Fundal panou de control",
+    "NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Culoare viata",
+    "NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Culoare armura",
+    "NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Culoare iconite de obiective",
+
+    "NepgearsyHUDRebornMenu/Buttons/Close" : "Inchide",
+
+    "NepgearsyHUDRebornMenu/Collaborators/Header" : "Creator & Colaboratori",
+    "NepgearsyHUDRebornMenu/Changelog/Header" : "Lista schimbari: $version",
+
+    "NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Modul Ascuns",
+    "NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Pregatiti-va de urmatorul asalt",
+    "NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Punctul fara intoarcere",
+
+    "hud_instruct_mask_on" : ""
+
+}

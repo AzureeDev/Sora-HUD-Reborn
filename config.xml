@@ -3,7 +3,7 @@
         <class file="NepHudMenu.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="1.2.1" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="1.3.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
@@ -21,6 +21,8 @@
         <hook file="HUD/StatisticsManager.lua" source_file="lib/managers/statisticsmanager"/>        
         <hook file="HUD/HUDChat.lua" source_file="lib/managers/hud/hudchat"/>
         <hook file="HUD/HUDTeammate.lua" source_file="lib/managers/hud/hudteammate"/>
+        <hook file="HUD/HUDHint.lua" source_file="lib/managers/hud/hudhint"/>
+        <hook file="HUD/HUDPresenter.lua" source_file="lib/managers/hud/hudpresenter"/>
 
         <hook file="HUD/HUDMinimap.lua" source_file="lib/managers/hudmanagerpd2"/>
         <hook file="HUD/HUDMinimap.lua" source_file="lib/managers/criminalsmanager"/>
@@ -41,6 +43,8 @@
             <option type="number" min="0.25" max="1" step="0.01" default_value="1" name="MinimapZoom"/>
             <option type="bool" default_value="true" name="EnableTrackers"/>
             <option type="bool" default_value="false" name="EnableTrueAmmo"/>
+            <option type="number" default_value="1" name="HealthStyle"/>      
+            <option type="number" default_value="1" name="StatusNumberType"/>      
             <option type="number" min="0.1" max="1.5" default_value="0.8" name="Scale"/>
             <option type="number" min="0.1" max="1" default_value="0.95" name="Spacing"/>
 
@@ -102,6 +106,7 @@
         <texture path="NepgearsyHUDReborn/HUD/CivilianKilled"/>
         <texture path="NepgearsyHUDReborn/HUD/SystemMessageIcon"/>
         <texture path="NepgearsyHUDReborn/HUD/ObjectiveSquare"/>
+        <texture path="NepgearsyHUDReborn/HUD/ObjectiveNotificationIcon"/>
         
         <texture path="NepgearsyHUDReborn/Minimap/kenaz_loc_b_df"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_1"/>

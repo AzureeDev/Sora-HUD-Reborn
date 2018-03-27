@@ -1,14 +1,6 @@
-1.2.1
-- Fixed a crash because of the objective panel.
-
-1.2.0
-- Fixed a crash when someone with the HUD tries to join you mid-heist.
-- Added Russian localization.
-- Added the Wave panel (safe house raid)
-- Added the buff panel (Captain Winters shield buff)
-- Added a new icon for System Messages, and Objectives. The objective icon's color is customizable in the options.
-- Fixed an issue with non-infamous player names overlapping their avatar.
-- Made a new look for the weapon panel!
-- Added the Trade Hold timer.
-- Added the True Ammo option. [This was a request!]
-- Added the Bag Panel back. [This was a request!]
+- Added Health Style option. You can now pick my new texture or the vanilla one. [This was a request!]
+- Added Health Counter option. New option for the counter : Armor counter.
+- New Presenter! Check it out.
+- New Hint animation.
+- Added French localization.
+- Added Romanian localization.

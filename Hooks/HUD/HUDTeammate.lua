@@ -270,15 +270,17 @@ function HUDTeammate:_create_radial_health(radial_health_panel)
 	})
 	self:_create_condition(radial_health_panel)
 
-	local function set_texture(o, texture) --set using the texture's actual size not a hardcoded size like 64/128.
-        local w,h = o:texture_width(), o:texture_height()
-        o:set_image(texture, w, 0, -w, h)
-    end
+	if NepgearsyHUDReborn.Options:GetValue("HealthStyle") == 1 then
+		local function set_texture(o, texture) --set using the texture's actual size not a hardcoded size like 64/128.
+			local w,h = o:texture_width(), o:texture_height()
+			o:set_image(texture, w, 0, -w, h)
+		end
 
-    set_texture(radial_bg, "NepgearsyHUDReborn/HUD/HealthBG")
-    set_texture(radial_health, NepgearsyHUDReborn:TeammateRadialIDToPath(NepgearsyHUDReborn:GetOption("HealthColor"), "Health"))
-    set_texture(radial_shield, NepgearsyHUDReborn:TeammateRadialIDToPath(NepgearsyHUDReborn:GetOption("ShieldColor"), "Armor"))
-    damage_indicator:hide() -- Thats a buggy mess anyways
+		set_texture(radial_bg, "NepgearsyHUDReborn/HUD/HealthBG")
+		set_texture(radial_health, NepgearsyHUDReborn:TeammateRadialIDToPath(NepgearsyHUDReborn:GetOption("HealthColor"), "Health"))
+		set_texture(radial_shield, NepgearsyHUDReborn:TeammateRadialIDToPath(NepgearsyHUDReborn:GetOption("ShieldColor"), "Armor"))
+		damage_indicator:hide() -- Thats a buggy mess anyways
+	end
 end
 
 function HUDTeammate:_create_weapon_panels(weapons_panel)
@@ -529,10 +531,21 @@ NepHook:Post(HUDTeammate, "set_name", function(self, teammate_name)
 end)
 
 NepHook:Post(HUDTeammate, "set_health", function(self, data)
-	local health = math.floor(data.current * 10)
-	local HealthNumber = self._radial_health_panel:child("HealthNumber")
+	if NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 1 then
+		local health = math.floor(data.current * 10)
+		local HealthNumber = self._radial_health_panel:child("HealthNumber")
 
-	HealthNumber:set_text(health)
+		HealthNumber:set_text(health)
+	end
+end)
+
+NepHook:Post(HUDTeammate, "set_armor", function(self, data)
+	if NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 2 then
+		local armor = math.floor(data.current * 10)
+		local HealthNumber = self._radial_health_panel:child("HealthNumber")
+
+		HealthNumber:set_text(armor)
+	end
 end)
 
 NepHook:Post(HUDTeammate, "set_carry_info", function(self, carry_id, value)

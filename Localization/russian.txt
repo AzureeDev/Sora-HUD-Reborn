@@ -5,33 +5,35 @@
     "NepgearsyHUDReborn/PostIssue" : "Report an issue",
 	"NepgearsyHUDReborn/PostRequest" : "Post a request",
 
-    "NepgearsyHUDRebornMenu/ForcedLocalization" : "Language",
+    "NepgearsyHUDRebornMenu/ForcedLocalization" : "Язык",
 
-    "NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Опции HUD'а",
+    "NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Options",
     "NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Шрифт панели штурма",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Включить миникарту",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Форсировать миникарту",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Размер миникарты",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Масштаб миникарты",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Включить трекеры",
-    "NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Enable the True Ammo feature",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Показывать реальное кол-во патронов",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Размер HUD'а",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Интервал элементов HUD'а",
 
-    "NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Опции меню и лобби",
+    "NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Menu & Lobby Options",
     "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen" : "Включить экран 'В ролях'",
     "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "Цвет экрана 'В ролях'",
-    "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Доп.текст для экрана 'В ролях'",
+    "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Текст для экрана 'В ролях'",
     "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Включить горизонтальную выкладку",
 
-    "NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Экстра опции",
+    "NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Extra",
     "NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Выбор вайфу",
 
-    "NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Опции цвета",
+    "NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Color options",
     "NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Цвет панели контроля",
     "NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Цвет шкалы здоровья",
     "NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Цвет шкалы брони",
-	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",    
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Цвет иконки задачи",    
 
     "NepgearsyHUDRebornMenu/Buttons/Close" : "Закрыть",
 
