@@ -1,0 +1,48 @@
+{
+	"NepgearsyHUDReborn" : "Nepgearsy HUD Reborn",
+	"NepgearsyHUDReborn/Version" : "Version $version",
+	"NepgearsyHUDRebornMenu" : "Panneau de contrôle de NepgearsyHUD",
+	"NepgearsyHUDReborn/PostIssue" : "Signaler un probleme",
+	"NepgearsyHUDReborn/PostRequest" : "Envoyer une requete",
+
+	"NepgearsyHUDRebornMenu/ForcedLocalization" : "Langue",
+
+	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Options de L'HUD",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Assault Bar Font",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Activer la Minimap",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Force la Minimap",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Taille de la Minimap",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Zoom de la Minimap",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Activer les traqueurs",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Activer le vrai nombre de balles",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Taille de l'HUD",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espacement de l'HUD",
+
+	"NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Option du Menu et de l'HUD",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen" : "Enable the Starring Screen feature",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "Starring Color",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Starring Text",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Activer l'équipement horizontal",
+	
+	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Options Extra",
+	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Waifu Picker",
+
+	"NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Options de Couleur",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Fond du panneau de contrôle",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Couleur de la vie",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Couleur de l'armure",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Couleur de l'icône d'objectif",
+
+	"NepgearsyHUDRebornMenu/Buttons/Close" : "Fermer",
+
+	"NepgearsyHUDRebornMenu/Collaborators/Header" : "Créateur & Collaborateurs",
+	"NepgearsyHUDRebornMenu/Changelog/Header" : "Changelog: $version",
+
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Mode Discret",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Préparez-vous pour le prochain assaut",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Point de non-retour",
+
+	"hud_instruct_mask_on" : ""
+}

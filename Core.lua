@@ -71,6 +71,16 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "=PDTC= Dobby Senpai",
 			steam_id = "76561198040053543",
 			action = "Helped with finding a sock."
+		},
+		[11] = {
+			name = "Anthony",
+			steam_id = "76561198164452807",
+			action = "Made the French localization"
+		},
+		[12] = {
+			name = "freaky",
+			steam_id = "76561198376903915",
+			action = "Made the Romanian localization"
 		}
 	}
 end
@@ -205,6 +215,8 @@ function NepgearsyHUDReborn:InitLocalization()
 	self.Localization[3] = "portuguese.txt"
 	self.Localization[4] = "spanish.txt"
 	self.Localization[5] = "russian.txt"
+	self.Localization[6] = "french.txt"
+	self.Localization[7] = "romanian.txt"
 end
 
 function NepgearsyHUDReborn:GetForcedLocalization()

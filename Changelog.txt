@@ -1,0 +1,6 @@
+- Added Health Style option. You can now pick my new texture or the vanilla one. [This was a request!]
+- Added Health Counter option. New option for the counter : Armor counter.
+- New Presenter! Check it out.
+- New Hint animation.
+- Added French localization.
+- Added Romanian localization.
