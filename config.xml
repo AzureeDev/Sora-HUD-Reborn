@@ -21,6 +21,8 @@
         <hook file="HUD/StatisticsManager.lua" source_file="lib/managers/statisticsmanager"/>        
         <hook file="HUD/HUDChat.lua" source_file="lib/managers/hud/hudchat"/>
         <hook file="HUD/HUDTeammate.lua" source_file="lib/managers/hud/hudteammate"/>
+        <hook file="HUD/HUDHint.lua" source_file="lib/managers/hud/hudhint"/>
+        <hook file="HUD/HUDPresenter.lua" source_file="lib/managers/hud/hudpresenter"/>
 
         <hook file="HUD/HUDMinimap.lua" source_file="lib/managers/hudmanagerpd2"/>
         <hook file="HUD/HUDMinimap.lua" source_file="lib/managers/criminalsmanager"/>
@@ -104,6 +106,7 @@
         <texture path="NepgearsyHUDReborn/HUD/CivilianKilled"/>
         <texture path="NepgearsyHUDReborn/HUD/SystemMessageIcon"/>
         <texture path="NepgearsyHUDReborn/HUD/ObjectiveSquare"/>
+        <texture path="NepgearsyHUDReborn/HUD/ObjectiveNotificationIcon"/>
         
         <texture path="NepgearsyHUDReborn/Minimap/kenaz_loc_b_df"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_1"/>
