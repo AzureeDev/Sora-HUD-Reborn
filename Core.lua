@@ -86,7 +86,13 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "Commander Neru",
 			steam_id = "76561198090284682",
 			action = "Helped with testing."
+		},
+		[14] = {
+			name = "DreiPixel",
+			steam_id = "76561197998773513",
+			action = "Made the German localization"
 		}
+		
 	}
 end
 
