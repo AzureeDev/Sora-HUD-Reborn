@@ -26,8 +26,8 @@
 	"NepgearsyHUDReborn/Color/Blue" : "Blue",
 	"NepgearsyHUDReborn/Color/Purple" : "Purple",
 	"NepgearsyHUDReborn/Color/Pink" : "Pink",
-	"NepgearsyHUDReborn/Color/Fushia" : "Fushia",
-	"NepgearsyHUDReborn/Color/Red_Fushia" : "Red Fushia",
+	"NepgearsyHUDReborn/Color/Fushia" : "Fuschia",
+	"NepgearsyHUDReborn/Color/Red_Fushia" : "Red Fuschia",
 
 	"NepgearsyHUDReborn/Fonts/Normal" : "Normal (font_large_mf)",
 	"NepgearsyHUDReborn/Fonts/Eurostile" : "Eurostile",
