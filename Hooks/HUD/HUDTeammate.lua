@@ -591,10 +591,14 @@ function HUDTeammate:set_ammo_amount_by_type(type, max_clip, current_clip, curre
 	local weapon_panel = self._player_panel:child("weapons_panel"):child(type .. "_weapon_panel")
 	local ammo_total = weapon_panel:child("ammo_total")
 	local ammo_clip = weapon_panel:child("ammo_clip")
-	local total_left = current_left - current_clip
+	local total_left = current_left
 
-	if not TrueAmmo then
-		total_left = current_left
+	if TrueAmmo then
+		total_left = current_left - current_clip
+
+		if total_left < 0 then
+			total_left = current_left
+		end
 	end
 
 	local low_ammo = total_left <= math.round(max_clip / 2)
