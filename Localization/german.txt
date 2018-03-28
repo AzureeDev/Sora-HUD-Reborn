@@ -7,14 +7,14 @@
 
 	"NepgearsyHUDRebornMenu/ForcedLocalization" : "Sprache",
 	
-	"NepgearsyHUDReborn/Localization/English" : "English",
-	"NepgearsyHUDReborn/Localization/Turkish" : "Turkish",
-	"NepgearsyHUDReborn/Localization/Portuguese" : "Portuguese",
-	"NepgearsyHUDReborn/Localization/Spanish" : "Spanish",
-	"NepgearsyHUDReborn/Localization/Russian" : "Russian",
-	"NepgearsyHUDReborn/Localization/French" : "French",
-	"NepgearsyHUDReborn/Localization/Romanian" : "Romanian",
-	"NepgearsyHUDReborn/Localization/German" : "German",
+	"NepgearsyHUDReborn/Localization/English" : "Englisch",
+	"NepgearsyHUDReborn/Localization/Turkish" : "Turkisch",
+	"NepgearsyHUDReborn/Localization/Portuguese" : "Portugiesisch",
+	"NepgearsyHUDReborn/Localization/Spanish" : "Spanisch",
+	"NepgearsyHUDReborn/Localization/Russian" : "Russisch",
+	"NepgearsyHUDReborn/Localization/French" : "Französisch",
+	"NepgearsyHUDReborn/Localization/Romanian" : "Rumänisch",
+	"NepgearsyHUDReborn/Localization/German" : "Deutsch",
 
 	"NepgearsyHUDReborn/Color/White" : "Weiß",
 	"NepgearsyHUDReborn/Color/Red" : "Rot",

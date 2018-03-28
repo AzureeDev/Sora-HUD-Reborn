@@ -7,7 +7,7 @@
 
     "NepgearsyHUDRebornMenu/ForcedLocalization" : "Limba",
 
-	"NepgearsyHUDReborn/Localization/English" : "English",
+    "NepgearsyHUDReborn/Localization/English" : "English",
 	"NepgearsyHUDReborn/Localization/Turkish" : "Turkish",
 	"NepgearsyHUDReborn/Localization/Portuguese" : "Portuguese",
 	"NepgearsyHUDReborn/Localization/Spanish" : "Spanish",
