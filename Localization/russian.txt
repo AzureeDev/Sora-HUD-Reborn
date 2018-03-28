@@ -7,6 +7,36 @@
 
     "NepgearsyHUDRebornMenu/ForcedLocalization" : "Язык",
 
+    "NepgearsyHUDReborn/Localization/English" : "English",
+	"NepgearsyHUDReborn/Localization/Turkish" : "Turkish",
+	"NepgearsyHUDReborn/Localization/Portuguese" : "Portuguese",
+	"NepgearsyHUDReborn/Localization/Spanish" : "Spanish",
+	"NepgearsyHUDReborn/Localization/Russian" : "Russian",
+	"NepgearsyHUDReborn/Localization/French" : "French",
+	"NepgearsyHUDReborn/Localization/Romanian" : "Romanian",
+
+    "NepgearsyHUDReborn/Color/White" : "White",
+	"NepgearsyHUDReborn/Color/Red" : "Red",
+	"NepgearsyHUDReborn/Color/Orange" : "Orange",
+	"NepgearsyHUDReborn/Color/Yellow" : "Yellow",
+	"NepgearsyHUDReborn/Color/Green" : "Green",
+	"NepgearsyHUDReborn/Color/Cyan" : "Cyan",
+	"NepgearsyHUDReborn/Color/Blue_Ocean" : "Blue Ocean",
+	"NepgearsyHUDReborn/Color/Blue" : "Blue",
+	"NepgearsyHUDReborn/Color/Purple" : "Purple",
+	"NepgearsyHUDReborn/Color/Pink" : "Pink",
+	"NepgearsyHUDReborn/Color/Fushia" : "Fushia",
+	"NepgearsyHUDReborn/Color/Red_Fushia" : "Red Fushia",
+
+	"NepgearsyHUDReborn/Fonts/Normal" : "Normal (font_large_mf)",
+	"NepgearsyHUDReborn/Fonts/Eurostile" : "Eurostile",
+
+	"NepgearsyHUDReborn/HealthStyle/Thin" : "Thin",
+	"NepgearsyHUDReborn/HealthStyle/Vanilla" : "Vanilla",
+
+	"NepgearsyHUDReborn/StatusNumberType/Health_Counter" : "Health Counter",
+	"NepgearsyHUDReborn/StatusNumberType/Shield_Counter" : "Shield Counter",
+
     "NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Options",
     "NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Шрифт панели штурма",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Включить миникарту",

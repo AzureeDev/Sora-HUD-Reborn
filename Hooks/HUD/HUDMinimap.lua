@@ -1610,7 +1610,7 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
         HUDMiniMapCiviesEntity.super.update(self, ...)
     
         if not self._deleted then
-            if self._unit:character_damage():dead() then
+            if self._unit and self._unit:character_damage() and self._unit:character_damage():dead() then
                 self:_delete()
                 return
             end
@@ -1636,10 +1636,11 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
         if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
             return
         end
+
         HUDMiniMapEnemyEntity.super.update(self, ...)
     
         if not self._deleted then
-            if self._unit:character_damage():dead() then
+            if self._unit and self._unit:character_damage() and self._unit:character_damage():dead() then
                 self:_delete()
                 return
             end
@@ -1692,7 +1693,7 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
         HUDMiniMapSWATTurretEntity.super.update(self, ...)
     
         if not self._deleted then
-            if self._unit:character_damage():dead() then
+            if self._unit and self._unit:character_damage() and self._unit:character_damage():dead() then
                 self:_delete()
             end
         end
@@ -1743,7 +1744,7 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 		HUDMiniMapVIPEntity.super.update(self, ...)
 		
 		if not self._deleted then
-			if self._unit:character_damage() and self._unit:character_damage():dead() then
+			if self._unit and self._unit:character_damage() and self._unit:character_damage():dead() then
 				self:_delete()
 			end
 		end
@@ -1769,7 +1770,7 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 		HUDMiniMapInterestEntity.super.update(self, ...)
 		
 		if not self._deleted then
-			if self._unit:character_damage() and self._unit:character_damage():dead() then
+			if self._unit and self._unit:character_damage() and self._unit:character_damage():dead() then
 				self:_delete()
 			end
 		end

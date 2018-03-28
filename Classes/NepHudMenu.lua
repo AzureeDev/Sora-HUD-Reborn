@@ -207,7 +207,7 @@ function NepHudMenu:InitMenu()
         name = "ForcedLocalization",
         border_color = BorderColor,
         border_left = true,
-        items = NepgearsyHUDReborn.Localization,
+        items = NepgearsyHUDReborn.LocalizationTable,
         value = NepgearsyHUDReborn.Options:GetValue("ForcedLocalization"),        
         text = "NepgearsyHUDRebornMenu/ForcedLocalization",
         background_color = Color(0.3, 0, 0, 0),
