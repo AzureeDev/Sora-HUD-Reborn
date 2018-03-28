@@ -245,6 +245,10 @@ function NepgearsyHUDReborn:InitLocalization()
 		[7] = {
 			localized_name = "NepgearsyHUDReborn/Localization/Romanian",
 			path = "romanian.txt"
+		},
+		[8] = {
+			localized_name = "NepgearsyHUDReborn/Localization/German",
+			path = "german.txt"
 		}
 	}
 
