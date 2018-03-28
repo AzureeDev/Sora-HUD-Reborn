@@ -1,5 +1,4 @@
 local BaseLayer = 1500
-local BorderColor = Color(0.5, 0, 1)
 local HighlightColor = Color(0.35, 0.25, 0.19, 0.32)
 local Font = "fonts/font_eurostile_ext"
 
@@ -10,7 +9,6 @@ local function make_fine_text( text )
 end
 
 NepHudMenu = NepHudMenu or class()
-
 -- Based on BeardLib Editor & HoloUI's menu.
 function NepHudMenu:init()
     self._menu = MenuUI:new({
@@ -21,6 +19,7 @@ function NepHudMenu:init()
     })
     self._menu_panel = self._menu._panel
     self.BackgroundStatus = true
+    self.BorderColor = NepgearsyHUDReborn:StringToColor("cpbordercolor", NepgearsyHUDReborn:GetOption("CPBorderColor"))
 
     self:InitTopBar()
     self:InitBackground()
@@ -106,7 +105,7 @@ function NepHudMenu:InitTopBar()
         background_color = Color.transparent,
         highlight_color = Color.transparent,
         foreground = Color(0.4, 0.4, 0.4),
-        foreground_highlight = BorderColor,
+        foreground_highlight = self.BorderColor,
         position = function(item) 
             item:Panel():set_right(self.TopBar:Panel():right() - 5)
         end,
@@ -145,7 +144,7 @@ function NepHudMenu:InitTopBar()
         background_color = Color.transparent,
         highlight_color = Color.transparent,
         foreground = Color(1, 1, 1),
-        foreground_highlight = BorderColor,
+        foreground_highlight = self.BorderColor,
         position = function(item) 
             item:Panel():set_right(PostIssue:Panel():left() - 15)
         end,
@@ -205,7 +204,7 @@ function NepHudMenu:InitMenu()
 
     self.ForcedLocalization = self.MainMenu:ComboBox({
         name = "ForcedLocalization",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         items = NepgearsyHUDReborn.LocalizationTable,
         value = NepgearsyHUDReborn.Options:GetValue("ForcedLocalization"),        
@@ -242,7 +241,7 @@ function NepHudMenu:InitMenu()
     self.HUDOptions = {}
     self.HUDOptions.AssaultBar = self.MainMenu:ComboBox({
         name = "AssaultBarFont",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         items = NepgearsyHUDReborn.AssaultBarFonts,
         value = NepgearsyHUDReborn.Options:GetValue("AssaultBarFont"),        
@@ -262,7 +261,7 @@ function NepHudMenu:InitMenu()
 
     self.HUDOptions.Minimap = self.MainMenu:Toggle({
         name = "EnableMinimap",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("EnableMinimap"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/Minimap",
@@ -281,7 +280,7 @@ function NepHudMenu:InitMenu()
 
     self.HUDOptions.MinimapForce = self.MainMenu:Toggle({
         name = "MinimapForce",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("MinimapForce"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce",
@@ -301,7 +300,7 @@ function NepHudMenu:InitMenu()
 
     self.HUDOptions.MinimapSize = self.MainMenu:Slider({
         name = "MinimapSize",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("MinimapSize"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize",
@@ -323,7 +322,7 @@ function NepHudMenu:InitMenu()
 
     self.HUDOptions.MinimapZoom = self.MainMenu:Slider({
         name = "MinimapZoom",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("MinimapZoom"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom",
@@ -345,7 +344,7 @@ function NepHudMenu:InitMenu()
 
     self.HUDOptions.Trackers = self.MainMenu:Toggle({
         name = "EnableTrackers",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("EnableTrackers"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/Trackers",
@@ -364,7 +363,7 @@ function NepHudMenu:InitMenu()
 
     self.HUDOptions.TrueAmmo = self.MainMenu:Toggle({
         name = "EnableTrueAmmo",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("EnableTrueAmmo"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo",
@@ -384,7 +383,7 @@ function NepHudMenu:InitMenu()
     self.HUDOptions.HealthStyle = self.MainMenu:ComboBox({
         name = "HealthStyle",
         items = NepgearsyHUDReborn.HealthStyle,
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("HealthStyle"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle",
@@ -404,7 +403,7 @@ function NepHudMenu:InitMenu()
     self.HUDOptions.StatusNumberType = self.MainMenu:ComboBox({
         name = "StatusNumberType",
         items = NepgearsyHUDReborn.StatusNumberType,
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("StatusNumberType"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType",
@@ -423,7 +422,7 @@ function NepHudMenu:InitMenu()
 
     self.HUDOptions.Scale = self.MainMenu:Slider({
         name = "Scale",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("Scale"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/Scale",
@@ -446,7 +445,7 @@ function NepHudMenu:InitMenu()
 
     self.HUDOptions.Spacing = self.MainMenu:Slider({
         name = "Spacing",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("Spacing"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/Spacing",
@@ -486,7 +485,7 @@ function NepHudMenu:InitMenu()
     self.MenuLobbyOptions = {}
     self.MenuLobbyOptions.StarringScreen = self.MainMenu:Toggle({
         name = "EnableStarring",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("EnableStarring"),
         text = "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen",
@@ -506,7 +505,7 @@ function NepHudMenu:InitMenu()
     self.MenuLobbyOptions.StarringColor = self.MainMenu:ComboBox({
         name = "StarringColor",
         items = NepgearsyHUDReborn.StarringColors,
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("StarringColor"),
         text = "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor",
@@ -525,7 +524,7 @@ function NepHudMenu:InitMenu()
 
     self.MenuLobbyOptions.StarringText = self.MainMenu:TextBox({
         name = "StarringText",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("StarringText"),
         text = "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText",
@@ -544,7 +543,7 @@ function NepHudMenu:InitMenu()
 
     self.MenuLobbyOptions.HorizontalLoadout = self.MainMenu:Toggle({
         name = "EnableHorizontalLoadout",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("EnableHorizontalLoadout"),
         text = "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout",
@@ -579,7 +578,7 @@ function NepHudMenu:InitMenu()
     self.Colors = {}
     self.Colors.CPColor = self.MainMenu:ComboBox({
         name = "CPColor",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         items = NepgearsyHUDReborn.CPColors,
         value = NepgearsyHUDReborn.Options:GetValue("CPColor"),
@@ -597,13 +596,13 @@ function NepHudMenu:InitMenu()
         callback = ClassClbk(self, "MainClbk")
     })
 
-    self.Colors.HealthColor = self.MainMenu:ComboBox({
-        name = "HealthColor",
-        border_color = BorderColor,
+    self.Colors.CPBorderColor = self.MainMenu:ComboBox({
+        name = "CPBorderColor",
+        border_color = self.BorderColor,
         border_left = true,
-        items = NepgearsyHUDReborn.HealthColor,
-        value = NepgearsyHUDReborn.Options:GetValue("HealthColor"),
-        text = "NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor",
+        items = NepgearsyHUDReborn.CPBorderColors,
+        value = NepgearsyHUDReborn.Options:GetValue("CPBorderColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor",
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
         position = function(item) 
@@ -617,9 +616,29 @@ function NepHudMenu:InitMenu()
         callback = ClassClbk(self, "MainClbk")
     })
 
+    self.Colors.HealthColor = self.MainMenu:ComboBox({
+        name = "HealthColor",
+        border_color = self.BorderColor,
+        border_left = true,
+        items = NepgearsyHUDReborn.HealthColor,
+        value = NepgearsyHUDReborn.Options:GetValue("HealthColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.Colors.CPBorderColor:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        localized = true,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "MainClbk")
+    })
+
     self.Colors.ShieldColor = self.MainMenu:ComboBox({
         name = "ShieldColor",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         items = NepgearsyHUDReborn.ArmorColor,
         value = NepgearsyHUDReborn.Options:GetValue("ShieldColor"),
@@ -639,7 +658,7 @@ function NepHudMenu:InitMenu()
 
     self.Colors.ObjectiveColor = self.MainMenu:ComboBox({
         name = "ObjectiveColor",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         items = NepgearsyHUDReborn.ObjectiveColor,
         value = NepgearsyHUDReborn.Options:GetValue("ObjectiveColor"),
@@ -700,7 +719,7 @@ function NepHudMenu:InitCollab()
             name = "Collaborator_" .. i,
             h = 32,
             text = "",
-            border_color = BorderColor,
+            border_color = self.BorderColor,
             border_left = true,
             background_color = Color(0.3, 0, 0, 0),
             highlight_color = HighlightColor,
@@ -764,7 +783,8 @@ function NepHudMenu:InitChangelog()
         position = function(item)
             item:Panel():set_top(self.CollabMenu:Panel():bottom() + 10)
             item:Panel():set_right(self.MainMenu:Panel():left() - 10)
-        end
+        end,
+        scrollbar = true
     })
 
     self.ChangelogMenuHeader = self.ChangelogMenu:Button({
@@ -783,27 +803,19 @@ function NepHudMenu:InitChangelog()
         text_align = "center"
     })
 
-    self.ChangelogTextMenu = self._menu:Menu({
-        name = "ChangelogTextMenu",
-        background_color = Color(0.3, 0, 0, 0),
-        h = 190,
-        w = self.ChangelogMenuHeader:Panel():w(), 
-        align_method = "normal",
-        position = function(item)
-            item:Panel():set_top(self.ChangelogMenu:Panel():top() + 40)
-            item:Panel():set_left(self.ChangelogMenu:Panel():left() + 12)
-        end
-    })
-
-    self.Changelog = self.ChangelogTextMenu:Panel():text({
+    self.Changelog = self.ChangelogMenu:Button({
         text = NepgearsyHUDReborn.Changelog,
         font = "fonts/font_large_mf",
         font_size = 16,
-        layer = BaseLayer,
-        x = 10,
-        y = 10,
-        wrap = true,
-        word_wrap = true
+        border_color = self.BorderColor,
+        highlight_color = Color.transparent,
+        border_left = true,
+        localized = false,
+        position = function(item) 
+            item:Panel():set_top(self.ChangelogMenuHeader:Panel():bottom() + 10) 
+            item:Panel():set_left(self.ChangelogMenuHeader:Panel():left())
+        end,
+        callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/commits/master")
     })
 end
 
@@ -822,7 +834,7 @@ function NepHudMenu:InitBack()
 
     self.BackButton = self.BackMenu:Button({
         name = "BackButton",
-        border_color = BorderColor,
+        border_color = self.BorderColor,
         border_left = true,
         text = "NepgearsyHUDRebornMenu/Buttons/Close",
         background_color = Color(0.3, 0, 0, 0),

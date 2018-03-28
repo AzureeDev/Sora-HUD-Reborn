@@ -61,6 +61,7 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Color Options",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Control Panel Background",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor" : "Control Panel Border Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Radial Health Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Radial Shield Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",

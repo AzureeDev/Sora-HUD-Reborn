@@ -61,6 +61,7 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Opcoes de Cor",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Plano de fundo",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor" : "Control Panel Border Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Cor da barra de saúde",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Cor da barra de colete",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",	

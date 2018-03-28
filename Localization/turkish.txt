@@ -61,6 +61,7 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Renk Ayarlari",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Kontrol Paneli Renk Gostergesi",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor" : "Control Panel Border Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Can Paneli Renk Ayari",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Zirh Paneli Renk Ayari",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",	

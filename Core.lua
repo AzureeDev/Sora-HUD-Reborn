@@ -108,6 +108,7 @@ function NepgearsyHUDReborn:InitTweakData()
 	if self.Dev then table.insert(self.StarringColors, "DEV") end -- hi :3
 
 	self.CPColors = deep_clone(self.StarringColors)
+	self.CPBorderColors = deep_clone(self.StarringColors)
 
 	self.AssaultBarFonts = {
 		"NepgearsyHUDReborn/Fonts/Normal",
@@ -197,6 +198,7 @@ function NepgearsyHUDReborn:StringToColor(module, id)
 	stc["starring"][13] = Color(1, 0.63, 0.58, 0.95)
 
 	stc["cpcolor"] = deep_clone(stc["starring"])
+	stc["cpbordercolor"] = deep_clone(stc["starring"])
 	stc["objective_color"] = deep_clone(stc["starring"])
 
 	return stc[module][id]

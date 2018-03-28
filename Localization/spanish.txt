@@ -60,6 +60,7 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Opciones de Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Panel de control del fondo",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor" : "Control Panel Border Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Color de la Salud",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Color del Escudo",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Color del Ícono del Objetivo",	

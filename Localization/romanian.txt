@@ -61,6 +61,7 @@
 
     "NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Optiuni culori",
     "NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Fundal panou de control",
+    "NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor" : "Control Panel Border Color",
     "NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Culoare viata",
     "NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Culoare armura",
     "NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Culoare iconite de obiective",
