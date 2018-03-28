@@ -3,7 +3,7 @@
         <class file="NepHudMenu.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="1.3.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="1.3.1" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
@@ -54,6 +54,7 @@
             <option type="bool" default_value="true" name="EnableHorizontalLoadout"/>
 
             <option type="number" default_value="1" name="CPColor"/>
+            <option type="number" default_value="5" name="CPBorderColor"/>
             <option type="number" default_value="2" name="HealthColor"/>
             <option type="number" default_value="1" name="ShieldColor"/>
             <option type="number" default_value="1" name="ObjectiveColor"/>

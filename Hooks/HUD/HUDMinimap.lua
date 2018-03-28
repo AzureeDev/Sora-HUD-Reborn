@@ -1158,6 +1158,11 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     HUDMiniMapCompositeMap = HUDMiniMapCompositeMap or class()
     
     function HUDMiniMapCompositeMap:init(parent_map, map_data)
+
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
+
         self.is_composite = true
         self._parent = parent_map
         self._map_data = map_data
@@ -1257,6 +1262,10 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     HUDMiniMapEntity = HUDMiniMapEntity or class()
     
     function HUDMiniMapEntity:init(parent, key, params)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
+
         params = params or {}
         self._parent = parent
         self._key = key
@@ -1295,6 +1304,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     end
 
     function HUDMiniMapEntity:update(t, dt, map_bounds, player_elevation_index, elevation_data)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         if self._duration then
             self._duration = self._duration - dt
             
@@ -1399,6 +1411,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     HUDMiniMapPlayerEntity = HUDMiniMapPlayerEntity or class(HUDMiniMapEntity)
     
     function HUDMiniMapPlayerEntity:init(parent, key)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapUnitEntity.super.init(self, parent, key, { w = 12, h = 12 })
         
         self._avatar = self._panel:text({
@@ -1440,6 +1455,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     HUDMiniMapWaypointEntity = HUDMiniMapWaypointEntity or class(HUDMiniMapEntity)
     
     function HUDMiniMapWaypointEntity:init(parent, key, data)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapWaypointEntity.super.init(self, parent, key, { w = 10, h = 10, same_elevation_only = data.same_elevation_only })
         
         local texture, texture_rect
@@ -1479,6 +1497,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     HUDMiniMapUnitEntity = HUDMiniMapUnitEntity or class(HUDMiniMapEntity)
     
     function HUDMiniMapUnitEntity:init(parent, key, unit, size)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapUnitEntity.super.init(self, parent, key, { w = size or 10, h = size or 10 })
         
         self._avatar = self._panel:text({
@@ -1521,6 +1542,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     end
     
     function HUDMiniMapTeamEntity:init(parent, key, unit, peer_id)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapTeamEntity.super.init(self, parent, key, unit, 12)
         
         local color = tweak_data.chat_colors[peer_id or 5]
@@ -1541,6 +1565,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     end
     
     function HUDMiniMapTeamEntity:update(...)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapTeamEntity.super.update(self, ...)
     
         if not self._deleted then
@@ -1550,6 +1577,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     end
     
     function HUDMiniMapTeamEntity:event(new_state)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         local state_icon = HUDMiniMapTeamEntity.STATE_ICONS[new_state]
         
         if state_icon then
@@ -1563,6 +1593,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     HUDMiniMapCiviesEntity = HUDMiniMapCiviesEntity or class(HUDMiniMapUnitEntity)
     
     function HUDMiniMapCiviesEntity:init(parent, key, unit)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapCiviesEntity.super.init(self, parent, key, unit, 10)
         
         self._avatar:set_text("v")
@@ -1571,10 +1604,13 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     end
     
     function HUDMiniMapCiviesEntity:update(...)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapCiviesEntity.super.update(self, ...)
     
         if not self._deleted then
-            if self._unit:character_damage():dead() then
+            if self._unit and self._unit:character_damage() and self._unit:character_damage():dead() then
                 self:_delete()
                 return
             end
@@ -1586,6 +1622,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     HUDMiniMapEnemyEntity = HUDMiniMapEnemyEntity or class(HUDMiniMapUnitEntity)
     
     function HUDMiniMapEnemyEntity:init(parent, key, unit)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapEnemyEntity.super.init(self, parent, key, unit, 10)
         
         self._avatar:set_text("V")
@@ -1594,10 +1633,14 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     end
     
     function HUDMiniMapEnemyEntity:update(...)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
+
         HUDMiniMapEnemyEntity.super.update(self, ...)
     
         if not self._deleted then
-            if self._unit:character_damage():dead() then
+            if self._unit and self._unit:character_damage() and self._unit:character_damage():dead() then
                 self:_delete()
                 return
             end
@@ -1609,6 +1652,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     HUDMiniMapCameraEntity = HUDMiniMapCameraEntity or class(HUDMiniMapUnitEntity)
     
     function HUDMiniMapCameraEntity:init(parent, key, unit)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapCameraEntity.super.init(self, parent, key, unit, 10)
         
         self._avatar:set_text("C")
@@ -1617,6 +1663,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     end
     
     function HUDMiniMapCameraEntity:update(...)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapCameraEntity.super.update(self, ...)
     
         if not self._deleted and self._unit:base():destroyed() or not managers.groupai:state():whisper_mode() then
@@ -1627,6 +1676,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     HUDMiniMapSWATTurretEntity = HUDMiniMapSWATTurretEntity or class(HUDMiniMapUnitEntity)
     
     function HUDMiniMapSWATTurretEntity:init(parent, key, unit)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapSWATTurretEntity.super.init(self, parent, key, unit, 10)
         
         self._avatar:set_text("T")
@@ -1635,10 +1687,13 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     end
     
     function HUDMiniMapSWATTurretEntity:update(...)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapSWATTurretEntity.super.update(self, ...)
     
         if not self._deleted then
-            if self._unit:character_damage():dead() then
+            if self._unit and self._unit:character_damage() and self._unit:character_damage():dead() then
                 self:_delete()
             end
         end
@@ -1647,6 +1702,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     HUDMiniMapJokerEntity = HUDMiniMapJokerEntity or class(HUDMiniMapEnemyEntity)
     
     function HUDMiniMapJokerEntity:init(parent, key, unit)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapJokerEntity.super.init(self, parent, key, unit)
         
         self._avatar:set_color(Color(0.2, 0.8, 1))  --tweak_data.contour.character.friendly_color
@@ -1656,6 +1714,9 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     end
     
     function HUDMiniMapJokerEntity:update(...)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
         HUDMiniMapJokerEntity.super.update(self, ...)
         
         if not self._deleted and self._is_escort and self._unit:anim_data().drop then
@@ -1665,7 +1726,10 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     
     	HUDMiniMapVIPEntity = HUDMiniMapVIPEntity or class(HUDMiniMapJokerEntity)
 
-	function HUDMiniMapVIPEntity:init(parent, key, unit)
+    function HUDMiniMapVIPEntity:init(parent, key, unit)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
 		HUDMiniMapVIPEntity.super.init(self, parent, key, unit)
 		
 		self._avatar:set_color(Color(1, 1, 0))	--tweak_data.contour.character.friendly_color
@@ -1673,11 +1737,14 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 		self._show_offscreen = true
 	end
 	
-	function HUDMiniMapVIPEntity:update(...)
+    function HUDMiniMapVIPEntity:update(...)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
 		HUDMiniMapVIPEntity.super.update(self, ...)
 		
 		if not self._deleted then
-			if self._unit:character_damage() and self._unit:character_damage():dead() then
+			if self._unit and self._unit:character_damage() and self._unit:character_damage():dead() then
 				self:_delete()
 			end
 		end
@@ -1685,7 +1752,10 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 	
 	HUDMiniMapInterestEntity = HUDMiniMapInterestEntity or class(HUDMiniMapJokerEntity)
 
-	function HUDMiniMapInterestEntity:init(parent, key, unit)
+    function HUDMiniMapInterestEntity:init(parent, key, unit)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
 		HUDMiniMapInterestEntity.super.init(self, parent, key, unit)
 		
 		self._avatar:set_color(Color(1, 0, 1))	--tweak_data.contour.character.friendly_color
@@ -1693,11 +1763,14 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 		self._show_offscreen = true
 	end
 	
-	function HUDMiniMapInterestEntity:update(...)
+    function HUDMiniMapInterestEntity:update(...)
+        if not NepgearsyHUDReborn:GetOption("EnableMinimap") then
+            return
+        end
 		HUDMiniMapInterestEntity.super.update(self, ...)
 		
 		if not self._deleted then
-			if self._unit:character_damage() and self._unit:character_damage():dead() then
+			if self._unit and self._unit:character_damage() and self._unit:character_damage():dead() then
 				self:_delete()
 			end
 		end

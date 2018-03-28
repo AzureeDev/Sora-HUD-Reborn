@@ -81,60 +81,66 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "freaky",
 			steam_id = "76561198376903915",
 			action = "Made the Romanian localization"
+		},
+		[13] = {
+			name = "Commander Neru",
+			steam_id = "76561198090284682",
+			action = "Helped with testing."
 		}
 	}
 end
 
 function NepgearsyHUDReborn:InitTweakData()
 	self.StarringColors = {
-		"White",
-		"Red",
-		"Green",
-		"Blue",
-		"Purple",
-		"Yellow",
-		"Orange",
-		"Pink",
-		"Fushia",
-		"Cyan",
-		"Blue Ocean",
-		"Red Fushia"
+		"NepgearsyHUDReborn/Color/White",
+		"NepgearsyHUDReborn/Color/Red",
+		"NepgearsyHUDReborn/Color/Green",
+		"NepgearsyHUDReborn/Color/Blue",
+		"NepgearsyHUDReborn/Color/Purple",
+		"NepgearsyHUDReborn/Color/Yellow",
+		"NepgearsyHUDReborn/Color/Orange",
+		"NepgearsyHUDReborn/Color/Pink",
+		"NepgearsyHUDReborn/Color/Fushia",
+		"NepgearsyHUDReborn/Color/Cyan",
+		"NepgearsyHUDReborn/Color/Blue_Ocean",
+		"NepgearsyHUDReborn/Color/Red_Fushia"
 	}
 	if self.Dev then table.insert(self.StarringColors, "DEV") end -- hi :3
 
 	self.CPColors = deep_clone(self.StarringColors)
+	self.CPBorderColors = deep_clone(self.StarringColors)
 
 	self.AssaultBarFonts = {
-		"Normal",
-		"Eurostile"
+		"NepgearsyHUDReborn/Fonts/Normal",
+		"NepgearsyHUDReborn/Fonts/Eurostile"
 	}
 
 	self.HealthColor = {
-		"White",
-		"Green",
-		"Red",
-		"Orange",
-		"Yellow",
-		"Cyan",
-		"Blue Ocean",
-		"Blue",
-		"Purple",
-		"Pink",
-		"Fushia",
-		"Red Fushia"
+		"NepgearsyHUDReborn/Color/White",
+		"NepgearsyHUDReborn/Color/Green",
+		"NepgearsyHUDReborn/Color/Red",
+		"NepgearsyHUDReborn/Color/Orange",
+		"NepgearsyHUDReborn/Color/Yellow",
+		"NepgearsyHUDReborn/Color/Cyan",
+		"NepgearsyHUDReborn/Color/Blue_Ocean",
+		"NepgearsyHUDReborn/Color/Blue",
+		"NepgearsyHUDReborn/Color/Purple",
+		"NepgearsyHUDReborn/Color/Pink",
+		"NepgearsyHUDReborn/Color/Fushia",
+		"NepgearsyHUDReborn/Color/Red_Fushia"
 	}
 
 	self.ArmorColor = deep_clone(self.HealthColor)
 	self.ObjectiveColor = deep_clone(self.StarringColors)
 
 	self.HealthStyle = {
-		"Thin",
-		"Vanilla"
+		"NepgearsyHUDReborn/HealthStyle/Thin",
+		"NepgearsyHUDReborn/HealthStyle/Vanilla"
 	}
 
 	self.StatusNumberType = {
-		"Health Counter",
-		"Shield Counter"
+		"NepgearsyHUDReborn/StatusNumberType/Health_Counter",
+		"NepgearsyHUDReborn/StatusNumberType/Shield_Counter"
 	}
 end
 
@@ -192,6 +198,7 @@ function NepgearsyHUDReborn:StringToColor(module, id)
 	stc["starring"][13] = Color(1, 0.63, 0.58, 0.95)
 
 	stc["cpcolor"] = deep_clone(stc["starring"])
+	stc["cpbordercolor"] = deep_clone(stc["starring"])
 	stc["objective_color"] = deep_clone(stc["starring"])
 
 	return stc[module][id]
@@ -209,14 +216,41 @@ function NepgearsyHUDReborn:InitChangelog()
 end
 
 function NepgearsyHUDReborn:InitLocalization()
-	self.Localization = {}
-	self.Localization[1] = "english.txt"
-	self.Localization[2] = "turkish.txt"
-	self.Localization[3] = "portuguese.txt"
-	self.Localization[4] = "spanish.txt"
-	self.Localization[5] = "russian.txt"
-	self.Localization[6] = "french.txt"
-	self.Localization[7] = "romanian.txt"
+	self.LocalizationTable = {}
+	self.Localization = {
+		[1] = {
+			localized_name = "NepgearsyHUDReborn/Localization/English",
+			path = "english.txt"
+		},
+		[2] = {
+			localized_name = "NepgearsyHUDReborn/Localization/Turkish",
+			path = "turkish.txt"
+		},
+		[3] = {
+			localized_name = "NepgearsyHUDReborn/Localization/Portuguese",
+			path = "portuguese.txt"
+		},
+		[4] = {
+			localized_name = "NepgearsyHUDReborn/Localization/Spanish",
+			path = "spanish.txt"
+		},
+		[5] = {
+			localized_name = "NepgearsyHUDReborn/Localization/Russian",
+			path = "russian.txt"
+		},
+		[6] = {
+			localized_name = "NepgearsyHUDReborn/Localization/French",
+			path = "french.txt"
+		},
+		[7] = {
+			localized_name = "NepgearsyHUDReborn/Localization/Romanian",
+			path = "romanian.txt"
+		}
+	}
+
+	for i, localization in ipairs(self.Localization) do 
+		table.insert(self.LocalizationTable, localization.localized_name)
+	end
 end
 
 function NepgearsyHUDReborn:GetForcedLocalization()
@@ -225,10 +259,14 @@ function NepgearsyHUDReborn:GetForcedLocalization()
 
 	if not self.Localization[Chosen] then
 		self:Error("Can't load a localization file if there's no ID for it! Returning english.")
-		return Folder .. self.Localization[1]
+		return Folder .. self.Localization[1].path
 	end
 	
-	return Folder .. self.Localization[Chosen]
+	for i, localization in ipairs(self.Localization) do
+		if i == Chosen then
+			return Folder .. localization.path
+		end
+	end
 end
 
 function NepgearsyHUDReborn:InitMenu()
