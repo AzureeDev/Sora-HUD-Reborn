@@ -7,13 +7,14 @@
 
     "NepgearsyHUDRebornMenu/ForcedLocalization" : "Язык",
 
-    "NepgearsyHUDReborn/Localization/English" : "English",
+	"NepgearsyHUDReborn/Localization/English" : "English",
 	"NepgearsyHUDReborn/Localization/Turkish" : "Turkish",
 	"NepgearsyHUDReborn/Localization/Portuguese" : "Portuguese",
 	"NepgearsyHUDReborn/Localization/Spanish" : "Spanish",
 	"NepgearsyHUDReborn/Localization/Russian" : "Russian",
 	"NepgearsyHUDReborn/Localization/French" : "French",
 	"NepgearsyHUDReborn/Localization/Romanian" : "Romanian",
+	"NepgearsyHUDReborn/Localization/German" : "German",
 
     "NepgearsyHUDReborn/Color/White" : "White",
 	"NepgearsyHUDReborn/Color/Red" : "Red",

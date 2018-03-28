@@ -1,0 +1,80 @@
+{
+	"NepgearsyHUDReborn" : "Nepgearsy HUD Reborn",
+	"NepgearsyHUDReborn/Version" : "Version $version",
+	"NepgearsyHUDRebornMenu" : "Nepgearsy HUD Einstellungen",
+	"NepgearsyHUDReborn/PostIssue" : "Fehler melden",
+	"NepgearsyHUDReborn/PostRequest" : "einen Vorschlag machen",
+
+	"NepgearsyHUDRebornMenu/ForcedLocalization" : "Sprache",
+	
+	"NepgearsyHUDReborn/Localization/English" : "English",
+	"NepgearsyHUDReborn/Localization/Turkish" : "Turkish",
+	"NepgearsyHUDReborn/Localization/Portuguese" : "Portuguese",
+	"NepgearsyHUDReborn/Localization/Spanish" : "Spanish",
+	"NepgearsyHUDReborn/Localization/Russian" : "Russian",
+	"NepgearsyHUDReborn/Localization/French" : "French",
+	"NepgearsyHUDReborn/Localization/Romanian" : "Romanian",
+	"NepgearsyHUDReborn/Localization/German" : "German",
+
+	"NepgearsyHUDReborn/Color/White" : "Weiß",
+	"NepgearsyHUDReborn/Color/Red" : "Rot",
+	"NepgearsyHUDReborn/Color/Orange" : "Orange",
+	"NepgearsyHUDReborn/Color/Yellow" : "Gelb",
+	"NepgearsyHUDReborn/Color/Green" : "Grün",
+	"NepgearsyHUDReborn/Color/Cyan" : "Cyan",
+	"NepgearsyHUDReborn/Color/Blue_Ocean" : "Ozean Blau",
+	"NepgearsyHUDReborn/Color/Blue" : "Blau",
+	"NepgearsyHUDReborn/Color/Purple" : "Violett",
+	"NepgearsyHUDReborn/Color/Pink" : "Pink",
+	"NepgearsyHUDReborn/Color/Fushia" : "Fushia",
+	"NepgearsyHUDReborn/Color/Red_Fushia" : "Fushia Rot",
+
+	"NepgearsyHUDReborn/Fonts/Normal" : "Normal (font_large_mf)",
+	"NepgearsyHUDReborn/Fonts/Eurostile" : "Eurostile",
+
+	"NepgearsyHUDReborn/HealthStyle/Thin" : "Dünn",
+	"NepgearsyHUDReborn/HealthStyle/Vanilla" : "Vanilla",
+
+	"NepgearsyHUDReborn/StatusNumberType/Health_Counter" : "Lebensanzeige",
+	"NepgearsyHUDReborn/StatusNumberType/Shield_Counter" : "Rüstungsanzeige",
+
+	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Optionen",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Angriffsleiste Schriftart",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Minimap einschalten",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Minimap erzwingen",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Minimap Größe",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Minimap Zoom",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Tracker einschalten",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Wahre Munition Funktion einschalten ",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Lebensanzeige Style",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Nummer Typ",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "HUD Größe",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "HUD Abstand",
+
+	"NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Menu & Lobby Optionen",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen" : "Die In der Hauptrolle Funktion einschalten",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "In der Hauptrolle Farbe",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "In der Hauptrolle Text",
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Horizontale Ausrüstung einschalten",
+	
+	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Extra Optionen",
+	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Waifu Wähler",
+
+	"NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Color Optionen",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "Einstellungen Hintegrund",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor" : "Einstellungen Rand Farbe",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Radial Lebens Farbe",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Radial Rüstungs Farbe",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Aufgabe Icon Farbe",
+
+	"NepgearsyHUDRebornMenu/Buttons/Close" : "Schließen",
+
+	"NepgearsyHUDRebornMenu/Collaborators/Header" : "Hersteller & Mitarbeiter",
+	"NepgearsyHUDRebornMenu/Changelog/Header" : "Changelog: $version",
+
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Stealth-Modus",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Bereite dich auf den näschten Angriff",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Jetzt gibt es kein Zurück mehr",
+
+	"hud_instruct_mask_on" : ""
+}
