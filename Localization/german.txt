@@ -73,7 +73,7 @@
 	"NepgearsyHUDRebornMenu/Changelog/Header" : "Changelog: $version",
 
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Stealth-Modus",
-	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Bereite dich auf den näschten Angriff",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Bereite dich auf den nächsten Angriff vor",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Jetzt gibt es kein Zurück mehr",
 
 	"hud_instruct_mask_on" : ""
