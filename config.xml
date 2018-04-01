@@ -3,12 +3,13 @@
         <class file="NepHudMenu.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="1.3.2" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="1.4.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
         <hook file="MissionBriefingGUI.lua" source_file="lib/managers/menu/missionbriefinggui"/>
         <hook file="CopDamage.lua" source_file="lib/units/enemies/cop/copdamage"/>
+        <hook file="EnemyManager.lua" source_file="lib/managers/enemymanager"/>
 
         <hook file="HUD/HUDMissionBriefing.lua" source_file="lib/managers/hud/hudmissionbriefing"/>
         <hook file="HUD/HUDPlayerCustody.lua" source_file="lib/managers/hud/hudplayercustody"/>
@@ -108,6 +109,7 @@
         <texture path="NepgearsyHUDReborn/HUD/SystemMessageIcon"/>
         <texture path="NepgearsyHUDReborn/HUD/ObjectiveSquare"/>
         <texture path="NepgearsyHUDReborn/HUD/ObjectiveNotificationIcon"/>
+        <texture path="NepgearsyHUDReborn/HUD/Cop"/>
         
         <texture path="NepgearsyHUDReborn/Minimap/kenaz_loc_b_df"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_1"/>

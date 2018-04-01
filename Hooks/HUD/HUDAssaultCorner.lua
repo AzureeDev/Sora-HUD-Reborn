@@ -2,6 +2,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     self:DisableOriginalHUDElements()
     
     self.totalKilledSession = 0
+    self.totalCopAlive = 0
     
     local assault_panel_v2 = self._hud_panel:panel({
         name = "assault_panel_v2",
@@ -115,6 +116,43 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         color = Color.black
     })
 
+    local copTracker = trackerPanel:panel({
+        w = 60,
+        h = 24
+    })
+    copTracker:set_right(killTracker:left() - 5)
+    copTracker:set_top(killTracker:top())
+
+    local copTrackerRect = copTracker:rect({
+        name = "background",
+        color = Color.white,
+        alpha = 0.6,
+        layer = -1,
+        halign = "scale",
+        valign = "scale"
+    })
+
+    local copTrackerIcon = copTracker:bitmap({
+        w = 15,
+        h = 20,
+        texture = "NepgearsyHUDReborn/HUD/Cop",
+        color = Color.black,
+        x = 2,
+        y = 2
+    })
+    copTrackerIcon:set_center_y(copTracker:center_y())
+
+    self.copTrackerAmount = copTracker:text({
+        font = "fonts/font_large_mf",
+        font_size = 20,
+        vertical = "center",
+        align = "right",
+        y = 1,
+        x = -10,
+        text = tostring(self.totalCopAlive),
+        color = Color.black
+    })
+
     local hostages_panel = self._hud_panel:panel({
 		name = "hostages_panel",
 		w = 60,
@@ -216,7 +254,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         h = 24,
         visible = self:is_safehouse_raid()
     })
-    self.WaveTracker:set_right(killTracker:left() - 5)
+    self.WaveTracker:set_right(copTracker:left() - 5)
     self.WaveTracker:set_top(killTracker:top())
 
     local waveBG = self.WaveTracker:rect({
@@ -273,6 +311,11 @@ NepHook:Post(HUDAssaultCorner, "set_assault_wave_number", function(self, assault
         self.waveTrackerAmount:set_text(self:get_completed_waves_string())
     end
 end)
+
+function HUDAssaultCorner:_update_cops_map(change)
+    self.totalCopAlive = self.totalCopAlive + change
+    self.copTrackerAmount:set_text(self.totalCopAlive)
+end
 
 function HUDAssaultCorner:_update_assault_hud_color(color)
     self._current_assault_color = color

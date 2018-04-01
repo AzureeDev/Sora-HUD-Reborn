@@ -91,8 +91,12 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "DreiPixel",
 			steam_id = "76561197998773513",
 			action = "Made the German localization"
-		}
-		
+		},
+		[15] = {
+			name = "Hinaomi",
+			steam_id = "76561198027102120",
+			action = "Made the Thai localization"
+		}		
 	}
 end
 
@@ -255,6 +259,10 @@ function NepgearsyHUDReborn:InitLocalization()
 		[8] = {
 			localized_name = "NepgearsyHUDReborn/Localization/German",
 			path = "german.txt"
+		},
+		[9] = {
+			localized_name = "NepgearsyHUDReborn/Localization/Thai",
+			path = "thai.txt"
 		}
 	}
 

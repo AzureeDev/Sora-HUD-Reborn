@@ -15,6 +15,7 @@
 	"NepgearsyHUDReborn/Localization/French" : "Francés",
 	"NepgearsyHUDReborn/Localization/Romanian" : "Rumano",
 	"NepgearsyHUDReborn/Localization/German" : "Alemán",
+	"NepgearsyHUDReborn/Localization/Thai" : "Thai",	
 
 	"NepgearsyHUDReborn/Color/White" : "Blanco",
 	"NepgearsyHUDReborn/Color/Red" : "Rojo",
