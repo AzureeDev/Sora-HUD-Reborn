@@ -878,7 +878,6 @@ function NepHudMenu:background_enable_switch()
         self:SetBackgroundVis(false)
         self.CollabMenu:SetVisible(false)
         self.ChangelogMenu:SetVisible(false)
-        self.ChangelogTextMenu:SetVisible(false)
         self.BackgroundEnabler:SetImage("NepgearsyHUDReborn/Menu/EnableBackground")
         self.BackgroundStatus = false
     else
@@ -889,7 +888,6 @@ function NepHudMenu:background_enable_switch()
         self:SetBackgroundVis(true)
         self.CollabMenu:SetVisible(true)
         self.ChangelogMenu:SetVisible(true)
-        self.ChangelogTextMenu:SetVisible(true)
         self.BackgroundEnabler:SetImage("NepgearsyHUDReborn/Menu/DisableBackground")         
         self.BackgroundStatus = true
     end
