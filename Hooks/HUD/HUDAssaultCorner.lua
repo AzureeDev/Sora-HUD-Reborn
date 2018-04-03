@@ -359,7 +359,11 @@ function HUDAssaultCorner:_start_assault(text_list)
 	if alive(self._wave_bg_box) then
 		self._wave_bg_box:stop()
 		self._wave_bg_box:animate(callback(self, self, "_animate_wave_started"), self)
-	end
+    end
+    
+    if managers.job:current_level_id() == "zm_the_forest" then
+        self:_update_assault_hud_color(Color.red)
+    end
 end
 
 function HUDAssaultCorner:_end_assault()

@@ -1,1 +1,3 @@
 - Added the Cop Alive tracker
+- Added Thai localization
+- Added support for a map coming in the future... ;)
