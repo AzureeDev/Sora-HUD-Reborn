@@ -15,7 +15,8 @@
 	"NepgearsyHUDReborn/Localization/French" : "Français",
 	"NepgearsyHUDReborn/Localization/Romanian" : "Roumain",
 	"NepgearsyHUDReborn/Localization/German" : "Allemand",
-	"NepgearsyHUDReborn/Localization/Thai" : "Thai",	
+	"NepgearsyHUDReborn/Localization/Thai" : "Thai",
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",	
 
 	"NepgearsyHUDReborn/Color/White" : "Blanc",
 	"NepgearsyHUDReborn/Color/Red" : "Rouge",
@@ -46,6 +47,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Taille de la Minimap",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Zoom de la Minimap",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Activer les traqueurs",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Montrer le vrai nombre de balles",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Style de la vie",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Le nombre dans le statut désigne le",

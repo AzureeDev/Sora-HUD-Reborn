@@ -15,7 +15,8 @@
 	"NepgearsyHUDReborn/Localization/French" : "法语(French)",
 	"NepgearsyHUDReborn/Localization/Romanian" : "罗马语(Romanian)",
 	"NepgearsyHUDReborn/Localization/German" : "德语(German)",
-	"NepgearsyHUDReborn/Localization/Thai" : "泰语(Thai)",	
+	"NepgearsyHUDReborn/Localization/Thai" : "泰语(Thai)",
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "简体中文(Simplified Chinese)",
 
 	"NepgearsyHUDReborn/Color/White" : "白色",
 	"NepgearsyHUDReborn/Color/Red" : "红色",
@@ -46,6 +47,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "小地图尺寸",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "小地图缩放比",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "启用剩余敌人数量显示功能",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "启用真实剩余弹药功能",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "血条显示样式",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "状态板数字样式",

@@ -16,6 +16,7 @@
     "NepgearsyHUDReborn/Localization/Romanian" : "โรมาเนีย",
     "NepgearsyHUDReborn/Localization/German" : "เยอรมัน",
     "NepgearsyHUDReborn/Localization/Thai" : "ไทย",
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",    
  
     "NepgearsyHUDReborn/Color/White" : "ขาว",
     "NepgearsyHUDReborn/Color/Red" : "แดง",
@@ -46,6 +47,7 @@
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "ขนาดของแผนที่ขนาดเล็ก",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "อัตราขยายแผนที่ขนาดเล็ก",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "เปิดใช้งานตัวติดตาม",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",    
     "NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "เปิดใช้งานปริมาณกระสุนที่เหลืออยู่่จริง",
     "NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "รูปแบบพลังชีวิต",
     "NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "ชนิดของค่าสถานะ",

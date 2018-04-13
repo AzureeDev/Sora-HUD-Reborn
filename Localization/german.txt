@@ -15,7 +15,8 @@
 	"NepgearsyHUDReborn/Localization/French" : "Französisch",
 	"NepgearsyHUDReborn/Localization/Romanian" : "Rumänisch",
 	"NepgearsyHUDReborn/Localization/German" : "Deutsch",
-	"NepgearsyHUDReborn/Localization/Thai" : "Thai",	
+	"NepgearsyHUDReborn/Localization/Thai" : "Thai",
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",	
 
 	"NepgearsyHUDReborn/Color/White" : "Weiß",
 	"NepgearsyHUDReborn/Color/Red" : "Rot",
@@ -46,6 +47,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Minimap Größe",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Minimap Zoom",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Tracker einschalten",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Wahre Munition Funktion einschalten ",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Lebensanzeige Style",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Nummer Typ",

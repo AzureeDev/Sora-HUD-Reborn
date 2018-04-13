@@ -118,7 +118,8 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
 
     local copTracker = trackerPanel:panel({
         w = 60,
-        h = 24
+        h = 24,
+        visible = NepgearsyHUDReborn.Options:GetValue("EnableCopTracker")
     })
     copTracker:set_right(killTracker:left() - 5)
     copTracker:set_top(killTracker:top())
@@ -254,7 +255,12 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         h = 24,
         visible = self:is_safehouse_raid()
     })
-    self.WaveTracker:set_right(copTracker:left() - 5)
+    if NepgearsyHUDReborn.Options:GetValue("EnableCopTracker") then
+        self.WaveTracker:set_right(copTracker:left() - 5)
+    else
+        self.WaveTracker:set_right(killTracker:left() - 5)        
+    end
+
     self.WaveTracker:set_top(killTracker:top())
 
     local waveBG = self.WaveTracker:rect({

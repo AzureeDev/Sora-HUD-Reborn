@@ -16,6 +16,7 @@
 	"NepgearsyHUDReborn/Localization/Romanian" : "Romanian",
 	"NepgearsyHUDReborn/Localization/German" : "German",
 	"NepgearsyHUDReborn/Localization/Thai" : "Thai",
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",	
 
 	"NepgearsyHUDReborn/Color/White" : "White",
 	"NepgearsyHUDReborn/Color/Red" : "Red",
@@ -46,6 +47,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Harita Boyutu",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Harita Yakinligi",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Takip Elementlerini Aktive Et",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Enable the True Ammo feature",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",

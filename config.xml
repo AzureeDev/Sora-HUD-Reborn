@@ -3,7 +3,7 @@
         <class file="NepHudMenu.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="1.4.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="1.4.1" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
@@ -43,6 +43,7 @@
             <option type="number" min="150" max="200" default_value="150" name="MinimapSize"/>
             <option type="number" min="0.25" max="1" step="0.01" default_value="1" name="MinimapZoom"/>
             <option type="bool" default_value="true" name="EnableTrackers"/>
+            <option type="bool" default_value="false" name="EnableCopTracker"/>
             <option type="bool" default_value="false" name="EnableTrueAmmo"/>
             <option type="number" default_value="1" name="HealthStyle"/>      
             <option type="number" default_value="1" name="StatusNumberType"/>      

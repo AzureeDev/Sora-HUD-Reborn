@@ -15,7 +15,8 @@
 	"NepgearsyHUDReborn/Localization/French" : "French",
 	"NepgearsyHUDReborn/Localization/Romanian" : "Romanian",
 	"NepgearsyHUDReborn/Localization/German" : "German",
-	"NepgearsyHUDReborn/Localization/Thai" : "Thai",    
+	"NepgearsyHUDReborn/Localization/Thai" : "Thai",
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",    
 
     "NepgearsyHUDReborn/Color/White" : "White",
 	"NepgearsyHUDReborn/Color/Red" : "Red",
@@ -46,6 +47,7 @@
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Размер миникарты",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Масштаб миникарты",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Включить трекеры",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",    
     "NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Показывать реальное кол-во патронов",
     "NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",

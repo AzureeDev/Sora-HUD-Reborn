@@ -361,6 +361,25 @@ function NepHudMenu:InitMenu()
         callback = ClassClbk(self, "MainClbk")
     })
 
+    self.HUDOptions.CopTracker = self.MainMenu:Toggle({
+        name = "EnableCopTracker",
+        border_color = self.BorderColor,
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("EnableCopTracker"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker",
+        background_color = Color(0.3, 0, 0, 0),
+        highlight_color = HighlightColor,
+        position = function(item) 
+            item:Panel():set_top(self.HUDOptions.Trackers:Panel():bottom() + 5) 
+            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
+        end,
+        localized = true,
+        text_align = "left",
+        text_vertical = "center",
+        font_size = 15,
+        callback = ClassClbk(self, "MainClbk")
+    })
+
     self.HUDOptions.TrueAmmo = self.MainMenu:Toggle({
         name = "EnableTrueAmmo",
         border_color = self.BorderColor,
@@ -370,7 +389,7 @@ function NepHudMenu:InitMenu()
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
         position = function(item) 
-            item:Panel():set_top(self.HUDOptions.Trackers:Panel():bottom() + 5) 
+            item:Panel():set_top(self.HUDOptions.CopTracker:Panel():bottom() + 5) 
             item:Panel():set_left(self.HUDOptionsCat:Panel():left())
         end,
         localized = true,

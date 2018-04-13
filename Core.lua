@@ -96,7 +96,12 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "Hinaomi",
 			steam_id = "76561198027102120",
 			action = "Made the Thai localization"
-		}		
+		},
+		[16] = {
+			name = "FR0Z3",
+			steam_id = "76561198058215284",
+			action = "Made the Simplified Chinese localization"
+		}	
 	}
 end
 
@@ -263,6 +268,10 @@ function NepgearsyHUDReborn:InitLocalization()
 		[9] = {
 			localized_name = "NepgearsyHUDReborn/Localization/Thai",
 			path = "thai.txt"
+		},
+		[10] = {
+			localized_name = "NepgearsyHUDReborn/Localization/SimplifiedChinese",
+			path = "chinese.txt"
 		}
 	}
 

@@ -1,3 +1,4 @@
-- Added the Cop Alive tracker
-- Added Thai localization
-- Added support for a map coming in the future... ;)
+- Fixed a crash with the menu display on and off
+- Fixed a crash with the old shit ass map from Overkill Software
+- Added Simplified Chinese loc
+- Added a way to hide the cop alive tracker separately
