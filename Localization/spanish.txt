@@ -16,7 +16,7 @@
 	"NepgearsyHUDReborn/Localization/Romanian" : "Rumano",
 	"NepgearsyHUDReborn/Localization/German" : "Alemán",
 	"NepgearsyHUDReborn/Localization/Thai" : "Tailandés",
-	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",	
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Mandarín Simplificado",	
 
 	"NepgearsyHUDReborn/Color/White" : "Blanco",
 	"NepgearsyHUDReborn/Color/Red" : "Rojo",
@@ -46,7 +46,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Fuerza el Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Zoom del Minimapa",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Habilita los rastreadores",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",	
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Habilita el rastreador de Enemigos restantes",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Habilita la Munición Real",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Estilo de la Salud",	
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Tipo de número de Estado",
