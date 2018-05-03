@@ -66,8 +66,10 @@ function HUDMissionBriefing:_update_avatar_slot(peer_id)
 		local starring_panel = blackscreen_panel:child("starring_panel")
 		local player_slot = starring_panel:child("avatar_player_" .. peer_id)
 
-		player_slot:set_image(avatar)
-		player_slot:set_visible(true)
+        if player_slot then
+            player_slot:set_image(avatar)
+            player_slot:set_visible(true)
+        end
 	end)
 end
 
@@ -78,13 +80,15 @@ function HUDMissionBriefing:_update_name(name, peer_id)
 	local starring_panel = blackscreen_panel:child("starring_panel")
 	local player_slot = starring_panel:child("player_" .. peer_id)
 
-    player_slot:set_text(name)
+    if player_slot then
+        player_slot:set_text(name)
+    
+        if self._custom_starring[peer_id] ~= "" then
+            player_slot:set_text(name .. self._custom_starring[peer_id])
+        end
 
-    if self._custom_starring[peer_id] ~= "" then
-        player_slot:set_text(name .. self._custom_starring[peer_id])
+        player_slot:set_visible(true)
     end
-
-    player_slot:set_visible(true)
 end
 
 Hooks:Add("NetworkReceivedData", "NepgearsyHUDReborn_StarringSync", function(sender, id, data)
