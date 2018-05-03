@@ -15,8 +15,7 @@ NepHook:Post(ChatManager, "receive_message_by_peer", function(self, channel_id, 
 		self._player_steam_id[4] = "0"
 	end
 
-	local color_id = peer:id()
+	local peer_id = peer:id()
 	local steam_id = peer:user_id()
-	local color = tweak_data.chat_colors[color_id] or tweak_data.chat_colors[#tweak_data.chat_colors]
-	self._player_steam_id[color_id] = steam_id
+	self._player_steam_id[peer_id] = steam_id
 end)

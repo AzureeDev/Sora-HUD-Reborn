@@ -1362,7 +1362,7 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     end
     
     function HUDMiniMapEntity:event(...)
-        printf("ERROR: Base class event call (forgot to implement one for the subclass?)\n")
+        --printf("ERROR: Base class event call (forgot to implement one for the subclass?)\n")
     end
     
     function HUDMiniMapEntity:set_duration(duration)

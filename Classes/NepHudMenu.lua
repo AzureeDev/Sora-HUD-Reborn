@@ -196,6 +196,7 @@ function NepHudMenu:InitMenu()
         h = self._menu_panel:h() - self.TopBar:Panel():h(),
         w = self._menu_panel:w() / 4, 
         align_method = "normal",
+        scrollbar = true,
         position = function(item)
             item:Panel():set_top(self.TopBar:Panel():bottom())
             item:Panel():set_right(self._menu_panel:right())
@@ -703,6 +704,7 @@ function NepHudMenu:InitCollab()
         h = 350,
         w = self._menu_panel:w() / 2.1, 
         align_method = "normal",
+        scrollbar = true,
         position = function(item)
             item:Panel():set_top(self.TopBar:Panel():bottom() + 15)
             item:Panel():set_right(self.MainMenu:Panel():left() - 10)

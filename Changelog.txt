@@ -1,4 +1,9 @@
-- Fixed a crash with the menu display on and off
-- Fixed a crash with the old shit ass map from Overkill Software
-- Added Simplified Chinese loc
-- Added a way to hide the cop alive tracker separately
+- Fixed some crashes
+- Updated some localizations
+
+How are you by the way? I hope you're fine, I'm happy that you use my HUD, haha.
+I gotta tell you a secret, in my life I would never expect doing so much for PAYDAY 2, even just LUA wise.
+Started from nothing, learning all by myself for the most parts, and finally getting something big as this HUD.
+Super proud of it. And I really hope you like it as much as I had fun coding, polishing it.
+
+Take this virtual cookie. You deserve it.
