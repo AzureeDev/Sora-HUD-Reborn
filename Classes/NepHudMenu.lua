@@ -13,8 +13,14 @@ NepHudMenu = NepHudMenu or class()
 function NepHudMenu:init()
     self._menu = MenuUI:new({
         name = "NepgearsyHUDMenu",
-        layer = BaseLayer,
-        background_color = Color.transparent,
+		layer = BaseLayer,
+		use_default_close_key = true,
+		background_color = Color.transparent,
+		inherit_values = {
+			background_color = Color(0.3, 0, 0, 0),
+			scroll_color = Color.white:with_alpha(0.1),
+			highlight_color = HighlightColor
+		},
         animate_toggle = true
     })
     self._menu_panel = self._menu._panel
@@ -28,7 +34,7 @@ function NepHudMenu:init()
     self:InitChangelog()
     self:InitBack()
 
-    MenuCallbackHandler.NepgearsyHUDRebornMenu = callback(self, self, "set_enabled", true)
+    MenuCallbackHandler.NepgearsyHUDRebornMenu = ClassClbk(self._menu, "SetEnabled", true)
     MenuHelperPlus:AddButton({
         id = "NepgearsyHUDRebornMenu",
         title = "NepgearsyHUDRebornMenu",
@@ -41,38 +47,33 @@ function NepHudMenu:InitTopBar()
     self.TopBar = self._menu:Menu({
         name = "TopBar",
         background_color = Color(0.05, 0.05, 0.05),
-        h = 30,
+		h = 30,
+		text_offset = 0,
+		align_method = "grid",
         w = self._menu_panel:w(),
         scrollbar = false,
-        position = function(item)
-            item:SetPositionByString("Top")
-        end
+        position = "Top"
     })
 
-    local HUDName = self.TopBar:Panel():text({
-        text = managers.localization:to_upper_text("NepgearsyHUDReborn"),
+    self.HUDName = self.TopBar:Divider({
+		text = managers.localization:to_upper_text("NepgearsyHUDReborn"),
         font = Font,
-        font_size = 25,
-        x = 5,
+		size = 25,
+		border_left = false,
+		size_by_text = true,
         color = Color(0.8, 0.8, 0.8),
-        vertical = "center",
         layer = BaseLayer,
     })
-    make_fine_text(HUDName)
-    self.HUDName = HUDName
 
     local BackgroundEnabler = self.TopBar:ImageButton({
         name = "BackgroundEnabler",
         texture = "NepgearsyHUDReborn/Menu/DisableBackground",
         w = 26,
         h = 26,
-        position = function(item) 
-            item:Panel():set_left(self.HUDName:right() + 20)
-        end,
+        offset_x = 20,
         help = "Enable or disable the background, and optional parts of the menu.",
-        callback = ClassClbk(self, "background_enable_switch")
+        on_callback = ClassClbk(self, "background_enable_switch")
     })
-    HUDName:set_world_center_y(self.TopBar:Panel():world_center_y())
     self.BackgroundEnabler = BackgroundEnabler
 
     local MWSProfile = self.TopBar:ImageButton({
@@ -80,11 +81,9 @@ function NepHudMenu:InitTopBar()
         texture = "NepgearsyHUDReborn/Menu/MWSProfile",
         w = 26,
         h = 26,
-        position = function(item) 
-            item:Panel():set_left(self.BackgroundEnabler:Panel():right() + 5)
-        end,
+        offset_x = 5,
         help = "Go to the mod's page.",
-        callback = ClassClbk(self, "open_url", "https://modworkshop.net/mydownloads.php?action=view_down&did=22152")
+        on_callback = ClassClbk(self, "open_url", "https://modworkshop.net/mydownloads.php?action=view_down&did=22152")
     })
     self.MWSProfile = MWSProfile
     local Discord = self.TopBar:ImageButton({
@@ -92,11 +91,9 @@ function NepHudMenu:InitTopBar()
         texture = "NepgearsyHUDReborn/Menu/Discord",
         w = 26,
         h = 26,
-        position = function(item) 
-            item:Panel():set_left(self.MWSProfile:Panel():right() + 5)
-        end,
+        offset_x = 5,
         help = "Join our Discord Modserver!",
-        callback = ClassClbk(self, "open_url", "https://discord.gg/yy6cxwZ")
+        on_callback = ClassClbk(self, "open_url", "https://discord.gg/yy6cxwZ")
     })
 
     local HUDVersion = self.TopBar:Button({
@@ -106,16 +103,15 @@ function NepHudMenu:InitTopBar()
         highlight_color = Color.transparent,
         foreground = Color(0.4, 0.4, 0.4),
         foreground_highlight = self.BorderColor,
-        position = function(item) 
-            item:Panel():set_right(self.TopBar:Panel():right() - 5)
-        end,
+        position = "RightOffset-x",
+		offset_x = 5,
         localized = false,
         size_by_text = true,
         text_align = "right",
         text_vertical = "center",
         font_size = 25,
         font = Font,
-        callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/commits/master")
+        on_callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/commits/master")
     })
 
     local PostIssue = self.TopBar:Button({
@@ -135,7 +131,7 @@ function NepHudMenu:InitTopBar()
         text_vertical = "center",
         font_size = 15,
         font = Font,
-        callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/issues")
+        on_callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/issues")
     })
 
     local PostRequest = self.TopBar:Button({
@@ -154,7 +150,7 @@ function NepHudMenu:InitTopBar()
         text_vertical = "center",
         font_size = 15,
         font = Font,
-        callback = ClassClbk(self, "open_url", "https://feathub.com/Nepgearsy/Nepgearsy-HUD-Reborn")
+        on_callback = ClassClbk(self, "open_url", "https://feathub.com/Nepgearsy/Nepgearsy-HUD-Reborn")
     })
     PostRequest:Panel():set_world_center_y(self.TopBar:Panel():world_center_y())
 end
@@ -192,11 +188,14 @@ end
 function NepHudMenu:InitMenu()
     self.MainMenu = self._menu:Menu({
         name = "MainMenu",
-        background_color = Color(0.3, 0, 0, 0),
         h = self._menu_panel:h() - self.TopBar:Panel():h(),
-        w = self._menu_panel:w() / 4, 
-        align_method = "normal",
-        scrollbar = true,
+		w = self._menu_panel:w() / 4, 
+		size = 15,
+		border_color = self.BorderColor,
+		offset = 8,
+		text_align = "left",
+		text_vertical = "center",
+		localized = true,
         position = function(item)
             item:Panel():set_top(self.TopBar:Panel():bottom())
             item:Panel():set_right(self._menu_panel:right())
@@ -205,36 +204,20 @@ function NepHudMenu:InitMenu()
 
     self.ForcedLocalization = self.MainMenu:ComboBox({
         name = "ForcedLocalization",
-        border_color = self.BorderColor,
         border_left = true,
         items = NepgearsyHUDReborn.LocalizationTable,
         value = NepgearsyHUDReborn.Options:GetValue("ForcedLocalization"),        
         text = "NepgearsyHUDRebornMenu/ForcedLocalization",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(item:Panel():parent():top() + 10) 
-            item:Panel():set_right(item:Panel():parent():right())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
-    self.HUDOptionsCat = self.MainMenu:Button({
+    self.HUDOptionsCat = self.MainMenu:Divider({
         name = "HUDOptionsCat",
-        text = "NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat",
+		text = "NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat",
+		offset_y = 20,
         background_color = Color(0, 0, 0),
         highlight_color = Color.black,
-        position = function(item) 
-            item:Panel():set_top(self.ForcedLocalization:Panel():bottom() + 15) 
-            item:Panel():set_right(item:Panel():parent():right())
-        end,
-        localized = true,
         text_align = "center",
-        text_vertical = "center",
         font_size = 20,
         font = Font
     })
@@ -242,260 +225,127 @@ function NepHudMenu:InitMenu()
     self.HUDOptions = {}
     self.HUDOptions.AssaultBar = self.MainMenu:ComboBox({
         name = "AssaultBarFont",
-        border_color = self.BorderColor,
         border_left = true,
         items = NepgearsyHUDReborn.AssaultBarFonts,
         value = NepgearsyHUDReborn.Options:GetValue("AssaultBarFont"),        
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptionsCat:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.HUDOptions.Minimap = self.MainMenu:Toggle({
         name = "EnableMinimap",
-        border_color = self.BorderColor,
-        border_left = true,
+		border_left = true,
+		offset_y = 20,
         value = NepgearsyHUDReborn.Options:GetValue("EnableMinimap"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/Minimap",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.AssaultBar:Panel():bottom() + 20) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.HUDOptions.MinimapForce = self.MainMenu:Toggle({
         name = "MinimapForce",
-        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("MinimapForce"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce",
         help = "Force the minimap anytime, even if the current map doesn't have a texture for it.",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.Minimap:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.HUDOptions.MinimapSize = self.MainMenu:Slider({
         name = "MinimapSize",
-        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("MinimapSize"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.MinimapForce:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
         min = 150,
         max = 200,
         step = 1,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.HUDOptions.MinimapZoom = self.MainMenu:Slider({
         name = "MinimapZoom",
-        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("MinimapZoom"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.MinimapSize:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
         min = 0.25,
         max = 1,
         step = 0.01,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.HUDOptions.Trackers = self.MainMenu:Toggle({
         name = "EnableTrackers",
-        border_color = self.BorderColor,
-        border_left = true,
+		border_left = true,
+		offset_y = 20,
         value = NepgearsyHUDReborn.Options:GetValue("EnableTrackers"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/Trackers",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.MinimapZoom:Panel():bottom() + 20) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.HUDOptions.CopTracker = self.MainMenu:Toggle({
         name = "EnableCopTracker",
-        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("EnableCopTracker"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.Trackers:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.HUDOptions.TrueAmmo = self.MainMenu:Toggle({
         name = "EnableTrueAmmo",
-        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("EnableTrueAmmo"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.CopTracker:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.HUDOptions.HealthStyle = self.MainMenu:ComboBox({
         name = "HealthStyle",
         items = NepgearsyHUDReborn.HealthStyle,
-        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("HealthStyle"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.TrueAmmo:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.HUDOptions.StatusNumberType = self.MainMenu:ComboBox({
         name = "StatusNumberType",
         items = NepgearsyHUDReborn.StatusNumberType,
-        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("StatusNumberType"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.HealthStyle:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.HUDOptions.Scale = self.MainMenu:Slider({
         name = "Scale",
-        border_color = self.BorderColor,
-        border_left = true,
+		border_left = true,
+		offset_y = 20,
         value = NepgearsyHUDReborn.Options:GetValue("Scale"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/Scale",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.StatusNumberType:Panel():bottom() + 20) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
         help = "If in-game, restart the map to take effect",
-        localized = true,
         min = 0.1,
         max = 1.5,
         step = 0.01,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "SetHudScaleSpacing")
+        on_callback = ClassClbk(self, "SetHudScaleSpacing")
     })
 
     self.HUDOptions.Spacing = self.MainMenu:Slider({
         name = "Spacing",
-        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("Spacing"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/Spacing",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.Scale:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
         help = "If in-game, restart the map to take effect",
-        localized = true,
         min = 0.1,
         max = 1,
         step = 0.01,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "SetHudScaleSpacing")
+        on_callback = ClassClbk(self, "SetHudScaleSpacing")
     })
 
-    self.MenuLobbyOptionsCat = self.MainMenu:Button({
+    self.MenuLobbyOptionsCat = self.MainMenu:Divider({
         name = "MenuLobbyOptionsCat",
-        text = "NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat",
+		text = "NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat",
+		offset_y = 20,
         background_color = Color(0, 0, 0),
         highlight_color = Color.black,
-        position = function(item) 
-            item:Panel():set_top(self.HUDOptions.Spacing:Panel():bottom() + 15) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
         text_align = "center",
         text_vertical = "center",
         font_size = 20,
@@ -505,195 +355,92 @@ function NepHudMenu:InitMenu()
     self.MenuLobbyOptions = {}
     self.MenuLobbyOptions.StarringScreen = self.MainMenu:Toggle({
         name = "EnableStarring",
-        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("EnableStarring"),
         text = "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.MenuLobbyOptionsCat:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.MenuLobbyOptions.StarringColor = self.MainMenu:ComboBox({
         name = "StarringColor",
         items = NepgearsyHUDReborn.StarringColors,
-        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("StarringColor"),
         text = "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.MenuLobbyOptions.StarringScreen:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.MenuLobbyOptions.StarringText = self.MainMenu:TextBox({
         name = "StarringText",
-        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("StarringText"),
         text = "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.MenuLobbyOptions.StarringColor:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.MenuLobbyOptions.HorizontalLoadout = self.MainMenu:Toggle({
         name = "EnableHorizontalLoadout",
-        border_color = self.BorderColor,
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("EnableHorizontalLoadout"),
         text = "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.MenuLobbyOptions.StarringText:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
-    self.ColorsCat = self.MainMenu:Button({
+    self.ColorsCat = self.MainMenu:Divider({
         name = "ColorsCat",
         text = "NepgearsyHUDRebornMenu/Buttons/ColorsCat",
         background_color = Color(0, 0, 0),
         highlight_color = Color.black,
-        position = function(item) 
-            item:Panel():set_top(self.MenuLobbyOptions.HorizontalLoadout:Panel():bottom() + 15) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
         text_align = "center",
-        text_vertical = "center",
+		text_vertical = "center",
+		offset_y = 20,
         font_size = 20,
         font = Font
     })
     self.Colors = {}
     self.Colors.CPColor = self.MainMenu:ComboBox({
         name = "CPColor",
-        border_color = self.BorderColor,
         border_left = true,
         items = NepgearsyHUDReborn.CPColors,
         value = NepgearsyHUDReborn.Options:GetValue("CPColor"),
         text = "NepgearsyHUDRebornMenu/Buttons/Colors/CPColor",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.ColorsCat:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.Colors.CPBorderColor = self.MainMenu:ComboBox({
         name = "CPBorderColor",
-        border_color = self.BorderColor,
         border_left = true,
         items = NepgearsyHUDReborn.CPBorderColors,
         value = NepgearsyHUDReborn.Options:GetValue("CPBorderColor"),
         text = "NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.Colors.CPColor:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.Colors.HealthColor = self.MainMenu:ComboBox({
         name = "HealthColor",
-        border_color = self.BorderColor,
         border_left = true,
         items = NepgearsyHUDReborn.HealthColor,
         value = NepgearsyHUDReborn.Options:GetValue("HealthColor"),
         text = "NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.Colors.CPBorderColor:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.Colors.ShieldColor = self.MainMenu:ComboBox({
         name = "ShieldColor",
-        border_color = self.BorderColor,
         border_left = true,
         items = NepgearsyHUDReborn.ArmorColor,
         value = NepgearsyHUDReborn.Options:GetValue("ShieldColor"),
         text = "NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.Colors.HealthColor:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 
     self.Colors.ObjectiveColor = self.MainMenu:ComboBox({
         name = "ObjectiveColor",
-        border_color = self.BorderColor,
         border_left = true,
         items = NepgearsyHUDReborn.ObjectiveColor,
         value = NepgearsyHUDReborn.Options:GetValue("ObjectiveColor"),
         text = "NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor",
-        background_color = Color(0.3, 0, 0, 0),
-        highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_top(self.Colors.ShieldColor:Panel():bottom() + 5) 
-            item:Panel():set_left(self.HUDOptionsCat:Panel():left())
-        end,
-        localized = true,
-        text_align = "left",
-        text_vertical = "center",
-        font_size = 15,
-        callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk")
     })
 end
 
@@ -703,26 +450,22 @@ function NepHudMenu:InitCollab()
         background_color = Color(0.3, 0, 0, 0),
         h = 350,
         w = self._menu_panel:w() / 2.1, 
-        align_method = "normal",
-        scrollbar = true,
+		scrollbar = true,
+		offset = 8,
         position = function(item)
             item:Panel():set_top(self.TopBar:Panel():bottom() + 15)
             item:Panel():set_right(self.MainMenu:Panel():left() - 10)
         end
     })
 
-    self.CollabMenuHeader = self.CollabMenu:Button({
+    self.CollabMenuHeader = self.CollabMenu:Divider({
         name = "CollabMenuHeader",
         text = "NepgearsyHUDRebornMenu/Collaborators/Header",
         localized = true,
         font = Font,
-        font_size = 20,
+        size = 20,
         background_color = Color(0.75, 0, 0, 0),
         highlight_color = Color(0.75, 0, 0, 0),
-        position = function(item) 
-            item:Panel():set_top(item:Panel():parent():top() + 10) 
-            item:Panel():set_right(item:Panel():parent():right())
-        end,
         text_vertical = "center",
         text_align = "center"
     })
@@ -744,17 +487,7 @@ function NepHudMenu:InitCollab()
             border_left = true,
             background_color = Color(0.3, 0, 0, 0),
             highlight_color = HighlightColor,
-            position = function(item)
-                if i == 1 then
-                    item:Panel():set_top(self.CollabMenuHeader:Panel():bottom() + 5)
-                    item:Panel():set_left(self.CollabMenuHeader:Panel():left())
-                else
-                    local prev_i = i - 1
-                    item:Panel():set_top(self.Collaborator[prev_i]:Panel():bottom() + 5)
-                    item:Panel():set_left(self.CollabMenuHeader:Panel():left())
-                end
-            end,
-            callback = callback(self, self, "open_url", built_steam_url)
+            on_callback = callback(self, self, "open_url", built_steam_url)
         })
 
         self.CollabPanel[i] = self.Collaborator[i]:Panel()
@@ -798,9 +531,9 @@ function NepHudMenu:InitChangelog()
     self.ChangelogMenu = self._menu:Menu({
         name = "ChangelogMenu",
         background_color = Color(0.3, 0, 0, 0),
-        h = 240,
+		h = 240,
+		offset = 8,
         w = self._menu_panel:w() / 2.1, 
-        align_method = "normal",
         position = function(item)
             item:Panel():set_top(self.CollabMenu:Panel():bottom() + 10)
             item:Panel():set_right(self.MainMenu:Panel():left() - 10)
@@ -808,7 +541,7 @@ function NepHudMenu:InitChangelog()
         scrollbar = true
     })
 
-    self.ChangelogMenuHeader = self.ChangelogMenu:Button({
+    self.ChangelogMenuHeader = self.ChangelogMenu:Divider({
         name = "ChangelogMenuHeader",
         text = managers.localization:text("NepgearsyHUDRebornMenu/Changelog/Header", { version = NepgearsyHUDReborn.Version }),
         localized = false,
@@ -816,15 +549,11 @@ function NepHudMenu:InitChangelog()
         font_size = 20,
         background_color = Color(0.75, 0, 0, 0),
         highlight_color = Color(0.75, 0, 0, 0),
-        position = function(item) 
-            item:Panel():set_top(item:Panel():parent():top() + 10) 
-            item:Panel():set_right(item:Panel():parent():right())
-        end,
         text_vertical = "center",
         text_align = "center"
     })
 
-    self.Changelog = self.ChangelogMenu:Button({
+    self.Changelog = self.ChangelogMenu:Divider({
         text = NepgearsyHUDReborn.Changelog,
         font = "fonts/font_large_mf",
         font_size = 16,
@@ -832,11 +561,7 @@ function NepHudMenu:InitChangelog()
         highlight_color = Color.transparent,
         border_left = true,
         localized = false,
-        position = function(item) 
-            item:Panel():set_top(self.ChangelogMenuHeader:Panel():bottom() + 10) 
-            item:Panel():set_left(self.ChangelogMenuHeader:Panel():left())
-        end,
-        callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/commits/master")
+        on_callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/commits/master")
     })
 end
 
@@ -844,9 +569,9 @@ function NepHudMenu:InitBack()
     self.BackMenu = self._menu:Menu({
         name = "BackMenu",
         background_color = Color(0.3, 0, 0, 0),
-        h = 50,
+		h = 50,
+		scrollbar = false,
         w = self._menu_panel:w() / 2.1, 
-        align_method = "normal",
         position = function(item)
             item:Panel():set_top(self.ChangelogMenu:Panel():bottom() + 10)
             item:Panel():set_right(self.MainMenu:Panel():left() - 10)
@@ -860,29 +585,13 @@ function NepHudMenu:InitBack()
         text = "NepgearsyHUDRebornMenu/Buttons/Close",
         background_color = Color(0.3, 0, 0, 0),
         highlight_color = HighlightColor,
-        position = function(item) 
-            item:Panel():set_x(10) 
-            item:Panel():set_y(10)
-        end,
+        position = "Center",
         localized = true,
         text_align = "center",
         text_vertical = "center",
         font_size = 20,
-        callback = callback(self, self, "set_enabled", false)
+        on_callback = ClassClbk(self._menu, "SetEnabled", false)
     })
-end
-
-function NepHudMenu:set_enabled(enabled)
-    local opened = BeardLib.managers.dialog:DialogOpened(self)
-    if enabled then
-        if not opened then
-            BeardLib.managers.dialog:ShowDialog(self)
-            self._menu:Enable()
-        end
-    elseif opened then
-        BeardLib.managers.dialog:CloseDialog(self)
-        self._menu:Disable()
-    end
 end
 
 function NepHudMenu:open_url(url)
@@ -920,7 +629,7 @@ function NepHudMenu:SetOption(option_name, option_value)
     NepgearsyHUDReborn.Options:Save()
 end
 
-function NepHudMenu:MainClbk(menu, item)
+function NepHudMenu:MainClbk(item)
     if item then
         self:SetOption(item.name, item:Value())
 
@@ -931,20 +640,10 @@ function NepHudMenu:MainClbk(menu, item)
     end
 end
 
-function NepHudMenu:SetHudScaleSpacing(menu, item)
+function NepHudMenu:SetHudScaleSpacing(item)
 	NepgearsyHUDReborn.Options:SetValue(item:Name(), item:Value())
 	if managers.hud and managers.hud.recreate_player_info_hud_pd2 then
 		managers.gui_data:layout_scaled_fullscreen_workspace(managers.hud._saferect, NepgearsyHUDReborn.Options:GetValue("Scale"), NepgearsyHUDReborn.Options:GetValue("Spacing"))		
 		managers.hud:recreate_player_info_hud_pd2()
 	end
-end
-
-
-function NepHudMenu:should_close()
-    return self._menu:ShouldClose()
-end
-
-function NepHudMenu:hide()
-    self:set_enabled(false)
-    return true
 end
