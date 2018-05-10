@@ -1809,12 +1809,12 @@ end
 
 if RequiredScript == "lib/managers/hudmanager" then
 
-   --[[ local add_waypoint = HUDManager.add_waypoint
+    local add_waypoint = HUDManager.add_waypoint
     local remove_waypoint = HUDManager.remove_waypoint
 
     function HUDManager:add_waypoint(id, data, ...)
         add_waypoint(self, id, data, ...)
-        if string.sub(tostring(id), 1, 5) ~= "susp1" then
+        if string.sub(tostring(id), 1, 5) ~= "susp1" and managers.hud._hud_minimap then
             managers.hud._hud_minimap:add_entity(HUDMiniMapWaypointEntity, tostring(id), { unit = data.unit, position = data.position, icon = data.icon or "wp_standard", show_offscreen = true })
         end
     end
@@ -1822,6 +1822,6 @@ if RequiredScript == "lib/managers/hudmanager" then
     function HUDManager:remove_waypoint(id, ...)
         remove_waypoint(self, id, ...)
         managers.hud._hud_minimap:delete_entity(tostring(id))
-    end--]]
+    end
 
 end
