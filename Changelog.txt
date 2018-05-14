@@ -1,9 +1,2 @@
-- Fixed some crashes
-- Updated some localizations
-
-How are you by the way? I hope you're fine, I'm happy that you use my HUD, haha.
-I gotta tell you a secret, in my life I would never expect doing so much for PAYDAY 2, even just LUA wise.
-Started from nothing, learning all by myself for the most parts, and finally getting something big as this HUD.
-Super proud of it. And I really hope you like it as much as I had fun coding, polishing it.
-
-Take this virtual cookie. You deserve it.
+- Fixed the menu for Beardlib 3.0 by Luffy
+- Fixed waypoints on minimap by xanaguy
