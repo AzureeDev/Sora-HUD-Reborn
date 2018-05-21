@@ -1,7 +1,7 @@
 {
 	"NepgearsyHUDReborn" : "Nepgearsy HUD '重生'版",
 	"NepgearsyHUDReborn/Version" : "当前版本: $version",
-	"NepgearsyHUDRebornMenu" : "Nepgearsy HUD选项面板,
+	"NepgearsyHUDRebornMenu" : "Nepgearsy HUD选项面板",
 	"NepgearsyHUDReborn/PostIssue" : "反馈问题",
 	"NepgearsyHUDReborn/PostRequest" : "提交请求",
 
