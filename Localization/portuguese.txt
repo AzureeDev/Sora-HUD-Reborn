@@ -2,7 +2,7 @@
 	"NepgearsyHUDReborn" : "Nepgearsy HUD Reborn",
 	"NepgearsyHUDReborn/Version" : "Versao $version",
 	"NepgearsyHUDRebornMenu" : "Painel de Controle do Nepgearsy HUD",
-	"NepgearsyHUDReborn/PostIssue" : "Report an issue",	
+	"NepgearsyHUDReborn/PostIssue" : "Report an issue",
 	"NepgearsyHUDReborn/PostRequest" : "Post a request",
 
 	"NepgearsyHUDRebornMenu/ForcedLocalization" : "Language",
@@ -16,7 +16,7 @@
 	"NepgearsyHUDReborn/Localization/Romanian" : "Romanian",
 	"NepgearsyHUDReborn/Localization/German" : "German",
 	"NepgearsyHUDReborn/Localization/Thai" : "Thai",
-	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",	
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",
 
 	"NepgearsyHUDReborn/Color/White" : "White",
 	"NepgearsyHUDReborn/Color/Red" : "Red",
@@ -42,15 +42,16 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Opcoes do HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Fonte da barra de Assault",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Ativar o Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Forçar o Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Tamanho do Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Zoom do Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Ativar os rastreadores",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",	
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Enable the True Ammo feature",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",	
+	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Tamanho do HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaçamento do HUD",
 
@@ -59,7 +60,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "Cor do Starring",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Texto do Starring",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Ativar o loadout horizontal",
-	
+
 	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Opcoes Extras",
 	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Waifu Picker",
 
@@ -68,7 +69,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor" : "Control Panel Border Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Cor da barra de saúde",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Cor da barra de colete",
-	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",	
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Fechar",
 

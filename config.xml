@@ -3,7 +3,7 @@
         <class file="NepHudMenu.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="1.4.3" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="1.5.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
@@ -19,7 +19,7 @@
         <hook file="HUD/HUDAssaultCorner.lua" source_file="lib/managers/hud/hudassaultcorner"/>
         <hook file="HUD/HUDHeistTimer.lua" source_file="lib/managers/hud/hudheisttimer"/>
         <hook file="HUD/GroupAIStateBase.lua" source_file="lib/managers/group_ai_states/groupaistatebesiege"/>
-        <hook file="HUD/StatisticsManager.lua" source_file="lib/managers/statisticsmanager"/>        
+        <hook file="HUD/StatisticsManager.lua" source_file="lib/managers/statisticsmanager"/>
         <hook file="HUD/HUDChat.lua" source_file="lib/managers/hud/hudchat"/>
         <hook file="HUD/HUDTeammate.lua" source_file="lib/managers/hud/hudteammate"/>
         <hook file="HUD/HUDHint.lua" source_file="lib/managers/hud/hudhint"/>
@@ -38,6 +38,7 @@
             <option type="number" default_value="1" name="ForcedLocalization"/>
 
             <option type="number" default_value="1" name="AssaultBarFont"/>
+            <option type="number" default_value="1" name="PlayerNameFont"/>
             <option type="bool" default_value="true" name="EnableMinimap"/>
             <option type="bool" default_value="false" name="MinimapForce"/>
             <option type="number" min="150" max="200" default_value="150" name="MinimapSize"/>
@@ -45,13 +46,13 @@
             <option type="bool" default_value="true" name="EnableTrackers"/>
             <option type="bool" default_value="false" name="EnableCopTracker"/>
             <option type="bool" default_value="false" name="EnableTrueAmmo"/>
-            <option type="number" default_value="1" name="HealthStyle"/>      
-            <option type="number" default_value="1" name="StatusNumberType"/>      
+            <option type="number" default_value="1" name="HealthStyle"/>
+            <option type="number" default_value="1" name="StatusNumberType"/>
             <option type="number" min="0.1" max="1.5" default_value="0.8" name="Scale"/>
             <option type="number" min="0.1" max="1" default_value="0.95" name="Spacing"/>
 
             <option type="bool" default_value="true" name="EnableStarring"/>
-            <option type="number" default_value="1" name="StarringColor"/>            
+            <option type="number" default_value="1" name="StarringColor"/>
             <option type="text" default_value="" name="StarringText"/>
             <option type="bool" default_value="true" name="EnableHorizontalLoadout"/>
 
@@ -60,13 +61,13 @@
             <option type="number" default_value="2" name="HealthColor"/>
             <option type="number" default_value="1" name="ShieldColor"/>
             <option type="number" default_value="1" name="ObjectiveColor"/>
-            
+
         </options>
     </Options>
 
     <AddFiles directory="Assets">
         <png path="NepgearsyHUDReborn/ModIcon"/>
-    
+
         <texture path="NepgearsyHUDReborn/Menu/NepHudMenu"/>
         <texture path="NepgearsyHUDReborn/Menu/BGColor"/>
         <texture path="NepgearsyHUDReborn/Menu/EnableBackground"/>
@@ -111,7 +112,8 @@
         <texture path="NepgearsyHUDReborn/HUD/ObjectiveSquare"/>
         <texture path="NepgearsyHUDReborn/HUD/ObjectiveNotificationIcon"/>
         <texture path="NepgearsyHUDReborn/HUD/Cop"/>
-        
+        <texture path="NepgearsyHUDReborn/HUD/PlayerNameBG"/>
+
         <texture path="NepgearsyHUDReborn/Minimap/kenaz_loc_b_df"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_1"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_2"/>

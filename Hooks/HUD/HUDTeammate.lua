@@ -1,13 +1,31 @@
 NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, width)
     local MyPanel = i == HUDManager.PLAYER_PANEL
 	local name = self._panel:child("name")
-	
+
+    local player_font_choice = NepgearsyHUDReborn.Options:GetValue("PlayerNameFont")
+    local player_font = "fonts/font_eurostile_ext"
+
+    if player_font_choice == 2 then
+        player_font = "fonts/font_large_mf"
+    end
+
+    local name_bg = self._panel:bitmap({
+        name = "player_name_bg",
+        color = Color.white,
+        layer = -1,
+        texture = "NepgearsyHUDReborn/HUD/PlayerNameBG",
+        w = 309,
+        h = 20,
+        y = 8
+    })
+
 	name:configure({
 		vertical = "center",
 		layer = 1,
-		font = "fonts/font_eurostile_ext",
-		font_size = tweak_data.hud_players.name_size - 2
+		font = player_font,
+		font_size = tweak_data.hud_players.name_size
 	})
+
     managers.hud:make_fine_text(name)
 
 	local subpanel_bg = self._panel:bitmap({
@@ -62,11 +80,11 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
 		self._steam_id = self:GetSteamIDByPeer()
 		self:SetupAvatar()
 	end
-	
+
     self._panel:child("name_bg"):set_visible(false)
 	self._panel:child("callsign_bg"):set_visible(false)
 	self._panel:child("callsign"):set_visible(false)
-    
+
     self:ApplyNepgearsyHUD()
 end)
 
@@ -465,17 +483,19 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
         local grenades_panel = self._player_panel:child("grenades_panel")
     end
     local is_player = state == "player"
-	local name = teammate_panel:child("name")
+    local name = teammate_panel:child("name")
+	local player_name_bg = teammate_panel:child("player_name_bg")
 
 	teammate_panel:child("player"):set_alpha(is_player and 1 or 0)
-    
+
     if is_player then
         teammate_panel:set_h(120)
         teammate_panel:child("subpanel_bg"):set_h(90)
-        teammate_panel:child("subpanel_bg"):set_y(30)        
+        teammate_panel:child("subpanel_bg"):set_y(30)
         teammate_panel:set_bottom(self.teammates:h())
         name:set_left(self.Avatar:left())
-		name:set_top(teammate_panel:top() + 10)
+		name:set_top(teammate_panel:top() + 9)
+        player_name_bg:set_visible(true)
 		managers.hud:make_fine_text(name)
         self._player_panel:set_h(self._panel:h())
 		self._radial_health_panel:set_bottom(self._panel:h() - 11)
@@ -503,6 +523,7 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
         teammate_panel:child("subpanel_bg"):set_h(35)
         teammate_panel:child("subpanel_bg"):set_y(115)
         teammate_panel:set_bottom(self.teammates:h())
+        player_name_bg:set_visible(false)
         name:set_bottom(teammate_panel:h() - 6)
 		name:set_x(0)
         self.Avatar:set_visible(false)
@@ -517,13 +538,14 @@ NepHook:Post(HUDTeammate, "set_callsign", function(self, id)
 	local name = self._panel:child("name")
 	name:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
     self._panel:child("subpanel_bg"):set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
+    self._panel:child("player_name_bg"):set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
     self.BGAvatar:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
 end)
 
 NepHook:Post(HUDTeammate, "set_name", function(self, teammate_name)
     local teammate_panel = self._panel
     local name = teammate_panel:child("name")
-    
+
     name:set_text(teammate_name)
     local h = name:h()
 	managers.hud:make_fine_text(name)
@@ -553,6 +575,7 @@ NepHook:Post(HUDTeammate, "set_carry_info", function(self, carry_id, value)
     local name = teammate_panel:child("name")
 	local carry_panel = self._carry_panel
 
+
 	carry_panel:set_bottom(name:bottom())
 	carry_panel:set_left(name:right() + 5)
 end)
@@ -562,14 +585,22 @@ NepHook:Post(HUDTeammate, "layout_special_equipments", function(self)
 	local special_equipment = self._special_equipment
 	local container_width = teammate_panel:w()
     local row_width = math.floor(container_width / 32)
-    
+
     for i, panel in ipairs(special_equipment) do
         local zi = i - 1
-        local y_pos = -math.floor(zi / row_width) * panel:h()
-        
+        local y_pos = -math.floor(zi / row_width) * panel:h() - 23
+
         panel:set_x(container_width - (panel:w() + 0) * (zi % row_width + 1))
         panel:set_y(y_pos)
     end
+end)
+
+NepHook:Post(HUDTeammate, "add_special_equipment", function(self, data)
+    local teammate_panel = self._panel
+    local special_bitmap = teammate_panel:child(data.id):child("bitmap")
+    local id = self:peer_id() or managers.network:session():local_peer():id() or 1
+
+    special_bitmap:set_color(tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors])
 end)
 
 function HUDTeammate:teammate_progress(enabled, tweak_data_id, timer, success)
@@ -641,8 +672,12 @@ end
 
 function HUDTeammate:SetupAvatar()
     Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
-		self.Avatar:animate(function()
-			wait(0.25)
+
+        self.Avatar:set_image(texture or "guis/textures/pd2/none_icon")
+        self.Avatar:set_visible(true)
+        self.BGAvatar:set_visible(true)
+
+        DelayedCalls:Add( "NepHudAvatarRecheckFix", 0.5, function()
             Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
                 self.Avatar:set_image(texture or "guis/textures/pd2/none_icon")
                 self.Avatar:set_visible(true)
@@ -652,16 +687,82 @@ function HUDTeammate:SetupAvatar()
     end)
 end
 
+function HUDTeammate:_create_carry(carry_panel)
+	self._carry_panel = carry_panel
+	local tabs_texture = "guis/textures/pd2/hud_tabs"
+	local bg_color = Color.white / 3
+	local bag_rect = {
+		32,
+		33,
+		32,
+		31
+	}
+	local bg_rect = {
+		84,
+		0,
+		44,
+		32
+	}
+	local bag_w = 24
+	local bag_h = 23
+
+	carry_panel:set_x(24 - bag_w / 2)
+	carry_panel:set_center_x(self._radial_health_panel:center_x())
+	carry_panel:bitmap({
+		name = "bg",
+		visible = false,
+		w = 100,
+		layer = 0,
+		y = 0,
+		x = 0,
+		texture = tabs_texture,
+		texture_rect = bg_rect,
+		color = bg_color,
+		h = carry_panel:h()
+	})
+	carry_panel:bitmap({
+		name = "bag",
+		layer = 0,
+		y = 1,
+		visible = true,
+		x = 1,
+		texture = tabs_texture,
+		w = bag_w,
+		h = bag_h,
+		texture_rect = bag_rect,
+		color = Color.white
+	})
+	carry_panel:text({
+		y = 0,
+		vertical = "center",
+		name = "value",
+		text = "",
+		font = "fonts/font_small_mf",
+		visible = false,
+		layer = 0,
+		color = Color.white,
+		x = bag_rect[3] + 4,
+		font_size = tweak_data.hud.small_font_size
+	})
+end
+
 function HUDTeammate:ApplyNepgearsyHUD()
 	local name = self._panel:child("name")
 	local weapons_panel = self._player_panel:child("weapons_panel")
 	local radial_size = 60
 	local interact_panel = self._player_panel:child("interact_panel")
-	
+    local carry_panel = self._player_panel:child("carry_panel")
+    local carry_panel_bitmap = carry_panel:child("bg")
+
+    carry_panel:set_h(23)
+    carry_panel:set_w(24)
+    carry_panel_bitmap:set_h(23)
+    carry_panel_bitmap:set_w(24)
+
     self._player_panel:set_w(309)
 
     name:set_left(self.Avatar:left())
-	name:set_top(self._panel:top() + 10)
+	name:set_top(self._panel:top() + 9)
 
     self._radial_health_panel:set_x(self._radial_health_panel:x() + 70)
     self._weapons_panel:set_x(self._radial_health_panel:right() + 2)
@@ -673,14 +774,14 @@ function HUDTeammate:ApplyNepgearsyHUD()
     self._deployable_equipment_panel:set_y(self._weapons_panel:top())
     self._cable_ties_panel:set_y(self._deployable_equipment_panel:bottom() + 2)
 	self._grenades_panel:set_y(self._cable_ties_panel:bottom() + 2)
-    
+
     self._condition_icon:set_color(Color("ff2634"))
     self._condition_icon:set_shape(self._radial_health_panel:shape())
     self._panel:child("condition_timer"):set_color(Color.black)
     self._panel:child("condition_timer"):set_shape(self._radial_health_panel:shape())
     self._panel:child("condition_timer"):set_font(Idstring("fonts/font_large_mf"))
 	self._panel:child("condition_timer"):set_font_size(20)
-	
+
 	interact_panel:set_shape(weapons_panel:shape())
 	interact_panel:set_shape(self._radial_health_panel:shape())
 	interact_panel:set_size(radial_size * 1.25, radial_size * 1.25)

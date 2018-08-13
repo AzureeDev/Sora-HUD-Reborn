@@ -16,7 +16,7 @@
 	"NepgearsyHUDReborn/Localization/Romanian" : "Rumano",
 	"NepgearsyHUDReborn/Localization/German" : "Alemán",
 	"NepgearsyHUDReborn/Localization/Thai" : "Tailandés",
-	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Mandarín Simplificado",	
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Mandarín Simplificado",
 
 	"NepgearsyHUDReborn/Color/White" : "Blanco",
 	"NepgearsyHUDReborn/Color/Red" : "Rojo",
@@ -42,13 +42,14 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Opciones de HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Fuente de la barra de asaltos",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Activa el Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Fuerza el Minimapa",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Zoom del Minimapa",	
+	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Zoom del Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Habilita los rastreadores",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Habilita el rastreador de Enemigos restantes",	
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Habilita el rastreador de Enemigos restantes",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Habilita la Munición Real",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Estilo de la Salud",	
+	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Estilo de la Salud",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Tipo de número de Estado",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Escala del HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaciado del HUD",
@@ -58,7 +59,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "Color del Actúa como",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Texto del Actor",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Habilita la función para ver el Equipamiento horizontal",
-	
+
 	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Opciones Extra",
 	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Selector de Waifu",
 
@@ -67,7 +68,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor" : "Control Panel Border Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Color de la Salud",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Color del Escudo",
-	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Color del Ícono del Objetivo",	
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Color del Ícono del Objetivo",
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Cerrar",
 

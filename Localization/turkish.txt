@@ -16,7 +16,7 @@
 	"NepgearsyHUDReborn/Localization/Romanian" : "Romanian",
 	"NepgearsyHUDReborn/Localization/German" : "German",
 	"NepgearsyHUDReborn/Localization/Thai" : "Thai",
-	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",	
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",
 
 	"NepgearsyHUDReborn/Color/White" : "White",
 	"NepgearsyHUDReborn/Color/Red" : "Red",
@@ -42,14 +42,15 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Ayarlari",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Assault Bar Yazi Tipi",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Haritayi Aktive Et",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Haritayi Calismasina Zorla",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Harita Boyutu",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Harita Yakinligi",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Takip Elementlerini Aktive Et",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",	
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Enable the True Ammo feature",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",	
+	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "HUD Boyutu",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "HUD Boslugu",
@@ -59,7 +60,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "Oyuncular Renk Ayari",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Oyuncular Metni",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Yatay Hazirlik Ekranini Aktive Et",
-	
+
 	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Ekstra Ayarlar",
 	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Waifu Gostergesi",
 
@@ -68,7 +69,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor" : "Control Panel Border Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Can Paneli Renk Ayari",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Zirh Paneli Renk Ayari",
-	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",	
+	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Kapat",
 

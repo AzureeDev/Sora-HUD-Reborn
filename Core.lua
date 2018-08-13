@@ -101,7 +101,7 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "FR0Z3",
 			steam_id = "76561198058215284",
 			action = "Made the Simplified Chinese localization"
-		}	
+		}
 	}
 end
 
@@ -128,6 +128,11 @@ function NepgearsyHUDReborn:InitTweakData()
 	self.AssaultBarFonts = {
 		"NepgearsyHUDReborn/Fonts/Normal",
 		"NepgearsyHUDReborn/Fonts/Eurostile"
+	}
+
+	self.PlayerNameFonts = {
+		"NepgearsyHUDReborn/Fonts/Eurostile",
+		"NepgearsyHUDReborn/Fonts/Normal"
 	}
 
 	self.HealthColor = {
@@ -275,7 +280,7 @@ function NepgearsyHUDReborn:InitLocalization()
 		}
 	}
 
-	for i, localization in ipairs(self.Localization) do 
+	for i, localization in ipairs(self.Localization) do
 		table.insert(self.LocalizationTable, localization.localized_name)
 	end
 end
@@ -288,7 +293,7 @@ function NepgearsyHUDReborn:GetForcedLocalization()
 		self:Error("Can't load a localization file if there's no ID for it! Returning english.")
 		return Folder .. self.Localization[1].path
 	end
-	
+
 	for i, localization in ipairs(self.Localization) do
 		if i == Chosen then
 			return Folder .. localization.path

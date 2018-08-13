@@ -121,7 +121,7 @@ function NepHudMenu:InitTopBar()
         highlight_color = Color.transparent,
         foreground = Color(1, 0, 0),
         foreground_highlight = Color(1, 0, 0),
-        position = function(item) 
+        position = function(item)
             item:Panel():set_right(HUDVersion:Panel():left() - 15)
             item:Panel():set_world_center_y(self.TopBar:Panel():world_center_y())
         end,
@@ -141,7 +141,7 @@ function NepHudMenu:InitTopBar()
         highlight_color = Color.transparent,
         foreground = Color(1, 1, 1),
         foreground_highlight = self.BorderColor,
-        position = function(item) 
+        position = function(item)
             item:Panel():set_right(PostIssue:Panel():left() - 15)
         end,
         localized = false,
@@ -189,7 +189,7 @@ function NepHudMenu:InitMenu()
     self.MainMenu = self._menu:Menu({
         name = "MainMenu",
         h = self._menu_panel:h() - self.TopBar:Panel():h(),
-		w = self._menu_panel:w() / 4, 
+		w = self._menu_panel:w() / 4,
 		size = 15,
 		border_color = self.BorderColor,
 		offset = 8,
@@ -206,7 +206,7 @@ function NepHudMenu:InitMenu()
         name = "ForcedLocalization",
         border_left = true,
         items = NepgearsyHUDReborn.LocalizationTable,
-        value = NepgearsyHUDReborn.Options:GetValue("ForcedLocalization"),        
+        value = NepgearsyHUDReborn.Options:GetValue("ForcedLocalization"),
         text = "NepgearsyHUDRebornMenu/ForcedLocalization",
         on_callback = ClassClbk(self, "MainClbk")
     })
@@ -227,8 +227,17 @@ function NepHudMenu:InitMenu()
         name = "AssaultBarFont",
         border_left = true,
         items = NepgearsyHUDReborn.AssaultBarFonts,
-        value = NepgearsyHUDReborn.Options:GetValue("AssaultBarFont"),        
+        value = NepgearsyHUDReborn.Options:GetValue("AssaultBarFont"),
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+	self.HUDOptions.PlayerNameFont = self.MainMenu:ComboBox({
+        name = "PlayerNameFont",
+        border_left = true,
+        items = NepgearsyHUDReborn.PlayerNameFonts,
+        value = NepgearsyHUDReborn.Options:GetValue("PlayerNameFont"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont",
         on_callback = ClassClbk(self, "MainClbk")
     })
 
@@ -449,7 +458,7 @@ function NepHudMenu:InitCollab()
         name = "CollabMenu",
         background_color = Color(0.3, 0, 0, 0),
         h = 350,
-        w = self._menu_panel:w() / 2.1, 
+        w = self._menu_panel:w() / 2.1,
 		scrollbar = true,
 		offset = 8,
         position = function(item)
@@ -533,7 +542,7 @@ function NepHudMenu:InitChangelog()
         background_color = Color(0.3, 0, 0, 0),
 		h = 240,
 		offset = 8,
-        w = self._menu_panel:w() / 2.1, 
+        w = self._menu_panel:w() / 2.1,
         position = function(item)
             item:Panel():set_top(self.CollabMenu:Panel():bottom() + 10)
             item:Panel():set_right(self.MainMenu:Panel():left() - 10)
@@ -571,7 +580,7 @@ function NepHudMenu:InitBack()
         background_color = Color(0.3, 0, 0, 0),
 		h = 50,
 		scrollbar = false,
-        w = self._menu_panel:w() / 2.1, 
+        w = self._menu_panel:w() / 2.1,
         position = function(item)
             item:Panel():set_top(self.ChangelogMenu:Panel():bottom() + 10)
             item:Panel():set_right(self.MainMenu:Panel():left() - 10)
@@ -599,26 +608,17 @@ function NepHudMenu:open_url(url)
 end
 
 function NepHudMenu:background_enable_switch()
-    local active_menu = managers.menu:active_menu()
-
     if self.BackgroundStatus == true then
-        if active_menu then
-            active_menu.renderer:set_bg_area("none")
-        end
         self:SetBackgroundVis(false)
         self.CollabMenu:SetVisible(false)
         self.ChangelogMenu:SetVisible(false)
         self.BackgroundEnabler:SetImage("NepgearsyHUDReborn/Menu/EnableBackground")
         self.BackgroundStatus = false
     else
-        if active_menu then
-            active_menu.renderer:set_bg_area("full")
-        end
-
         self:SetBackgroundVis(true)
         self.CollabMenu:SetVisible(true)
         self.ChangelogMenu:SetVisible(true)
-        self.BackgroundEnabler:SetImage("NepgearsyHUDReborn/Menu/DisableBackground")         
+        self.BackgroundEnabler:SetImage("NepgearsyHUDReborn/Menu/DisableBackground")
         self.BackgroundStatus = true
     end
 end
@@ -643,7 +643,7 @@ end
 function NepHudMenu:SetHudScaleSpacing(item)
 	NepgearsyHUDReborn.Options:SetValue(item:Name(), item:Value())
 	if managers.hud and managers.hud.recreate_player_info_hud_pd2 then
-		managers.gui_data:layout_scaled_fullscreen_workspace(managers.hud._saferect, NepgearsyHUDReborn.Options:GetValue("Scale"), NepgearsyHUDReborn.Options:GetValue("Spacing"))		
+		managers.gui_data:layout_scaled_fullscreen_workspace(managers.hud._saferect, NepgearsyHUDReborn.Options:GetValue("Scale"), NepgearsyHUDReborn.Options:GetValue("Spacing"))
 		managers.hud:recreate_player_info_hud_pd2()
 	end
 end

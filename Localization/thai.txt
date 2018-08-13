@@ -4,9 +4,9 @@
     "NepgearsyHUDRebornMenu" : "หน้าควบคุมของ Nepgearsy HUD",
     "NepgearsyHUDReborn/PostIssue" : "Report an issue",
     "NepgearsyHUDReborn/PostRequest" : "Post a request",
- 
+
     "NepgearsyHUDRebornMenu/ForcedLocalization" : "ภาษา",
- 
+
     "NepgearsyHUDReborn/Localization/English" : "อังกฤษ",
     "NepgearsyHUDReborn/Localization/Turkish" : "ตุรกี",
     "NepgearsyHUDReborn/Localization/Portuguese" : "โปรตุเกส",
@@ -16,8 +16,8 @@
     "NepgearsyHUDReborn/Localization/Romanian" : "โรมาเนีย",
     "NepgearsyHUDReborn/Localization/German" : "เยอรมัน",
     "NepgearsyHUDReborn/Localization/Thai" : "ไทย",
-	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",    
- 
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",
+
     "NepgearsyHUDReborn/Color/White" : "ขาว",
     "NepgearsyHUDReborn/Color/Red" : "แดง",
     "NepgearsyHUDReborn/Color/Orange" : "ส้ม",
@@ -30,54 +30,55 @@
     "NepgearsyHUDReborn/Color/Pink" : "ชมพู",
     "NepgearsyHUDReborn/Color/Fushia" : "ชมพูฟิวเซีย",
     "NepgearsyHUDReborn/Color/Red_Fushia" : "แดงฟิวเซีย",
- 
+
     "NepgearsyHUDReborn/Fonts/Normal" : "ธรรมดา (font_large_mf)",
     "NepgearsyHUDReborn/Fonts/Eurostile" : "Eurostile",
- 
+
     "NepgearsyHUDReborn/HealthStyle/Thin" : "บาง",
     "NepgearsyHUDReborn/HealthStyle/Vanilla" : "ดั้งเดิม",
- 
+
     "NepgearsyHUDReborn/StatusNumberType/Health_Counter" : "แสดงค่าของพลังชีวิต",
     "NepgearsyHUDReborn/StatusNumberType/Shield_Counter" : "แสดงค่าของเกราะ",
- 
+
     "NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Options",
     "NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "ฟอนต์ของแถบสถานะการบุก",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "เปิดใช้งานแผนที่ขนาดเล็ก",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "บังคับเปิดใช้งานแผนที่ขนาดเล็ก",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "ขนาดของแผนที่ขนาดเล็ก",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "อัตราขยายแผนที่ขนาดเล็ก",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "เปิดใช้งานตัวติดตาม",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",    
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",
     "NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "เปิดใช้งานปริมาณกระสุนที่เหลืออยู่่จริง",
     "NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "รูปแบบพลังชีวิต",
     "NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "ชนิดของค่าสถานะ",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "ขนาดของ HUD",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "พื้นที่ของ HUD",
- 
+
     "NepgearsyHUDRebornMenu/Buttons/MenuLobbyOptionsCat" : "Menu & Lobby Options",
     "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringScreen" : "เปิดใช้งานหน้าจอนำแสดง",
     "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "สีการนำแสดง",
     "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "ข้อความการนำแสดง",
     "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "เปิดใช้งานชุดอุปกรณ์แบบแนวนอน",
-   
+
     "NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Extra Options",
     "NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "ตัวเลือกไวฟุ",
- 
+
     "NepgearsyHUDRebornMenu/Buttons/ColorsCat" : "Color Options",
     "NepgearsyHUDRebornMenu/Buttons/Colors/CPColor" : "สีพื้นหลังของหน้าควบคุม",
     "NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor" : "สีขอบของหน้าควบคุม",
     "NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "สีรัศมีของพลังชีวิต",
     "NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "สีรัศมีของเกราะ",
     "NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "สีของไอคอนเป้าหมายภารกิจ",
- 
+
     "NepgearsyHUDRebornMenu/Buttons/Close" : "ปิด",
- 
+
     "NepgearsyHUDRebornMenu/Collaborators/Header" : "Creator & Collaborators",
     "NepgearsyHUDRebornMenu/Changelog/Header" : "Changelog: $version",
- 
+
     "NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Stealth Mode",
     "NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Prepare for the next assault",
     "NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Point of no return",
- 
+
     "hud_instruct_mask_on" : ""
 }

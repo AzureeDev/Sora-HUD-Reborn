@@ -42,12 +42,13 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD 选项",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "突击横幅字体",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "启用小地图",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "强制启用小地图",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "小地图尺寸",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "小地图缩放比",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "启用所有'跟踪器'功能",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "仅启用剩余敌人数量追踪功能",	
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "仅启用剩余敌人数量追踪功能",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "启用真实剩余弹药功能",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "血条显示样式",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "状态板数字样式",
@@ -59,7 +60,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "'领衔主演'颜色",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "'领衔主演'文字",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "启用水平显示装备配置",
-	
+
 	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "额外选项",
 	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "图标选择",
 

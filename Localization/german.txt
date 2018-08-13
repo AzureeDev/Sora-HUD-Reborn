@@ -6,7 +6,7 @@
 	"NepgearsyHUDReborn/PostRequest" : "einen Vorschlag machen",
 
 	"NepgearsyHUDRebornMenu/ForcedLocalization" : "Sprache",
-	
+
 	"NepgearsyHUDReborn/Localization/English" : "Englisch",
 	"NepgearsyHUDReborn/Localization/Turkish" : "Turkisch",
 	"NepgearsyHUDReborn/Localization/Portuguese" : "Portugiesisch",
@@ -16,7 +16,7 @@
 	"NepgearsyHUDReborn/Localization/Romanian" : "Rumänisch",
 	"NepgearsyHUDReborn/Localization/German" : "Deutsch",
 	"NepgearsyHUDReborn/Localization/Thai" : "Thai",
-	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",	
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",
 
 	"NepgearsyHUDReborn/Color/White" : "Weiß",
 	"NepgearsyHUDReborn/Color/Red" : "Rot",
@@ -42,12 +42,13 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Optionen",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Angriffsleiste Schriftart",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Minimap einschalten",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Minimap erzwingen",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Minimap Größe",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapZoom" : "Minimap Zoom",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Trackers" : "Tracker einschalten",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",	
+	"NepgearsyHUDRebornMenu/Buttons/HUD/CopTracker" : "Enable the Cops Alive Tracker",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Wahre Munition Funktion einschalten ",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Lebensanzeige Style",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Nummer Typ",
@@ -59,7 +60,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "In der Hauptrolle Farbe",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "In der Hauptrolle Text",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Horizontale Ausrüstung einschalten",
-	
+
 	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Extra Optionen",
 	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Waifu Wähler",
 

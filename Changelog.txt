@@ -1,2 +1,5 @@
-- Fixed the menu for Beardlib 3.0 by Luffy
-- Fixed waypoints on minimap by xanaguy
+- Added an option to switch to font of the player name in the teammate panel. Choices are now Eurostile (default) or Font Large.
+- Added a background behind the player name, to make it more visible.
+- Special equipment will not overlap with player name anymore, and takes your peer color.
+- Potential fix for avatar showing an X. Note this is happening sometimes when the game fails to fetch the avatar from Steam.
+- Fixed the simplified Chinese localization

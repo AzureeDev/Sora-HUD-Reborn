@@ -42,6 +42,7 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Options",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Assault Bar Font",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Enable the Minimap",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Force the Minimap",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Minimap Size",
@@ -59,7 +60,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringColor" : "Starring Color",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/StarringText" : "Starring Text",
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout" : "Enable the Horizontal Loadout feature",
-	
+
 	"NepgearsyHUDRebornMenu/Buttons/ExtrasCat" : "Extra Options",
 	"NepgearsyHUDRebornMenu/Buttons/Extras/WaifuPicker" : "Waifu Picker",
 
