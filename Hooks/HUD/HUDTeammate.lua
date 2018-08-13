@@ -775,7 +775,7 @@ function HUDTeammate:ApplyNepgearsyHUD()
     self._cable_ties_panel:set_y(self._deployable_equipment_panel:bottom() + 2)
 	self._grenades_panel:set_y(self._cable_ties_panel:bottom() + 2)
 
-    self._condition_icon:set_color(Color("ff2634"))
+    self._condition_icon:set_color(Color("89141c"))
     self._condition_icon:set_shape(self._radial_health_panel:shape())
     self._panel:child("condition_timer"):set_color(Color.black)
     self._panel:child("condition_timer"):set_shape(self._radial_health_panel:shape())
