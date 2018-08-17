@@ -1,3 +1,7 @@
+1.5.1
+- Fixed for skirmish
+
+1.5.0
 - Added an option to switch to font of the player name in the teammate panel. Choices are now Eurostile (default) or Font Large.
 - Added a background behind the player name, to make it more visible.
 - Special equipment will not overlap with player name anymore, and takes your peer color.

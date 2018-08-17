@@ -245,7 +245,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     self._vip_bg_box:set_x(0)
     self._vip_bg_box:child("vip_icon"):set_center(self._vip_bg_box:w() / 2, self._vip_bg_box:h() / 2)
 
-    if self:is_safehouse_raid() then
+    if managers.skirmish:is_skirmish() or self:is_safehouse_raid() then
         local wave_panel = self._hud_panel:child("wave_panel"):set_visible(false)
         self._wave_bg_box:set_visible(false)
     end
@@ -253,7 +253,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     self.WaveTracker = trackerPanel:panel({
         w = 90,
         h = 24,
-        visible = self:is_safehouse_raid()
+        visible = managers.skirmish:is_skirmish() or self:is_safehouse_raid()
     })
     if NepgearsyHUDReborn.Options:GetValue("EnableCopTracker") then
         self.WaveTracker:set_right(copTracker:left() - 5)
@@ -317,6 +317,10 @@ NepHook:Post(HUDAssaultCorner, "set_assault_wave_number", function(self, assault
         self.waveTrackerAmount:set_text(self:get_completed_waves_string())
     end
 end)
+
+function HUDAssaultCorner:is_safehouse_raid()
+    return managers.job:current_level_id() == "chill_combat"
+end
 
 function HUDAssaultCorner:_update_cops_map(change)
     self.totalCopAlive = self.totalCopAlive + change
@@ -393,7 +397,7 @@ function HUDAssaultCorner:_end_assault()
     self:_set_text_list(self:_get_survived_assault_strings())
     box_text_panel:animate(callback(self, self, "_animate_text"), nil, nil, callback(self, self, "assault_attention_color_function"))
     
-    if self:is_safehouse_raid() then
+    if managers.skirmish:is_skirmish() or self:is_safehouse_raid() then
         self._wave_bg_box:stop()
         self._wave_bg_box:animate(callback(self, self, "_animate_wave_completed"), self)
     end
