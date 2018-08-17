@@ -42,7 +42,7 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Opciones de HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Fuente de la barra de asaltos",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Fuente de los nombres de jugadores",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Activa el Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Fuerza el Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Zoom del Minimapa",
