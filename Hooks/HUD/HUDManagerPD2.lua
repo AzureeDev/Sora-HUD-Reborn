@@ -73,7 +73,7 @@ function GuiDataManager:layout_scaled_fullscreen_workspace(ws, scale, on_screen_
 	local w = math.round(sc * math.max(base_res.x, aspect_width / h))
 
 	local safe_w = math.round(on_screen_scale * res.x)
-	local safe_h = math.round(on_screen_scale * res.y)   
+	local safe_h = math.round(on_screen_scale * res.y)
 	local sh = math.min(safe_h, safe_w / (w / h))
 	local sw = math.min(safe_w, safe_h * (w / h))
 	local x = res.x / 2 - sh * (w / h) / 2

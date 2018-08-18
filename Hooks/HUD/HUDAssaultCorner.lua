@@ -1,9 +1,10 @@
 NepHook:Post(HUDAssaultCorner, "init", function(self)
     self:DisableOriginalHUDElements()
-    
+
     self.totalKilledSession = 0
     self.totalCopAlive = 0
-    
+    self.civKills = 0
+
     local assault_panel_v2 = self._hud_panel:panel({
         name = "assault_panel_v2",
         w = 356,
@@ -13,7 +14,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
 
     self._assault_panel_v2 = assault_panel_v2
     assault_panel_v2:set_right(self._hud_panel:w())
-    
+
     self._assault_banner = assault_panel_v2:panel({
         w = 356,
         h = 40,
@@ -24,7 +25,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
 		name = "text_panel",
 		layer = 1
 	})
-    
+
     local assaultBanner = self._assault_banner:bitmap({
         name = "assaultBanner",
         texture = "NepgearsyHUDReborn/HUD/AssaultBar",
@@ -85,6 +86,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         h = 24,
         x = 295
     })
+    self._killTrackerPanel = killTracker
 
     local killTrackerRect = killTracker:rect({
             name = "background",
@@ -171,8 +173,8 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         x = 2,
         y = 2,
         color = Color.black
-    }) 
-    
+    })
+
     local hostage_rect = hostages_panel:rect({
         name = "hostage_rect",
         color = Color.white,
@@ -198,7 +200,8 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     local hostageKilledPanel = self._hud_panel:panel({
         name = "hostageKilledPanel",
         w = 60,
-        h = 24
+        h = 24,
+        visible = NepgearsyHUDReborn.Options:GetValue("EnableTrackers")
     })
     hostageKilledPanel:set_left(hostages_panel:right() + 5)
     hostageKilledPanel:set_top(hostages_panel:top())
@@ -221,7 +224,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         x = 2,
         y = 2,
         color = Color.black
-    }) 
+    })
 
     self.hostageKilledCounter = hostageKilledPanel:text({
 		layer = 1,
@@ -239,7 +242,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     self._hud_panel:child("buffs_panel"):set_size(40, 40)
     self._hud_panel:child("buffs_panel"):set_top(assault_panel_v2:top())
     self._hud_panel:child("buffs_panel"):set_right(assault_panel_v2:left() - 5)
-    
+
     self._vip_bg_box:set_w(40)
     self._vip_bg_box:set_h(40)
     self._vip_bg_box:set_x(0)
@@ -249,7 +252,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         local wave_panel = self._hud_panel:child("wave_panel"):set_visible(false)
         self._wave_bg_box:set_visible(false)
     end
-    
+
     self.WaveTracker = trackerPanel:panel({
         w = 90,
         h = 24,
@@ -258,7 +261,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     if NepgearsyHUDReborn.Options:GetValue("EnableCopTracker") then
         self.WaveTracker:set_right(copTracker:left() - 5)
     else
-        self.WaveTracker:set_right(killTracker:left() - 5)        
+        self.WaveTracker:set_right(killTracker:left() - 5)
     end
 
     self.WaveTracker:set_top(killTracker:top())
@@ -329,7 +332,7 @@ end
 
 function HUDAssaultCorner:_update_assault_hud_color(color)
     self._current_assault_color = color
-    
+
     local assaultBanner = self._assault_banner:child("assaultBanner")
     assaultBanner:set_color(color)
 end
@@ -370,7 +373,7 @@ function HUDAssaultCorner:_start_assault(text_list)
 		self._wave_bg_box:stop()
 		self._wave_bg_box:animate(callback(self, self, "_animate_wave_started"), self)
     end
-    
+
     if managers.job:current_level_id() == "zm_the_forest" then
         self:_update_assault_hud_color(Color.red)
     end
@@ -396,7 +399,7 @@ function HUDAssaultCorner:_end_assault()
     self:_update_assault_hud_color(self._assault_survived_color)
     self:_set_text_list(self:_get_survived_assault_strings())
     box_text_panel:animate(callback(self, self, "_animate_text"), nil, nil, callback(self, self, "assault_attention_color_function"))
-    
+
     if managers.skirmish:is_skirmish() or self:is_safehouse_raid() then
         self._wave_bg_box:stop()
         self._wave_bg_box:animate(callback(self, self, "_animate_wave_completed"), self)
@@ -404,19 +407,15 @@ function HUDAssaultCorner:_end_assault()
 end
 
 function HUDAssaultCorner:UpdateCivKilled()
-    local total_civ_kills = managers.statistics:session_total_civilian_kills()
+    self.civKills = self.civKills + 1
+
     local base_timer = 5
-    local civ_kill_penalty = 30 * total_civ_kills
+    local civ_kill_penalty = 30 * self.civKills
     local addition = base_timer + civ_kill_penalty
-    
+
     local time_text = self:_get_time_text(addition)
 
-    if (total_civ_kills == 0) then
-        self.hostageKilledBg:set_color(Color.white)
-    else
-        self.hostageKilledBg:set_color(Color.red)        
-    end
-
+    self.hostageKilledBg:set_color(Color.red)
     self.hostageKilledCounter:set_text(time_text)
     self.hostageKilledCounter:animate(ClassClbk(self, "_show_blink"))
 end
@@ -496,7 +495,7 @@ function HUDAssaultCorner:_animate_text(text_panel, bg_box, color, color_functio
 				end
 			end
         end
-        
+
         local font_type = "fonts/font_large_mf"
 
         if NepgearsyHUDReborn.Options:GetValue("AssaultBarFont") then
@@ -567,7 +566,7 @@ end
 
 function HUDAssaultCorner:show_point_of_no_return_timer()
     self._point_of_no_return = true
-    
+
 	local delay_time = self._assault and 1.2 or 0
     local box_text_panel = self._assault_panel_v2:child("text_panel")
     box_text_panel:stop()
@@ -598,7 +597,7 @@ function HUDAssaultCorner:flash_point_of_no_return_timer(beep)
 			o:set_font_size(math.lerp(tweak_data.hud_corner.noreturn_size, tweak_data.hud_corner.noreturn_size * 1.25, n))
 		end
     end
-    
+
 	self.NoReturnText:animate(flash_timer)
 end
 

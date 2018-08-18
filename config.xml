@@ -3,12 +3,12 @@
         <class file="NepHudMenu.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="1.5.1" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="1.6.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
         <hook file="MissionBriefingGUI.lua" source_file="lib/managers/menu/missionbriefinggui"/>
-        <hook file="CopDamage.lua" source_file="lib/units/enemies/cop/copdamage"/>
+        <hook file="CivilianDamage.lua" source_file="lib/units/civilians/civiliandamage"/>
         <hook file="EnemyManager.lua" source_file="lib/managers/enemymanager"/>
 
         <hook file="HUD/HUDMissionBriefing.lua" source_file="lib/managers/hud/hudmissionbriefing"/>
@@ -48,6 +48,7 @@
             <option type="bool" default_value="false" name="EnableTrueAmmo"/>
             <option type="number" default_value="1" name="HealthStyle"/>
             <option type="number" default_value="1" name="StatusNumberType"/>
+            <option type="bool" default_value="true" name="EnablePlayerLevel"/>
             <option type="number" min="0.1" max="1.5" default_value="0.8" name="Scale"/>
             <option type="number" min="0.1" max="1" default_value="0.95" name="Spacing"/>
 

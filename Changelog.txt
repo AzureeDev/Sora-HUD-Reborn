@@ -1,10 +1,8 @@
-1.5.1
-- Fixed for skirmish
+1.6.0
 
-1.5.0
-- Added an option to switch to font of the player name in the teammate panel. Choices are now Eurostile (default) or Font Large.
-- Added a background behind the player name, to make it more visible.
-- Special equipment will not overlap with player name anymore, and takes your peer color.
-- Made the condition icon (tased, downed, custody) more darker, to see better when the timer goes below 10 seconds.
-- Potential fix for avatar showing an X. Note this is happening sometimes when the game fails to fetch the avatar from Steam.
-- Fixed the simplified Chinese localization
+- Fixed the Presenter, made it back to the center again.
+- Added new options for the counter at your health. You can now show both (shield+health) and none.
+- Added a way to see the player's level and infamy.
+- Hostage killed timer is now part of the option "Enable Trackers".
+- Fixed the hostage killed timer when using Graze.
+- Some icons has been resaved into a different compression.

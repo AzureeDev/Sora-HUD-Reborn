@@ -39,6 +39,8 @@
 
 	"NepgearsyHUDReborn/StatusNumberType/Health_Counter" : "Health Counter",
 	"NepgearsyHUDReborn/StatusNumberType/Shield_Counter" : "Shield Counter",
+	"NepgearsyHUDReborn/StatusNumberType/HealthShieldCombined" : "Both Shield and Health",
+	"NepgearsyHUDReborn/StatusNumberType/None" : "None",
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Ayarlari",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Assault Bar Yazi Tipi",
@@ -52,6 +54,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Enable the True Ammo feature",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Enable Player Level",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "HUD Boyutu",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "HUD Boslugu",
 

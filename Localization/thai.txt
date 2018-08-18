@@ -39,6 +39,8 @@
 
     "NepgearsyHUDReborn/StatusNumberType/Health_Counter" : "แสดงค่าของพลังชีวิต",
     "NepgearsyHUDReborn/StatusNumberType/Shield_Counter" : "แสดงค่าของเกราะ",
+    "NepgearsyHUDReborn/StatusNumberType/HealthShieldCombined" : "Both Shield and Health",
+    "NepgearsyHUDReborn/StatusNumberType/None" : "None",
 
     "NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Options",
     "NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "ฟอนต์ของแถบสถานะการบุก",
@@ -52,6 +54,7 @@
     "NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "เปิดใช้งานปริมาณกระสุนที่เหลืออยู่่จริง",
     "NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "รูปแบบพลังชีวิต",
     "NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "ชนิดของค่าสถานะ",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Enable Player Level",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "ขนาดของ HUD",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "พื้นที่ของ HUD",
 

@@ -324,6 +324,14 @@ function NepHudMenu:InitMenu()
         on_callback = ClassClbk(self, "MainClbk")
     })
 
+	self.HUDOptions.EnablePlayerLevel = self.MainMenu:Toggle({
+        name = "EnablePlayerLevel",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("EnablePlayerLevel"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
     self.HUDOptions.Scale = self.MainMenu:Slider({
         name = "Scale",
 		border_left = true,

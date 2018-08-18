@@ -160,7 +160,9 @@ function NepgearsyHUDReborn:InitTweakData()
 
 	self.StatusNumberType = {
 		"NepgearsyHUDReborn/StatusNumberType/Health_Counter",
-		"NepgearsyHUDReborn/StatusNumberType/Shield_Counter"
+		"NepgearsyHUDReborn/StatusNumberType/Shield_Counter",
+		"NepgearsyHUDReborn/StatusNumberType/HealthShieldCombined",
+		"NepgearsyHUDReborn/StatusNumberType/None"
 	}
 end
 
@@ -220,6 +222,20 @@ function NepgearsyHUDReborn:StringToColor(module, id)
 	stc["cpcolor"] = deep_clone(stc["starring"])
 	stc["cpbordercolor"] = deep_clone(stc["starring"])
 	stc["objective_color"] = deep_clone(stc["starring"])
+
+	stc["numeral_status_color"] = {}
+	stc["numeral_status_color"][1] = Color("ffffff")
+	stc["numeral_status_color"][2] = Color("2dc43c")
+	stc["numeral_status_color"][3] = Color("d8022d")
+	stc["numeral_status_color"][4] = Color("ff6e00")
+	stc["numeral_status_color"][5] = Color("ffe100")
+	stc["numeral_status_color"][6] = Color("06ddda")
+	stc["numeral_status_color"][7] = Color("068edd")
+	stc["numeral_status_color"][8] = Color("2149ff")
+	stc["numeral_status_color"][9] = Color("b014ff")
+	stc["numeral_status_color"][10] = Color("fcc9ff")
+	stc["numeral_status_color"][11] = Color("f000ff")
+	stc["numeral_status_color"][12] = Color("ff0090")
 
 	return stc[module][id]
 end

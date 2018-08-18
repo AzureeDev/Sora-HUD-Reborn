@@ -1,5 +1,7 @@
 NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, width)
     local MyPanel = i == HUDManager.PLAYER_PANEL
+    self._my_panel = MyPanel
+    self._i = i
 	local name = self._panel:child("name")
 
     local player_font_choice = NepgearsyHUDReborn.Options:GetValue("PlayerNameFont")
@@ -25,8 +27,20 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
 		font = player_font,
 		font_size = tweak_data.hud_players.name_size
 	})
-
     managers.hud:make_fine_text(name)
+
+    local level = self._panel:text({
+		name = "level",
+		vertical = "center",
+		y = 0,
+		layer = 1,
+        align = "right",
+		text = "               ",
+		font_size = tweak_data.hud_players.name_size,
+		font = player_font,
+        visible = NepgearsyHUDReborn:GetOption("EnablePlayerLevel")
+	})
+    managers.hud:make_fine_text(level)
 
 	local subpanel_bg = self._panel:bitmap({
         name = "subpanel_bg",
@@ -40,15 +54,34 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
 
 	self._radial_health_panel:set_bottom(self._panel:h() - 11)
 
+    local health_numeral_color = NepgearsyHUDReborn:StringToColor("numeral_status_color", NepgearsyHUDReborn:GetOption("HealthColor"))
+    local armor_numeral_color = NepgearsyHUDReborn:StringToColor("numeral_status_color", NepgearsyHUDReborn:GetOption("ShieldColor"))
+    local is_both_numbers_visible = NepgearsyHUDReborn:GetOption("StatusNumberType") == 3
+    local is_numeral_visible = NepgearsyHUDReborn:GetOption("StatusNumberType") ~= 4
+
 	local HealthNumber = self._radial_health_panel:text({
 		name = "HealthNumber",
 		font = "fonts/font_large_mf",
 		font_size = 16,
 		text = "",
+        color = is_both_numbers_visible and health_numeral_color or Color.white,
 		align = "center",
-		vertical = "center"
+		vertical = "center",
+        y = is_both_numbers_visible and -5 or 0,
+        visible = is_numeral_visible
 	})
-    self.HealthNumber = HealthNumber
+
+    local ArmorNumber = self._radial_health_panel:text({
+        name = "ArmorNumber",
+		font = "fonts/font_large_mf",
+		font_size = 13,
+		text = "",
+        color = is_both_numbers_visible and armor_numeral_color or Color.white,
+		align = "center",
+        y = is_both_numbers_visible and 10 or 0,
+		vertical = "center",
+        visible = is_numeral_visible
+    })
 
 	self._weapons_panel = self._player_panel:child("weapons_panel")
 
@@ -484,7 +517,8 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
     end
     local is_player = state == "player"
     local name = teammate_panel:child("name")
-	local player_name_bg = teammate_panel:child("player_name_bg")
+    local player_name_bg = teammate_panel:child("player_name_bg")
+	local player_level = teammate_panel:child("level")
 
 	teammate_panel:child("player"):set_alpha(is_player and 1 or 0)
 
@@ -495,6 +529,8 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
         teammate_panel:set_bottom(self.teammates:h())
         name:set_left(self.Avatar:left())
 		name:set_top(teammate_panel:top() + 9)
+        --player_level:set_top(teammate_panel:top() + 9)
+        --player_level:set_right(self._panel:right())
         player_name_bg:set_visible(true)
 		managers.hud:make_fine_text(name)
         self._player_panel:set_h(self._panel:h())
@@ -526,6 +562,7 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
         player_name_bg:set_visible(false)
         name:set_bottom(teammate_panel:h() - 6)
 		name:set_x(0)
+        player_level:set_text("               ")
         self.Avatar:set_visible(false)
         self.BGAvatar:set_visible(false)
         self._condition_icon:set_bottom(name:bottom())
@@ -535,8 +572,10 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
 end)
 
 NepHook:Post(HUDTeammate, "set_callsign", function(self, id)
-	local name = self._panel:child("name")
-	name:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
+    local name = self._panel:child("name")
+	local level = self._panel:child("level")
+    name:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
+	level:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
     self._panel:child("subpanel_bg"):set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
     self._panel:child("player_name_bg"):set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
     self.BGAvatar:set_color((tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors]))
@@ -552,8 +591,50 @@ NepHook:Post(HUDTeammate, "set_name", function(self, teammate_name)
 	name:set_h(h)
 end)
 
+function HUDTeammate:set_level()
+    if not NepgearsyHUDReborn:GetOption("EnablePlayerLevel") then
+        return
+    end
+
+    local user_id = self:GetSteamIDByPeer()
+    local panel = self._panel:child("level")
+
+    panel:set_visible(true)
+
+    if not user_id or user_id == 0 or user_id == "" then
+        log("no uid for panel number " .. self._i)
+        return
+    end
+
+    if not self._my_panel then
+        local peer_data = managers.network:session():peer_by_user_id(user_id)
+        local infamy = ""
+
+        if peer_data:rank() > 0 then
+            infamy = managers.experience:rank_string(peer_data:rank()) .. "-"
+        end
+
+        local level = peer_data:level()
+
+        panel:set_text(infamy .. level)
+    else
+        local my_infamy = ""
+
+        if managers.experience:current_rank() > 0 then
+            my_infamy = managers.experience:rank_string(managers.experience:current_rank()) .. "-"
+        end
+
+        local local_data = {
+            level = managers.experience:current_level(),
+            rank = my_infamy
+        }
+
+        panel:set_text(local_data.rank .. local_data.level)
+    end
+end
+
 NepHook:Post(HUDTeammate, "set_health", function(self, data)
-	if NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 1 then
+	if NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 1 or NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 3 then
 		local health = math.floor(data.current * 10)
 		local HealthNumber = self._radial_health_panel:child("HealthNumber")
 
@@ -562,12 +643,18 @@ NepHook:Post(HUDTeammate, "set_health", function(self, data)
 end)
 
 NepHook:Post(HUDTeammate, "set_armor", function(self, data)
-	if NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 2 then
-		local armor = math.floor(data.current * 10)
-		local HealthNumber = self._radial_health_panel:child("HealthNumber")
+    local armor = math.floor(data.current * 10)
 
-		HealthNumber:set_text(armor)
-	end
+	if NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 2 then
+
+		local ArmorNumber = self._radial_health_panel:child("HealthNumber")
+		ArmorNumber:set_text(armor)
+
+    elseif NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 3 then
+
+        local ArmorNumber = self._radial_health_panel:child("ArmorNumber")
+		ArmorNumber:set_text(armor)
+    end
 end)
 
 NepHook:Post(HUDTeammate, "set_carry_info", function(self, carry_id, value)
@@ -675,16 +762,26 @@ function HUDTeammate:SetupAvatar()
 
         self.Avatar:set_image(texture or "guis/textures/pd2/none_icon")
         self.Avatar:set_visible(true)
-        self.BGAvatar:set_visible(true)
+        if texture then
+            self.BGAvatar:set_visible(true)
+        else
+            self.BGAvatar:set_visible(false)
+        end
 
         DelayedCalls:Add( "NepHudAvatarRecheckFix", 0.5, function()
             Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
                 self.Avatar:set_image(texture or "guis/textures/pd2/none_icon")
                 self.Avatar:set_visible(true)
-                self.BGAvatar:set_visible(true)
+                if texture then
+                    self.BGAvatar:set_visible(true)
+                else
+                    self.BGAvatar:set_visible(false)
+                end
             end)
         end)
     end)
+
+    self:set_level()
 end
 
 function HUDTeammate:_create_carry(carry_panel)
@@ -747,7 +844,8 @@ function HUDTeammate:_create_carry(carry_panel)
 end
 
 function HUDTeammate:ApplyNepgearsyHUD()
-	local name = self._panel:child("name")
+    local name = self._panel:child("name")
+	local level = self._panel:child("level")
 	local weapons_panel = self._player_panel:child("weapons_panel")
 	local radial_size = 60
 	local interact_panel = self._player_panel:child("interact_panel")
@@ -762,7 +860,9 @@ function HUDTeammate:ApplyNepgearsyHUD()
     self._player_panel:set_w(309)
 
     name:set_left(self.Avatar:left())
-	name:set_top(self._panel:top() + 9)
+    name:set_top(self._panel:top() + 9)
+    level:set_top(self._panel:top() + 9)
+	level:set_right(self._panel:right())
 
     self._radial_health_panel:set_x(self._radial_health_panel:x() + 70)
     self._weapons_panel:set_x(self._radial_health_panel:right() + 2)

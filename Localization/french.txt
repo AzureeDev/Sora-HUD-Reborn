@@ -39,6 +39,8 @@
 
 	"NepgearsyHUDReborn/StatusNumberType/Health_Counter" : "Compteur de Vie",
 	"NepgearsyHUDReborn/StatusNumberType/Shield_Counter" : "Compteur d'armure",
+	"NepgearsyHUDReborn/StatusNumberType/HealthShieldCombined" : "Both Shield and Health",
+	"NepgearsyHUDReborn/StatusNumberType/None" : "None",
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Options de L'HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Police d'ecriture de la barre d'assaut",
@@ -52,6 +54,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Montrer le vrai nombre de balles",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Style de la vie",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Le nombre dans le statut désigne le",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Enable Player Level",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Taille de l'HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espacement de l'HUD",
 

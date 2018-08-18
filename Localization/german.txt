@@ -39,6 +39,8 @@
 
 	"NepgearsyHUDReborn/StatusNumberType/Health_Counter" : "Lebensanzeige",
 	"NepgearsyHUDReborn/StatusNumberType/Shield_Counter" : "Rüstungsanzeige",
+	"NepgearsyHUDReborn/StatusNumberType/HealthShieldCombined" : "Both Shield and Health",
+	"NepgearsyHUDReborn/StatusNumberType/None" : "None",
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Optionen",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Angriffsleiste Schriftart",
@@ -52,6 +54,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Wahre Munition Funktion einschalten ",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Lebensanzeige Style",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Nummer Typ",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Enable Player Level",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "HUD Größe",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "HUD Abstand",
 
