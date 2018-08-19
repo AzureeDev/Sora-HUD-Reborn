@@ -40,7 +40,7 @@
 	"NepgearsyHUDReborn/StatusNumberType/Health_Counter" : "当前剩余HP值",
 	"NepgearsyHUDReborn/StatusNumberType/Shield_Counter" : "当前剩余护甲值",
 	"NepgearsyHUDReborn/StatusNumberType/HealthShieldCombined" : "剩余护甲和HP值",
-	"NepgearsyHUDReborn/StatusNumberType/None" : "None",
+	"NepgearsyHUDReborn/StatusNumberType/None" : "不显示",
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD 选项",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "突击横幅字体",
