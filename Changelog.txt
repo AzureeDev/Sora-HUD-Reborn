@@ -1,3 +1,7 @@
+1.6.1
+- Fixed the civ killed timer, it will trigger only if you kill the civilian yourself.
+- Updated spanish; chinese loc.
+
 1.6.0
 
 - Fixed the Presenter, made it back to the center again.
