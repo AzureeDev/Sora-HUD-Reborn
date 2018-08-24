@@ -39,12 +39,12 @@
 
 	"NepgearsyHUDReborn/StatusNumberType/Health_Counter" : "Contador de Salud",
 	"NepgearsyHUDReborn/StatusNumberType/Shield_Counter" : "Contador de Escudo",
-	"NepgearsyHUDReborn/StatusNumberType/HealthShieldCombined" : "Both Shield and Health",
-	"NepgearsyHUDReborn/StatusNumberType/None" : "None",
+	"NepgearsyHUDReborn/StatusNumberType/HealthShieldCombined" : "Ambos",
+	"NepgearsyHUDReborn/StatusNumberType/None" : "Ninguno",
 
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Opciones de HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Fuente de la barra de asaltos",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Fuente de los nombres",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Activa el Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Fuerza el Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Zoom del Minimapa",
@@ -53,7 +53,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Habilita la Munición Real",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Estilo de la Salud",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Tipo de número de Estado",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Enable Player Level",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Hablilita ver el nivel del jugador(es)",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Escala del HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaciado del HUD",
 
