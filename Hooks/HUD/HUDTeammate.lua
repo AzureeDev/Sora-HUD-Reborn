@@ -45,14 +45,28 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
 	local subpanel_bg = self._panel:bitmap({
         name = "subpanel_bg",
         color = Color.green,
-        layer = -1,
-        texture = "NepgearsyHUDReborn/HUD/Teammate",
+        layer = -2,
+        texture = NepgearsyHUDReborn:GetTeammateSkinById(1),
         w = 309,
         h = 90,
         y = 30
 	})
 
+	if self._my_panel then
+		subpanel_bg:set_image(NepgearsyHUDReborn:GetTeammateSkinBySave())
+	else
+		self:_update_player_bg()
+	end
+
 	self._radial_health_panel:set_bottom(self._panel:h() - 11)
+
+	local health_bg = self._radial_health_panel:rect({
+        name = "health_bg",
+        color = Color(0.35, 0, 0, 0),
+        layer = -1,
+        h = self._radial_health_panel:h(),
+		w = self._radial_health_panel:w()
+    })
 
     local health_numeral_color = NepgearsyHUDReborn:StringToColor("numeral_status_color", NepgearsyHUDReborn:GetOption("HealthColor"))
     local armor_numeral_color = NepgearsyHUDReborn:StringToColor("numeral_status_color", NepgearsyHUDReborn:GetOption("ShieldColor"))
@@ -67,7 +81,8 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
         color = is_both_numbers_visible and health_numeral_color or Color.white,
 		align = "center",
 		vertical = "center",
-        y = is_both_numbers_visible and -5 or 0,
+		y = is_both_numbers_visible and -5 or 0,
+		layer = 1,
         visible = is_numeral_visible
 	})
 
@@ -80,6 +95,7 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
 		align = "center",
         y = is_both_numbers_visible and 10 or 0,
 		vertical = "center",
+		layer = 1,
         visible = is_numeral_visible
     })
 
@@ -96,14 +112,16 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
         layer = 0,
         h = 64,
 		w = 64,
-		x = 2
+		x = 2,
+		visible = NepgearsyHUDReborn:HasSteamAvatarsEnabled()
     })
 
     self.Avatar = self._panel:bitmap({
         texture = "guis/textures/pd2/none_icon",
         h = 60,
         w = 60,
-		layer = 1
+		layer = 1,
+		visible = NepgearsyHUDReborn:HasSteamAvatarsEnabled()
     })
     self.BGAvatar:set_bottom(self._radial_health_panel:bottom() - 2)
     self.Avatar:set_bottom(self.BGAvatar:bottom() - 2)
@@ -377,7 +395,7 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		layer = 0,
 		visible = true,
 		x = 0,
-		texture = "NepgearsyHUDReborn/HUD/Teammate",
+		texture = "NepgearsyHUDReborn/HUD/PlayerNameBG",
 		color = Color(0.25, 0.25, 0.25),
 		w = weapon_panel_w,
 		h = 32
@@ -448,7 +466,7 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		layer = 0,
 		visible = true,
 		x = 0,
-		texture = "NepgearsyHUDReborn/HUD/Teammate",
+		texture = "NepgearsyHUDReborn/HUD/PlayerNameBG",
 		color = Color(0.25, 0.25, 0.25),
 		w = weapon_panel_w,
 		h = 32
@@ -538,17 +556,27 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
 		self._condition_icon:set_shape(self._radial_health_panel:shape())
 		self._panel:child("condition_timer"):set_shape(self._radial_health_panel:shape())
 		interact_panel:set_shape(self._radial_health_panel:shape())
-        weapons_panel:set_bottom(self._radial_health_panel:bottom())
-        weapons_panel:set_x(self._radial_health_panel:right() + 4)
-        deployable_equipment_panel:set_top(weapons_panel:top())
-        deployable_equipment_panel:set_left(weapons_panel:right() + 2)
-        cable_ties_panel:set_top(deployable_equipment_panel:bottom() + 1)
-        cable_ties_panel:set_left(weapons_panel:right() + 2)
-        if PlayerBase.USE_GRENADES then
-            local grenades_panel = self._player_panel:child("grenades_panel")
-            grenades_panel:set_top(cable_ties_panel:bottom() + 1)
-            grenades_panel:set_left(weapons_panel:right() + 2)
-        end
+		if NepgearsyHUDReborn:HasSteamAvatarsEnabled() then
+			weapons_panel:set_bottom(self._radial_health_panel:bottom())
+			weapons_panel:set_x(self._radial_health_panel:right() + 4)
+			deployable_equipment_panel:set_top(weapons_panel:top())
+			deployable_equipment_panel:set_left(weapons_panel:right() + 2)
+			cable_ties_panel:set_top(deployable_equipment_panel:bottom() + 1)
+			cable_ties_panel:set_left(weapons_panel:right() + 2)
+			if PlayerBase.USE_GRENADES then
+				local grenades_panel = self._player_panel:child("grenades_panel")
+				grenades_panel:set_top(cable_ties_panel:bottom() + 1)
+				grenades_panel:set_left(weapons_panel:right() + 2)
+			end
+		else
+			weapons_panel:set_bottom(self._radial_health_panel:bottom())
+			deployable_equipment_panel:set_top(weapons_panel:top())
+			cable_ties_panel:set_top(deployable_equipment_panel:bottom() + 1)
+			if PlayerBase.USE_GRENADES then
+				local grenades_panel = self._player_panel:child("grenades_panel")
+				grenades_panel:set_top(cable_ties_panel:bottom() + 1)
+			end
+		end     
         self.BGAvatar:set_bottom(self._radial_health_panel:bottom() - 2)
         self.Avatar:set_bottom(self.BGAvatar:bottom() - 2)
         self.Avatar:set_left(self.BGAvatar:left() + 2)
@@ -567,7 +595,8 @@ NepHook:Post(HUDTeammate, "set_state", function(self, state)
         self.BGAvatar:set_visible(false)
         self._condition_icon:set_bottom(name:bottom())
         self._condition_icon:set_left(name:right() + 30)
-        self._panel:child("condition_timer"):set_shape(self._condition_icon:shape())
+		self._panel:child("condition_timer"):set_shape(self._condition_icon:shape())
+		self._panel:child("subpanel_bg"):set_image("NepgearsyHUDReborn/HUD/Teammate")
     end
 end)
 
@@ -729,6 +758,9 @@ function HUDTeammate:set_ammo_amount_by_type(type, max_clip, current_clip, curre
 	ammo_total:set_color(Color.white)
 	ammo_clip:set_color(Color.white)
 
+	ammo_clip:set_font_size(string.len(current_clip) < 4 and 30 or 22)
+	ammo_total:set_font_size(string.len(current_left) < 4 and 20 or 16)
+
 	if low_ammo then
 		ammo_total:set_color(low_ammo_color)
 	end
@@ -758,6 +790,12 @@ function HUDTeammate:GetSteamIDByPeer()
 end
 
 function HUDTeammate:SetupAvatar()
+	if not NepgearsyHUDReborn:HasSteamAvatarsEnabled() then
+		self:set_level()
+
+		return
+	end
+
     Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
 
         self.Avatar:set_image(texture or "guis/textures/pd2/none_icon")
@@ -843,6 +881,12 @@ function HUDTeammate:_create_carry(carry_panel)
 	})
 end
 
+function HUDTeammate:_update_player_bg(texture)
+	if texture then
+		self._panel:child("subpanel_bg"):set_image(texture)
+	end
+end
+
 function HUDTeammate:ApplyNepgearsyHUD()
     local name = self._panel:child("name")
 	local level = self._panel:child("level")
@@ -896,4 +940,10 @@ function HUDTeammate:ApplyNepgearsyHUD()
 		radius = radius,
 		color = Color.white
 	})
+
+	if not NepgearsyHUDReborn:HasSteamAvatarsEnabled() then
+		self._radial_health_panel:set_x(self.Avatar:x())
+		self._radial_health_panel:set_y(self.Avatar:y() - 4)
+		self._weapons_panel:set_x(self._radial_health_panel:right() + 35)
+	end
 end

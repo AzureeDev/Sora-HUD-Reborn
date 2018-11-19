@@ -23,7 +23,7 @@ end
 function NepgearsyHUDReborn:InitCollabs()
 	self.Creators = {
 		[1] = {
-			name = "Nepgearsy",
+			name = "Sora",
 			steam_id = "76561198045788203",
 			action = "Made the code. If you have issues, contact me."
 		},
@@ -164,6 +164,215 @@ function NepgearsyHUDReborn:InitTweakData()
 		"NepgearsyHUDReborn/StatusNumberType/HealthShieldCombined",
 		"NepgearsyHUDReborn/StatusNumberType/None"
 	}
+
+	self.TeammateSkins = {
+		{
+			author = "Sora",
+			collection = "default",
+			name = "Default",
+			texture = "NepgearsyHUDReborn/HUD/Teammate"
+		},
+		{
+			author = "Sora",
+			collection = "default",
+			name = "Default Thin",
+			texture = "NepgearsyHUDReborn/HUD/TeammateThin"
+		},
+		{
+			author = "you",
+			collection = "default",
+			name = "Custom",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/custom/your_texture"
+		},
+		{
+			author = "Sora",
+			collection = "hdn",
+			name = "Neptune",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/hdn/neptune_1"
+		},
+		{
+			author = "Sora",
+			collection = "hdn",
+			name = "Nepgear",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/hdn/nepgear_1"
+		},
+		{
+			author = "Sora",
+			collection = "hdn",
+			name = "Nepgear & Uni",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/hdn/nepgear_uni_1"
+		},
+		{
+			author = "Sora",
+			collection = "hdn",
+			name = "The Maid Team",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/hdn/maid_1"
+		},
+		{
+			author = "Sora",
+			collection = "hdn",
+			name = "Rom & Ram",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/hdn/rom_ram_1"
+		},
+		{
+			author = "Sora",
+			collection = "hdn",
+			name = "Histoire",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/hdn/histoire_1"
+		},
+		{
+			author = "Sora",
+			collection = "suguri",
+			name = "Suguri & Others",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/suguri/suguri_1"
+		},
+		{
+			author = "Sora (xd)",
+			collection = "suguri",
+			name = "Sora",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/suguri/sora_1"
+		},
+		{
+			author = "Sora",
+			collection = "other",
+			name = "Eclipse",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/other/eclipse_1"
+		},
+		{
+			author = "Sora",
+			collection = "other",
+			name = "OwO",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/other/owo_1"
+		},
+		{
+			author = "Sora",
+			collection = "hdn",
+			name = "Orange Heart",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/hdn/orange_heart_1"
+		},
+		{
+			author = "Sora",
+			collection = "hdn",
+			name = "5pb",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/hdn/5pb_1"
+		},
+		{
+			author = "Sora",
+			collection = "plush",
+			name = "Plushie",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_1"
+		},
+		{
+			author = "Sora",
+			collection = "plush",
+			name = "Plushie",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_2"
+		},
+		{
+			author = "Sora",
+			collection = "plush",
+			name = "Plushie",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_3"
+		},
+		{
+			author = "Sora",
+			collection = "plush",
+			name = "Plushie",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_4"
+		},
+		{
+			author = "Sora",
+			collection = "plush",
+			name = "Plushie",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_5"
+		},
+		{
+			author = "Sora",
+			collection = "plush",
+			name = "Plushie",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_6"
+		},
+		{
+			author = "Sora",
+			collection = "plush",
+			name = "Plushie",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_7"
+		},
+		{
+			author = "Sora",
+			collection = "plush",
+			name = "Plushie",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_8"
+		},
+		{
+			author = "Sora",
+			collection = "plush",
+			name = "Plushie",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_9"
+		},
+		{
+			author = "Sora",
+			collection = "plush",
+			name = "Plushie",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_10"
+		},
+		{
+			author = "Sora",
+			collection = "plush",
+			name = "Plushie",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_11"
+		},
+		{
+			author = "Sora",
+			collection = "hdn",
+			name = "Nepgear & Neptune",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/hdn/nepgear_neptune_1"
+		},
+		{
+			author = "Sora",
+			collection = "hdn",
+			name = "Blanc",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/hdn/blanc_1"
+		},
+		{
+			author = "Sora",
+			collection = "other",
+			name = "Hatsune Miku",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/other/miku_1"
+		},
+		{
+			author = "Sora",
+			collection = "other",
+			name = "Kurumi (School Live)",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/other/shovi_1"
+		}
+	}
+end
+
+function NepgearsyHUDReborn:GetTeammateSkinBySave()
+	local skin_id = self:GetOption("TeammateSkin")
+	
+	if self.TeammateSkins[skin_id] then
+		return self.TeammateSkins[skin_id].texture
+	end
+
+	return self.TeammateSkins[1].texture
+end
+
+function NepgearsyHUDReborn:GetTeammateSkinID()
+	return self:GetOption("TeammateSkin")
+end
+
+function NepgearsyHUDReborn:GetTeammateSkinById(id)
+	if self.TeammateSkins[tonumber(id)] then
+		return self.TeammateSkins[tonumber(id)].texture
+	end
+
+	return self.TeammateSkins[1].texture
+end
+
+function NepgearsyHUDReborn:HasSteamAvatarsEnabled()
+	return self:GetOption("EnableSteamAvatars")
 end
 
 function NepgearsyHUDReborn:TeammateRadialIDToPath(id, type)

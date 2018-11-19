@@ -22,6 +22,8 @@ NepHook:Post(HUDMissionBriefing, "init", function(self)
 end)
 
 NepHook:Post(HUDMissionBriefing, "set_player_slot", function(self, nr, params)
+    LuaNetworking:SendToPeers("nephud_teammate_bg", tostring(NepgearsyHUDReborn:GetTeammateSkinID()))
+    
     if not NepgearsyHUDReborn.Options:GetValue("EnableStarring") then
         return
     end
@@ -34,6 +36,8 @@ NepHook:Post(HUDMissionBriefing, "set_player_slot", function(self, nr, params)
     local blackscreen_panel = blackscreen._blackscreen_panel
     local starring_panel = blackscreen_panel:child("starring_panel")
     local player_slot = starring_panel:child("player_" .. nr)
+
+    if not player_slot then return end
 
     self:_update_avatar_slot(peer_id)
 	self:_update_name(current_name, peer_id)
@@ -92,9 +96,12 @@ function HUDMissionBriefing:_update_name(name, peer_id)
 end
 
 Hooks:Add("NetworkReceivedData", "NepgearsyHUDReborn_StarringSync", function(sender, id, data)
+    if id == "nephud_teammate_bg" then
+        managers.player._player_teammate_bgs[sender] = data
+    end
+    
     local StarringColorSyncID = "StarringColor"
     local StarringTextSyncID = "StarringText"
-
     local blackscreen = managers.hud._hud_blackscreen
     
     if blackscreen then

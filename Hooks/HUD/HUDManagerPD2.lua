@@ -39,6 +39,26 @@ function HUDManager:_create_teammates_panel(hud)
 	end
 end
 
+NepHook:Post(HUDManager, "add_teammate_panel", function(self, character_name, player_name, ai, peer_id)
+	local panel_id = nil
+
+	for i, panel in ipairs(managers.hud._teammate_panels) do
+		if panel._peer_id == peer_id then
+			panel_id = i
+			break
+		end
+	end
+
+	local bg_texture_id = managers.player._player_teammate_bgs[peer_id]
+	local bg_texture_path = NepgearsyHUDReborn:GetTeammateSkinById(bg_texture_id)
+	
+	if bg_texture_id then
+		if self._teammate_panels[panel_id] then
+			self._teammate_panels[panel_id]:_update_player_bg(bg_texture_path)
+		end
+	end
+end)
+
 --[[ Credits to Luffy for his code below ]]
 
 NepHook:Pre(HUDManager, "_setup_player_info_hud_pd2", function(self)

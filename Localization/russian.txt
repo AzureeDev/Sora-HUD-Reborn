@@ -83,5 +83,21 @@
     "NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Приготовьтесь к штурму",
     "NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Точка невозврата",
 
-    "hud_instruct_mask_on" : ""
+    "hud_instruct_mask_on" : "",
+
+    "NepgearsyHUDRebornMenu/Buttons/MainMenuOptionsCat" : "Main Menu",
+	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsButton" : "HUD Options",
+	"NepgearsyHUDRebornMenu/Buttons/MenuOptionsButton" : "Menu / Lobby Options",
+	"NepgearsyHUDRebornMenu/Buttons/ColorOptionsButton" : "Color Options",
+	"NepgearsyHUDRebornMenu/Buttons/TeammatePanelSkinButton" : "Teammate Panel Skins",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableSteamAvatars" : "Enable Steam Avatars",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkinsHeader" : "Teammate Skins Collections",
+	"NepgearsyHUDRebornMenu/Help/TeammateSkinsExplaination" : "Teammate Skins are a replacement of the previously known 'Waifu Picker' of the original Nepgearsy HUD.\n\nYou're now able to setup a background to your teammate panel in the HUD. Click on one of the available backgrounds on the left. They are all synched to other users of the HUD, except for Default and Custom.\n\nIf you want, you can send me your own creations using the template you can find in /Assets/NepgearsyHUDReborn/TeammateSkins/custom/. I will most likely add them in the official mod so they would sync with other users.",
+	"NepgearsyHUDRebornMenu/Help/SkinEquipped" : "Current background :",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/DefaultHeader" : "Default",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/HDNHeader" : "Hyperdimension Neptunia",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/SuguriHeader" : "Orange Juice",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PlushHeader" : "Plushies",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/OtherHeader" : "Others",
+	"NepgearsyHUDRebornMenu/Buttons/Back" : "Back"
 }

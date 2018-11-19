@@ -1,12 +1,8 @@
-1.6.1
-- Fixed the civ killed timer, it will trigger only if you kill the civilian yourself.
-- Updated spanish; chinese loc.
+1.7.0
 
-1.6.0
-
-- Fixed the Presenter, made it back to the center again.
-- Added new options for the counter at your health. You can now show both (shield+health) and none.
-- Added a way to see the player's level and infamy.
-- Hostage killed timer is now part of the option "Enable Trackers".
-- Fixed the hostage killed timer when using Graze.
-- Some icons has been resaved into a different compression.
+- The menu is now updated and divided in multiple sub menus
+- Teammate skins update! Click the button on the right to read more about them.
+- You can now hide the steam avatar in the HUD options. Requested by you!
+- Fixed a crash related to "player_slot"
+- Fixed so ammo with 4 numbers are correctly shown
+- Visually improved the teammate and weapon ammo backgrounds.
