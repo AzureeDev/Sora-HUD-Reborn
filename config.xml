@@ -3,7 +3,7 @@
         <class file="NepHudMenu.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="1.7.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="1.8.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
@@ -11,6 +11,8 @@
         <hook file="CivilianDamage.lua" source_file="lib/units/civilians/civiliandamage"/>
         <hook file="EnemyManager.lua" source_file="lib/managers/enemymanager"/>
         <hook file="PlayerManager.lua" source_file="lib/managers/playermanager"/>
+        <hook file="ConnectionNetworkHandler.lua" source_file="lib/network/base/handlers/connectionnetworkhandler"/>
+        <hook file="ElementTerminateAssault.lua" source_file="lib/managers/mission/elementterminateassault"/>
 
         <hook file="HUD/HUDMissionBriefing.lua" source_file="lib/managers/hud/hudmissionbriefing"/>
         <hook file="HUD/HUDPlayerCustody.lua" source_file="lib/managers/hud/hudplayercustody"/>
@@ -19,12 +21,13 @@
         <hook file="HUD/HUDManagerPD2.lua" source_file="lib/managers/hudmanagerpd2"/>
         <hook file="HUD/HUDAssaultCorner.lua" source_file="lib/managers/hud/hudassaultcorner"/>
         <hook file="HUD/HUDHeistTimer.lua" source_file="lib/managers/hud/hudheisttimer"/>
-        <hook file="HUD/GroupAIStateBase.lua" source_file="lib/managers/group_ai_states/groupaistatebesiege"/>
+        <hook file="HUD/GroupAIStateBeSiege.lua" source_file="lib/managers/group_ai_states/groupaistatebesiege"/>
         <hook file="HUD/StatisticsManager.lua" source_file="lib/managers/statisticsmanager"/>
         <hook file="HUD/HUDChat.lua" source_file="lib/managers/hud/hudchat"/>
         <hook file="HUD/HUDTeammate.lua" source_file="lib/managers/hud/hudteammate"/>
         <hook file="HUD/HUDHint.lua" source_file="lib/managers/hud/hudhint"/>
         <hook file="HUD/HUDPresenter.lua" source_file="lib/managers/hud/hudpresenter"/>
+        <hook file="HUD/HUDInteraction.lua" source_file="lib/managers/hud/hudinteraction"/>
 
         <hook file="HUD/HUDMinimap.lua" source_file="lib/managers/hudmanagerpd2"/>
         <hook file="HUD/HUDMinimap.lua" source_file="lib/managers/criminalsmanager"/>
@@ -58,12 +61,14 @@
             <option type="number" default_value="1" name="StarringColor"/>
             <option type="text" default_value="" name="StarringText"/>
             <option type="bool" default_value="true" name="EnableHorizontalLoadout"/>
+            <option type="bool" default_value="true" name="EnableInteraction"/>
 
             <option type="number" default_value="1" name="CPColor"/>
             <option type="number" default_value="5" name="CPBorderColor"/>
             <option type="number" default_value="2" name="HealthColor"/>
             <option type="number" default_value="1" name="ShieldColor"/>
             <option type="number" default_value="1" name="ObjectiveColor"/>
+            <option type="number" default_value="1" name="InteractionColor"/>
 
             <option type="number" default_value="1" name="TeammateSkin"/>
         </options>
@@ -118,6 +123,10 @@
         <texture path="NepgearsyHUDReborn/HUD/ObjectiveNotificationIcon"/>
         <texture path="NepgearsyHUDReborn/HUD/Cop"/>
         <texture path="NepgearsyHUDReborn/HUD/PlayerNameBG"/>
+        <texture path="NepgearsyHUDReborn/HUD/InteractionBarContour"/>
+        <texture path="NepgearsyHUDReborn/HUD/InteractionBarEmpty"/>
+        <texture path="NepgearsyHUDReborn/HUD/InteractionBarProgress"/>
+        <texture path="NepgearsyHUDReborn/HUD/SpecialEquipmentBG"/>
 
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/orange_heart_1"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/nepgear_1"/>

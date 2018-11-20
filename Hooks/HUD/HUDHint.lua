@@ -38,7 +38,5 @@ function HUDHint:_animate_show(o, done_cb, seconds)
 	play_value(o, "alpha", 1)
     wait(seconds)
     play_value(o, "alpha", 0)
-    
-	hint_panel:set_visible(false)
 	done_cb()
 end

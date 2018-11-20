@@ -54,6 +54,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/TrueAmmo" : "Montrer le vrai nombre de balles",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Style de la vie",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Le nombre dans le statut désigne le",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableInteraction" : "Enable the new Interaction Bar",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Enable Player Level",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Taille de l'HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espacement de l'HUD",
@@ -73,6 +74,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Couleur de la vie",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Couleur de l'armure",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Couleur de l'icône d'objectif",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/InteractionColor" : "Interaction Bar Color",
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Fermer",
 
@@ -82,6 +84,13 @@
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Mode Discret",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Préparez-vous pour le prochain assaut",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Point de non-retour",
+
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno1" : "Where are we ...?",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno2" : "What is this place ...?",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno3" : "...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno4" : "You shouldn't have done that...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno5" : "Leave while you can...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno6" : "You're just going to die here...",
 
 	"hud_instruct_mask_on" : "",
 

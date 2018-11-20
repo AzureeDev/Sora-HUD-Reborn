@@ -55,6 +55,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Enable Player Level",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableInteraction" : "Enable the new Interaction Bar",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Tamanho do HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaçamento do HUD",
 
@@ -73,6 +74,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Cor da barra de saúde",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Cor da barra de colete",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Objective Icon Color",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/InteractionColor" : "Interaction Bar Color",
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Fechar",
 
@@ -82,6 +84,13 @@
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Modo Stealth",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Preparar para o próximo assault",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Beco sem saída",
+
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno1" : "Where are we ...?",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno2" : "What is this place ...?",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno3" : "...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno4" : "You shouldn't have done that...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno5" : "Leave while you can...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno6" : "You're just going to die here...",
 
 	"hud_instruct_mask_on" : "",
 

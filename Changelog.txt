@@ -1,3 +1,9 @@
+1.8.0
+- Added a new Interaction bar! You can customize the colors in the menu. You can also toggle it off if you don't like it.
+- Added a special effect when you will do the PAYDAY 2 secret.
+- Fixed so drop-ins will sync their Teammate skin and get them from other players.
+- Fixed so the assault bar, hostage panel, and trackers will not show up if you're in the safehouse.
+
 1.7.0
 
 - The menu is now updated and divided in multiple sub menus

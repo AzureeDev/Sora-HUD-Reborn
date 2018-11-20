@@ -402,6 +402,14 @@ function NepHudMenu:InitHUDOptions()
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/EnableSteamAvatars",
         on_callback = ClassClbk(self, "MainClbk")
     })
+
+    self.HUDOptions.EnableInteraction = self.MainMenu:Toggle({
+        name = "EnableInteraction",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("EnableInteraction"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/EnableInteraction",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
     
     self.HUDOptions.Scale = self.MainMenu:Slider({
         name = "Scale",
@@ -540,6 +548,15 @@ function NepHudMenu:InitColorOptions()
         items = NepgearsyHUDReborn.ObjectiveColor,
         value = NepgearsyHUDReborn.Options:GetValue("ObjectiveColor"),
         text = "NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.InteractionColor = self.MainMenu:ComboBox({
+        name = "InteractionColor",
+        border_left = true,
+        items = NepgearsyHUDReborn.InteractionColor,
+        value = NepgearsyHUDReborn.Options:GetValue("InteractionColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/InteractionColor",
         on_callback = ClassClbk(self, "MainClbk")
     })
 

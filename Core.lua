@@ -152,6 +152,7 @@ function NepgearsyHUDReborn:InitTweakData()
 
 	self.ArmorColor = deep_clone(self.HealthColor)
 	self.ObjectiveColor = deep_clone(self.StarringColors)
+	self.InteractionColor = deep_clone(self.StarringColors)
 
 	self.HealthStyle = {
 		"NepgearsyHUDReborn/HealthStyle/Thin",
@@ -375,6 +376,16 @@ function NepgearsyHUDReborn:HasSteamAvatarsEnabled()
 	return self:GetOption("EnableSteamAvatars")
 end
 
+function NepgearsyHUDReborn:GetInteractionColorBySave()
+	local saved_id = self:GetOption("InteractionColor")
+
+	return self:StringToColor("interaction_color", saved_id)
+end
+
+function NepgearsyHUDReborn:HasInteractionEnabled()
+	return self:GetOption("EnableInteraction")
+end
+
 function NepgearsyHUDReborn:TeammateRadialIDToPath(id, type)
 	local tritp = {}
 
@@ -431,6 +442,7 @@ function NepgearsyHUDReborn:StringToColor(module, id)
 	stc["cpcolor"] = deep_clone(stc["starring"])
 	stc["cpbordercolor"] = deep_clone(stc["starring"])
 	stc["objective_color"] = deep_clone(stc["starring"])
+	stc["interaction_color"] = deep_clone(stc["starring"])
 
 	stc["numeral_status_color"] = {}
 	stc["numeral_status_color"][1] = Color("ffffff")

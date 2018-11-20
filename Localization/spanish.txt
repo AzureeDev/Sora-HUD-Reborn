@@ -54,6 +54,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Estilo de la Salud",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Tipo de número de Estado",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Hablilita ver el nivel del jugador(es)",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableInteraction" : "Enable the new Interaction Bar",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Escala del HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Espaciado del HUD",
 
@@ -72,6 +73,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Color de la Salud",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Color del Escudo",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Color del Ícono del Objetivo",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/InteractionColor" : "Interaction Bar Color",
 
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Cerrar",
 
@@ -81,6 +83,13 @@
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Modo Sigilo",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Prepárate para el siguente Asalto",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Punto sin retorno",
+
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno1" : "Where are we ...?",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno2" : "What is this place ...?",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno3" : "...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno4" : "You shouldn't have done that...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno5" : "Leave while you can...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno6" : "You're just going to die here...",
 
 	"hud_instruct_mask_on" : "",
 

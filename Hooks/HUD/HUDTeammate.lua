@@ -1,5 +1,6 @@
 NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, width)
-    local MyPanel = i == HUDManager.PLAYER_PANEL
+	local MyPanel = i == HUDManager.PLAYER_PANEL
+
     self._my_panel = MyPanel
     self._i = i
 	local name = self._panel:child("name")
@@ -46,17 +47,11 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
         name = "subpanel_bg",
         color = Color.green,
         layer = -2,
-        texture = NepgearsyHUDReborn:GetTeammateSkinById(1),
+        texture = not MyPanel and NepgearsyHUDReborn:GetTeammateSkinById(managers.player._player_teammate_bgs[self:peer_id()]) or NepgearsyHUDReborn:GetTeammateSkinBySave(),
         w = 309,
         h = 90,
         y = 30
 	})
-
-	if self._my_panel then
-		subpanel_bg:set_image(NepgearsyHUDReborn:GetTeammateSkinBySave())
-	else
-		self:_update_player_bg()
-	end
 
 	self._radial_health_panel:set_bottom(self._panel:h() - 11)
 
@@ -433,7 +428,7 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		y = -2,
 		font = "fonts/font_large_mf"
 	})
-
+	
 	local weapon_selection_panel = primary_weapon_panel:panel({
 		name = "weapon_selection",
 		layer = 1,
@@ -450,6 +445,8 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		w = w_selection_w,
 		visible = false
 	})
+
+	--self:_create_primary_weapon_firemode()
 
 	local secondary_weapon_panel = weapons_panel:panel({
 		name = "secondary_weapon_panel",
@@ -521,6 +518,66 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		w = w_selection_w
 	})
 	secondary_weapon_panel:set_bottom(weapons_panel:h())
+
+	--self:_create_secondary_weapon_firemode()
+end
+
+function HUDTeammate:_create_primary_weapon_firemode()
+	log("called.")
+	local primary_weapon_panel = self._player_panel:child("weapons_panel"):child("primary_weapon_panel")
+	local weapon_selection_panel = primary_weapon_panel:child("weapon_selection")
+	local old_single = weapon_selection_panel:child("firemode_single")
+	local old_auto = weapon_selection_panel:child("firemode_auto")
+
+	if alive(old_single) then
+		weapon_selection_panel:remove(old_single)
+	end
+
+	if alive(old_auto) then
+		weapon_selection_panel:remove(old_auto)
+	end
+
+	if self._main_player then
+		local equipped_primary = managers.blackmarket:equipped_primary()
+		local weapon_tweak_data = tweak_data.weapon[equipped_primary.weapon_id]
+		local fire_mode = weapon_tweak_data.FIRE_MODE
+		local can_toggle_firemode = weapon_tweak_data.CAN_TOGGLE_FIREMODE
+		local locked_to_auto = managers.weapon_factory:has_perk("fire_mode_auto", equipped_primary.factory_id, equipped_primary.blueprint)
+		local locked_to_single = managers.weapon_factory:has_perk("fire_mode_single", equipped_primary.factory_id, equipped_primary.blueprint)
+		local single_id = "firemode_single" .. ((not can_toggle_firemode or locked_to_single) and "_locked" or "")
+		local texture, texture_rect = tweak_data.hud_icons:get_icon_data(single_id)
+		local firemode_single = weapon_selection_panel:bitmap({
+			name = "firemode_single",
+			blend_mode = "mul",
+			layer = 1,
+			x = 2,
+			texture = texture,
+			texture_rect = texture_rect
+		})
+
+		firemode_single:set_bottom(weapon_selection_panel:h() - 2)
+		firemode_single:hide()
+
+		local auto_id = "firemode_auto" .. ((not can_toggle_firemode or locked_to_auto) and "_locked" or "")
+		local texture, texture_rect = tweak_data.hud_icons:get_icon_data(auto_id)
+		local firemode_auto = weapon_selection_panel:bitmap({
+			name = "firemode_auto",
+			blend_mode = "mul",
+			layer = 1,
+			x = 2,
+			texture = texture,
+			texture_rect = texture_rect
+		})
+
+		firemode_auto:set_bottom(weapon_selection_panel:h() - 2)
+		firemode_auto:hide()
+
+		if locked_to_single or not locked_to_auto and fire_mode == "single" then
+			firemode_single:show()
+		else
+			firemode_auto:show()
+		end
+	end
 end
 
 NepHook:Post(HUDTeammate, "set_state", function(self, state)
@@ -691,7 +748,6 @@ NepHook:Post(HUDTeammate, "set_carry_info", function(self, carry_id, value)
     local name = teammate_panel:child("name")
 	local carry_panel = self._carry_panel
 
-
 	carry_panel:set_bottom(name:bottom())
 	carry_panel:set_left(name:right() + 5)
 end)
@@ -707,16 +763,17 @@ NepHook:Post(HUDTeammate, "layout_special_equipments", function(self)
         local y_pos = -math.floor(zi / row_width) * panel:h() - 23
 
         panel:set_x(container_width - (panel:w() + 0) * (zi % row_width + 1))
-        panel:set_y(y_pos)
+		panel:set_y(y_pos)
     end
 end)
 
 NepHook:Post(HUDTeammate, "add_special_equipment", function(self, data)
-    local teammate_panel = self._panel
-    local special_bitmap = teammate_panel:child(data.id):child("bitmap")
-    local id = self:peer_id() or managers.network:session():local_peer():id() or 1
+	local teammate_panel = self._panel
+	local panel = teammate_panel:child(data.id)
+    local special_bitmap = panel:child("bitmap")
+	local id = self:peer_id() or managers.network:session():local_peer():id() or 1
 
-    special_bitmap:set_color(tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors])
+	special_bitmap:set_color(tweak_data.chat_colors[id] or tweak_data.chat_colors[#tweak_data.chat_colors])
 end)
 
 function HUDTeammate:teammate_progress(enabled, tweak_data_id, timer, success)
@@ -882,6 +939,10 @@ function HUDTeammate:_create_carry(carry_panel)
 end
 
 function HUDTeammate:_update_player_bg(texture)
+	if self._my_panel then
+		return
+	end
+
 	if texture then
 		self._panel:child("subpanel_bg"):set_image(texture)
 	end

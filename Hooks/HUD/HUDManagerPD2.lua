@@ -42,7 +42,7 @@ end
 NepHook:Post(HUDManager, "add_teammate_panel", function(self, character_name, player_name, ai, peer_id)
 	local panel_id = nil
 
-	for i, panel in ipairs(managers.hud._teammate_panels) do
+	for i, panel in ipairs(self._teammate_panels) do
 		if panel._peer_id == peer_id then
 			panel_id = i
 			break
@@ -51,13 +51,36 @@ NepHook:Post(HUDManager, "add_teammate_panel", function(self, character_name, pl
 
 	local bg_texture_id = managers.player._player_teammate_bgs[peer_id]
 	local bg_texture_path = NepgearsyHUDReborn:GetTeammateSkinById(bg_texture_id)
-	
+
 	if bg_texture_id then
 		if self._teammate_panels[panel_id] then
 			self._teammate_panels[panel_id]:_update_player_bg(bg_texture_path)
 		end
 	end
 end)
+
+function HUDManager:hide_panels_real_slow(...)
+	local function fade_out(o)
+		for t, p, dt in seconds(180) do
+			o:set_alpha(1 - p)
+		end
+
+		o:set_visible(false)
+	end
+
+	local hud = managers.hud:script(PlayerBase.PLAYER_INFO_HUD_PD2)
+	local panels = {
+		...
+	}
+
+	for _, panel_name in ipairs(panels) do
+		local panel = hud.panel:child(panel_name)
+
+		if panel then
+			panel:animate(fade_out)
+		end
+	end
+end
 
 --[[ Credits to Luffy for his code below ]]
 

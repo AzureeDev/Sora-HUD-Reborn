@@ -55,6 +55,7 @@
     "NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "รูปแบบพลังชีวิต",
     "NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "ชนิดของค่าสถานะ",
     "NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Enable Player Level",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableInteraction" : "Enable the new Interaction Bar",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "ขนาดของ HUD",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "พื้นที่ของ HUD",
 
@@ -73,6 +74,7 @@
     "NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "สีรัศมีของพลังชีวิต",
     "NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "สีรัศมีของเกราะ",
     "NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "สีของไอคอนเป้าหมายภารกิจ",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/InteractionColor" : "Interaction Bar Color",
 
     "NepgearsyHUDRebornMenu/Buttons/Close" : "ปิด",
 
@@ -82,6 +84,13 @@
     "NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Stealth Mode",
     "NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Prepare for the next assault",
     "NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Point of no return",
+
+    "NepgearsyHUDReborn/HUD/AssaultCorner/Uno1" : "Where are we ...?",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno2" : "What is this place ...?",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno3" : "...",
+    "NepgearsyHUDReborn/HUD/AssaultCorner/Uno4" : "You shouldn't have done that...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno5" : "Leave while you can...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno6" : "You're just going to die here...",
 
     "hud_instruct_mask_on" : "",
 

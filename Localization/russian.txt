@@ -55,6 +55,7 @@
     "NepgearsyHUDRebornMenu/Buttons/HUD/HealthStyle" : "Health Style",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Enable Player Level",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableInteraction" : "Enable the new Interaction Bar",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Размер HUD'а",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Интервал элементов HUD'а",
 
@@ -73,6 +74,7 @@
     "NepgearsyHUDRebornMenu/Buttons/Colors/HealthColor" : "Цвет шкалы здоровья",
     "NepgearsyHUDRebornMenu/Buttons/Colors/ShieldColor" : "Цвет шкалы брони",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor" : "Цвет иконки задачи",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/InteractionColor" : "Interaction Bar Color",
 
     "NepgearsyHUDRebornMenu/Buttons/Close" : "Закрыть",
 
@@ -82,6 +84,13 @@
     "NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Режим стелса",
     "NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Приготовьтесь к штурму",
     "NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Точка невозврата",
+
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno1" : "Where are we ...?",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno2" : "What is this place ...?",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno3" : "...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno4" : "You shouldn't have done that...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno5" : "Leave while you can...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno6" : "You're just going to die here...",
 
     "hud_instruct_mask_on" : "",
 

@@ -9,7 +9,8 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         name = "assault_panel_v2",
         w = 356,
         h = 40,
-        y = 13
+        y = 13,
+        visible = not self:is_safehouse()
     })
 
     self._assault_panel_v2 = assault_panel_v2
@@ -75,7 +76,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         name = "trackerPanel",
         w = 356,
         h = 40,
-        visible = NepgearsyHUDReborn.Options:GetValue("EnableTrackers")
+        visible = NepgearsyHUDReborn.Options:GetValue("EnableTrackers") and not self:is_safehouse()
     })
 
     trackerPanel:set_right(assault_panel_v2:right())
@@ -159,7 +160,8 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     local hostages_panel = self._hud_panel:panel({
 		name = "hostages_panel",
 		w = 60,
-		h = 24
+        h = 24,
+        visible = not self:is_safehouse()
     })
     hostages_panel:set_left(managers.hud._hud_heist_timer._heist_timer_panel:right() + 5)
     hostages_panel:set_top(managers.hud._hud_heist_timer._heist_timer_panel:top())
@@ -325,6 +327,10 @@ function HUDAssaultCorner:is_safehouse_raid()
     return managers.job:current_level_id() == "chill_combat"
 end
 
+function HUDAssaultCorner:is_safehouse()
+    return managers.job:current_level_id() == "chill"
+end
+
 function HUDAssaultCorner:_update_cops_map(change)
     self.totalCopAlive = self.totalCopAlive + change
     self.copTrackerAmount:set_text(self.totalCopAlive)
@@ -379,6 +385,44 @@ function HUDAssaultCorner:_start_assault(text_list)
     end
 end
 
+function HUDAssaultCorner:_start_slow_assault(text_list)
+	text_list = text_list or {""}
+	local assault_panel = self._hud_panel:child("assault_panel_v2")
+	local text_panel = assault_panel:child("text_panel")
+
+	self:_set_text_list(text_list)
+
+	self._assault = true
+
+	if self._assault_panel_v2:child("text_panel") then
+		self._assault_panel_v2:child("text_panel"):stop()
+		self._assault_panel_v2:child("text_panel"):clear()
+	else
+		self._assault_panel_v2:panel({name = "text_panel"})
+	end
+
+	local config = {
+		attention_forever = true,
+		attention_color = self._assault_color,
+		attention_color_function = callback(self, self, "assault_attention_color_function")
+	}
+
+	local box_text_panel = self._assault_panel_v2:child("text_panel")
+	box_text_panel:stop()
+    box_text_panel:animate(callback(self, self, "_animate_text"), nil, nil, callback(self, self, "assault_attention_color_function"), 35)
+    box_text_panel:animate(ClassClbk(self, "_show_blink"))
+	self:_set_feedback_color(self._assault_color)
+
+	if alive(self._wave_bg_box) then
+		self._wave_bg_box:stop()
+		self._wave_bg_box:animate(callback(self, self, "_animate_wave_started"), self)
+    end
+
+    if managers.job:current_level_id() == "zm_the_forest" then
+        self:_update_assault_hud_color(Color.red)
+    end
+end
+
 function HUDAssaultCorner:_end_assault()
 	if not self._assault then
 		self._start_assault_after_hostage_offset = nil
@@ -398,7 +442,7 @@ function HUDAssaultCorner:_end_assault()
 
     self:_update_assault_hud_color(self._assault_survived_color)
     self:_set_text_list(self:_get_survived_assault_strings())
-    box_text_panel:animate(callback(self, self, "_animate_text"), nil, nil, callback(self, self, "assault_attention_color_function"))
+    box_text_panel:animate(callback(self, self, "_animate_text"), nil, nil, callback(self, self, "assault_attention_color_function"), 35)
 
     if managers.skirmish:is_skirmish() or self:is_safehouse_raid() then
         self._wave_bg_box:stop()
