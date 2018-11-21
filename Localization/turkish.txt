@@ -45,6 +45,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Ayarlari",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Assault Bar Yazi Tipi",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/InteractionFont" : "Interaction Font",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Haritayi Aktive Et",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Haritayi Calismasina Zorla",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Harita Boyutu",

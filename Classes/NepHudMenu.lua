@@ -304,6 +304,15 @@ function NepHudMenu:InitHUDOptions()
         on_callback = ClassClbk(self, "MainClbk")
     })
 
+    self.HUDOptions.InteractionFont = self.MainMenu:ComboBox({
+        name = "InteractionFont",
+        border_left = true,
+        items = NepgearsyHUDReborn.InteractionFonts,
+        value = NepgearsyHUDReborn.Options:GetValue("InteractionFont"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/InteractionFont",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
     self.HUDOptions.Minimap = self.MainMenu:Toggle({
         name = "EnableMinimap",
 		border_left = true,

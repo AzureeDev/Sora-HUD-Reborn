@@ -45,6 +45,7 @@
     "NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Optiuni HUD",
     "NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Font pentru bara de asalt",
     "NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/InteractionFont" : "Interaction Font",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Activeaza minimap",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Forteaza minimap",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Dimensiuni minimap",

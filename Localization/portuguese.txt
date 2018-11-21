@@ -45,6 +45,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "Opcoes do HUD",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Fonte da barra de Assault",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/InteractionFont" : "Interaction Font",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Ativar o Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Forçar o Minimapa",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Tamanho do Minimapa",

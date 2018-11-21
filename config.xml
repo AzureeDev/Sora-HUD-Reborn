@@ -3,7 +3,7 @@
         <class file="NepHudMenu.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="1.8.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="1.8.1" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
@@ -43,6 +43,7 @@
 
             <option type="number" default_value="1" name="AssaultBarFont"/>
             <option type="number" default_value="1" name="PlayerNameFont"/>
+            <option type="number" default_value="1" name="InteractionFont"/>
             <option type="bool" default_value="true" name="EnableMinimap"/>
             <option type="bool" default_value="false" name="MinimapForce"/>
             <option type="number" min="150" max="200" default_value="150" name="MinimapSize"/>
@@ -89,7 +90,9 @@
         <texture path="NepgearsyHUDReborn/HUD/Skull"/>
         <texture path="NepgearsyHUDReborn/HUD/TimeR"/>
         <texture path="NepgearsyHUDReborn/HUD/ChatBG"/>
+        <texture path="NepgearsyHUDReborn/HUD/ChatBackground"/>
         <texture path="NepgearsyHUDReborn/HUD/HealthBG"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthShadow"/>
         <texture path="NepgearsyHUDReborn/HUD/Health"/>
         <texture path="NepgearsyHUDReborn/HUD/HealthGreen"/>
         <texture path="NepgearsyHUDReborn/HUD/HealthRed"/>
@@ -129,6 +132,7 @@
         <texture path="NepgearsyHUDReborn/HUD/SpecialEquipmentBG"/>
 
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/orange_heart_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/orange_heart_2"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/nepgear_1"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/nepgear_uni_1"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/nepgear_neptune_1"/>
@@ -156,6 +160,7 @@
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/custom/your_texture"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/other/miku_1"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/other/shovi_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/tamamo"/>
 
         <texture path="NepgearsyHUDReborn/Minimap/kenaz_loc_b_df"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_1"/>

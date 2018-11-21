@@ -45,6 +45,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD 选项",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "突击横幅字体",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "玩家名字字体",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/InteractionFont" : "Interaction Font",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "启用小地图",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "强制启用小地图",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "小地图尺寸",

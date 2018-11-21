@@ -3,13 +3,21 @@ if NepgearsyHUDReborn:HasInteractionEnabled() then
         local interact_text = self._hud_panel:child(self._child_name_text)
         local invalid_text = self._hud_panel:child(self._child_ivalid_name_text)
 
-        interact_text:set_font(Idstring("fonts/font_eurostile_ext"))
+        if NepgearsyHUDReborn.Options:GetValue("InteractionFont") == 1 then
+            interact_text:set_font(Idstring("fonts/font_eurostile_ext"))
+            invalid_text:set_font(Idstring("fonts/font_eurostile_ext"))
+            interact_text:set_font_size(tweak_data.hud_present.text_size - 8)
+            invalid_text:set_font_size(tweak_data.hud_present.text_size - 8)
+        else
+            interact_text:set_font(Idstring("fonts/font_large_mf"))
+            invalid_text:set_font(Idstring("fonts/font_large_mf"))
+            interact_text:set_font_size(tweak_data.hud_present.text_size - 8)
+            invalid_text:set_font_size(tweak_data.hud_present.text_size - 8)
+        end
+        
         interact_text:set_alpha(0)
-        invalid_text:set_font(Idstring("fonts/font_eurostile_ext"))
-        interact_text:set_font_size(tweak_data.hud_present.text_size - 8)
-        invalid_text:set_font_size(tweak_data.hud_present.text_size - 8)
-
-        interact_text:set_y(self._hud_panel:h() / 2 + 160)
+        local extra_y = NepgearsyHUDReborn.Options:GetValue("InteractionFont") == 1 and 160 or 144
+        interact_text:set_y(self._hud_panel:h() / 2 + extra_y)
         invalid_text:set_center_y(interact_text:center_y())
 
         self._interact_bar_contour = self._hud_panel:bitmap({

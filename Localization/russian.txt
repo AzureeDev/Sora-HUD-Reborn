@@ -45,6 +45,7 @@
     "NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Options",
     "NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Шрифт панели штурма",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/InteractionFont" : "Interaction Font",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Включить миникарту",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Форсировать миникарту",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Размер миникарты",

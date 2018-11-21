@@ -45,6 +45,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Optionen",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "Angriffsleiste Schriftart",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/InteractionFont" : "Interaction Font",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "Minimap einschalten",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "Minimap erzwingen",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "Minimap Größe",

@@ -120,6 +120,7 @@ function NepgearsyHUDReborn:InitTweakData()
 		"NepgearsyHUDReborn/Color/Blue_Ocean",
 		"NepgearsyHUDReborn/Color/Red_Fushia"
 	}
+
 	if self.Dev then table.insert(self.StarringColors, "DEV") end -- hi :3
 
 	self.CPColors = deep_clone(self.StarringColors)
@@ -134,6 +135,8 @@ function NepgearsyHUDReborn:InitTweakData()
 		"NepgearsyHUDReborn/Fonts/Eurostile",
 		"NepgearsyHUDReborn/Fonts/Normal"
 	}
+
+	self.InteractionFonts = deep_clone(self.PlayerNameFonts)
 
 	self.HealthColor = {
 		"NepgearsyHUDReborn/Color/White",
@@ -346,6 +349,18 @@ function NepgearsyHUDReborn:InitTweakData()
 			collection = "other",
 			name = "Kurumi (School Live)",
 			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/other/shovi_1"
+		},
+		{
+			author = "t0rkoal_",
+			collection = "other",
+			name = "Tamamo",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/tamamo"
+		},
+		{
+			author = "Sora",
+			collection = "hdn",
+			name = "Orange Heart",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/hdn/orange_heart_2"
 		}
 	}
 end

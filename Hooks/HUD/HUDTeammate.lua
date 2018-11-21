@@ -55,9 +55,10 @@ NepHook:Post(HUDTeammate, "init", function(self, i, teammates_panel, is_player, 
 
 	self._radial_health_panel:set_bottom(self._panel:h() - 11)
 
-	local health_bg = self._radial_health_panel:rect({
-        name = "health_bg",
-        color = Color(0.35, 0, 0, 0),
+	local health_bg = self._radial_health_panel:bitmap({
+		name = "health_bg",
+		texture = "NepgearsyHUDReborn/HUD/HealthShadow",
+        color = Color.white,
         layer = -1,
         h = self._radial_health_panel:h(),
 		w = self._radial_health_panel:w()
@@ -392,6 +393,7 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		x = 0,
 		texture = "NepgearsyHUDReborn/HUD/PlayerNameBG",
 		color = Color(0.25, 0.25, 0.25),
+		alpha = 0.85,
 		w = weapon_panel_w,
 		h = 32
 	})
@@ -465,6 +467,7 @@ function HUDTeammate:_create_weapon_panels(weapons_panel)
 		x = 0,
 		texture = "NepgearsyHUDReborn/HUD/PlayerNameBG",
 		color = Color(0.25, 0.25, 0.25),
+		alpha = 0.85,
 		w = weapon_panel_w,
 		h = 32
 	})
@@ -937,6 +940,39 @@ function HUDTeammate:_create_carry(carry_panel)
 		font_size = tweak_data.hud.small_font_size
 	})
 end
+
+NepHook:Post(HUDTeammate, "_create_equipment_panels", function(self, player_panel)
+	-- Unlike ovk, I do use player_panel.
+
+	local new_texture = "NepgearsyHUDReborn/HUD/PlayerNameBG"
+	local deployable_bg = player_panel:child("deployable_equipment_panel"):child("bg")
+	local cable_ties_bg = player_panel:child("cable_ties_panel"):child("bg")
+	player_panel:child("deployable_equipment_panel"):set_h(player_panel:child("deployable_equipment_panel"):h() + 1)
+	player_panel:child("cable_ties_panel"):set_h(player_panel:child("cable_ties_panel"):h() + 1)
+
+	deployable_bg:set_image(new_texture)
+	deployable_bg:set_color(Color.white / 1.5)
+	deployable_bg:set_size(player_panel:child("deployable_equipment_panel"):w(), player_panel:child("deployable_equipment_panel"):h())
+	player_panel:child("deployable_equipment_panel"):child("amount"):set_font(Idstring("fonts/font_large_mf"))
+	player_panel:child("deployable_equipment_panel"):child("amount"):set_font_size(22)
+
+	cable_ties_bg:set_image(new_texture)
+	cable_ties_bg:set_color(Color.white / 1.5)
+	cable_ties_bg:set_size(player_panel:child("cable_ties_panel"):w(), player_panel:child("cable_ties_panel"):h())
+	player_panel:child("cable_ties_panel"):child("amount"):set_font(Idstring("fonts/font_large_mf"))
+	player_panel:child("cable_ties_panel"):child("amount"):set_font_size(22)
+
+	if PlayerBase.USE_GRENADES then
+		local grenade_bg = player_panel:child("grenades_panel"):child("bg")
+		player_panel:child("grenades_panel"):set_h(player_panel:child("grenades_panel"):h() + 1)
+
+		grenade_bg:set_image(new_texture)
+		grenade_bg:set_color(Color.white / 1.5)
+		grenade_bg:set_size(player_panel:child("grenades_panel"):w(), player_panel:child("grenades_panel"):h())
+		player_panel:child("grenades_panel"):child("amount"):set_font(Idstring("fonts/font_large_mf"))
+		player_panel:child("grenades_panel"):child("amount"):set_font_size(22)
+	end
+end)
 
 function HUDTeammate:_update_player_bg(texture)
 	if self._my_panel then

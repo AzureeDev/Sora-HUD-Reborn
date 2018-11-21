@@ -45,6 +45,7 @@
     "NepgearsyHUDRebornMenu/Buttons/HUDOptionsCat" : "HUD Options",
     "NepgearsyHUDRebornMenu/Buttons/HUD/AssaultBarFont" : "ฟอนต์ของแถบสถานะการบุก",
     "NepgearsyHUDRebornMenu/Buttons/HUD/PlayerNameFont" : "Player Name Font",
+    "NepgearsyHUDRebornMenu/Buttons/HUD/InteractionFont" : "Interaction Font",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Minimap" : "เปิดใช้งานแผนที่ขนาดเล็ก",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapForce" : "บังคับเปิดใช้งานแผนที่ขนาดเล็ก",
     "NepgearsyHUDRebornMenu/Buttons/HUD/MinimapSize" : "ขนาดของแผนที่ขนาดเล็ก",
