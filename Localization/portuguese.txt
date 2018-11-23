@@ -108,6 +108,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/HDNHeader" : "Hyperdimension Neptunia",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/SuguriHeader" : "Orange Juice",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PlushHeader" : "Plushies",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/CommunityHeader" : "Community Submissions",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/OtherHeader" : "Others",
 	"NepgearsyHUDRebornMenu/Buttons/Back" : "Back"
 }

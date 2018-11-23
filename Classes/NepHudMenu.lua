@@ -644,6 +644,30 @@ function NepHudMenu:InitTeammateSkins()
     self:GenerateSkinButtonsByCat("default")
 
     self.TeammateSkins:Divider({
+        name = "CommunityHeader",
+        text = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/CommunityHeader",
+        background_color = Color(0, 0, 0),
+        text_align = "center",
+        localized = true,
+        text_vertical = "center",
+        offset_y = 20,
+        font_size = 20,
+        font = Font
+    })
+
+    self.TeammateSkins:Divider({
+        name = "CommunityHelpText",
+        text = "NepgearsyHUDRebornMenu/Help/CommunityHelpText",
+        localized = true,
+        text_vertical = "center",
+        offset_y = 5,
+        font_size = 14,
+        font = "fonts/font_large_mf"
+    })
+
+    self:GenerateSkinButtonsByCat("community")
+
+    self.TeammateSkins:Divider({
         name = "HDNHeader",
         text = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/HDNHeader",
         background_color = Color(0, 0, 0),

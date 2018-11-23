@@ -3,7 +3,7 @@
         <class file="NepHudMenu.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="1.8.1" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="1.8.2" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
@@ -161,6 +161,9 @@
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/other/miku_1"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/other/shovi_1"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/tamamo"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/astolfo"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/chibi_sydney"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/breaking_news"/>
 
         <texture path="NepgearsyHUDReborn/Minimap/kenaz_loc_b_df"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_1"/>

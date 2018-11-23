@@ -352,7 +352,7 @@ function NepgearsyHUDReborn:InitTweakData()
 		},
 		{
 			author = "t0rkoal_",
-			collection = "other",
+			collection = "community",
 			name = "Tamamo",
 			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/tamamo"
 		},
@@ -361,6 +361,24 @@ function NepgearsyHUDReborn:InitTweakData()
 			collection = "hdn",
 			name = "Orange Heart",
 			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/hdn/orange_heart_2"
+		},
+		{
+			author = "t0rkoal_",
+			collection = "community",
+			name = "Astolfo",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/astolfo"
+		},
+		{
+			author = "t0rkoal_",
+			collection = "community",
+			name = "Chibi Sydney",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/chibi_sydney"
+		},
+		{
+			author = "t0rkoal_",
+			collection = "community",
+			name = "Breaking News",
+			texture = "NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/breaking_news"
 		}
 	}
 end
