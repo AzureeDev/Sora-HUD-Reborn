@@ -1,4 +1,4 @@
-<mod name="Sora HUD Reborn" core_class="Core.lua" min_lib_version="3.34" global_key="NepgearsyHUDReborn" color="Color(0.63, 0.58, 0.95)" image="NepgearsyHUDReborn/ModIcon">
+<mod name="Sora HUD Reborn" core_class="Core.lua" min_lib_ver="3.34" global_key="NepgearsyHUDReborn" color="Color(0.63, 0.58, 0.95)" image="NepgearsyHUDReborn/ModIcon">
     <Classes directory="Classes">
         <class file="NepHudMenu.lua"/>
         <class file="SoraHUDChangelog.lua"/>
