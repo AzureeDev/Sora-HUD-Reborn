@@ -3,9 +3,16 @@ if NepgearsyHUDReborn:HasInteractionEnabled() then
         local interact_text = self._hud_panel:child(self._child_name_text)
         local invalid_text = self._hud_panel:child(self._child_ivalid_name_text)
 
+        interact_text:set_visible(true)
+
         if NepgearsyHUDReborn.Options:GetValue("InteractionFont") == 1 then
             interact_text:set_font(Idstring("fonts/font_eurostile_ext"))
             invalid_text:set_font(Idstring("fonts/font_eurostile_ext"))
+            interact_text:set_font_size(tweak_data.hud_present.text_size - 8)
+            invalid_text:set_font_size(tweak_data.hud_present.text_size - 8)
+        elseif NepgearsyHUDReborn.Options:GetValue("InteractionFont") == 3 then
+            interact_text:set_font(Idstring("fonts/font_pdth"))
+            invalid_text:set_font(Idstring("fonts/font_pdth"))
             interact_text:set_font_size(tweak_data.hud_present.text_size - 8)
             invalid_text:set_font_size(tweak_data.hud_present.text_size - 8)
         else
@@ -34,7 +41,7 @@ if NepgearsyHUDReborn:HasInteractionEnabled() then
             texture = "NepgearsyHUDReborn/HUD/InteractionBarProgress",
             w = 0,
             h = 45,
-            color = NepgearsyHUDReborn:GetInteractionColorBySave(),
+            color = NepgearsyHUDReborn:GetOption("SoraInteractionColor"),
             layer = 1,
             alpha = 0
         })
@@ -54,15 +61,15 @@ if NepgearsyHUDReborn:HasInteractionEnabled() then
     end)
 
     NepHook:Post(HUDInteraction, "remove_interact", function(self)
-        self._hud_panel:child(self._child_name_text):set_visible(true)
         self._hud_panel:child(self._child_name_text):animate(callback(self, self, "_animate_fade_out"))
     end)
 
     NepHook:Post(HUDInteraction, "show_interaction_bar", function(self, current, total)
-        if self._interact_circle  then
-            self._interact_circle :set_visible(false)
+        if self._interact_circle and self._interact_circle:visible() then
+            self._interact_circle:set_visible(false)
         end
-        
+        self:reset_interaction_bar()
+        self:set_interaction_bar_alpha(0)
         self._interact_bar_progress:set_w(0)
 
         self._interact_bar_contour:animate(callback(self, self, "_animate_fade_in"))
@@ -79,6 +86,10 @@ if NepgearsyHUDReborn:HasInteractionEnabled() then
         if self._interact_bar_progress then
             local calc = math.clamp(current / total, 0, 500) * 333
 
+            if (calc == 0) then
+                self._interact_bar_progress:set_alpha(0)
+            end
+
             if calc > 333 then
                 calc = 333
             end
@@ -92,6 +103,49 @@ if NepgearsyHUDReborn:HasInteractionEnabled() then
         self._interact_bar_progress:animate(callback(self, self, "_animate_fade_out"))
         self._interact_bar_background:animate(callback(self, self, "_animate_fade_out"))
         self._hud_panel:child(self._child_name_text):animate(callback(self, self, "_animate_fade_out"))
+
+        self:reset_interaction_bar()
+        self:set_interaction_bar_alpha(0)
+    end
+
+    function HUDInteraction:reset_interaction_bar()
+        self._hud_panel:remove(self._hud_panel:child("interact_bar_contour"))
+        self._hud_panel:remove(self._hud_panel:child("interact_bar_progress"))
+        self._hud_panel:remove(self._hud_panel:child("interact_bar_bg"))
+        
+        self._interact_bar_contour = self._hud_panel:bitmap({
+            name = "interact_bar_contour",
+            texture = "NepgearsyHUDReborn/HUD/InteractionBarContour",
+            w = 333,
+            h = 45,
+            layer = 2,
+            alpha = 0
+        })
+
+        self._interact_bar_progress = self._hud_panel:bitmap({
+            name = "interact_bar_progress",
+            texture = "NepgearsyHUDReborn/HUD/InteractionBarProgress",
+            w = 0,
+            h = 45,
+            color = NepgearsyHUDReborn:GetOption("SoraInteractionColor"),
+            layer = 1,
+            alpha = 0
+        })
+
+        self._interact_bar_background = self._hud_panel:bitmap({
+            name = "interact_bar_bg",
+            texture = "NepgearsyHUDReborn/HUD/InteractionBarEmpty",
+            w = 333,
+            h = 45,
+            layer = 0,
+            alpha = 0
+        })
+    end
+
+    function HUDInteraction:set_interaction_bar_alpha(desired_alpha)
+        self._interact_bar_contour:set_alpha(desired_alpha)
+        self._interact_bar_progress:set_alpha(desired_alpha)
+        self._interact_bar_background:set_alpha(desired_alpha)
     end
 
     function HUDInteraction:set_bar_valid(valid, text_id)
@@ -101,7 +155,7 @@ if NepgearsyHUDReborn:HasInteractionEnabled() then
             end
         else
             if self._interact_bar_background then
-                self._interact_bar_background:set_color(NepgearsyHUDReborn:GetInteractionColorBySave())
+                self._interact_bar_background:set_color(NepgearsyHUDReborn:GetOption("SoraInteractionColor"))
             end
         end
 

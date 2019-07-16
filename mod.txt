@@ -1,18 +1,9 @@
 {
-	"name" : "Nepgearsy HUD Reborn",
-	"description" : "Muh custom HUD with a better code.",
-	"author" : "Nepgearsy",
-	"contact" : "https://steamcommunity.com/id/Nepgearsy",
-    "blt_version" : 2,
-    "image" : "Assets/NepgearsyHUDReborn/ModIcon.png",
-    "color" : "0.63 0.58 0.95",
-    "pre_hooks" : [
-		{ "hook_id" : "lib/entry", "script_path" : "Core.lua" }
-    ],
-    "libraries" : [
-        {
-            "display_name" : "BeardLib",
-            "identifier" : "beardlib"
-        }
-    ]
+	"name": "Sora's HUD Reborn",
+	"description": "My HUD.. that's all",
+	"author": "Sora",
+	"contact": "id/Nepgearsy",
+	"version": "2.2.0",
+	"blt_version": 2,
+	"image": "Assets/NepgearsyHUDReborn/ModIcon.png"
 }

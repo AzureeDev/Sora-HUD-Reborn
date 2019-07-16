@@ -1,7 +1,7 @@
 {
-	"NepgearsyHUDReborn" : "Nepgearsy HUD Reborn",
+	"NepgearsyHUDReborn" : "Sora's HUD Reborn",
 	"NepgearsyHUDReborn/Version" : "Versión $version",
-	"NepgearsyHUDRebornMenu" : "Panel de control de Nepgearsy HUD",
+	"NepgearsyHUDRebornMenu" : "Panel de control de Sora HUD",
 	"NepgearsyHUDReborn/PostIssue" : "Reporta un problema",
 	"NepgearsyHUDReborn/PostRequest" : "Haz una solicitud",
 
@@ -17,6 +17,7 @@
 	"NepgearsyHUDReborn/Localization/German" : "Alemán",
 	"NepgearsyHUDReborn/Localization/Thai" : "Tailandés",
 	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Mandarín Simplificado",
+	"NepgearsyHUDReborn/Localization/Italian" : "Italian",
 
 	"NepgearsyHUDReborn/Color/White" : "Blanco",
 	"NepgearsyHUDReborn/Color/Red" : "Rojo",
@@ -33,6 +34,7 @@
 
 	"NepgearsyHUDReborn/Fonts/Normal" : "Normal (font_large_mf)",
 	"NepgearsyHUDReborn/Fonts/Eurostile" : "Eurostile",
+	"NepgearsyHUDReborn/Fonts/PDTH" : "PDTH",
 
 	"NepgearsyHUDReborn/HealthStyle/Thin" : "Delgado",
 	"NepgearsyHUDReborn/HealthStyle/Vanilla" : "Vanilla",
@@ -109,5 +111,35 @@
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PlushHeader" : "Plushies",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/CommunityHeader" : "Community Submissions",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/OtherHeader" : "Others",
-	"NepgearsyHUDRebornMenu/Buttons/Back" : "Back"
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PersonaHeader" : "Persona",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/Pd2Header" : "PAYDAY 2",
+	"NepgearsyHUDRebornMenu/Buttons/Back" : "Back",
+
+	"NepgearsyHUDRebornMenu/Buttons/DiscordRichPresenceButton" : "Discord Rich Presence Options",
+	"NepgearsyHUDRebornMenu/Header/DiscordRichPresenceHeader" : "Discord Rich Presence",
+	"NepgearsyHUDRebornMenu/Help/DiscordRichPresenceHelp" : "Here you can change options about the Discord Rich Presence. Note that this HUD uses a custom application ID. If you don't wish to use it, you can disable it to use Overkill's version, which doesn't support custom status and newest / custom heists.",
+	"NepgearsyHUDRebornMenu/Status/DiscordRichPresenceActive" : "You're currently using the custom Rich Presence!",
+	"NepgearsyHUDRebornMenu/Status/DiscordRichPresenceInactive" : "You're currently using the original Rich Presence by Overkill.",
+	"NepgearsyHUDRebornMenu/Buttons/Menu/UseDiscordRichPresence" : "Activate the custom Rich Presence",
+	"NepgearsyHUDRebornMenu/Buttons/Menu/DiscordRichPresenceCustom" : "Custom Discord Status",
+	"NepgearsyHUDRebornMenu/Help/DiscordCustomPresenceLimitation" : "Be aware: Using a custom status won't display the Presence type.",
+	"NepgearsyHUDRebornMenu/Buttons/Menu/DiscordRichPresenceType" : "Presence Type",
+	"NepgearsyHUDReborn/Discord/DefaultType" : "Default (Shows Current Heist)",
+	"NepgearsyHUDReborn/Discord/KillTracker" : "Kill Tracker (Cops killed in Heist)",
+	"NepgearsyHUDRebornMenu/Buttons/Menu/DRPAllowTimeElapsed" : "Show the Time Elapsed",
+
+	"NepgearsyHUDRebornMenu/Buttons/HUD/ColorWithSkinPanels" : "Show the player's color with a Teammate Panel Skin",
+	
+	"NepgearsyHUDRebornMenu/Help/NewColors" : "Here you can set most of the colors the HUD uses to your liking. Clicking an option's name will open a dialog with RGB sliders.",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBar" : "Assault Bar Color",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBarSurvived" : "Wave Survived Color",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBarStealth" : "Stealth Mode Color ",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBarPONR" : "Point of no Return Color ",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBarWinters" : "Winters Color ",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/PeerOneColor" : "Player 1 Color",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/PeerTwoColor" : "Player 2 Color",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/PeerThreeColor" : "Player 3 Color",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/PeerFourColor" : "Player 4 Color",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/AIColor" : "AI Color",
+	"NepgearsyHUDRebornMenu/Buttons/ResetOption" : "Reset to default values"
 }

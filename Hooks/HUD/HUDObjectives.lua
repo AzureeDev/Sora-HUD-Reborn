@@ -104,7 +104,7 @@ function HUDObjectives:init(hud)
 		halign = "left",
 		x = 2,
 		valign = "center",
-		color = NepgearsyHUDReborn:StringToColor("objective_color", NepgearsyHUDReborn:GetOption("ObjectiveColor"))
+		color = NepgearsyHUDReborn:GetOption("SoraObjectiveColor")
 	})
 	self.icon_objectivebox = icon_objectivebox
 

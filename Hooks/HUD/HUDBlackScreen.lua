@@ -12,11 +12,25 @@ NepHook:Post( HUDBlackScreen, "init", function(self, hud)
 
 		return x, y, w, h
 	end
-	
+
 	local stage_data = managers.job:current_stage_data()
 	local level_data = managers.job:current_level_data()
+	local job_data = managers.job:current_job_data() or {}
+	local level_tweak = tweak_data.levels[Global.level_data.level_id] or {}
 	local name_id = stage_data and stage_data.name_id or level_data and level_data.name_id or nil
-	local bs_panel = self._blackscreen_panel
+	local bg_texture = level_data and level_data.load_screen or level_tweak and level_tweak.load_screen or level_tweak and level_tweak.load_data and level_tweak.load_data.image or job_data.load_screen
+
+	if bg_texture then
+		self._blackscreen_panel:bitmap({
+			texture = bg_texture,
+			w = self._blackscreen_panel:w(),
+			h = self._blackscreen_panel:h(),
+			alpha = 0.25,
+			layer = -1
+		})
+	end
+
+	local bs_panel = self._blackscreen_panel -- bullshit panel XD
 	local starring_panel = bs_panel:panel({
 		name = "starring_panel",
 		visible = true,
@@ -58,6 +72,32 @@ NepHook:Post( HUDBlackScreen, "init", function(self, hud)
 			})
 			od_text:set_y(heist_panel_text:y() + 35)
 		end
+	--[[
+		local narr_tweak = tweak_data.narrative.jobs[Global.level_data.level_id]
+	
+		if narr_tweak and narr_tweak.contract_visuals and narr_tweak.contract_visuals.preview_image then
+			local data = narr_tweak.contract_visuals.preview_image
+			local path, rect = nil
+	
+			if data.id then
+				path = "guis/dlcs/" .. (data.folder or "bro") .. "/textures/pd2/crimenet/" .. data.id
+				rect = data.rect
+			elseif data.icon then
+				path, rect = tweak_data.hud_icons:get_icon_data(data.icon)
+			end
+	
+			local bs_heist_icon = bs_panel:bitmap({
+				texture = path,
+				texture_rect = rect,
+				w = 300,
+				layer = 0,
+				h = 150,
+				alpha = 0.4
+			})
+
+			bs_heist_icon:set_world_center_x(heist_panel_text:world_center_x())
+			bs_heist_icon:set_world_center_y(heist_panel_text:world_center_y() * 2.75)
+		end]]
 	end
 
 	local starring_with = starring_panel:text({

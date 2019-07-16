@@ -1,4 +1,4 @@
-# Nepgearsy HUD Reborn
+# Sora's HUD Reborn
 Self explainatory.
 
 # Most Popular features asked

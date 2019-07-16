@@ -1,0 +1,287 @@
+<mod name="Sora HUD Reborn" core_class="Core.lua" min_lib_version="3.34" global_key="NepgearsyHUDReborn" color="Color(0.63, 0.58, 0.95)" image="NepgearsyHUDReborn/ModIcon">
+    <Classes directory="Classes">
+        <class file="NepHudMenu.lua"/>
+        <class file="SoraHUDChangelog.lua"/>
+    </Classes>
+
+    <AssetUpdates id="22152" version="2.2.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+
+    <Hooks directory="Hooks">
+        <hook file="Setup.lua" source_file="lib/setups/setup"/>
+
+        <hook file="ChatManager.lua" source_file="lib/managers/chatmanager"/>
+        <hook file="MissionBriefingGUI.lua" source_file="lib/managers/menu/missionbriefinggui"/>
+        <hook file="CivilianDamage.lua" source_file="lib/units/civilians/civiliandamage"/>
+        <hook file="EnemyManager.lua" source_file="lib/managers/enemymanager"/>
+        <hook file="PlayerManager.lua" source_file="lib/managers/playermanager"/>
+        <hook file="ConnectionNetworkHandler.lua" source_file="lib/network/base/handlers/connectionnetworkhandler"/>
+        <hook file="ElementTerminateAssault.lua" source_file="lib/managers/mission/elementterminateassault"/>
+        <hook file="PlatformManager.lua" source_file="lib/managers/platformmanager"/>
+
+        <hook file="HUD/HUDMissionBriefing.lua" source_file="lib/managers/hud/hudmissionbriefing"/>
+        <hook file="HUD/HUDPlayerCustody.lua" source_file="lib/managers/hud/hudplayercustody"/>
+        <hook file="HUD/HUDBlackScreen.lua" source_file="lib/managers/hud/hudblackscreen"/>
+        <hook file="HUD/HUDObjectives.lua" source_file="lib/managers/hud/hudobjectives"/>
+        <hook file="HUD/HUDManagerPD2.lua" source_file="lib/managers/hudmanagerpd2"/>
+        <hook file="HUD/HUDManager.lua" source_file="lib/managers/hudmanager"/>
+        <hook file="HUD/HUDAssaultCorner.lua" source_file="lib/managers/hud/hudassaultcorner"/>
+        <hook file="HUD/HUDHeistTimer.lua" source_file="lib/managers/hud/hudheisttimer"/>
+        <hook file="HUD/GroupAIStateBeSiege.lua" source_file="lib/managers/group_ai_states/groupaistatebesiege"/>
+        <hook file="HUD/GroupAIStateBase.lua" source_file="lib/managers/group_ai_states/groupaistatebase"/>
+        <hook file="HUD/StatisticsManager.lua" source_file="lib/managers/statisticsmanager"/>
+        <hook file="HUD/HUDChat.lua" source_file="lib/managers/hud/hudchat"/>
+        <hook file="HUD/HUDTeammate.lua" source_file="lib/managers/hud/hudteammate"/>
+        <hook file="HUD/HUDHint.lua" source_file="lib/managers/hud/hudhint"/>
+        <hook file="HUD/HUDPresenter.lua" source_file="lib/managers/hud/hudpresenter"/>
+        <hook file="HUD/HUDInteraction.lua" source_file="lib/managers/hud/hudinteraction"/>
+
+        <hook file="HUD/HUDMinimap.lua" source_file="lib/managers/hudmanagerpd2"/>
+        <hook file="HUD/HUDMinimap.lua" source_file="lib/managers/criminalsmanager"/>
+        <hook file="HUD/HUDMinimap.lua" source_file="lib/units/beings/player/huskplayermovement"/>
+        <hook file="HUD/HUDMinimap.lua" source_file="lib/units/enemies/cop/copbase"/>
+        <hook file="HUD/HUDMinimap.lua" source_file="lib/units/contourext"/>
+        <hook file="HUD/HUDMinimap.lua" source_file="lib/managers/hudmanager"/>
+    </Hooks>
+
+    <Options name="Options" auto_load="true" auto_build_menu="false">
+        <options>
+            <option type="number" default_value="1" name="ForcedLocalization"/>
+
+            <option type="number" default_value="1" name="AssaultBarFont"/>
+            <option type="number" default_value="1" name="PlayerNameFont"/>
+            <option type="number" default_value="1" name="InteractionFont"/>
+            <option type="number" default_value="1" name="TeammatePanelStyle"/>
+            <option type="bool" default_value="true" name="EnableMinimap"/>
+            <option type="bool" default_value="false" name="MinimapForce"/>
+            <option type="number" min="150" max="200" default_value="150" name="MinimapSize"/>
+            <option type="number" min="0.25" max="1" step="0.01" default_value="1" name="MinimapZoom"/>
+            <option type="bool" default_value="true" name="EnableTrackers"/>
+            <option type="bool" default_value="false" name="EnableCopTracker"/>
+            <option type="bool" default_value="false" name="EnableTrueAmmo"/>
+            <option type="number" default_value="1" name="HealthStyle"/>
+            <option type="number" default_value="1" name="StatusNumberType"/>
+            <option type="bool" default_value="true" name="EnablePlayerLevel"/>
+            <option type="bool" default_value="true" name="EnableSteamAvatars"/>
+            <option type="number" min="0.1" max="1.5" default_value="0.8" name="Scale"/>
+            <option type="number" min="0.1" max="1" default_value="0.95" name="Spacing"/>
+
+            <option type="bool" default_value="true" name="EnableStarring"/>
+            <option type="number" default_value="1" name="StarringColor"/>
+            <option type="text" default_value="" name="StarringText"/>
+            <option type="bool" default_value="true" name="EnableHorizontalLoadout"/>
+            <option type="bool" default_value="true" name="EnableInteraction"/>
+
+            <option type="text" default_value="Color(0, 0, 0)" name="SoraCPColor"/>
+            <option type="text" default_value="Color(0, 1, 0)" name="SoraCPBorderColor"/>
+            <option type="number" default_value="2" name="HealthColor"/>
+            <option type="number" default_value="1" name="ShieldColor"/>
+            <option type="text" default_value="Color(1, 1, 1)" name="SoraObjectiveColor"/>
+            <option type="text" default_value="Color(1, 1, 1)" name="SoraInteractionColor"/>
+            <option type="text" default_value="Color(1, 1, 0)" name="SoraAssaultBarColor"/>
+            <option type="text" default_value="Color(0, 1, 0)" name="SoraSurvivedBarColor"/>
+            <option type="text" default_value="Color(1, 1, 1)" name="SoraStealthBarColor"/>
+            <option type="text" default_value="Color(1, 0, 0)" name="SoraPONRBarColor"/>
+            <option type="text" default_value="Color(1, 0.66, 0)" name="SoraWintersBarColor"/>
+            <option type="text" default_value="Color(0.76, 0.99, 0.59)" name="SoraPeerOneColor"/>
+            <option type="text" default_value="Color(0.47, 0.71, 0.8)" name="SoraPeerTwoColor"/>
+            <option type="text" default_value="Color(0.7, 0.4, 0.34)" name="SoraPeerThreeColor"/>
+            <option type="text" default_value="Color(0.8, 0.63, 0.4)" name="SoraPeerFourColor"/>
+            <option type="text" default_value="Color(0.2, 0.8, 1)" name="SoraAIColor"/>
+
+            <option type="number" default_value="1" name="TeammateSkin"/>
+            <option type="bool" default_value="true" name="UseDiscordRichPresence"/>
+            <option type="number" default_value="1" name="DiscordRichPresenceType"/>
+            <option type="text" default_value="" name="DiscordRichPresenceCustom"/>
+            <option type="bool" default_value="false" name="DRPAllowTimeElapsed"/>
+            <!--<option type="number" default_value="1" name="DiscordRichPresenceLargeImageType"/>-->
+
+            <option type="bool" default_value="false" name="ColorWithSkinPanels"/>
+
+        </options>
+    </Options>
+
+    <AddFiles directory="Assets">
+        <png path="NepgearsyHUDReborn/ModIcon"/>
+
+        <font path="fonts/font_pdth" load="true"/>
+        <texture path="fonts/font_pdth" load="true"/>
+
+        <texture path="NepgearsyHUDReborn/Menu/NepHudMenu"/>
+        <texture path="NepgearsyHUDReborn/Menu/BGColor"/>
+        <texture path="NepgearsyHUDReborn/Menu/EnableBackground"/>
+        <texture path="NepgearsyHUDReborn/Menu/DisableBackground"/>
+        <texture path="NepgearsyHUDReborn/Menu/MWSProfile"/>
+        <texture path="NepgearsyHUDReborn/Menu/Discord"/>
+        <texture path="NepgearsyHUDReborn/Menu/DiscordRichPresence"/>
+
+        <texture path="NepgearsyHUDReborn/Menu/Versions/220"/>
+        <texture path="NepgearsyHUDReborn/Menu/Versions/210"/>
+        <texture path="NepgearsyHUDReborn/Menu/Versions/200"/>
+
+        <texture path="NepgearsyHUDReborn/HUD/AssaultBar"/>
+        <texture path="NepgearsyHUDReborn/HUD/AssaultBarUnder"/>
+        <texture path="NepgearsyHUDReborn/HUD/Thund"/>
+        <texture path="NepgearsyHUDReborn/HUD/Skull"/>
+        <texture path="NepgearsyHUDReborn/HUD/TimeR"/>
+        <texture path="NepgearsyHUDReborn/HUD/ChatBG"/>
+        <texture path="NepgearsyHUDReborn/HUD/ChatBackground"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthBG"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthShadow"/>
+        <texture path="NepgearsyHUDReborn/HUD/Health"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthGreen"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthRed"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthOrange"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthYellow"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthCyan"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthBlueOcean"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthBlue"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthPurple"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthFushia"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthPink"/>
+        <texture path="NepgearsyHUDReborn/HUD/HealthRedFushia"/>
+        <texture path="NepgearsyHUDReborn/HUD/Shield"/>
+        <texture path="NepgearsyHUDReborn/HUD/ShieldGreen"/>
+        <texture path="NepgearsyHUDReborn/HUD/ShieldRed"/>
+        <texture path="NepgearsyHUDReborn/HUD/ShieldOrange"/>
+        <texture path="NepgearsyHUDReborn/HUD/ShieldYellow"/>
+        <texture path="NepgearsyHUDReborn/HUD/ShieldCyan"/>
+        <texture path="NepgearsyHUDReborn/HUD/ShieldBlueOcean"/>
+        <texture path="NepgearsyHUDReborn/HUD/ShieldBlue"/>
+        <texture path="NepgearsyHUDReborn/HUD/ShieldPurple"/>
+        <texture path="NepgearsyHUDReborn/HUD/ShieldFushia"/>
+        <texture path="NepgearsyHUDReborn/HUD/ShieldPink"/>
+        <texture path="NepgearsyHUDReborn/HUD/ShieldRedFushia"/>
+        <texture path="NepgearsyHUDReborn/HUD/AI"/>
+        <texture path="NepgearsyHUDReborn/HUD/Teammate"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateThin"/>
+        <texture path="NepgearsyHUDReborn/HUD/CivilianKilled"/>
+        <texture path="NepgearsyHUDReborn/HUD/SystemMessageIcon"/>
+        <texture path="NepgearsyHUDReborn/HUD/ObjectiveSquare"/>
+        <texture path="NepgearsyHUDReborn/HUD/ObjectiveNotificationIcon"/>
+        <texture path="NepgearsyHUDReborn/HUD/Cop"/>
+        <texture path="NepgearsyHUDReborn/HUD/PlayerNameBG"/>
+        <texture path="NepgearsyHUDReborn/HUD/InteractionBarContour"/>
+        <texture path="NepgearsyHUDReborn/HUD/InteractionBarEmpty"/>
+        <texture path="NepgearsyHUDReborn/HUD/InteractionBarProgress"/>
+        <texture path="NepgearsyHUDReborn/HUD/SpecialEquipmentBG"/>
+
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/orange_heart_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/orange_heart_2"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/nepgear_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/nepgear_uni_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/nepgear_neptune_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/neptune_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/maid_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/rom_ram_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/histoire_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/5pb_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/hdn/blanc_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/suguri/suguri_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/suguri/sora_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_2"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_3"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_4"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_5"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_6"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_7"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_8"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_9"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_10"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_11"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/other/eclipse_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/other/owo_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/custom/your_texture"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/other/miku_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/other/shovi_1"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/tamamo"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/astolfo"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/chibi_sydney"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/breaking_news"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Aigis"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Akihiko_Sanada"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Chidori_Yoshino"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Elizabeth"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Fuuka_Yamagishi"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Jin_Shirato"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Junpei_Iori"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Ken_Amada"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Koromaru"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Minato_Arisato"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Mitsuru_Kirijo"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Shinjiro_Aragaki"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Takaya_Sakagi"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Yukari_Takeba"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Minako_Arisato"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/clair/Minato_Shadow"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/suguri/sora_2"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/dallas"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/wolf"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/houston"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/chains"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/jw"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/hoxton"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/clover"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/dragan"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/jacket"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/bonnie"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/sokol"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/jiro"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/bodhi"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/jimmy"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/sydney"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/rust"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/sangres"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/scarface"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/duke"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/pd2/joy"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/aniheat"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/cs_office"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/csd2smile"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/florence"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/gacha"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/jazz"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/madshorty"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/majimasnakeskin"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/neondeath"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/outage"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/tagwink"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/tamamo_redux"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/youmu_gun"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/416"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/artoria"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/doge"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/idw"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/jeanne"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/mp7"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/nero"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/vector"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/torkoal/vector_ii"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/other/nz75"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/plush/plush_sora"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/other/magician"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/other/miko"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/defaults/TeammateBorder"/>
+
+        <texture path="NepgearsyHUDReborn/HUD/WideTeammateSkins/default"/>
+        <texture path="NepgearsyHUDReborn/HUD/WideTeammateSkins/default_bot"/>
+        <texture path="NepgearsyHUDReborn/HUD/WideTeammateSkins/hdn/orange_heart"/>
+        <texture path="NepgearsyHUDReborn/HUD/WideTeammateSkins/plush/plush_3"/>
+        <texture path="NepgearsyHUDReborn/HUD/WideTeammateSkins/suguri/sora"/>
+
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/default"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/community"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/suguri"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/hdn"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/pd2"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/persona"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/plush"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/other"/>
+
+        <texture path="NepgearsyHUDReborn/Minimap/kenaz_loc_b_df"/>
+        <texture path="NepgearsyHUDReborn/Minimap/mus_1"/>
+        <texture path="NepgearsyHUDReborn/Minimap/mus_2"/>
+        <texture path="NepgearsyHUDReborn/Minimap/mus_3"/>
+        <texture path="NepgearsyHUDReborn/Minimap/shadow_raid_5"/>
+    </AddFiles>
+</mod>

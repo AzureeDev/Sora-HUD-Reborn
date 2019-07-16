@@ -13,6 +13,25 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         visible = not self:is_safehouse()
     })
 
+    local assault_bar_under = self._hud_panel:panel({
+        name = "assault_bar_under",
+        w = 356,
+        h = 20,
+        visible = false
+    })
+
+    assault_bar_under:set_top(assault_panel_v2:bottom())
+    assault_bar_under:set_right(self._hud_panel:w())
+
+    assault_bar_under_bmp = assault_bar_under:bitmap({
+        name = "assault_bar_under_bmp",
+        texture = "NepgearsyHUDReborn/HUD/AssaultBarUnder",
+        w = 356,
+        h = 20,
+        color = Color.white,
+        visible = true
+    })
+
     self._assault_panel_v2 = assault_panel_v2
     assault_panel_v2:set_right(self._hud_panel:w())
 
@@ -32,7 +51,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         texture = "NepgearsyHUDReborn/HUD/AssaultBar",
         w = 356,
         h = 40,
-        color = Color.white,
+        color = NepgearsyHUDReborn:GetOption("SoraStealthBarColor"),
         visible = true
     })
 
@@ -68,7 +87,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
         vertical = "top",
         align = "center",
         text = "0:00",
-        color = Color.red,
+        color = NepgearsyHUDReborn:GetOption("SoraPONRBarColor"),
         alpha = 0
     })
 
@@ -161,7 +180,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
 		name = "hostages_panel",
 		w = 60,
         h = 24,
-        visible = not self:is_safehouse()
+        visible = not self:is_safehouse() and not self:is_zm()
     })
     hostages_panel:set_left(managers.hud._hud_heist_timer._heist_timer_panel:right() + 5)
     hostages_panel:set_top(managers.hud._hud_heist_timer._heist_timer_panel:top())
@@ -308,13 +327,16 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
     })
 
     if managers.groupai:state():whisper_mode() then
-        self._current_assault_color = Color.white
+        self._current_assault_color = NepgearsyHUDReborn:GetOption("SoraStealthBarColor")
         self:_set_text_list(self:_get_stealth_textlist())
         local box_text_panel = self._assault_panel_v2:child("text_panel")
         box_text_panel:stop()
         box_text_panel:animate(callback(self, self, "_animate_text"), nil, nil, callback(self, self, "assault_attention_color_function"), 35)
         box_text_panel:animate(ClassClbk(self, "_show_blink"))
     end
+
+    self._vip_assault_color = NepgearsyHUDReborn:GetOption("SoraWintersBarColor")
+    self._assault_color = NepgearsyHUDReborn:GetOption("SoraAssaultBarColor")
 end)
 
 NepHook:Post(HUDAssaultCorner, "set_assault_wave_number", function(self, assault_number)
@@ -329,6 +351,10 @@ end
 
 function HUDAssaultCorner:is_safehouse()
     return managers.job:current_level_id() == "chill"
+end
+
+function HUDAssaultCorner:is_zm()
+    return managers.job:current_level_id() == "zm_broken_arrow"
 end
 
 function HUDAssaultCorner:_update_cops_map(change)
@@ -428,21 +454,23 @@ function HUDAssaultCorner:_end_assault()
 		self._start_assault_after_hostage_offset = nil
 
 		return
-	end
+    end
 
 	self:_set_feedback_color(nil)
 
 	self._assault = false
 	local box_text_panel = self._assault_panel_v2:child("text_panel")
 
-    box_text_panel:animate(ClassClbk(self, "_hide_blink"))
+    box_text_panel:animate(ClassClbk(self, "_show_blink"))
 
 	self._remove_hostage_offset = true
 	self._start_assault_after_hostage_offset = nil
 
-    self:_update_assault_hud_color(self._assault_survived_color)
-    self:_set_text_list(self:_get_survived_assault_strings())
-    box_text_panel:animate(callback(self, self, "_animate_text"), nil, nil, callback(self, self, "assault_attention_color_function"), 35)
+    self:_update_assault_hud_color(NepgearsyHUDReborn:GetOption("SoraSurvivedBarColor"))
+    self:_start_assault(self:_get_incoming_textlist())
+    --self:_update_assault_hud_color(self._assault_survived_color)
+    --self:_set_text_list(self:_get_survived_assault_strings())
+    --box_text_panel:animate(callback(self, self, "_animate_text"), nil, nil, callback(self, self, "assault_attention_color_function"), 35)
 
     if managers.skirmish:is_skirmish() or self:is_safehouse_raid() then
         self._wave_bg_box:stop()
@@ -510,9 +538,7 @@ function HUDAssaultCorner:_animate_text(text_panel, bg_box, color, color_functio
 	local text_index = 0
 	local texts = {}
 	local padding = 10
-
-
-	-- Lines: 209 to 240
+	
 	local function create_new_text(text_panel, text_list, text_index, texts)
 		if texts[text_index] and texts[text_index].text then
 			text_panel:remove(texts[text_index].text)
@@ -545,6 +571,8 @@ function HUDAssaultCorner:_animate_text(text_panel, bg_box, color, color_functio
         if NepgearsyHUDReborn.Options:GetValue("AssaultBarFont") then
             if NepgearsyHUDReborn.Options:GetValue("AssaultBarFont") == 2 then
                 font_type = "fonts/font_eurostile_ext"
+            elseif NepgearsyHUDReborn.Options:GetValue("AssaultBarFont") == 3 then
+                font_type = "fonts/font_pdth"
             end
         end
 
@@ -617,8 +645,8 @@ function HUDAssaultCorner:show_point_of_no_return_timer()
     box_text_panel:clear()
     box_text_panel:animate(ClassClbk(self, "_animate_show_noreturn"), delay_time)
     self.NoReturnText:animate(ClassClbk(self, "_show_blink"))
-	self:_set_feedback_color(self._noreturn_color)
-    self:_update_assault_hud_color(Color.red)
+	self:_set_feedback_color(NepgearsyHUDReborn:GetOption("SoraPONRBarColor"))
+    self:_update_assault_hud_color(NepgearsyHUDReborn:GetOption("SoraPONRBarColor"))
     self:_start_assault(self:_get_no_return_textlist())
 end
 
@@ -656,7 +684,6 @@ end
 function HUDAssaultCorner:_hide_icon_assaultbox(icon_assaultbox)
 end
 
--- Lines: 552 to 577
 function HUDAssaultCorner:_hide_blink(target)
 	local TOTAL_T = 2
 	local t = TOTAL_T

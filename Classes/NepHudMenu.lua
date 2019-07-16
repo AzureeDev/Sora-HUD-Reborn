@@ -1,6 +1,7 @@
 local BaseLayer = 1500
-local HighlightColor = Color(0.35, 0.25, 0.19, 0.32)
+local HighlightColor = Color(0.5, 0.25, 0.25, 0.32)
 local Font = "fonts/font_eurostile_ext"
+local MenuBgs = Color(0.75, 0, 0, 0)
 
 local function make_fine_text( text )
 	local x,y,w,h = text:text_rect()
@@ -17,15 +18,17 @@ function NepHudMenu:init()
 		use_default_close_key = true,
 		background_color = Color.transparent,
 		inherit_values = {
-			background_color = Color(0.3, 0, 0, 0),
+			background_color = MenuBgs,
 			scroll_color = Color.white:with_alpha(0.1),
 			highlight_color = HighlightColor
 		},
-        animate_toggle = true
+        animate_toggle = true,
+        animate_colors = true
     })
     self._menu_panel = self._menu._panel
     self.BackgroundStatus = true
-    self.BorderColor = NepgearsyHUDReborn:StringToColor("cpbordercolor", NepgearsyHUDReborn:GetOption("CPBorderColor"))
+    self.BorderColor = NepgearsyHUDReborn:GetOption("SoraCPBorderColor")
+    self.CurrentTeammateSkinCategory = "default"
 
     self:InitTopBar()
     self:InitBackground()
@@ -33,14 +36,6 @@ function NepHudMenu:init()
     self:InitCollab()
     self:InitChangelog()
     self:InitBack()
-
-    MenuCallbackHandler.NepgearsyHUDRebornMenu = ClassClbk(self._menu, "SetEnabled", true)
-    MenuHelperPlus:AddButton({
-        id = "NepgearsyHUDRebornMenu",
-        title = "NepgearsyHUDRebornMenu",
-        node_name = "blt_options",
-        callback = "NepgearsyHUDRebornMenu"
-    })
 end
 
 function NepHudMenu:InitTopBar()
@@ -56,7 +51,7 @@ function NepHudMenu:InitTopBar()
     })
 
     self.HUDName = self.TopBar:Divider({
-		text = managers.localization:to_upper_text("NepgearsyHUDReborn"),
+		text = managers.localization:text("NepgearsyHUDReborn"),
         font = Font,
 		size = 25,
 		border_left = false,
@@ -162,7 +157,7 @@ function NepHudMenu:InitBackground()
         w = self._menu_panel:w(),
         h = self._menu_panel:h() - self.TopBar:Panel():h(),
         texture = "NepgearsyHUDReborn/Menu/NepHudMenu",
-        alpha = 0.9
+        alpha = 1
     })
     Background:set_top(self.TopBar:Panel():bottom())
 
@@ -171,7 +166,7 @@ function NepHudMenu:InitBackground()
         w = self._menu_panel:w(),
         h = self._menu_panel:h() - self.TopBar:Panel():h(),
         texture = "NepgearsyHUDReborn/Menu/BGColor",
-        color = NepgearsyHUDReborn:StringToColor("cpcolor", NepgearsyHUDReborn.Options:GetValue("CPColor")),
+        color = NepgearsyHUDReborn.Options:GetValue("SoraCPColor"),
         layer = -2
     })
     ColorBG:set_top(self.TopBar:Panel():bottom())
@@ -183,6 +178,14 @@ function NepHudMenu:SetBackgroundVis(vis)
     local Background = self._menu_panel:child("Background")
     Background:set_visible(vis)
     self.ColorBG:set_visible(vis)
+end
+
+function NepHudMenu:SetEnabled(state)
+    if not self._menu then
+        self:init()
+    end
+
+    self._menu:SetEnabled(state)
 end
 
 function NepHudMenu:InitMenu()
@@ -200,6 +203,20 @@ function NepHudMenu:InitMenu()
             item:Panel():set_top(self.TopBar:Panel():bottom())
             item:Panel():set_right(self._menu_panel:right())
         end
+    })
+
+    self.TeammateSkins = self._menu:Menu({
+        name = "TeammateSkins",
+        background_color = MenuBgs,
+        h = 600,
+        scrollbar = true,
+        w = self._menu_panel:w() / 2.1,
+        align_method = "grid",
+        position = function(item)
+            item:Panel():set_top(self.TopBar:Panel():bottom() + 15)
+            item:Panel():set_right(self.MainMenu:Panel():left() - 10)
+        end,
+        visible = false
     })
 
     self:InitMainMenu()
@@ -269,6 +286,15 @@ function NepHudMenu:InitMainMenu()
         localized = true,
         on_callback = ClassClbk(self, "InitTeammateSkins")
     })
+
+    self.MainMenuOptions.DiscordRichPresenceButton = self.MainMenu:Button({
+        name = "DiscordRichPresenceButton",
+        border_color = self.BorderColor,
+        border_left = true,
+        text = "NepgearsyHUDRebornMenu/Buttons/DiscordRichPresenceButton",
+        localized = true,
+        on_callback = ClassClbk(self, "InitDiscordRichPresence")
+    })
 end
 
 function NepHudMenu:InitHUDOptions()
@@ -312,6 +338,16 @@ function NepHudMenu:InitHUDOptions()
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/InteractionFont",
         on_callback = ClassClbk(self, "MainClbk")
     })
+    --[[
+    self.HUDOptions.TeammatePanelStyle = self.MainMenu:ComboBox({
+        name = "TeammatePanelStyle",
+		border_left = true,
+        offset_y = 20,
+        items = NepgearsyHUDReborn.TeammatePanelStyles,
+        value = NepgearsyHUDReborn.Options:GetValue("TeammatePanelStyle"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/TeammatePanelStyle",
+        on_callback = ClassClbk(self, "MainClbk")
+    })--]]
 
     self.HUDOptions.Minimap = self.MainMenu:Toggle({
         name = "EnableMinimap",
@@ -412,6 +448,14 @@ function NepHudMenu:InitHUDOptions()
         on_callback = ClassClbk(self, "MainClbk")
     })
 
+    self.HUDOptions.ColorWithSkinPanels = self.MainMenu:Toggle({
+        name = "ColorWithSkinPanels",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("ColorWithSkinPanels"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/ColorWithSkinPanels",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
     self.HUDOptions.EnableInteraction = self.MainMenu:Toggle({
         name = "EnableInteraction",
         border_left = true,
@@ -443,6 +487,17 @@ function NepHudMenu:InitHUDOptions()
         max = 1,
         step = 0.01,
         on_callback = ClassClbk(self, "SetHudScaleSpacing")
+    })
+
+    self.MainMenu:Divider({ size = 10 })
+
+    self.MainMenu:Button({
+        name = "ResetHUDOptions",
+        border_color = self.BorderColor,
+        border_left = true,
+        localized = true,
+        text = "NepgearsyHUDRebornMenu/Buttons/ResetOption",
+        on_callback = ClassClbk(self, "ResetHUD")
     })
 
     self:CreateSharedBackButton()
@@ -514,24 +569,27 @@ function NepHudMenu:InitColorOptions()
         font_size = 20,
         font = Font
     })
+
+    self.MainMenu:QuickText("NepgearsyHUDRebornMenu/Help/NewColors", { localized = true, size = 16 })
+
     self.Colors = {}
-    self.Colors.CPColor = self.MainMenu:ComboBox({
-        name = "CPColor",
+    self.Colors.SoraCPColor = self.MainMenu:ColorTextBox({
+        name = "SoraCPColor",
         border_left = true,
-        items = NepgearsyHUDReborn.CPColors,
-        value = NepgearsyHUDReborn.Options:GetValue("CPColor"),
+        value = NepgearsyHUDReborn.Options:GetValue("SoraCPColor"),
         text = "NepgearsyHUDRebornMenu/Buttons/Colors/CPColor",
         on_callback = ClassClbk(self, "MainClbk")
     })
 
-    self.Colors.CPBorderColor = self.MainMenu:ComboBox({
-        name = "CPBorderColor",
+    self.Colors.SoraCPBorderColor = self.MainMenu:ColorTextBox({
+        name = "SoraCPBorderColor",
         border_left = true,
-        items = NepgearsyHUDReborn.CPBorderColors,
-        value = NepgearsyHUDReborn.Options:GetValue("CPBorderColor"),
+        value = NepgearsyHUDReborn.Options:GetValue("SoraCPBorderColor"),
         text = "NepgearsyHUDRebornMenu/Buttons/Colors/CPBorderColor",
         on_callback = ClassClbk(self, "MainClbk")
     })
+
+    self.MainMenu:Divider({ size = 5 })
 
     self.Colors.HealthColor = self.MainMenu:ComboBox({
         name = "HealthColor",
@@ -551,22 +609,117 @@ function NepHudMenu:InitColorOptions()
         on_callback = ClassClbk(self, "MainClbk")
     })
 
-    self.Colors.ObjectiveColor = self.MainMenu:ComboBox({
-        name = "ObjectiveColor",
+    self.MainMenu:Divider({ size = 5 })
+
+    self.Colors.SoraObjectiveColor = self.MainMenu:ColorTextBox({
+        name = "SoraObjectiveColor",
         border_left = true,
-        items = NepgearsyHUDReborn.ObjectiveColor,
-        value = NepgearsyHUDReborn.Options:GetValue("ObjectiveColor"),
+        value = NepgearsyHUDReborn.Options:GetValue("SoraObjectiveColor"),
         text = "NepgearsyHUDRebornMenu/Buttons/Colors/ObjectiveColor",
         on_callback = ClassClbk(self, "MainClbk")
     })
 
-    self.Colors.InteractionColor = self.MainMenu:ComboBox({
-        name = "InteractionColor",
+    self.Colors.SoraInteractionColor = self.MainMenu:ColorTextBox({
+        name = "SoraInteractionColor",
         border_left = true,
-        items = NepgearsyHUDReborn.InteractionColor,
-        value = NepgearsyHUDReborn.Options:GetValue("InteractionColor"),
+        value = NepgearsyHUDReborn.Options:GetValue("SoraInteractionColor"),
         text = "NepgearsyHUDRebornMenu/Buttons/Colors/InteractionColor",
         on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.MainMenu:Divider({ size = 5 })
+
+    self.Colors.SoraAssaultBarColor = self.MainMenu:ColorTextBox({
+        name = "SoraAssaultBarColor",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("SoraAssaultBarColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBar",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.SoraSurvivedBarColor = self.MainMenu:ColorTextBox({
+        name = "SoraSurvivedBarColor",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("SoraSurvivedBarColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBarSurvived",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.SoraStealthBarColor = self.MainMenu:ColorTextBox({
+        name = "SoraStealthBarColor",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("SoraStealthBarColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBarStealth",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.SoraPONRBarColor = self.MainMenu:ColorTextBox({
+        name = "SoraPONRBarColor",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("SoraPONRBarColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBarPONR",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.SoraWintersBarColor = self.MainMenu:ColorTextBox({
+        name = "SoraWintersBarColor",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("SoraWintersBarColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBarWinters",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.MainMenu:Divider({ size = 5 })
+
+    self.Colors.SoraPeerOneColor = self.MainMenu:ColorTextBox({
+        name = "SoraPeerOneColor",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("SoraPeerOneColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/PeerOneColor",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.SoraPeerTwoColor = self.MainMenu:ColorTextBox({
+        name = "SoraPeerTwoColor",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("SoraPeerTwoColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/PeerTwoColor",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.SoraPeerThreeColor = self.MainMenu:ColorTextBox({
+        name = "SoraPeerThreeColor",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("SoraPeerThreeColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/PeerThreeColor",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.SoraPeerFourColor = self.MainMenu:ColorTextBox({
+        name = "SoraPeerFourColor",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("SoraPeerFourColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/PeerFourColor",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.SoraAIColor = self.MainMenu:ColorTextBox({
+        name = "SoraAIColor",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("SoraAIColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/AIColor",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.MainMenu:Divider({ size = 10 })
+
+    self.MainMenu:Button({
+        name = "ResetColors",
+        border_color = self.BorderColor,
+        border_left = true,
+        localized = true,
+        text = "NepgearsyHUDRebornMenu/Buttons/ResetOption",
+        on_callback = ClassClbk(self, "ResetColors")
     })
 
     self:CreateSharedBackButton()
@@ -574,6 +727,7 @@ end
 
 function NepHudMenu:InitTeammateSkins()
     self:ClearMenu()
+    self:ClearSkinMenu()
     self:VisOptionalMenuParts(false)
 
     local TeammateSkinsHeader = self.MainMenu:Divider({
@@ -587,10 +741,8 @@ function NepHudMenu:InitTeammateSkins()
         font = Font
     })
 
-    self.MainMenu:Button({
+    self.MainMenu:Divider({
         name = "SkinExplaination",
-        border_color = self.BorderColor,
-        border_left = true,
         text = "NepgearsyHUDRebornMenu/Help/TeammateSkinsExplaination",
         localized = true
     })
@@ -606,122 +758,65 @@ function NepHudMenu:InitTeammateSkins()
         font = Font
     })
 
-    self.EquippedSkin = self.MainMenu:ImageButton({
+    local skin_w = NepgearsyHUDReborn:IsTeammatePanelWide() and 168 or 154
+    local skin_h = NepgearsyHUDReborn:IsTeammatePanelWide() and 68 or 45
+
+    self.EquippedSkin = self.MainMenu:Image({
         name = "EquippedSkin",
         texture = NepgearsyHUDReborn:GetTeammateSkinBySave(),
-        w = 154,
-        h = 45,
+        w = skin_w,
+        h = skin_h,
         offset_x = 82,
         offset_y = 10
     })
 
     self:CreateSharedBackButton()
 
-    self.TeammateSkins = self._menu:Menu({
-        name = "TeammateSkins",
-        background_color = Color(0.3, 0, 0, 0),
-		h = 600,
-		scrollbar = true,
-        w = self._menu_panel:w() / 2.1,
-        align_method = "grid",
-        position = function(item)
-            item:Panel():set_top(self.TopBar:Panel():bottom() + 15)
-            item:Panel():set_right(self.MainMenu:Panel():left() - 10)
+    self.TeammateSkins:SetVisible(true)
+
+    self.TeammateSkinsCategory = self.TeammateSkins:Holder({
+        background_color = Color(0.5, 0, 0, 0),
+        w = self.TeammateSkins:W(),
+        align_method = "grid"
+    })
+
+    for _, category_id in ipairs(NepgearsyHUDReborn.TeammateSkinsCollectionLegacy) do
+        self.TeammateSkinsCategory:ImageButton({
+            texture = "NepgearsyHUDReborn/HUD/TeammateSkinsCategories/" .. category_id,
+            w = 48,
+            h = 48,
+            on_callback = ClassClbk(self, "ClbkSkinChangeCat", category_id),
+            border_bottom = true
+        })
+    end
+
+    if self.CurrentTeammateSkinCategory == "community" then
+        self.TeammateSkins:Divider({
+            text = "NepgearsyHUDRebornMenu/Help/CommunityHelpText",
+            localized = true,
+            text_align = "center",
+            background_color = Color(0.5, 0, 0, 0)
+        })
+    end
+
+    for category_id, category_title in pairs(NepgearsyHUDReborn.TeammateSkinsCollection) do
+        if category_id == self.CurrentTeammateSkinCategory then
+            self.TeammateSkins:Divider({
+                name = "DefaultHeader",
+                text = tostring(category_title),
+                background_color = Color(0, 0, 0),
+                text_align = "center",
+                localized = true,
+                text_vertical = "center",
+                font_size = 20,
+                font = Font
+            })
+
+            self:GenerateSkinButtonsByCat(category_id)
+
+            break
         end
-    })
-
-    self.TeammateSkins:Divider({
-        name = "DefaultHeader",
-        text = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/DefaultHeader",
-        background_color = Color(0, 0, 0),
-        text_align = "center",
-        localized = true,
-		text_vertical = "center",
-        font_size = 20,
-        font = Font
-    })
-
-    self:GenerateSkinButtonsByCat("default")
-
-    self.TeammateSkins:Divider({
-        name = "CommunityHeader",
-        text = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/CommunityHeader",
-        background_color = Color(0, 0, 0),
-        text_align = "center",
-        localized = true,
-        text_vertical = "center",
-        offset_y = 20,
-        font_size = 20,
-        font = Font
-    })
-
-    self.TeammateSkins:Divider({
-        name = "CommunityHelpText",
-        text = "NepgearsyHUDRebornMenu/Help/CommunityHelpText",
-        localized = true,
-        text_vertical = "center",
-        offset_y = 5,
-        font_size = 14,
-        font = "fonts/font_large_mf"
-    })
-
-    self:GenerateSkinButtonsByCat("community")
-
-    self.TeammateSkins:Divider({
-        name = "HDNHeader",
-        text = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/HDNHeader",
-        background_color = Color(0, 0, 0),
-        text_align = "center",
-        localized = true,
-        text_vertical = "center",
-        offset_y = 20,
-        font_size = 20,
-        font = Font
-    })
-
-    self:GenerateSkinButtonsByCat("hdn")
-
-    self.TeammateSkins:Divider({
-        name = "SuguriHeader",
-        text = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/SuguriHeader",
-        background_color = Color(0, 0, 0),
-        text_align = "center",
-        localized = true,
-        text_vertical = "center",
-        offset_y = 20,
-        font_size = 20,
-        font = Font
-    })
-
-    self:GenerateSkinButtonsByCat("suguri")
-
-    self.TeammateSkins:Divider({
-        name = "PlushHeader",
-        text = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PlushHeader",
-        background_color = Color(0, 0, 0),
-        text_align = "center",
-        localized = true,
-        text_vertical = "center",
-        offset_y = 20,
-        font_size = 20,
-        font = Font
-    })
-
-    self:GenerateSkinButtonsByCat("plush")
-
-    self.TeammateSkins:Divider({
-        name = "OtherHeader",
-        text = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/OtherHeader",
-        background_color = Color(0, 0, 0),
-        text_align = "center",
-        localized = true,
-        text_vertical = "center",
-        offset_y = 20,
-        font_size = 20,
-        font = Font
-    })
-
-    self:GenerateSkinButtonsByCat("other")
+    end
 end
 
 function NepHudMenu:GenerateSkinButtonsByCat(category)
@@ -731,16 +826,39 @@ function NepHudMenu:GenerateSkinButtonsByCat(category)
             local name = skin_data.name
             local texture = skin_data.texture
 
-            local skin_button = self.TeammateSkins:ImageButton({
+            local skin_button_panel = self.TeammateSkins:Button({
+                name = "skin_button_panel_".. author .. name,
+                text = "",
+                w = 154 * 1.22,
+                h = 65,
+                border_left = true,
+                border_color = self.BorderColor,
+                offset_x = 5,
+                offset_y = 15,
+                background_color = Color(0.35, 0, 0, 0),
+                on_callback = ClassClbk(self, "SkinSetClbk", skin_id),
+                enabled = not NepgearsyHUDReborn:IsTeammatePanelWide() or NepgearsyHUDReborn:IsTeammatePanelWide() and NepgearsyHUDReborn.TeammateSkins[skin_id].wide_counterpart and true or false
+            })
+
+            local skin_button = skin_button_panel:Image({
                 name = "skin_button_" .. author .. name,
                 texture = texture,
                 w = 154,
                 h = 45,
-                offset_x = 35,
-                offset_y = 20,
-                help = name .. ", created by " .. author,
-                on_callback = ClassClbk(self, "SkinSetClbk", skin_id)
+                offset_y = 5,
+                position = "CenterTop"
             })
+
+            local skin_title = skin_button_panel:Divider({
+                text = name .. " by " .. author,
+                font = "fonts/font_large_mf",
+                background_color = Color.transparent,
+                font_size = 14,
+                offset_y = -5,
+                position = "CenterBottom",
+                text_align = "center"
+            })
+
 --[[
             local skin_panel = self.TeammateSkins:Panel()
             local skin_button_panel = skin_button:Panel()
@@ -755,6 +873,111 @@ function NepHudMenu:GenerateSkinButtonsByCat(category)
             skin_title:set_left(skin_button_panel:left())--]]
         end
     end
+end
+
+function NepHudMenu:ClbkSkinChangeCat(category)
+    self.CurrentTeammateSkinCategory = category
+    self:InitTeammateSkins()
+end
+
+function NepHudMenu:InitDiscordRichPresence()
+    self:ClearMenu()
+
+    local DiscordRichPresenceHeader = self.MainMenu:Divider({
+        name = "DiscordRichPresenceHeader",
+        text = "NepgearsyHUDRebornMenu/Header/DiscordRichPresenceHeader",
+        background_color = Color(0, 0, 0),
+        text_align = "center",
+		text_vertical = "center",
+		offset_y = 5,
+        font_size = 20,
+        font = Font
+    })
+
+    local status = {
+        text = "NepgearsyHUDRebornMenu/Status/DiscordRichPresenceInactive",
+        color = Color(1, 0.5, 0)
+    }
+
+    if NepgearsyHUDReborn:GetOption("UseDiscordRichPresence") then
+        status.text = "NepgearsyHUDRebornMenu/Status/DiscordRichPresenceActive"
+        status.color = Color.green
+    end
+
+    local PresenceVersionCheck = self.MainMenu:Divider({
+        name = "PresenceVersionCheck",
+        text = status.text,
+        foreground = status.color,
+        background_color = Color(0.25, 0, 0, 0),
+        text_align = "center",
+		text_vertical = "center",
+		offset_y = 5,
+        font_size = 14,
+        font = "fonts/font_large_mf"
+    })
+
+    local DiscordRichPresenceHelp = self.MainMenu:Divider({
+        name = "DiscordRichPresenceHelp",
+        text = "NepgearsyHUDRebornMenu/Help/DiscordRichPresenceHelp",
+        background_color = Color(0.25, 0, 0, 0),
+		text_vertical = "center",
+		offset_y = 20,
+        font_size = 14,
+        font = "fonts/font_large_mf"
+    })
+
+    local DiscordRichPresencePicHelp = self.MainMenu:Image({
+        name = "DiscordRichPresencePicHelp",
+        texture = "NepgearsyHUDReborn/Menu/DiscordRichPresence",
+        h = 386 / 1.25,
+        w = 368 / 1.25
+    })
+
+    self.DiscordOptions = {}
+
+    self.DiscordOptions.UseDiscordRichPresence = self.MainMenu:Toggle({
+        name = "UseDiscordRichPresence",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("UseDiscordRichPresence"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Menu/UseDiscordRichPresence",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.DiscordOptions.DiscordRichPresenceType = self.MainMenu:ComboBox({
+        name = "DiscordRichPresenceType",
+        border_left = true,
+        items = NepgearsyHUDReborn.DiscordRichPresenceTypes,
+        value = NepgearsyHUDReborn.Options:GetValue("DiscordRichPresenceType"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Menu/DiscordRichPresenceType",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    local DiscordRichPresenceCustomLimitation = self.MainMenu:Divider({
+        name = "DiscordRichPresenceCustomLimitation",
+        text = "NepgearsyHUDRebornMenu/Help/DiscordCustomPresenceLimitation",
+        background_color = Color(0.25, 0, 0, 0),
+		text_vertical = "center",
+        font_size = 14,
+        font = "fonts/font_large_mf"
+    })
+
+    self.DiscordOptions.DiscordRichPresenceCustom = self.MainMenu:TextBox({
+        name = "DiscordRichPresenceCustom",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("DiscordRichPresenceCustom"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Menu/DiscordRichPresenceCustom",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.DiscordOptions.DRPAllowTimeElapsed = self.MainMenu:Toggle({
+        name = "DRPAllowTimeElapsed",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("DRPAllowTimeElapsed"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Menu/DRPAllowTimeElapsed",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self:CreateSharedBackButton()
 end
 
 function NepHudMenu:CreateSharedBackButton()
@@ -773,11 +996,15 @@ function NepHudMenu:ClearMenu()
     self.MainMenu:ClearItems()
 end
 
+function NepHudMenu:ClearSkinMenu()
+    self.TeammateSkins:ClearItems()
+end
+
 function NepHudMenu:InitCollab()
     self.CollabMenu = self._menu:Menu({
         name = "CollabMenu",
-        background_color = Color(0.3, 0, 0, 0),
-        h = 350,
+        background_color = MenuBgs,
+        h = 270,
         w = self._menu_panel:w() / 2.1,
 		scrollbar = true,
 		offset = 8,
@@ -800,6 +1027,7 @@ function NepHudMenu:InitCollab()
     })
 
     self.Collaborator = {}
+    self.CollabAvatarLoaded = {}
     self.CollabPanel = {}
     self.CollabAvatar = {}
     self.CollabName = {}
@@ -810,11 +1038,10 @@ function NepHudMenu:InitCollab()
 
         self.Collaborator[i] = self.CollabMenu:Button({
             name = "Collaborator_" .. i,
-            h = 32,
+            h = 48,
             text = "",
-            border_color = self.BorderColor,
-            border_left = true,
-            background_color = Color(0.3, 0, 0, 0),
+            border_left = false,
+            background_color = MenuBgs,
             highlight_color = HighlightColor,
             on_callback = callback(self, self, "open_url", built_steam_url)
         })
@@ -828,9 +1055,28 @@ function NepHudMenu:InitCollab()
             layer = BaseLayer
         })
 
-        Steam:friend_avatar(1, collab_data.steam_id, function (texture)
-            local avatar = texture or "guis/textures/pd2/none_icon"
-            self.CollabAvatar[i]:set_image(avatar)
+        Steam:friend_avatar(2, collab_data.steam_id, function (texture)
+            local avatar = texture or nil
+
+            while not avatar do
+                if self.CollabAvatarLoaded[i] then
+                    break
+                end
+
+                Steam:friend_avatar(2, collab_data.steam_id, function (texture)
+                    local avatar = texture or nil
+
+                    if avatar then 
+                        self.CollabAvatar[i]:set_image(avatar)
+                        self.CollabAvatarLoaded[i] = true
+                    end
+                end)
+            end
+
+            if avatar then
+                self.CollabAvatar[i]:set_image(avatar)
+                self.CollabAvatarLoaded[i] = true
+            end
         end)
 
         self.CollabName[i] = self.CollabPanel[i]:text({
@@ -857,19 +1103,18 @@ function NepHudMenu:InitCollab()
 end
 
 function NepHudMenu:InitChangelog()
-    self.ChangelogMenu = self._menu:Menu({
+    self.ChangelogMenu = self._menu:Holder({
         name = "ChangelogMenu",
-        background_color = Color(0.3, 0, 0, 0),
-		h = 240,
+        background_color = MenuBgs,
+		h = 320,
 		offset = 8,
         w = self._menu_panel:w() / 2.1,
         position = function(item)
             item:Panel():set_top(self.CollabMenu:Panel():bottom() + 10)
             item:Panel():set_right(self.MainMenu:Panel():left() - 10)
-        end,
-        scrollbar = true
+        end
     })
-
+--[[
     self.ChangelogMenuHeader = self.ChangelogMenu:Divider({
         name = "ChangelogMenuHeader",
         text = managers.localization:text("NepgearsyHUDRebornMenu/Changelog/Header", { version = NepgearsyHUDReborn.Version }),
@@ -892,14 +1137,24 @@ function NepHudMenu:InitChangelog()
         localized = false,
         on_callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/commits/master")
     })
+--]]
+
+    local notebook = self.ChangelogMenu:NoteBook({
+        name = "Changelog",
+        auto_height = false,
+        h = self.ChangelogMenu:H() - 15
+    })
+
+    notebook:AddItemPage("Update 2.2.0 - 15.07.2019, 21:22", SoraHUDChangelog:DrawVersion220(notebook))
+    notebook:AddItemPage("Update 2.1.0 - 09.07.2019, 18:37", SoraHUDChangelog:DrawVersion210(notebook))
+    notebook:AddItemPage("Update 2.0.0", SoraHUDChangelog:DrawVersion200(notebook))
 end
 
 function NepHudMenu:InitBack()
-    self.BackMenu = self._menu:Menu({
+    self.BackMenu = self._menu:Holder({
         name = "BackMenu",
-        background_color = Color(0.3, 0, 0, 0),
+        background_color = MenuBgs,
 		h = 50,
-		scrollbar = false,
         w = self._menu_panel:w() / 2.1,
         position = function(item)
             item:Panel():set_top(self.ChangelogMenu:Panel():bottom() + 10)
@@ -912,7 +1167,7 @@ function NepHudMenu:InitBack()
         border_color = self.BorderColor,
         border_left = true,
         text = "NepgearsyHUDRebornMenu/Buttons/Close",
-        background_color = Color(0.3, 0, 0, 0),
+        background_color = MenuBgs,
         highlight_color = HighlightColor,
         position = "Center",
         localized = true,
@@ -925,6 +1180,32 @@ end
 
 function NepHudMenu:open_url(url)
     Steam:overlay_activate("url", url)
+end
+
+function NepHudMenu:ResetHUD()
+    for option_name, _ in pairs(self.HUDOptions) do
+        local option = NepgearsyHUDReborn.Options:GetOption(option_name)
+
+        if option then
+            self.HUDOptions[option_name]:SetValue(option.default_value)
+            self:SetOption(option_name, option.default_value)
+        end
+    end
+end
+
+function NepHudMenu:ResetColors()
+    for option_name, _ in pairs(self.Colors) do
+        local option = NepgearsyHUDReborn.Options:GetOption(option_name)
+
+        if option then
+            self.Colors[option_name]:SetValue(option.default_value)
+            self:SetOption(option_name, option.default_value)
+        end
+
+        if option_name == "SoraCPColor" then
+            self.ColorBG:set_color(option.default_value)
+        end
+    end
 end
 
 function NepHudMenu:background_enable_switch()
@@ -949,7 +1230,7 @@ function NepHudMenu:VisOptionalMenuParts(state)
 end
 
 function NepHudMenu:SetOption(option_name, option_value)
-    --NepgearsyHUDReborn:DebugLog("NAME ; VALUE", tostring(option_name), tostring(option_value))
+    NepgearsyHUDReborn:DebugLog("NAME ; VALUE", tostring(option_name), tostring(option_value))
     NepgearsyHUDReborn.Options:SetValue(option_name, option_value)
     NepgearsyHUDReborn.Options:Save()
 end
@@ -958,16 +1239,40 @@ function NepHudMenu:MainClbk(item)
     if item then
         self:SetOption(item.name, item:Value())
 
-        if item.name == "CPColor" then
-            local new_color = NepgearsyHUDReborn:StringToColor("cpcolor", NepgearsyHUDReborn.Options:GetValue("CPColor"))
-            self.ColorBG:set_color(new_color)
+        if item.name == "SoraCPColor" then
+            --local new_color = NepgearsyHUDReborn:StringToColor("cpcolor", NepgearsyHUDReborn.Options:GetValue("CPColor"))
+            self.ColorBG:set_color(item:Value())
+        end
+
+        if item.name == "UseDiscordRichPresence" then
+            local menu_title = "Restart Required"
+            local menu_message = "The game need to close to apply the change."
+            local menu_options = {
+                [1] = {
+                    text = "Close now",
+                    callback = ClassClbk(self, "GameClose"),
+                },
+                [2] = {
+                    text = "Close later",
+                    is_cancel_button = true,
+                },
+            }
+
+            local menu = QuickMenu:new( menu_title, menu_message, menu_options )
+            menu:Show()
+            self:SetBackgroundVis(false)
+            self:VisOptionalMenuParts(false)
         end
     end
 end
 
+function NepHudMenu:GameClose()
+    setup:quit()
+end
+
 function NepHudMenu:SkinSetClbk(skin_id)
     if skin_id then
-        NepgearsyHUDReborn:Log("Teammate skin id set to: ", skin_id)
+        NepgearsyHUDReborn:DebugLog("Teammate skin id set to: ", skin_id)
         self:SetOption("TeammateSkin", skin_id)
         self.EquippedSkin:SetImage(NepgearsyHUDReborn:GetTeammateSkinById(skin_id))
     end
@@ -975,7 +1280,13 @@ end
 
 function NepHudMenu:SetHudScaleSpacing(item)
 	NepgearsyHUDReborn.Options:SetValue(item:Name(), item:Value())
-	if managers.hud and managers.hud.recreate_player_info_hud_pd2 then
+    if managers.hud and managers.hud.recreate_player_info_hud_pd2 then
+        if NepgearsyHUDReborn:IsTeammatePanelWide() then
+            managers.gui_data:layout_scaled_fullscreen_workspace(managers.hud._saferect, 0.95, 1)
+		    managers.hud:recreate_player_info_hud_pd2()
+            return
+        end
+
 		managers.gui_data:layout_scaled_fullscreen_workspace(managers.hud._saferect, NepgearsyHUDReborn.Options:GetValue("Scale"), NepgearsyHUDReborn.Options:GetValue("Spacing"))
 		managers.hud:recreate_player_info_hud_pd2()
 	end
