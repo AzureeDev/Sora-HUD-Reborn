@@ -4,6 +4,19 @@ local small_text_changelog = 15
 local color_header = Color(0.35, 0.65, 1)
 local color_changelog = Color(0.7, 0.7, 0.7)
 
+function SoraHUDChangelog:DrawVersion230(notebook)
+    local holder = notebook:Holder({offset = 0})
+
+    self:ImageHeader("NepgearsyHUDReborn/Menu/Versions/230", holder)
+    self:Title("2.3.0 - Acceleration", holder)
+    self:Change("Stamina Bar", "A new stamina bar has been added. You can toggle it on, or off in the HUD options. You can also personalize the colors!", holder)
+    self:Change("Integrated Money In HUD", "You can now enjoy a brand new Money in HUD, directly included, adapted to the HUD style. Toggle it on and off in the options.", holder)
+    self:Change("Teammate Panel Skins are now loading instantly", "A problem that was getting bigger and bigger the more I added skins. This is now definitely fixed. In addition to that, kruiserdb created 10 new teammate panel skins. Check them in the Community category!", holder)
+    self:Change("Bugfixes", "- Fixed an issue when switching loadouts in a pre-game: the fire mode was not displaying properly. This is now fixed", holder)
+
+    return holder
+end
+
 function SoraHUDChangelog:DrawVersion220(notebook)
     local holder = notebook:Holder({offset = 0})
 

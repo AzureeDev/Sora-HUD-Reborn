@@ -1,6 +1,4 @@
-local enabled = NepgearsyHUDReborn:GetOption("EnableHorizontalLoadout")
-
-if enabled == true then
+if NepgearsyHUDReborn:GetOption("EnableHorizontalLoadout") then
 	function TeamLoadoutItem:init(panel, text, i)
 		TeamLoadoutItem.super.init(self, panel, text, i)
 		self._player_slots = {}

@@ -570,11 +570,11 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 		local old_auto = primary_weapon_panel:child("firemode_auto")
 
 		if alive(old_single) then
-			primary_weapon_panel:set_visible(false)
+			primary_weapon_panel:remove(old_single)
 		end
 
 		if alive(old_auto) then
-			primary_weapon_panel:set_visible(false)
+			primary_weapon_panel:remove(old_auto)
 		end
 
 		if self._main_player then
@@ -629,11 +629,11 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 		local old_auto = secondary_weapon_panel:child("firemode_auto")
 
 		if alive(old_single) then
-			secondary_weapon_panel:set_visible(false)
+			secondary_weapon_panel:remove(old_single)
 		end
 
 		if alive(old_auto) then
-			secondary_weapon_panel:set_visible(false)
+			secondary_weapon_panel:remove(old_auto)
 		end
 
 		if self._main_player then

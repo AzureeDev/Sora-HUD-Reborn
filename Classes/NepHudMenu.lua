@@ -463,6 +463,22 @@ function NepHudMenu:InitHUDOptions()
         text = "NepgearsyHUDRebornMenu/Buttons/HUD/EnableInteraction",
         on_callback = ClassClbk(self, "MainClbk")
     })
+
+    self.HUDOptions.ActivateStaminaBar = self.MainMenu:Toggle({
+        name = "ActivateStaminaBar",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("ActivateStaminaBar"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/ActivateStaminaBar",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.HUDOptions.ActivateMoneyHUD = self.MainMenu:Toggle({
+        name = "ActivateMoneyHUD",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("ActivateMoneyHUD"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/ActivateMoneyHUD",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
     
     self.HUDOptions.Scale = self.MainMenu:Slider({
         name = "Scale",
@@ -711,6 +727,25 @@ function NepHudMenu:InitColorOptions()
         on_callback = ClassClbk(self, "MainClbk")
     })
 
+    self.MainMenu:Divider({ size = 5 })
+
+    self.Colors.StaminaBarColor = self.MainMenu:ColorTextBox({
+        name = "StaminaBarColor",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("StaminaBarColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/StaminaBarColor",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.Colors.LowStaminaBarColor = self.MainMenu:ColorTextBox({
+        name = "LowStaminaBarColor",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("LowStaminaBarColor"),
+        text = "NepgearsyHUDRebornMenu/Buttons/Colors/LowStaminaBarColor",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+
     self.MainMenu:Divider({ size = 10 })
 
     self.MainMenu:Button({
@@ -899,9 +934,12 @@ function NepHudMenu:InitDiscordRichPresence()
         color = Color(1, 0.5, 0)
     }
 
+    local has_presence_active = false
+
     if NepgearsyHUDReborn:GetOption("UseDiscordRichPresence") then
         status.text = "NepgearsyHUDRebornMenu/Status/DiscordRichPresenceActive"
         status.color = Color.green
+        has_presence_active = true
     end
 
     local PresenceVersionCheck = self.MainMenu:Divider({
@@ -949,7 +987,8 @@ function NepHudMenu:InitDiscordRichPresence()
         items = NepgearsyHUDReborn.DiscordRichPresenceTypes,
         value = NepgearsyHUDReborn.Options:GetValue("DiscordRichPresenceType"),
         text = "NepgearsyHUDRebornMenu/Buttons/Menu/DiscordRichPresenceType",
-        on_callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk"),
+        enabled = has_presence_active
     })
 
     local DiscordRichPresenceCustomLimitation = self.MainMenu:Divider({
@@ -966,7 +1005,8 @@ function NepHudMenu:InitDiscordRichPresence()
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("DiscordRichPresenceCustom"),
         text = "NepgearsyHUDRebornMenu/Buttons/Menu/DiscordRichPresenceCustom",
-        on_callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk"),
+        enabled = has_presence_active
     })
 
     self.DiscordOptions.DRPAllowTimeElapsed = self.MainMenu:Toggle({
@@ -974,7 +1014,8 @@ function NepHudMenu:InitDiscordRichPresence()
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("DRPAllowTimeElapsed"),
         text = "NepgearsyHUDRebornMenu/Buttons/Menu/DRPAllowTimeElapsed",
-        on_callback = ClassClbk(self, "MainClbk")
+        on_callback = ClassClbk(self, "MainClbk"),
+        enabled = has_presence_active
     })
 
     self:CreateSharedBackButton()
@@ -1145,6 +1186,7 @@ function NepHudMenu:InitChangelog()
         h = self.ChangelogMenu:H() - 15
     })
 
+    notebook:AddItemPage("Update 2.3.0", SoraHUDChangelog:DrawVersion230(notebook))
     notebook:AddItemPage("Update 2.2.0 - 15.07.2019, 21:22", SoraHUDChangelog:DrawVersion220(notebook))
     notebook:AddItemPage("Update 2.1.0 - 09.07.2019, 18:37", SoraHUDChangelog:DrawVersion210(notebook))
     notebook:AddItemPage("Update 2.0.0", SoraHUDChangelog:DrawVersion200(notebook))

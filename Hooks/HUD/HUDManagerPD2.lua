@@ -1,5 +1,13 @@
 dofile(ModPath .. "Hooks/HUD/HUDTeammateWide.lua")
 
+function HUDManager:set_stamina_value(value)
+	self._hud_stamina:set_stamina_value(value)
+end
+
+function HUDManager:set_max_stamina(value)
+	self._hud_stamina:set_max_stamina(value)
+end
+
 function HUDManager:_create_teammates_panel(hud)
 	if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 		hud = hud or managers.hud:script(PlayerBase.PLAYER_INFO_HUD_PD2)
@@ -140,6 +148,17 @@ NepHook:Pre(HUDManager, "_setup_player_info_hud_pd2", function(self)
 	managers.gui_data:layout_scaled_fullscreen_workspace(managers.hud._saferect, NepgearsyHUDReborn.Options:GetValue("Scale"), NepgearsyHUDReborn.Options:GetValue("Spacing"))
 end)
 
+NepHook:Post(HUDManager, "_setup_player_info_hud_pd2", function(self)
+	if not self:alive(PlayerBase.PLAYER_INFO_HUD_PD2) then
+		return
+	end
+
+	local hud = managers.hud:script(PlayerBase.PLAYER_INFO_HUD_PD2)
+
+	self:_create_stamina_hud(hud)
+	self:_create_money_hud(hud)
+end)
+
 function HUDManager:recreate_player_info_hud_pd2()
 	if not self:alive(PlayerBase.PLAYER_INFO_HUD_PD2) then return end
 	local hud = managers.hud:script(PlayerBase.PLAYER_INFO_HUD_PD2)
@@ -156,6 +175,18 @@ function HUDManager:recreate_player_info_hud_pd2()
 	self:_create_downed_hud()
 	self:_create_custody_hud()
 	self:_create_waiting_legend(hud)
+	self:_create_stamina_hud(hud)
+	self:_create_money_hud(hud)
+end
+
+function HUDManager:_create_stamina_hud(hud)
+	hud = hud or managers.hud:script(PlayerBase.PLAYER_INFO_HUD_PD2)
+	self._hud_stamina = HUDStamina:new(hud)
+end
+
+function HUDManager:_create_money_hud(hud)
+	hud = hud or managers.hud:script(PlayerBase.PLAYER_INFO_HUD_PD2)
+	self._hud_money = HUDMoney:new(hud)
 end
 
 core:module("CoreGuiDataManager")

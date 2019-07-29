@@ -1,4 +1,4 @@
-NepHook:Post(HUDMissionBriefing, "init", function(self)
+NepHook:Post(HUDMissionBriefing, "init", function(self, hud, workspace)
     self._player = {}                       -- Steam ID for avatars
     self._player[1] = "0"
     self._player[2] = "0"

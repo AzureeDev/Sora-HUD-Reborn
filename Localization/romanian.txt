@@ -142,6 +142,11 @@
 	"NepgearsyHUDRebornMenu/Buttons/Colors/PeerThreeColor" : "Player 3 Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/PeerFourColor" : "Player 4 Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/AIColor" : "AI Color",
-	"NepgearsyHUDRebornMenu/Buttons/ResetOption" : "Reset to default values"
+	"NepgearsyHUDRebornMenu/Buttons/ResetOption" : "Reset to default values",
+
+	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateStaminaBar" : "Activate the Stamina Bar",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/StaminaBarColor" : "Stamina Bar Color",
+	"NepgearsyHUDRebornMenu/Buttons/Colors/LowStaminaBarColor" : "Low Stamina Bar Color",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateMoneyHUD" : "Activate the 'Money in HUD' panel"
 
 }

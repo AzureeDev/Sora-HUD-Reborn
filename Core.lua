@@ -1,11 +1,11 @@
 function NepgearsyHUDReborn:Init()
 	self.Dev = false
-	self.Version = "2.2.0 - Colorful Update"
+	self.Version = "2.3.0 - Acceleration"
+	self.ModVersion = NepgearsyHUDReborn.update_module_data.module.version or self.Version
 	self.WaifuSend = false
 
 	self:InitCollabs()
 	self:InitTweakData()
-	self:InitChangelog()
 	self:InitLocalization()
 
 	self.Initialized = true;
@@ -287,6 +287,16 @@ function NepgearsyHUDReborn:InitTweakData()
 		{ author = "RJC9000", collection = "other", name = "Magician", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/other/magician" },
 		{ author = "RJC9000", collection = "other", name = "Miko", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/other/miko" },
 		{ author = "Sora", collection = "default", name = "PAYDAY Borders", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/defaults/TeammateBorder" },
+		{ author = "kruiserdb", collection = "community", name = "Philia Salis", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Phillia_Salis_1" },
+		{ author = "kruiserdb", collection = "community", name = "Philia Salis", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Phillia_Salis_2" },
+		{ author = "kruiserdb", collection = "community", name = "Philia Salis", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Phillia_Salis_3" },
+		{ author = "kruiserdb", collection = "community", name = "Yume & Laura", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Yume__Laura" },
+		{ author = "kruiserdb", collection = "community", name = "Cheetahmen", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Cheetahman" },
+		{ author = "kruiserdb", collection = "community", name = "Signalize!", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Signalize" },
+		{ author = "kruiserdb", collection = "community", name = "Behemoth", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Behemoth" },
+		{ author = "kruiserdb", collection = "community", name = "Sakuraba Laura", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Sakuraba_Laura_1" },
+		{ author = "kruiserdb", collection = "community", name = "Sakuraba Laura", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Sakuraba_Laura_2" },
+		{ author = "kruiserdb", collection = "community", name = "Sakuraba Laura", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Sakuraba_Laura_3" },
 
 	}
 
@@ -455,17 +465,6 @@ function NepgearsyHUDReborn:StringToColor(module, id)
 	return stc[module][id]
 end
 
-function NepgearsyHUDReborn:InitChangelog()
-	if SystemFS:exists(self.ModPath .. "Changelog.txt") then
-		local file = io.open( self.ModPath .. "Changelog.txt", "r")
-		self.Changelog = file:read("*all")
-		return
-	end
-
-	self.Changelog = ""
-	return
-end
-
 function NepgearsyHUDReborn:InitLocalization()
 	self.LocalizationTable = {}
 	self.Localization = {
@@ -531,7 +530,7 @@ function NepgearsyHUDReborn:InitDiscord()
 		local level_string = player_level > 0 and ", " .. (is_infamous and managers.experience:rank_string(player_rank) .. "-" or "") .. tostring(player_level) or ""
 		
 		Discord:set_large_image("payday2_icon", "PAYDAY 2")
-		Discord:set_small_image("sora_hud", "With Sora's HUD Reborn")
+		Discord:set_small_image("sora_hud", "Sora's HUD Reborn " .. self.ModVersion)
 		
 		if self:GetOption("DRPAllowTimeElapsed") then
 			Discord:set_start_time_relative(0)
