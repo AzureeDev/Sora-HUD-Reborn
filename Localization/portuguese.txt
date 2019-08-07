@@ -104,7 +104,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/TeammatePanelSkinButton" : "Skins do painel dos amigos",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableSteamAvatars" : "Mostra avatares da Steam",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkinsHeader" : "Coleção de Skins dos amigos",
-	"NepgearsyHUDRebornMenu/Help/TeammateSkinsExplaination" : "Skins dos amigos substitui a opção do Waifu Picker da Nepgearsy HUD.\n\nAgora você vai poder coloca Skins em paineis dos seus amigos na HUD. Clica em um dos fundos disponíveis na esquerda. Vai tá sincronizado para outros que tem a HUD, exceto pro Padrão e Customizado\n\nSe você quiser, pode me enviar as suas criações usando o template que você pode achar em /Assets/NepgearsyHUDReborn/TeammateSkins/custom/. Eu irei ponha no mod oficial e sincroniza com os outros jogadores que tem a HUD.",
+	"NepgearsyHUDRebornMenu/Help/TeammateSkinsExplaination" : "Skins dos amigos substitui a opção do Waifu Picker da Nepgearsy HUD.\n\nAgora você vai poder coloca Skins em paineis dos seus amigos na HUD. Clica em um dos fundos disponíveis na esquerda. Vai tá sincronizado para outros que tem a HUD, exceto pro Padrão e Customizado\n\nSe você quiser, pode me enviar as suas criações usando o template que você pode achar em Assets\NepgearsyHUDReborn\HUD\TeammateSkins\custom. Eu irei ponha no mod oficial e sincroniza com os outros jogadores que tem a HUD.",
 	"NepgearsyHUDRebornMenu/Help/SkinEquipped" : "Fundo equipado :",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/DefaultHeader" : "Padrão",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/HDNHeader" : "Hyperdimension Neptunia",
