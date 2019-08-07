@@ -7,17 +7,17 @@
 
 	"NepgearsyHUDRebornMenu/ForcedLocalization" : "Língua",
 
-	"NepgearsyHUDReborn/Localization/English" : "English",
-	"NepgearsyHUDReborn/Localization/Turkish" : "Turkish",
-	"NepgearsyHUDReborn/Localization/Portuguese" : "Portuguese",
-	"NepgearsyHUDReborn/Localization/Spanish" : "Spanish",
-	"NepgearsyHUDReborn/Localization/Russian" : "Russian",
-	"NepgearsyHUDReborn/Localization/French" : "French",
-	"NepgearsyHUDReborn/Localization/Romanian" : "Romanian",
-	"NepgearsyHUDReborn/Localization/German" : "German",
-	"NepgearsyHUDReborn/Localization/Thai" : "Thai",
-	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",
-	"NepgearsyHUDReborn/Localization/Italian" : "Italian",
+	"NepgearsyHUDReborn/Localization/English" : "Inglês",
+	"NepgearsyHUDReborn/Localization/Turkish" : "Turquia",
+	"NepgearsyHUDReborn/Localization/Portuguese" : "Português",
+	"NepgearsyHUDReborn/Localization/Spanish" : "Espanhol",
+	"NepgearsyHUDReborn/Localization/Russian" : "Russo",
+	"NepgearsyHUDReborn/Localization/French" : "Francês",
+	"NepgearsyHUDReborn/Localization/Romanian" : "Romeno",
+	"NepgearsyHUDReborn/Localization/German" : "Alemão",
+	"NepgearsyHUDReborn/Localization/Thai" : "Tailandes",
+	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Chinês Simples",
+	"NepgearsyHUDReborn/Localization/Italian" : "Italiano",
 
 	"NepgearsyHUDReborn/Color/White" : "Branco",
 	"NepgearsyHUDReborn/Color/Red" : "Vermelho",
@@ -34,7 +34,7 @@
 
 	"NepgearsyHUDReborn/Fonts/Normal" : "Normal",
 	"NepgearsyHUDReborn/Fonts/Eurostile" : "Eurostile",
-	"NepgearsyHUDReborn/Fonts/PDTH" : "PDTH",
+	"NepgearsyHUDReborn/Fonts/PDTH" : "Clássico",
 
 	"NepgearsyHUDReborn/HealthStyle/Thin" : "Fino",
 	"NepgearsyHUDReborn/HealthStyle/Vanilla" : "Padrão",
@@ -82,10 +82,10 @@
 	"NepgearsyHUDRebornMenu/Buttons/Close" : "Fechar",
 
 	"NepgearsyHUDRebornMenu/Collaborators/Header" : "Criador e colaboradores",
-	"NepgearsyHUDRebornMenu/Changelog/Header" : "Log de Mudancas: $version",
+	"NepgearsyHUDRebornMenu/Changelog/Header" : "Log de Updates: $version",
 
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Chill" : "Modo Stealth",
-	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Fica pronto pro próximo assault",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Coming" : "Se prepare pro próximo assault",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/NoReturn" : "Beco sem saída",
 
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno1" : "O que você ta fazendo?",
@@ -127,7 +127,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/Menu/DiscordRichPresenceType" : "Tipo de Presence",
 	"NepgearsyHUDReborn/Discord/DefaultType" : "Padrão (Mostra qual Heist está jogando)",
 	"NepgearsyHUDReborn/Discord/KillTracker" : "Kill Tracker (Policiais mortos na cena)",
-	"NepgearsyHUDRebornMenu/Buttons/Menu/DRPAllowTimeElapsed" : "Mostra o tempo gastado",
+	"NepgearsyHUDRebornMenu/Buttons/Menu/DRPAllowTimeElapsed" : "Mostra o tempo perdido",
 
 	"NepgearsyHUDRebornMenu/Buttons/HUD/ColorWithSkinPanels" : "Mostra a cor do jogador com a Skin do painel do amigo",
 
@@ -142,7 +142,7 @@
     "NepgearsyHUDRebornMenu/Buttons/Colors/PeerThreeColor" : "Cor do Jogador 3",
     "NepgearsyHUDRebornMenu/Buttons/Colors/PeerFourColor" : "Cor do Jogador 4",
     "NepgearsyHUDRebornMenu/Buttons/Colors/AIColor" : "Cor do AI",
-    "NepgearsyHUDRebornMenu/Buttons/ResetOption" : "Resetar pro seus valores padrões",
+    "NepgearsyHUDRebornMenu/Buttons/ResetOption" : "Resetar pra suas cores padrões",
 
 	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateStaminaBar" : "Ativar a Barra de Stamina",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/StaminaBarColor" : "Cor da Barra de Stamina",
