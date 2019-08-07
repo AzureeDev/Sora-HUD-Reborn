@@ -4,6 +4,17 @@ local small_text_changelog = 15
 local color_header = Color(0.35, 0.65, 1)
 local color_changelog = Color(0.7, 0.7, 0.7)
 
+function SoraHUDChangelog:DrawVersion231(notebook)
+    local holder = notebook:Holder({offset = 0})
+
+    self:ImageHeader("NepgearsyHUDReborn/Menu/Versions/231", holder)
+    self:Title("2.3.1 - Acceleration - Bugfix", holder)
+    self:Change("Bugfixes", "Fixed an issue where, under exceptionnal circumstances, the game would freeze forever when opening the menu.", holder)
+    self:Change("New stuff", "2 new teammate panel skins added in the community category.", holder)
+
+    return holder
+end
+
 function SoraHUDChangelog:DrawVersion230(notebook)
     local holder = notebook:Holder({offset = 0})
 

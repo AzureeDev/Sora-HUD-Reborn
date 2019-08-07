@@ -1096,15 +1096,22 @@ function NepHudMenu:InitCollab()
             layer = BaseLayer
         })
 
-        Steam:friend_avatar(2, collab_data.steam_id, function (texture)
+        Steam:friend_avatar(1, collab_data.steam_id, function (texture)
             local avatar = texture or nil
+            local retrieving_tries = 0
+            local max_tries = 10
 
             while not avatar do
+                if retrieving_tries >= max_tries then
+                    log("Max tries reached, pass")
+                    break
+                end
+
                 if self.CollabAvatarLoaded[i] then
                     break
                 end
 
-                Steam:friend_avatar(2, collab_data.steam_id, function (texture)
+                Steam:friend_avatar(1, collab_data.steam_id, function (texture)
                     local avatar = texture or nil
 
                     if avatar then 
@@ -1112,6 +1119,8 @@ function NepHudMenu:InitCollab()
                         self.CollabAvatarLoaded[i] = true
                     end
                 end)
+
+                retrieving_tries = retrieving_tries + 1
             end
 
             if avatar then
@@ -1186,7 +1195,8 @@ function NepHudMenu:InitChangelog()
         h = self.ChangelogMenu:H() - 15
     })
 
-    notebook:AddItemPage("Update 2.3.0", SoraHUDChangelog:DrawVersion230(notebook))
+    notebook:AddItemPage("Update 2.3.1 - 06.08.2019, 19:46", SoraHUDChangelog:DrawVersion231(notebook))
+    notebook:AddItemPage("Update 2.3.0 - 29.07.2019, 18:52", SoraHUDChangelog:DrawVersion230(notebook))
     notebook:AddItemPage("Update 2.2.0 - 15.07.2019, 21:22", SoraHUDChangelog:DrawVersion220(notebook))
     notebook:AddItemPage("Update 2.1.0 - 09.07.2019, 18:37", SoraHUDChangelog:DrawVersion210(notebook))
     notebook:AddItemPage("Update 2.0.0", SoraHUDChangelog:DrawVersion200(notebook))

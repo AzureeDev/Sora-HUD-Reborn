@@ -1,6 +1,6 @@
 function NepgearsyHUDReborn:Init()
 	self.Dev = false
-	self.Version = "2.3.0 - Acceleration"
+	self.Version = "2.3.1 - Acceleration"
 	self.ModVersion = NepgearsyHUDReborn.update_module_data.module.version or self.Version
 	self.WaifuSend = false
 
@@ -297,6 +297,8 @@ function NepgearsyHUDReborn:InitTweakData()
 		{ author = "kruiserdb", collection = "community", name = "Sakuraba Laura", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Sakuraba_Laura_1" },
 		{ author = "kruiserdb", collection = "community", name = "Sakuraba Laura", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Sakuraba_Laura_2" },
 		{ author = "kruiserdb", collection = "community", name = "Sakuraba Laura", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Sakuraba_Laura_3" },
+		{ author = "Joltin135", collection = "community", name = "'The Forgotten Skin'", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/community/joltin" },
+		{ author = "Kinrade", collection = "community", name = "Corey", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/community/corey" },
 
 	}
 

@@ -4,7 +4,7 @@
         <class file="SoraHUDChangelog.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="2.3.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="2.3.1" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="Setup.lua" source_file="lib/setups/setup"/>
@@ -121,6 +121,7 @@
         <texture path="NepgearsyHUDReborn/Menu/Discord"/>
         <texture path="NepgearsyHUDReborn/Menu/DiscordRichPresence"/>
 
+        <texture path="NepgearsyHUDReborn/Menu/Versions/231"/>
         <texture path="NepgearsyHUDReborn/Menu/Versions/230"/>
         <texture path="NepgearsyHUDReborn/Menu/Versions/220"/>
         <texture path="NepgearsyHUDReborn/Menu/Versions/210"/>
@@ -285,6 +286,8 @@
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Sakuraba_Laura_1" load="true"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Sakuraba_Laura_2" load="true"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Sakuraba_Laura_3" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/community/joltin" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/community/corey" load="true"/>
 
         <texture path="NepgearsyHUDReborn/HUD/WideTeammateSkins/default"/>
         <texture path="NepgearsyHUDReborn/HUD/WideTeammateSkins/default_bot"/>
