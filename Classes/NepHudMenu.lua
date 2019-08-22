@@ -1195,6 +1195,7 @@ function NepHudMenu:InitChangelog()
         h = self.ChangelogMenu:H() - 15
     })
 
+    notebook:AddItemPage("Update 2.3.2 - 22.08.2019, 19:11", SoraHUDChangelog:DrawVersion232(notebook))
     notebook:AddItemPage("Update 2.3.1 - 06.08.2019, 19:46", SoraHUDChangelog:DrawVersion231(notebook))
     notebook:AddItemPage("Update 2.3.0 - 29.07.2019, 18:52", SoraHUDChangelog:DrawVersion230(notebook))
     notebook:AddItemPage("Update 2.2.0 - 15.07.2019, 21:22", SoraHUDChangelog:DrawVersion220(notebook))

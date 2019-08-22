@@ -114,6 +114,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/OtherHeader" : "其他",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PersonaHeader" : "女神异闻录 皮肤",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/Pd2Header" : "PAYDAY 2 皮肤",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/KiniroHeader" : "Kiniro Mosaic",
 	"NepgearsyHUDRebornMenu/Buttons/Back" : "返回",
 
 	"NepgearsyHUDRebornMenu/Buttons/DiscordRichPresenceButton" : "Discord 状态显示设置",

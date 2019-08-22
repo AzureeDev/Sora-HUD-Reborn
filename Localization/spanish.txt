@@ -113,6 +113,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/OtherHeader" : "Others",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PersonaHeader" : "Persona",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/Pd2Header" : "PAYDAY 2",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/KiniroHeader" : "Kiniro Mosaic",
 	"NepgearsyHUDRebornMenu/Buttons/Back" : "Back",
 
 	"NepgearsyHUDRebornMenu/Buttons/DiscordRichPresenceButton" : "Discord Rich Presence Options",

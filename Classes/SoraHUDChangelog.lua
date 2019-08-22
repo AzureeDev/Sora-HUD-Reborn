@@ -4,6 +4,17 @@ local small_text_changelog = 15
 local color_header = Color(0.35, 0.65, 1)
 local color_changelog = Color(0.7, 0.7, 0.7)
 
+function SoraHUDChangelog:DrawVersion232(notebook)
+    local holder = notebook:Holder({offset = 0})
+
+    self:ImageHeader("NepgearsyHUDReborn/Menu/Versions/232", holder)
+    self:Title("2.3.2 - Acceleration - Content Update", holder)
+    self:Change("Teammate Skins", "Added new skins! These were made by Syphist, and gabsF. Thanks to them!", holder)
+    self:Change("Localization Updated", "The portuguese localization has been updated.", holder)
+    return holder
+end
+
+
 function SoraHUDChangelog:DrawVersion231(notebook)
     local holder = notebook:Holder({offset = 0})
 

@@ -4,7 +4,7 @@
         <class file="SoraHUDChangelog.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="2.3.1" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="2.3.2" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="Setup.lua" source_file="lib/setups/setup"/>
@@ -121,6 +121,7 @@
         <texture path="NepgearsyHUDReborn/Menu/Discord"/>
         <texture path="NepgearsyHUDReborn/Menu/DiscordRichPresence"/>
 
+        <texture path="NepgearsyHUDReborn/Menu/Versions/232"/>
         <texture path="NepgearsyHUDReborn/Menu/Versions/231"/>
         <texture path="NepgearsyHUDReborn/Menu/Versions/230"/>
         <texture path="NepgearsyHUDReborn/Menu/Versions/220"/>
@@ -288,6 +289,16 @@
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Sakuraba_Laura_3" load="true"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/community/joltin" load="true"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/community/corey" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/community/twinkle" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/earth_chan" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/kinmoza_alice" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/kinmoza_aya" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/kinmoza_karen" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/kinmoza_shinobu" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/kinmoza_yoko" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/mc_dirt" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/sans" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/winxp_bliss" load="true"/>
 
         <texture path="NepgearsyHUDReborn/HUD/WideTeammateSkins/default"/>
         <texture path="NepgearsyHUDReborn/HUD/WideTeammateSkins/default_bot"/>
@@ -303,6 +314,7 @@
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/persona"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/plush"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/other"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/kiniro"/>
 
         <texture path="NepgearsyHUDReborn/Minimap/kenaz_loc_b_df"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_1"/>

@@ -1,6 +1,6 @@
 function NepgearsyHUDReborn:Init()
 	self.Dev = false
-	self.Version = "2.3.1 - Acceleration"
+	self.Version = "2.3.2 - Acceleration"
 	self.ModVersion = NepgearsyHUDReborn.update_module_data.module.version or self.Version
 	self.WaifuSend = false
 
@@ -48,7 +48,7 @@ function NepgearsyHUDReborn:InitCollabs()
 		},
 		[7] = {
 			name = "AldoRaine\ngabsF",
-			steam_id = "76561198079386949",
+			steam_id = "76561198152040762",
 			action = "Made the Portuguese localization"
 		},
 		[8] = {
@@ -173,6 +173,7 @@ function NepgearsyHUDReborn:InitTweakData()
 		"hdn",
 		"plush",
 		"persona",
+		"kiniro",
 		"other"
 	}
 
@@ -184,6 +185,7 @@ function NepgearsyHUDReborn:InitTweakData()
 		suguri = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/SuguriHeader",
 		plush = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PlushHeader",
 		persona = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PersonaHeader",
+		kiniro = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/KiniroHeader",
 		other = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/OtherHeader"
 	}
 
@@ -299,7 +301,16 @@ function NepgearsyHUDReborn:InitTweakData()
 		{ author = "kruiserdb", collection = "community", name = "Sakuraba Laura", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/kruiser/Sakuraba_Laura_3" },
 		{ author = "Joltin135", collection = "community", name = "'The Forgotten Skin'", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/community/joltin" },
 		{ author = "Kinrade", collection = "community", name = "Corey", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/community/corey" },
-
+		{ author = "gabsF", collection = "community", name = "Twinkle", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/community/twinkle" },
+		{ author = "Syphist", collection = "community", name = "Earth Chan", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/earth_chan" },
+		{ author = "Syphist", collection = "kiniro", name = "Alice", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/kinmoza_alice" },
+		{ author = "Syphist", collection = "kiniro", name = "Aya", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/kinmoza_aya" },
+		{ author = "Syphist", collection = "kiniro", name = "Karen", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/kinmoza_karen" },
+		{ author = "Syphist", collection = "kiniro", name = "Shinobu", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/kinmoza_shinobu" },
+		{ author = "Syphist", collection = "kiniro", name = "Yoko", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/kinmoza_yoko" },
+		{ author = "Syphist", collection = "community", name = "Minecraft Dirt", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/mc_dirt" },
+		{ author = "Syphist", collection = "community", name = "Sans", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/sans" },
+		{ author = "Syphist", collection = "community", name = "Windows XP Bliss", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/winxp_bliss" },
 	}
 
 	self.TeammatePanelStyles = {
