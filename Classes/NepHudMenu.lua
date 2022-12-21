@@ -81,15 +81,6 @@ function NepHudMenu:InitTopBar()
         on_callback = ClassClbk(self, "open_url", "https://modworkshop.net/mydownloads.php?action=view_down&did=22152")
     })
     self.MWSProfile = MWSProfile
-    local Discord = self.TopBar:ImageButton({
-        name = "Discord",
-        texture = "NepgearsyHUDReborn/Menu/Discord",
-        w = 26,
-        h = 26,
-        offset_x = 5,
-        help = "Join our Discord Modserver!",
-        on_callback = ClassClbk(self, "open_url", "https://discord.gg/yy6cxwZ")
-    })
 
     local HUDVersion = self.TopBar:Button({
         name = "HUDVersion",
@@ -114,8 +105,8 @@ function NepHudMenu:InitTopBar()
         text = managers.localization:to_upper_text("NepgearsyHUDReborn/PostIssue"),
         background_color = Color.transparent,
         highlight_color = Color.transparent,
-        foreground = Color(1, 0, 0),
-        foreground_highlight = Color(1, 0, 0),
+        foreground = Color(1, 1, 1),
+        foreground_highlight = self.BorderColor,
         position = function(item)
             item:Panel():set_right(HUDVersion:Panel():left() - 15)
             item:Panel():set_world_center_y(self.TopBar:Panel():world_center_y())
@@ -128,26 +119,6 @@ function NepHudMenu:InitTopBar()
         font = Font,
         on_callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/issues")
     })
-
-    local PostRequest = self.TopBar:Button({
-        name = "PostRequest",
-        text = managers.localization:to_upper_text("NepgearsyHUDReborn/PostRequest"),
-        background_color = Color.transparent,
-        highlight_color = Color.transparent,
-        foreground = Color(1, 1, 1),
-        foreground_highlight = self.BorderColor,
-        position = function(item)
-            item:Panel():set_right(PostIssue:Panel():left() - 15)
-        end,
-        localized = false,
-        size_by_text = true,
-        text_align = "right",
-        text_vertical = "center",
-        font_size = 15,
-        font = Font,
-        on_callback = ClassClbk(self, "open_url", "https://feathub.com/Nepgearsy/Nepgearsy-HUD-Reborn")
-    })
-    PostRequest:Panel():set_world_center_y(self.TopBar:Panel():world_center_y())
 end
 
 
@@ -156,7 +127,7 @@ function NepHudMenu:InitBackground()
         name = "Background",
         w = self._menu_panel:w(),
         h = self._menu_panel:h() - self.TopBar:Panel():h(),
-        texture = "NepgearsyHUDReborn/Menu/NepHudMenu",
+        texture = "NepgearsyHUDReborn/Menu/MenuBackgrounds/SoraHudReborn",
         alpha = 1
     })
     Background:set_top(self.TopBar:Panel():bottom())
@@ -448,6 +419,14 @@ function NepHudMenu:InitHUDOptions()
         on_callback = ClassClbk(self, "MainClbk")
     })
 
+    self.HUDOptions.EnableDownCounter = self.MainMenu:Toggle({
+        name = "EnableDownCounter",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("EnableDownCounter"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/EnableDownCounter",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
     self.HUDOptions.ColorWithSkinPanels = self.MainMenu:Toggle({
         name = "ColorWithSkinPanels",
         border_left = true,
@@ -565,6 +544,14 @@ function NepHudMenu:InitMenuOptions()
         border_left = true,
         value = NepgearsyHUDReborn.Options:GetValue("EnableHorizontalLoadout"),
         text = "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/HorizontalLoadout",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
+    self.MenuLobbyOptions.ShowMapStarring = self.MainMenu:Toggle({
+        name = "ShowMapStarring",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("ShowMapStarring"),
+        text = "NepgearsyHUDRebornMenu/Buttons/LobbyMenu/ShowMapStarring",
         on_callback = ClassClbk(self, "MainClbk")
     })
 
@@ -857,55 +844,57 @@ end
 function NepHudMenu:GenerateSkinButtonsByCat(category)
     for skin_id, skin_data in pairs(NepgearsyHUDReborn.TeammateSkins) do
         if category == skin_data.collection then
-            local author = skin_data.author
-            local name = skin_data.name
-            local texture = skin_data.texture
+            if not skin_data.dev then
+                local author = skin_data.author
+                local name = skin_data.name
+                local texture = skin_data.texture
 
-            local skin_button_panel = self.TeammateSkins:Button({
-                name = "skin_button_panel_".. author .. name,
-                text = "",
-                w = 154 * 1.22,
-                h = 65,
-                border_left = true,
-                border_color = self.BorderColor,
-                offset_x = 5,
-                offset_y = 15,
-                background_color = Color(0.35, 0, 0, 0),
-                on_callback = ClassClbk(self, "SkinSetClbk", skin_id),
-                enabled = not NepgearsyHUDReborn:IsTeammatePanelWide() or NepgearsyHUDReborn:IsTeammatePanelWide() and NepgearsyHUDReborn.TeammateSkins[skin_id].wide_counterpart and true or false
-            })
+                local skin_button_panel = self.TeammateSkins:Button({
+                    name = "skin_button_panel_".. author .. name,
+                    text = "",
+                    w = 154 * 1.22,
+                    h = 65,
+                    border_left = true,
+                    border_color = self.BorderColor,
+                    offset_x = 5,
+                    offset_y = 15,
+                    background_color = Color(0.35, 0, 0, 0),
+                    on_callback = ClassClbk(self, "SkinSetClbk", skin_id),
+                    enabled = not NepgearsyHUDReborn:IsTeammatePanelWide() or NepgearsyHUDReborn:IsTeammatePanelWide() and NepgearsyHUDReborn.TeammateSkins[skin_id].wide_counterpart and true or false
+                })
 
-            local skin_button = skin_button_panel:Image({
-                name = "skin_button_" .. author .. name,
-                texture = texture,
-                w = 154,
-                h = 45,
-                offset_y = 5,
-                position = "CenterTop"
-            })
+                local skin_button = skin_button_panel:Image({
+                    name = "skin_button_" .. author .. name,
+                    texture = texture,
+                    w = 154,
+                    h = 45,
+                    offset_y = 5,
+                    position = "CenterTop"
+                })
 
-            local skin_title = skin_button_panel:Divider({
-                text = name .. " by " .. author,
-                font = "fonts/font_large_mf",
-                background_color = Color.transparent,
-                font_size = 14,
-                offset_y = -5,
-                position = "CenterBottom",
-                text_align = "center"
-            })
+                local skin_title = skin_button_panel:Divider({
+                    text = name .. " by " .. author,
+                    font = "fonts/font_large_mf",
+                    background_color = Color.transparent,
+                    font_size = 14,
+                    offset_y = -5,
+                    position = "CenterBottom",
+                    text_align = "center"
+                })
 
---[[
-            local skin_panel = self.TeammateSkins:Panel()
-            local skin_button_panel = skin_button:Panel()
+                --[[
+                local skin_panel = self.TeammateSkins:Panel()
+                local skin_button_panel = skin_button:Panel()
 
-            local skin_title = skin_panel:text({
-                text = name,
-                font = Font,
-                color = Color.white,
-                font_size = 16
-            })
-            skin_title:set_top(skin_button_panel:bottom() - 3)
-            skin_title:set_left(skin_button_panel:left())--]]
+                local skin_title = skin_panel:text({
+                    text = name,
+                    font = Font,
+                    color = Color.white,
+                    font_size = 16
+                })
+                skin_title:set_top(skin_button_panel:bottom() - 3)
+                skin_title:set_left(skin_button_panel:left())--]]
+            end
         end
     end
 end
@@ -1195,6 +1184,9 @@ function NepHudMenu:InitChangelog()
         h = self.ChangelogMenu:H() - 15
     })
 
+    notebook:AddItemPage("Update 2.6.0 - 21.12.2022, 17:55", SoraHUDChangelog:DrawVersion260(notebook))
+    notebook:AddItemPage("Update 2.5.0 - 04.10.2019, 16:17", SoraHUDChangelog:DrawVersion250(notebook))
+    notebook:AddItemPage("Update 2.4.0 - 06.09.2019, 14:08", SoraHUDChangelog:DrawVersion240(notebook))
     notebook:AddItemPage("Update 2.3.2 - 22.08.2019, 19:11", SoraHUDChangelog:DrawVersion232(notebook))
     notebook:AddItemPage("Update 2.3.1 - 06.08.2019, 19:46", SoraHUDChangelog:DrawVersion231(notebook))
     notebook:AddItemPage("Update 2.3.0 - 29.07.2019, 18:52", SoraHUDChangelog:DrawVersion230(notebook))

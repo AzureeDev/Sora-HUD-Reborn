@@ -18,6 +18,7 @@
 	"NepgearsyHUDReborn/Localization/Thai" : "Thai",
 	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",
 	"NepgearsyHUDReborn/Localization/Italian" : "Italian",
+	"NepgearsyHUDReborn/Localization/Polish" : "Polish",
 
     "NepgearsyHUDReborn/Color/White" : "White",
 	"NepgearsyHUDReborn/Color/Red" : "Red",
@@ -59,6 +60,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",
     "NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Enable Player Level",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableInteraction" : "Enable the new Interaction Bar",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableDownCounter" : "Enable the Down Counter",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "Dimensiuni HUD",
     "NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "Spatiere HUD",
 
@@ -148,6 +150,10 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateStaminaBar" : "Activate the Stamina Bar",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/StaminaBarColor" : "Stamina Bar Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/LowStaminaBarColor" : "Low Stamina Bar Color",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateMoneyHUD" : "Activate the 'Money in HUD' panel"
+	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateMoneyHUD" : "Activate the 'Money in HUD' panel",
+
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/ShowMapStarring" : "Show the heist preview in the Blackscreen",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateAssaultBanner" : "Activate the Assault Banner",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateTeammatePanels" : "Activate the Teammate Panels"
 
 }

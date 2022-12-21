@@ -1,6 +1,6 @@
 function NepgearsyHUDReborn:Init()
 	self.Dev = false
-	self.Version = "2.3.2 - Acceleration"
+	self.Version = "2.6.0 - Resurrection"
 	self.ModVersion = NepgearsyHUDReborn.update_module_data.module.version or self.Version
 	self.WaifuSend = false
 
@@ -18,8 +18,8 @@ function NepgearsyHUDReborn:InitCollabs()
 	self.Creators = {
 		[1] = {
 			name = "Sora",
-			steam_id = "76561198045788203",
-			action = "Made the code. If you have issues, contact me.\nDiscord: Sora#0600"
+			steam_id = "76561198111947132",
+			action = "Made the code."
 		},
 		[2] = {
 			name = "Matthelzor",
@@ -95,6 +95,11 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "FR0Z3",
 			steam_id = "76561198058215284",
 			action = "Made the Simplified Chinese localization"
+		},
+		[17] = {
+			name = "VladTheH",
+			steam_id = "76561198149442981",
+			action = "Made the Polish localization"
 		}
 	}
 end
@@ -311,6 +316,14 @@ function NepgearsyHUDReborn:InitTweakData()
 		{ author = "Syphist", collection = "community", name = "Minecraft Dirt", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/mc_dirt" },
 		{ author = "Syphist", collection = "community", name = "Sans", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/sans" },
 		{ author = "Syphist", collection = "community", name = "Windows XP Bliss", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/winxp_bliss" },
+		{ author = "_Direkt", collection = "community", name = "Hannibal Buress", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/community/whyyoubooingme" },
+		{ author = "Sora", collection = "suguri", name = "Suguri", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/suguri/sugu_2" },
+		{ author = "Sora", collection = "suguri", name = "Suguri & Hime", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/suguri/sugu_hime" },
+		{ author = "Sora", collection = "suguri", name = "Sora (Military)", dev = true, texture = "NepgearsyHUDReborn/HUD/TeammateSkins/suguri/sora_m_1" },
+		{ author = "Sora", collection = "default", name = "Rounded", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/defaults/rounded_default" },
+		{ author = "Sora", collection = "default", name = "No Frame", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/defaults/no_frame" },
+		{ author = "Sora", collection = "default", name = "Golden Frame", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/defaults/golden_frame" },
+		{ author = "Sora", collection = "default", name = "Rainbow", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/defaults/rainbow" },
 	}
 
 	self.TeammatePanelStyles = {
@@ -520,6 +533,10 @@ function NepgearsyHUDReborn:InitLocalization()
 		[10] = {
 			localized_name = "NepgearsyHUDReborn/Localization/SimplifiedChinese",
 			path = "chinese.txt"
+		},
+		[11] = {
+			localized_name = "NepgearsyHUDReborn/Localization/Polish",
+			path = "polish.txt"
 		}
 	}
 
@@ -543,7 +560,7 @@ function NepgearsyHUDReborn:InitDiscord()
 		local level_string = player_level > 0 and ", " .. (is_infamous and managers.experience:rank_string(player_rank) .. "-" or "") .. tostring(player_level) or ""
 		
 		Discord:set_large_image("payday2_icon", "PAYDAY 2")
-		Discord:set_small_image("sora_hud", "Sora's HUD Reborn " .. self.ModVersion)
+		Discord:set_small_image("sora_hud", "Sora's HUD Reborn " .. self.Version)
 		
 		if self:GetOption("DRPAllowTimeElapsed") then
 			Discord:set_start_time_relative(0)

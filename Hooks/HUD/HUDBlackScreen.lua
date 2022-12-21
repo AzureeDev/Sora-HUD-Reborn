@@ -13,21 +13,23 @@ NepHook:Post( HUDBlackScreen, "init", function(self, hud)
 		return x, y, w, h
 	end
 
-	local stage_data = managers.job:current_stage_data()
-	local level_data = managers.job:current_level_data()
-	local job_data = managers.job:current_job_data() or {}
-	local level_tweak = tweak_data.levels[Global.level_data.level_id] or {}
-	local name_id = stage_data and stage_data.name_id or level_data and level_data.name_id or nil
-	local bg_texture = level_data and level_data.load_screen or level_tweak and level_tweak.load_screen or level_tweak and level_tweak.load_data and level_tweak.load_data.image or job_data.load_screen
+	if NepgearsyHUDReborn.Options:GetValue("ShowMapStarring") then
+		local stage_data = managers.job:current_stage_data()
+		local level_data = managers.job:current_level_data()
+		local job_data = managers.job:current_job_data() or {}
+		local level_tweak = tweak_data.levels[Global.level_data.level_id] or {}
+		local name_id = stage_data and stage_data.name_id or level_data and level_data.name_id or nil
+		local bg_texture = level_data and level_data.load_screen or level_tweak and level_tweak.load_screen or level_tweak and level_tweak.load_data and level_tweak.load_data.image or job_data.load_screen
 
-	if bg_texture then
-		self._blackscreen_panel:bitmap({
-			texture = bg_texture,
-			w = self._blackscreen_panel:w(),
-			h = self._blackscreen_panel:h(),
-			alpha = 0.25,
-			layer = -1
-		})
+		if bg_texture then
+			self._blackscreen_panel:bitmap({
+				texture = bg_texture,
+				w = self._blackscreen_panel:w(),
+				h = self._blackscreen_panel:h(),
+				alpha = 0.25,
+				layer = -1
+			})
+		end
 	end
 
 	local bs_panel = self._blackscreen_panel -- bullshit panel XD

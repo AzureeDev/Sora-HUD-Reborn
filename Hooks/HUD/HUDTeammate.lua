@@ -17,6 +17,9 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 			player_font = "fonts/font_pdth"
 		end
 
+		-- Disable original down counter
+		self._player_panel:child("revive_panel"):set_visible(false)
+
 		local name_bg = self._panel:bitmap({
 			name = "player_name_bg",
 			color = Color.white,
@@ -41,10 +44,10 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 			y = 0,
 			layer = 1,
 			align = "right",
-			text = "               ",
+			text = "                              ",
 			font_size = tweak_data.hud_players.name_size,
 			font = player_font,
-			visible = NepgearsyHUDReborn:GetOption("EnablePlayerLevel")
+			visible = NepgearsyHUDReborn:GetOption("EnablePlayerLevel"),
 		})
 		managers.hud:make_fine_text(level)
 
@@ -98,6 +101,36 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 			vertical = "center",
 			layer = 1,
 			visible = is_numeral_visible
+		})
+
+		local revive_panel = self._panel:panel({
+			name = "revive_panel2",
+			w = 40,
+			h = 40,
+			color = Color.red,
+			x = self._radial_health_panel:left() + 110,
+			y = self._radial_health_panel:top() - 16,
+			visible = NepgearsyHUDReborn:GetOption("EnableDownCounter")
+		})
+
+		local revive_icon = revive_panel:bitmap({
+			name = "revive_icon",
+			color = Color.white,
+			layer = 2,
+			texture = NepgearsyHUDReborn:HasSteamAvatarsEnabled() and "NepgearsyHUDReborn/HUD/DownCounterIconHeartOnly" or "NepgearsyHUDReborn/HUD/DownCounterIcon",
+			w = 40,
+			h = 40
+		})
+
+		revive_panel:text({
+			text = "2x",
+			name = "revive_amt",
+			font_size = 13,
+			font = "fonts/font_large_mf",
+			align = "center",
+			layer = 3,
+			color = Color.black,
+			y = 13
 		})
 
 		self._weapons_panel = self._player_panel:child("weapons_panel")
@@ -700,6 +733,7 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 		teammate_panel:child("player"):set_alpha(is_player and 1 or 0)
 
 		if is_player then
+			self._panel:child("revive_panel2"):set_visible(NepgearsyHUDReborn:GetOption("EnableDownCounter"))
 			teammate_panel:set_h(120)
 			teammate_panel:child("subpanel_bg"):set_h(90)
 			teammate_panel:child("subpanel_bg"):set_y(30)
@@ -728,6 +762,8 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 					grenades_panel:set_top(cable_ties_panel:bottom() + 1)
 					grenades_panel:set_left(weapons_panel:right() + 2)
 				end
+				self._panel:child("revive_panel2"):set_x(self._radial_health_panel:left() + 44)
+				self._panel:child("revive_panel2"):set_y(self._radial_health_panel:top() - 13)
 			else
 				weapons_panel:set_bottom(self._radial_health_panel:bottom())
 				deployable_equipment_panel:set_top(weapons_panel:top())
@@ -736,7 +772,9 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 					local grenades_panel = self._player_panel:child("grenades_panel")
 					grenades_panel:set_top(cable_ties_panel:bottom() + 1)
 				end
-			end     
+				self._panel:child("revive_panel2"):set_x(self._radial_health_panel:left() + 60)
+				self._panel:child("revive_panel2"):set_y(self._radial_health_panel:top() - 8)
+			end
 			self.BGAvatar:set_bottom(self._radial_health_panel:bottom() - 2)
 			self.Avatar:set_bottom(self.BGAvatar:bottom() - 2)
 			self.Avatar:set_left(self.BGAvatar:left() + 2)
@@ -744,6 +782,7 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 			self:SetupAvatar()
 		else
 			self._is_ai = true
+			self._panel:child("revive_panel2"):set_visible(false)
 			teammate_panel:set_h(120)
 			teammate_panel:child("subpanel_bg"):set_h(35)
 			teammate_panel:child("subpanel_bg"):set_y(115)
@@ -752,7 +791,7 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 			player_name_bg:set_bottom(teammate_panel:h() - 6)
 			name:set_bottom(teammate_panel:h() - 6)
 			name:set_x(5)
-			player_level:set_text("               ")
+			player_level:set_text("                      ")
 			self.Avatar:set_visible(false)
 			self.BGAvatar:set_visible(false)
 			self._condition_icon:set_bottom(name:bottom())
@@ -1084,6 +1123,20 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 		end
 	end)
 
+	NepHook:Post(HUDTeammate, "set_revives_amount", function(self, revive_amount)
+		local revive_colors = {
+			Color(255, 255, 44, 44) / 255,
+			Color(255, 255, 144, 144) / 255,
+			Color(255, 255, 235, 235) / 255,
+			Color(255, 255, 255, 255) / 255
+		}
+
+		if revive_amount then
+			self._panel:child("revive_panel2"):child("revive_amt"):set_text(tostring(math.max(revive_amount - 1, 0)))
+			self._panel:child("revive_panel2"):child("revive_icon"):set_color(revive_colors[revive_amount] or revive_colors[4])
+		end
+	end)
+
 	function HUDTeammate:_update_player_bg(texture)
 		if self._my_panel then
 			return
@@ -1113,7 +1166,7 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 		name:set_left(self.Avatar:left())
 		name:set_top(self._panel:top() + 9)
 		level:set_top(self._panel:top() + 9)
-		level:set_right(self._panel:right())
+		level:set_right(self._panel:right() - 3)
 
 		self._radial_health_panel:set_x(self._radial_health_panel:x() + 70)
 		self._weapons_panel:set_x(self._radial_health_panel:right() + 2)
@@ -1151,7 +1204,12 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 		if not NepgearsyHUDReborn:HasSteamAvatarsEnabled() then
 			self._radial_health_panel:set_x(self.Avatar:x())
 			self._radial_health_panel:set_y(self.Avatar:y() - 4)
-			self._weapons_panel:set_x(self._radial_health_panel:right() + 35)
+			self._panel:child("revive_panel2"):set_x(self._radial_health_panel:left() + 60)
+			self._panel:child("revive_panel2"):set_y(self._radial_health_panel:top() - 8)
+			--self._weapons_panel:set_x(self._radial_health_panel:right() + 35)
+		else
+			self._panel:child("revive_panel2"):set_x(self._radial_health_panel:left() + 44)
+			self._panel:child("revive_panel2"):set_y(self._radial_health_panel:top() - 13)
 		end
 	end
 else--[[

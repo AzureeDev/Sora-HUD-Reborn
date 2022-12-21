@@ -1747,7 +1747,7 @@ if RequiredScript == "lib/managers/criminalsmanager" then
     local add_character = CriminalsManager.add_character
     
     function CriminalsManager:add_character(name, unit, peer_id, ai, ...)
-        if unit and alive(unit) and not unit:base().is_local_player then
+        if unit and alive(unit) and not unit:base().is_local_player and managers.hud._hud_minimap then
             managers.hud._hud_minimap:add_entity(HUDMiniMapTeamEntity, unit:key(), unit, ai and 5 or peer_id)
         end
         
@@ -1771,7 +1771,9 @@ if RequiredScript == "lib/units/beings/player/huskplayermovement" then
     
     function HuskPlayerMovement:sync_movement_state(state, ...)
         sync_movement_state(self, state, ...)
-        managers.hud._hud_minimap:entity_event(tostring(self._unit:key()), state)
+        if managers.hud._hud_minimap then
+            managers.hud._hud_minimap:entity_event(tostring(self._unit:key()), state)
+        end
     end
     
 end
@@ -1821,7 +1823,10 @@ if RequiredScript == "lib/managers/hudmanager" then
     
     function HUDManager:remove_waypoint(id, ...)
         remove_waypoint(self, id, ...)
-        managers.hud._hud_minimap:delete_entity(tostring(id))
+
+        if managers.hud._hud_minimap then
+            managers.hud._hud_minimap:delete_entity(tostring(id))
+        end
     end
 
 end

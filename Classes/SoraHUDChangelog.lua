@@ -4,6 +4,42 @@ local small_text_changelog = 15
 local color_header = Color(0.35, 0.65, 1)
 local color_changelog = Color(0.7, 0.7, 0.7)
 
+function SoraHUDChangelog:DrawVersion260(notebook)
+    local holder = notebook:Holder({offset = 0})
+
+    self:ImageHeader("NepgearsyHUDReborn/Menu/Versions/260", holder)
+    self:Title("2.6.0 - Resurrection (?)", holder)
+    self:Change("Hello again!", "Glad to see this HUD still being standing strong despite the numerous updates the game had. Instead of leaving this HUD taking dust, I'll be updating it whenever I feel like it.", holder)
+    self:Change("Down Counter support", "- Added the long-awaited (probably) down counter, in the HUD's style.", holder)
+    self:Change("Removing Feathub", "- Unfortunately the website is gone, so I'm removing all references to it in the mod. Please post requests in GitHub, in the issues tab with the proper tag.", holder)
+    return holder
+end
+
+function SoraHUDChangelog:DrawVersion250(notebook)
+    local holder = notebook:Holder({offset = 0})
+
+    self:ImageHeader("NepgearsyHUDReborn/Menu/Versions/250", holder)
+    self:Title("Final Update", holder)
+    self:Change("Dang it Overkill", "- Fixed a crash on the San Martin heist, and added safety checks for other crashes I got a report for", holder)
+    self:Change("Farewell!", "The good modding time has come to an end for me.\nThis is the last update, which is doing nothing much, but ends the development support. I believe nothing will break in the future.\n\nThank you so much for using this HUD!\n-Sora.", holder)
+    return holder
+end
+
+function SoraHUDChangelog:DrawVersion240(notebook)
+    local holder = notebook:Holder({offset = 0})
+
+    self:ImageHeader("NepgearsyHUDReborn/Menu/Versions/240", holder)
+    self:Title("2.4.0 - Adaptation", holder)
+    -- Lazy...
+    --self:Change("HUD Part Activation", "You can now disable parts of the HUD. Note that some features need parts of the HUD to function properly. Disabling the assault corner element will also disable the trackers, even if the two have no relations.", holder)
+    self:Change("User Request", "Someone requested a way to disable the map preview in the Blackscreen, this is now a thing.\nYou can find it in Menu & Lobby options.", holder)
+    self:Change("New CP Background", "Looking nice huh? c;", holder)
+    self:Change("Player Level fixed", "The player level in the teammate panel now doesn't kiss the side of the panel, and won't eat the text when using the PDTH font anymore.", holder)
+    self:Change("Teammate Skins", "Added a new skin made by _Direkt. You can find it in the Community tab!\nMore default skins has been added, as well of some Orange_Juice themed skins. These are made by me.", holder)
+    self:Change("Localization", "The Polish localization has been added. This was made by VladTheH.", holder)
+    return holder
+end
+
 function SoraHUDChangelog:DrawVersion232(notebook)
     local holder = notebook:Holder({offset = 0})
 

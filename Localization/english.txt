@@ -2,8 +2,7 @@
 	"NepgearsyHUDReborn" : "Sora's HUD Reborn",
 	"NepgearsyHUDReborn/Version" : "Version $version",
 	"NepgearsyHUDRebornMenu" : "Sora HUD Control Panel",
-	"NepgearsyHUDReborn/PostIssue" : "Report an issue",
-	"NepgearsyHUDReborn/PostRequest" : "Post a request",
+	"NepgearsyHUDReborn/PostIssue" : "Report an issue / Post a request",
 
 	"NepgearsyHUDRebornMenu/ForcedLocalization" : "Language",
 
@@ -17,7 +16,8 @@
 	"NepgearsyHUDReborn/Localization/German" : "German",
 	"NepgearsyHUDReborn/Localization/Thai" : "Thai",
 	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",
-	"NepgearsyHUDReborn/Localization/Italian" : "Italian",
+	"NepgearsyHUDReborn/Localization/Italian" : "Italian", 
+	"NepgearsyHUDReborn/Localization/Polish" : "Polish", 
 
 	"NepgearsyHUDReborn/Color/White" : "White",
 	"NepgearsyHUDReborn/Color/Red" : "Red",
@@ -60,6 +60,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/StatusNumberType" : "Status Number Type",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/EnablePlayerLevel" : "Enable Player Level",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableInteraction" : "Enable the new Interaction Bar",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableDownCounter" : "Enable the Down Counter",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Scale" : "HUD Scale",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/Spacing" : "HUD Spacing",
 
@@ -112,7 +113,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/SuguriHeader" : "Orange Juice",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PlushHeader" : "Plushies",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/CommunityHeader" : "Community Submissions",
-	"NepgearsyHUDRebornMenu/Help/CommunityHelpText" : "Here's the Community Submissions. You can send me your creations on Discord ( Sora#0600 ), or via Steam, by clicking on my name in the main menu. To get started, use the template located at Assets/NepgearsyHUDReborn/TeammateSkins/custom/your_texture.psd.",
+	"NepgearsyHUDRebornMenu/Help/CommunityHelpText" : "Here's the Community Submissions. Thanks to everyone who shared their creations. You're all holding a special place in my heart for that. <3",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/OtherHeader" : "Others",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PersonaHeader" : "Persona",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/Pd2Header" : "PAYDAY 2",
@@ -150,5 +151,9 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateStaminaBar" : "Activate the Stamina Bar",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/StaminaBarColor" : "Stamina Bar Color",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/LowStaminaBarColor" : "Low Stamina Bar Color",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateMoneyHUD" : "Activate the 'Money in HUD' panel"
+	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateMoneyHUD" : "Activate the 'Money in HUD' panel",
+
+	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/ShowMapStarring" : "Show the heist preview in the Blackscreen",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateAssaultBanner" : "Activate the Assault Banner",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateTeammatePanels" : "Activate the Teammate Panels"
 }
