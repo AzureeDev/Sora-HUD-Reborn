@@ -2,7 +2,7 @@
 	"NepgearsyHUDReborn" : "Sora's HUD Reborn",
 	"NepgearsyHUDReborn/Version" : "버전 $version",
 	"NepgearsyHUDRebornMenu" : "Sora HUD 제어판",
-	"NepgearsyHUDReborn/PostIssue" : "문제 신고 / 의견 게시",
+	"NepgearsyHUDReborn/PostIssue" : "문제 신고 / 의견 내기",
 
 	"NepgearsyHUDRebornMenu/ForcedLocalization" : "언어",
 
