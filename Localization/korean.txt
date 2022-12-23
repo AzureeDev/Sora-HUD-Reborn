@@ -37,7 +37,7 @@
 	"NepgearsyHUDReborn/Fonts/Eurostile" : "유로스틸",
 	"NepgearsyHUDReborn/Fonts/PDTH" : "PDTH",
 
-	"NepgearsyHUDReborn/HealthStyle/Thin" : "얇은",
+	"NepgearsyHUDReborn/HealthStyle/Thin" : "얇게",
 	"NepgearsyHUDReborn/HealthStyle/Vanilla" : "바닐라",
 
 	"NepgearsyHUDReborn/StatusNumberType/Health_Counter" : "체력 카운터",
