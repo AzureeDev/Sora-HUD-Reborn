@@ -136,7 +136,7 @@
 
 	"NepgearsyHUDRebornMenu/Buttons/HUD/ColorWithSkinPanels" : "팀원 패널 스킨으로 플레이어의 색깔 표시",
 	
-	"NepgearsyHUDRebornMenu/Help/NewColors" : "여기에 HUD가 사용하는 대부분의 색상을 원하는 대로 설정할 수 있습니다. 옵션 이름을 클릭하면 RGB 슬라이더가 있는 다이로그가 열립니다.",
+	"NepgearsyHUDRebornMenu/Help/NewColors" : "여기에 HUD가 사용하는 대부분의 색상을 원하는 대로 설정할 수 있습니다. 옵션 이름을 클릭하면 RGB 슬라이더가 있는 다이로그를 열 수 있습니다.",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBar" : "어썰트 바 색상",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBarSurvived" : "웨이브 생존 색상",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/AssaultBarStealth" : "스텔스 모드 색상 ",
