@@ -2,8 +2,8 @@
 	"name": "Sora's HUD Reborn",
 	"description": "My HUD.. that's all",
 	"author": "Sora",
-	"contact": "id/Nepgearsy",
-	"version": "2.2.0",
+	"contact": "id/SoraTheGuardian",
+	"version": "6.6.6",
 	"blt_version": 2,
 	"image": "Assets/NepgearsyHUDReborn/ModIcon.png"
 }

@@ -33,7 +33,7 @@ function HUDMoney:init(hud)
 
     self._money_panel_take = self._money_panel:text({
         text = utf8.to_upper("Take"),
-        font = FontTake,
+        font = NepgearsyHUDReborn:SetFont(FontTake),
         color = Color.white,
         font_size = 16,
         x = 5,
@@ -42,7 +42,7 @@ function HUDMoney:init(hud)
 
     self._money_panel_take_amount = self._money_panel:text({
         text = "$ 0",
-        font = Font,
+        font = NepgearsyHUDReborn:SetFont(Font),
         color = Color.white,
         font_size = 20,
         x = -5,

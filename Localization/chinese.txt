@@ -18,6 +18,8 @@
 	"NepgearsyHUDReborn/Localization/Thai" : "泰语(Thai)",
 	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "简体中文(Simplified Chinese)",
 	"NepgearsyHUDReborn/Localization/Italian" : "意大利文(Italian)",
+	"NepgearsyHUDReborn/Localization/Polish" : "Polish", 
+	"NepgearsyHUDReborn/Localization/Korean" : "Korean", 
 
 	"NepgearsyHUDReborn/Color/White" : "白色",
 	"NepgearsyHUDReborn/Color/Red" : "红色",

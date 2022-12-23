@@ -82,7 +82,7 @@ NepHook:Post(HUDAssaultCorner, "init", function(self)
 	})
 
     self.NoReturnText = NoReturnChronoPanel:text({
-        font = "fonts/font_eurostile_ext",
+        font = NepgearsyHUDReborn:SetFont("fonts/font_eurostile_ext"),
         font_size = 28,
         vertical = "top",
         align = "center",
@@ -587,7 +587,7 @@ function HUDAssaultCorner:_animate_text(text_panel, bg_box, color, color_functio
 			text = text_string,
 			color = mod_color,
 			font_size = tweak_data.hud_corner.assault_size,
-			font = font_type
+			font = NepgearsyHUDReborn:SetFont(font_type)
 		})
 		local _, _, w, h = text:text_rect()
 
@@ -682,6 +682,14 @@ function HUDAssaultCorner:_show_icon_assaultbox(icon_assaultbox)
 end
 
 function HUDAssaultCorner:_hide_icon_assaultbox(icon_assaultbox)
+end
+
+function HUDAssaultCorner:hide_point_of_no_return_timer()
+	self.NoReturnText:animate(ClassClbk(self, "_hide_blink"))
+	self._point_of_no_return = false
+    self:_update_assault_hud_color(NepgearsyHUDReborn:GetOption("SoraAssaultBarColor"))
+    self:_start_assault(self:_get_assault_strings())
+	self:_set_feedback_color(nil)
 end
 
 function HUDAssaultCorner:_hide_blink(target)

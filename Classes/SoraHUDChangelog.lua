@@ -4,6 +4,16 @@ local small_text_changelog = 15
 local color_header = Color(0.35, 0.65, 1)
 local color_changelog = Color(0.7, 0.7, 0.7)
 
+function SoraHUDChangelog:DrawVersion261(notebook)
+    local holder = notebook:Holder({offset = 0})
+
+    self:ImageHeader("NepgearsyHUDReborn/Menu/Versions/261", holder)
+    self:Title("2.6.1 - Resurrection", holder)
+    self:Change("Localization", "- The Korean localization has been added. This was made by Gullwing Door.\n- Going forward, localizations that does not support custom fonts will automatically default to font_large_mf. A warning will be prompted when selecting a potentially problematic localization.", holder)
+    self:Change("Bugfixes", "- Fixed the Point of no Return timer not being correctly removed on some heists.\n- Fixed a rare case of a vanilla hostage icon being displayed for no reason.\n- Fixed newly added textures in 2.6.0 having mipmaps when they shouldn't have any.", holder)
+    return holder
+end
+
 function SoraHUDChangelog:DrawVersion260(notebook)
     local holder = notebook:Holder({offset = 0})
 
@@ -128,7 +138,7 @@ end
 function SoraHUDChangelog:Title(title, holder, custom_font)
     holder:Divider({
         text = title,
-        font = not custom_font and "fonts/font_eurostile_ext" or custom_font,
+        font = NepgearsyHUDReborn:SetFont(not custom_font and "fonts/font_eurostile_ext" or custom_font),
         size = 24,
         text_align = "center",
         background_color = Color(0.7, 0, 0, 0)
@@ -139,7 +149,7 @@ function SoraHUDChangelog:Change(title, desc, holder, custom_font)
     holder:Divider({ size = 10 })
     holder:QuickText(utf8.to_upper(title), { foreground = color_header, size = 20, font = custom_font or nil })
     holder:Divider({
-        font = custom_font or nil,
+        font = NepgearsyHUDReborn:SetFont(custom_font) or nil,
         text = desc,
         size = 15,
         foreground = color_changelog

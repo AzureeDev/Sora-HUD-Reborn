@@ -52,7 +52,7 @@ function NepHudMenu:InitTopBar()
 
     self.HUDName = self.TopBar:Divider({
 		text = managers.localization:text("NepgearsyHUDReborn"),
-        font = Font,
+        font = NepgearsyHUDReborn:SetFont(Font),
 		size = 25,
 		border_left = false,
 		size_by_text = true,
@@ -96,7 +96,7 @@ function NepHudMenu:InitTopBar()
         text_align = "right",
         text_vertical = "center",
         font_size = 25,
-        font = Font,
+        font = NepgearsyHUDReborn:SetFont(Font),
         on_callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/commits/master")
     })
 
@@ -108,7 +108,7 @@ function NepHudMenu:InitTopBar()
         foreground = Color(1, 1, 1),
         foreground_highlight = self.BorderColor,
         position = function(item)
-            item:Panel():set_right(HUDVersion:Panel():left() - 15)
+            item:Panel():set_right(HUDVersion:Panel():left() - 120)
             item:Panel():set_world_center_y(self.TopBar:Panel():world_center_y())
         end,
         localized = false,
@@ -116,7 +116,7 @@ function NepHudMenu:InitTopBar()
         text_align = "right",
         text_vertical = "center",
         font_size = 15,
-        font = Font,
+        font = NepgearsyHUDReborn:SetFont(Font),
         on_callback = ClassClbk(self, "open_url", "https://github.com/Nepgearsy/Nepgearsy-HUD-Reborn/issues")
     })
 end
@@ -218,7 +218,7 @@ function NepHudMenu:InitMainMenu()
         highlight_color = Color.black,
         text_align = "center",
         font_size = 20,
-        font = Font
+        font = NepgearsyHUDReborn:SetFont(Font)
     })
 
     self.MainMenuOptions = {}
@@ -279,7 +279,7 @@ function NepHudMenu:InitHUDOptions()
         highlight_color = Color.black,
         text_align = "center",
         font_size = 20,
-        font = Font
+        font = NepgearsyHUDReborn:SetFont(Font)
     })
 
     self.HUDOptions = {}
@@ -510,7 +510,7 @@ function NepHudMenu:InitMenuOptions()
         text_align = "center",
         text_vertical = "center",
         font_size = 20,
-        font = Font
+        font = NepgearsyHUDReborn:SetFont(Font)
     })
 
     self.MenuLobbyOptions = {}
@@ -570,7 +570,7 @@ function NepHudMenu:InitColorOptions()
 		text_vertical = "center",
 		offset_y = 20,
         font_size = 20,
-        font = Font
+        font = NepgearsyHUDReborn:SetFont(Font)
     })
 
     self.MainMenu:QuickText("NepgearsyHUDRebornMenu/Help/NewColors", { localized = true, size = 16 })
@@ -760,7 +760,7 @@ function NepHudMenu:InitTeammateSkins()
 		text_vertical = "center",
 		offset_y = 20,
         font_size = 20,
-        font = Font
+        font = NepgearsyHUDReborn:SetFont(Font)
     })
 
     self.MainMenu:Divider({
@@ -777,7 +777,7 @@ function NepHudMenu:InitTeammateSkins()
 		text_vertical = "center",
 		offset_y = 20,
         font_size = 20,
-        font = Font
+        font = NepgearsyHUDReborn:SetFont(Font)
     })
 
     local skin_w = NepgearsyHUDReborn:IsTeammatePanelWide() and 168 or 154
@@ -831,7 +831,7 @@ function NepHudMenu:InitTeammateSkins()
                 localized = true,
                 text_vertical = "center",
                 font_size = 20,
-                font = Font
+                font = NepgearsyHUDReborn:SetFont(Font)
             })
 
             self:GenerateSkinButtonsByCat(category_id)
@@ -915,7 +915,7 @@ function NepHudMenu:InitDiscordRichPresence()
 		text_vertical = "center",
 		offset_y = 5,
         font_size = 20,
-        font = Font
+        font = NepgearsyHUDReborn:SetFont(Font)
     })
 
     local status = {
@@ -1048,7 +1048,7 @@ function NepHudMenu:InitCollab()
         name = "CollabMenuHeader",
         text = "NepgearsyHUDRebornMenu/Collaborators/Header",
         localized = true,
-        font = Font,
+        font = NepgearsyHUDReborn:SetFont(Font),
         size = 20,
         background_color = Color(0.75, 0, 0, 0),
         highlight_color = Color(0.75, 0, 0, 0),
@@ -1064,16 +1064,22 @@ function NepHudMenu:InitCollab()
     self.CollabAction = {}
 
     for i, collab_data in ipairs(NepgearsyHUDReborn.Creators) do
-        local built_steam_url = "http://steamcommunity.com/profiles/" .. collab_data.steam_id
+        local built_steam_url = nil
+        local cbk = nil
+
+        if collab_data.steam_id then
+            built_steam_url = "http://steamcommunity.com/profiles/" .. collab_data.steam_id
+            cbk = callback(self, self, "open_url", built_steam_url)
+        end
 
         self.Collaborator[i] = self.CollabMenu:Button({
             name = "Collaborator_" .. i,
-            h = 48,
+            h = 24,
             text = "",
             border_left = false,
             background_color = MenuBgs,
             highlight_color = HighlightColor,
-            on_callback = callback(self, self, "open_url", built_steam_url)
+            on_callback = cbk
         })
 
         self.CollabPanel[i] = self.Collaborator[i]:Panel()
@@ -1085,42 +1091,44 @@ function NepHudMenu:InitCollab()
             layer = BaseLayer
         })
 
-        Steam:friend_avatar(1, collab_data.steam_id, function (texture)
-            local avatar = texture or nil
-            local retrieving_tries = 0
-            local max_tries = 10
+        if collab_data.steam_id then
+            Steam:friend_avatar(1, collab_data.steam_id, function (texture)
+                local avatar = texture or nil
+                local retrieving_tries = 0
+                local max_tries = 10
 
-            while not avatar do
-                if retrieving_tries >= max_tries then
-                    log("Max tries reached, pass")
-                    break
-                end
-
-                if self.CollabAvatarLoaded[i] then
-                    break
-                end
-
-                Steam:friend_avatar(1, collab_data.steam_id, function (texture)
-                    local avatar = texture or nil
-
-                    if avatar then 
-                        self.CollabAvatar[i]:set_image(avatar)
-                        self.CollabAvatarLoaded[i] = true
+                while not avatar do
+                    if retrieving_tries >= max_tries then
+                        log("Max tries reached, pass")
+                        break
                     end
-                end)
 
-                retrieving_tries = retrieving_tries + 1
-            end
+                    if self.CollabAvatarLoaded[i] then
+                        break
+                    end
 
-            if avatar then
-                self.CollabAvatar[i]:set_image(avatar)
-                self.CollabAvatarLoaded[i] = true
-            end
-        end)
+                    Steam:friend_avatar(1, collab_data.steam_id, function (texture)
+                        local avatar = texture or nil
+
+                        if avatar then 
+                            self.CollabAvatar[i]:set_image(avatar)
+                            self.CollabAvatarLoaded[i] = true
+                        end
+                    end)
+
+                    retrieving_tries = retrieving_tries + 1
+                end
+
+                if avatar then
+                    self.CollabAvatar[i]:set_image(avatar)
+                    self.CollabAvatarLoaded[i] = true
+                end
+            end)
+        end
 
         self.CollabName[i] = self.CollabPanel[i]:text({
             text = collab_data.name,
-            font = Font,
+            font = NepgearsyHUDReborn:SetFont(Font),
             font_size = 18,
             color = i == 1 and Color(0.63, 0.58, 0.95) or Color.white,
             layer = BaseLayer,
@@ -1184,6 +1192,7 @@ function NepHudMenu:InitChangelog()
         h = self.ChangelogMenu:H() - 15
     })
 
+    notebook:AddItemPage("Update 2.6.1 - 23.12.2022, 14:38", SoraHUDChangelog:DrawVersion261(notebook))
     notebook:AddItemPage("Update 2.6.0 - 21.12.2022, 17:55", SoraHUDChangelog:DrawVersion260(notebook))
     notebook:AddItemPage("Update 2.5.0 - 04.10.2019, 16:17", SoraHUDChangelog:DrawVersion250(notebook))
     notebook:AddItemPage("Update 2.4.0 - 06.09.2019, 14:08", SoraHUDChangelog:DrawVersion240(notebook))
@@ -1287,6 +1296,24 @@ function NepHudMenu:MainClbk(item)
         if item.name == "SoraCPColor" then
             --local new_color = NepgearsyHUDReborn:StringToColor("cpcolor", NepgearsyHUDReborn.Options:GetValue("CPColor"))
             self.ColorBG:set_color(item:Value())
+        end
+
+        if item.name == "ForcedLocalization" then
+            if NepgearsyHUDReborn:IsLanguageFontLimited(item:Value()) then
+                local menu_title = "Warning"
+                local menu_message = "This localization may not support fonts beyond font_large_mf."
+                local menu_options = {
+                    [1] = {
+                        text = "OK",
+                        is_cancel_button = true,
+                    }
+                }
+
+                local menu = QuickMenu:new( menu_title, menu_message, menu_options )
+                menu:Show()
+                self:SetBackgroundVis(false)
+                self:VisOptionalMenuParts(false)
+            end
         end
 
         if item.name == "UseDiscordRichPresence" then

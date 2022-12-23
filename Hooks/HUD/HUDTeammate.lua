@@ -17,6 +17,8 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 			player_font = "fonts/font_pdth"
 		end
 
+		player_font = NepgearsyHUDReborn:SetFont(player_font)
+
 		-- Disable original down counter
 		self._player_panel:child("revive_panel"):set_visible(false)
 

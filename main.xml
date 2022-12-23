@@ -4,7 +4,7 @@
         <class file="SoraHUDChangelog.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="2.6.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="2.6.1" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="Setup.lua" source_file="lib/setups/setup"/>
@@ -130,6 +130,7 @@
 
         <texture path="NepgearsyHUDReborn/Menu/MenuBackgrounds/SoraHudReborn"/>
 
+        <texture path="NepgearsyHUDReborn/Menu/Versions/261"/>
         <texture path="NepgearsyHUDReborn/Menu/Versions/260"/>
         <texture path="NepgearsyHUDReborn/Menu/Versions/250"/>
         <texture path="NepgearsyHUDReborn/Menu/Versions/240"/>

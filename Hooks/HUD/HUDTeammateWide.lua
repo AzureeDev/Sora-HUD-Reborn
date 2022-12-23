@@ -670,6 +670,8 @@ function HUDTeammateWide:_post_init(i, teammates_panel, is_player, width)
         player_font = "fonts/font_large_mf"
     end
 
+    player_font = NepgearsyHUDReborn:SetFont(player_font)
+
     local name_bg = self._panel:bitmap({
         name = "player_name_bg",
         color = Color.white,

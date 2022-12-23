@@ -18,6 +18,7 @@
 	"NepgearsyHUDReborn/Localization/SimplifiedChinese" : "Simplified Chinese",
 	"NepgearsyHUDReborn/Localization/Italian" : "Italian", 
 	"NepgearsyHUDReborn/Localization/Polish" : "Polish", 
+	"NepgearsyHUDReborn/Localization/Korean" : "Korean", 
 
 	"NepgearsyHUDReborn/Color/White" : "White",
 	"NepgearsyHUDReborn/Color/Red" : "Red",

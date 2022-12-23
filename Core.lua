@@ -1,6 +1,6 @@
 function NepgearsyHUDReborn:Init()
 	self.Dev = false
-	self.Version = "2.6.0 - Resurrection"
+	self.Version = "2.6.1 - Resurrection"
 	self.ModVersion = NepgearsyHUDReborn.update_module_data.module.version or self.Version
 	self.WaifuSend = false
 
@@ -29,7 +29,7 @@ function NepgearsyHUDReborn:InitCollabs()
 		[3] = {
 			name = "Luffy",
 			steam_id = "76561198075720845",
-			action = "Helped with LUA stuff when I needed.\nHe also made the HUD scaling options."
+			action = "Helped with LUA, and made the HUD scaling options."
 		},
 		[4] = {
 			name = "=PDTC= Splat",
@@ -47,8 +47,8 @@ function NepgearsyHUDReborn:InitCollabs()
 			action = "Made the Turkish localization"
 		},
 		[7] = {
-			name = "AldoRaine\ngabsF",
-			steam_id = "76561198152040762",
+			name = "AldoRaine, gabsF",
+			steam_id = nil,
 			action = "Made the Portuguese localization"
 		},
 		[8] = {
@@ -100,6 +100,11 @@ function NepgearsyHUDReborn:InitCollabs()
 			name = "VladTheH",
 			steam_id = "76561198149442981",
 			action = "Made the Polish localization"
+		},
+		[18] = {
+			name = "Gullwing Door",
+			steam_id = "76561198062944994",
+			action = "Made the Korean localization"
 		}
 	}
 end
@@ -500,7 +505,8 @@ function NepgearsyHUDReborn:InitLocalization()
 		},
 		[2] = {
 			localized_name = "NepgearsyHUDReborn/Localization/Turkish",
-			path = "turkish.txt"
+			path = "turkish.txt",
+			requires_default_font = true
 		},
 		[3] = {
 			localized_name = "NepgearsyHUDReborn/Localization/Portuguese",
@@ -512,7 +518,8 @@ function NepgearsyHUDReborn:InitLocalization()
 		},
 		[5] = {
 			localized_name = "NepgearsyHUDReborn/Localization/Russian",
-			path = "russian.txt"
+			path = "russian.txt",
+			requires_default_font = true
 		},
 		[6] = {
 			localized_name = "NepgearsyHUDReborn/Localization/French",
@@ -528,21 +535,46 @@ function NepgearsyHUDReborn:InitLocalization()
 		},
 		[9] = {
 			localized_name = "NepgearsyHUDReborn/Localization/Thai",
-			path = "thai.txt"
+			path = "thai.txt",
+			requires_default_font = true
 		},
 		[10] = {
 			localized_name = "NepgearsyHUDReborn/Localization/SimplifiedChinese",
-			path = "chinese.txt"
+			path = "chinese.txt",
+			requires_default_font = true
 		},
 		[11] = {
 			localized_name = "NepgearsyHUDReborn/Localization/Polish",
 			path = "polish.txt"
+		},
+		[12] = {
+			localized_name = "NepgearsyHUDReborn/Localization/Korean",
+			path = "korean.txt",
+			requires_default_font = true
 		}
 	}
 
 	for i, localization in ipairs(self.Localization) do
 		table.insert(self.LocalizationTable, localization.localized_name)
 	end
+end
+
+function NepgearsyHUDReborn:IsLanguageFontLimited(lang)
+	for i, loc in ipairs(self.Localization) do
+		if lang == i and loc.requires_default_font then
+			return true
+		end
+	end
+
+	return false
+end
+
+function NepgearsyHUDReborn:SetFont(font)
+	if self:IsLanguageFontLimited(self:GetOption("ForcedLocalization")) then
+		return "fonts/font_large_mf"
+	end
+
+	return font
 end
 
 function NepgearsyHUDReborn:InitDiscord()
