@@ -152,7 +152,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateStaminaBar" : "스태미나 바 활성화",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/StaminaBarColor" : "스태미나 바 색상",
 	"NepgearsyHUDRebornMenu/Buttons/Colors/LowStaminaBarColor" : "적은 스태미니 바 색상",
-	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateMoneyHUD" : "'Money in HUD' 패널 활성화",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateMoneyHUD" : "'HUD에 돈 표시' 패널 활성화",
 
 	"NepgearsyHUDRebornMenu/Buttons/LobbyMenu/ShowMapStarring" : "검은 화면에서 하이스트 미리 보기 표시",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/ActivateAssaultBanner" : "어썰트 배너 활성화",
