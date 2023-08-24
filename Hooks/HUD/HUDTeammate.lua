@@ -165,7 +165,7 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 
 		if MyPanel then
 			self._steam_id = self:GetSteamIDByPeer()
-			self:SetupAvatar()
+			self:SetupAccountAvatar()
 		end
 
 		self._panel:child("name_bg"):set_visible(false)
@@ -267,7 +267,9 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 
 		radial_ability_icon:set_center(radial_ability_panel:center())
 
-		local radial_delayed_damage_panel = radial_health_panel:panel({name = "radial_delayed_damage"})
+		local radial_delayed_damage_panel = radial_health_panel:panel({
+			name = "radial_delayed_damage"
+		})
 		local radial_delayed_damage_armor = radial_delayed_damage_panel:bitmap({
 			texture = "guis/textures/pd2/hud_dot_shield",
 			name = "radial_delayed_damage_armor",
@@ -781,7 +783,7 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 			self.Avatar:set_bottom(self.BGAvatar:bottom() - 2)
 			self.Avatar:set_left(self.BGAvatar:left() + 2)
 			self._steam_id = self:GetSteamIDByPeer()
-			self:SetupAvatar()
+			self:SetupAccountAvatar()
 		else
 			self._is_ai = true
 			self._panel:child("revive_panel2"):set_visible(false)
@@ -830,7 +832,7 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 			return
 		end
 
-		local user_id = self:GetSteamIDByPeer()
+		local user_id = self:GetAccountIDByPeer()
 		local panel = self._panel:child("level")
 
 		panel:set_visible(true)
@@ -995,40 +997,46 @@ if not NepgearsyHUDReborn:IsTeammatePanelWide() then
 		end
 
 		local peer = self:peer_id() or managers.network:session():local_peer():id()
+		local steam_id = managers.network:session():peer(peer):account_id()
+
+		return tostring(steam_id)
+	end
+
+	function HUDTeammate:GetAccountIDByPeer()
+		if self._my_panel then
+			return tostring(Steam:userid())
+		end
+
+		local peer = self:peer_id() or managers.network:session():local_peer():id()
 		local steam_id = managers.network:session():peer(peer):user_id()
 
 		return tostring(steam_id)
 	end
 
-	function HUDTeammate:SetupAvatar()
+	function HUDTeammate:SetupAccountAvatar()
 		if not NepgearsyHUDReborn:HasSteamAvatarsEnabled() then
 			self:set_level()
-
 			return
 		end
 
-		Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
+		local steam_id = self._steam_id
+		local quality = Steam.LARGE_AVATAR
 
-			self.Avatar:set_image(texture or "guis/textures/pd2/none_icon")
-			self.Avatar:set_visible(true)
-			if texture then
-				self.BGAvatar:set_visible(true)
-			else
-				self.BGAvatar:set_visible(false)
-			end
+		if not self._my_panel then
+			quality = 1
+		end
 
-			DelayedCalls:Add( "NepHudAvatarRecheckFix", 2, function()
-				Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
+		Steam:friend_avatar(quality, steam_id, function(texture)
+			self.Avatar:animate(function()
+				wait(1)
+				Steam:friend_avatar(quality, steam_id, function(texture)
 					self.Avatar:set_image(texture or "guis/textures/pd2/none_icon")
-					self.Avatar:set_visible(true)
-					if texture then
-						self.BGAvatar:set_visible(true)
-					else
-						self.BGAvatar:set_visible(false)
-					end
 				end)
 			end)
 		end)
+
+		self.Avatar:set_visible(true)
+		self.BGAvatar:set_visible(true)
 
 		self:set_level()
 	end

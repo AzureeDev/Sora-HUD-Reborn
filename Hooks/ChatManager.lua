@@ -16,6 +16,6 @@ NepHook:Post(ChatManager, "receive_message_by_peer", function(self, channel_id, 
 	end
 
 	local peer_id = peer:id()
-	local steam_id = peer:user_id()
+	local steam_id = peer:account_id()
 	self._player_steam_id[peer_id] = steam_id
 end)

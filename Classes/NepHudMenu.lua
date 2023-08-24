@@ -419,6 +419,14 @@ function NepHudMenu:InitHUDOptions()
         on_callback = ClassClbk(self, "MainClbk")
     })
 
+    self.HUDOptions.EnableSteamAvatarsInChat = self.MainMenu:Toggle({
+        name = "EnableSteamAvatarsInChat",
+        border_left = true,
+        value = NepgearsyHUDReborn.Options:GetValue("EnableSteamAvatarsInChat"),
+        text = "NepgearsyHUDRebornMenu/Buttons/HUD/EnableSteamAvatarsInChat",
+        on_callback = ClassClbk(self, "MainClbk")
+    })
+
     self.HUDOptions.EnableDownCounter = self.MainMenu:Toggle({
         name = "EnableDownCounter",
         border_left = true,
@@ -1192,6 +1200,7 @@ function NepHudMenu:InitChangelog()
         h = self.ChangelogMenu:H() - 15
     })
 
+    notebook:AddItemPage("Update 2.7.0 - 24.08.2023, 16:51", SoraHUDChangelog:DrawVersion270(notebook))
     notebook:AddItemPage("Update 2.6.1 - 23.12.2022, 14:38", SoraHUDChangelog:DrawVersion261(notebook))
     notebook:AddItemPage("Update 2.6.0 - 21.12.2022, 17:55", SoraHUDChangelog:DrawVersion260(notebook))
     notebook:AddItemPage("Update 2.5.0 - 04.10.2019, 16:17", SoraHUDChangelog:DrawVersion250(notebook))

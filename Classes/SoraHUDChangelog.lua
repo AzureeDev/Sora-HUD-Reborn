@@ -4,6 +4,18 @@ local small_text_changelog = 15
 local color_header = Color(0.35, 0.65, 1)
 local color_changelog = Color(0.7, 0.7, 0.7)
 
+function SoraHUDChangelog:DrawVersion270(notebook)
+    local holder = notebook:Holder({offset = 0})
+
+    self:ImageHeader("NepgearsyHUDReborn/Menu/Versions/270", holder)
+    self:Title("2.7.0 - Epic Update", holder)
+    self:Change("Localization", "- The Korean localization has been updated.", holder)
+    self:Change("Options", "- An option to disable steam avatars for the chat component has been added.", holder)
+    self:Change("Steam Avatars", "- The various features using steam avatars have been fixed.", holder)
+    self:Change("Teammate Skins", "- Added several new skins.", holder)
+    return holder
+end
+
 function SoraHUDChangelog:DrawVersion261(notebook)
     local holder = notebook:Holder({offset = 0})
 

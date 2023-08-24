@@ -106,6 +106,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/ColorOptionsButton" : "Color Options",
 	"NepgearsyHUDRebornMenu/Buttons/TeammatePanelSkinButton" : "Teammate Panel Skins",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableSteamAvatars" : "Enable Steam Avatars",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableSteamAvatarsInChat" : "Enable Steam Avatars (Chatbox)",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkinsHeader" : "Teammate Skins Collections",
 	"NepgearsyHUDRebornMenu/Help/TeammateSkinsExplaination" : "Teammate Skins are a replacement of the previously known 'Waifu Picker' of the original Nepgearsy HUD.\n\nYou're now able to setup a background to your teammate panel in the HUD. Click on one of the available backgrounds on the left. They are all synched to other users of the HUD, except for Default and Custom.",
 	"NepgearsyHUDRebornMenu/Help/SkinEquipped" : "Current background :",
@@ -119,6 +120,8 @@
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PersonaHeader" : "Persona",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/Pd2Header" : "PAYDAY 2",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/KiniroHeader" : "Kiniro Mosaic",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/GenshinHeader" : "Genshin Impact",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/StarrailHeader" : "Honkai: Star Rail",
 	"NepgearsyHUDRebornMenu/Buttons/Back" : "Back",
 
 	"NepgearsyHUDRebornMenu/Buttons/DiscordRichPresenceButton" : "Discord Rich Presence Options",

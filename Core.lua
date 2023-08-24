@@ -1,6 +1,6 @@
 function NepgearsyHUDReborn:Init()
 	self.Dev = false
-	self.Version = "2.6.1 - Resurrection"
+	self.Version = "2.7.0 - Epic Update"
 	self.ModVersion = NepgearsyHUDReborn.update_module_data.module.version or self.Version
 	self.WaifuSend = false
 
@@ -184,6 +184,8 @@ function NepgearsyHUDReborn:InitTweakData()
 		"plush",
 		"persona",
 		"kiniro",
+		"genshin",
+		"starrail",
 		"other"
 	}
 
@@ -196,6 +198,8 @@ function NepgearsyHUDReborn:InitTweakData()
 		plush = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PlushHeader",
 		persona = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PersonaHeader",
 		kiniro = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/KiniroHeader",
+		genshin = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/GenshinHeader",
+		starrail = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/StarrailHeader",
 		other = "NepgearsyHUDRebornMenu/Buttons/TeammateSkin/OtherHeader"
 	}
 
@@ -329,6 +333,28 @@ function NepgearsyHUDReborn:InitTweakData()
 		{ author = "Sora", collection = "default", name = "No Frame", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/defaults/no_frame" },
 		{ author = "Sora", collection = "default", name = "Golden Frame", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/defaults/golden_frame" },
 		{ author = "Sora", collection = "default", name = "Rainbow", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/defaults/rainbow" },
+		{ author = "Sora", collection = "genshin", name = "Paimon", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/paimon" },
+		{ author = "Sora", collection = "genshin", name = "Lumine & Aether", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/lumineaether" },
+		{ author = "Sora", collection = "genshin", name = "Venti", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/venti" },
+		{ author = "Sora", collection = "genshin", name = "Zhongli", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/zhongli" },
+		{ author = "Sora", collection = "genshin", name = "Raiden Shogun", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/ei" },
+		{ author = "Sora", collection = "genshin", name = "Nahida", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/nahida" },
+		{ author = "Sora", collection = "genshin", name = "Furina", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/furina" },
+		{ author = "Sora", collection = "genshin", name = "Diona", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/diona" },
+		{ author = "Sora", collection = "genshin", name = "Razor", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/razor" },
+		{ author = "Sora", collection = "genshin", name = "Klee", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/klee" },
+		{ author = "Sora", collection = "genshin", name = "Eula", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/eula" },
+		{ author = "Sora", collection = "genshin", name = "Hu Tao", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/hutao" },
+		{ author = "Sora", collection = "genshin", name = "Itto", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/itto" },
+		{ author = "Sora", collection = "genshin", name = "Kazuha", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/kazuha" },
+		{ author = "Sora", collection = "genshin", name = "Nilou", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/nilou" },
+		{ author = "Sora", collection = "genshin", name = "Xiao", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/genshin/xiao" },
+		{ author = "Sora", collection = "starrail", name = "Pom-Pom", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/starrail/pom" },
+		{ author = "Sora", collection = "starrail", name = "March 7th", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/starrail/march" },
+		{ author = "Sora", collection = "starrail", name = "Asta", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/starrail/asta" },
+		{ author = "Sora", collection = "starrail", name = "Bronya", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/starrail/bronya" },
+		{ author = "Sora", collection = "starrail", name = "Clara", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/starrail/clara" },
+		{ author = "Sora", collection = "starrail", name = "Kafka", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/starrail/kafka" },
 	}
 
 	self.TeammatePanelStyles = {
@@ -394,6 +420,10 @@ end
 
 function NepgearsyHUDReborn:HasSteamAvatarsEnabled()
 	return self:GetOption("EnableSteamAvatars")
+end
+
+function NepgearsyHUDReborn:HasSteamAvatarsEnabledChat()
+	return self:GetOption("EnableSteamAvatarsInChat")
 end
 
 function NepgearsyHUDReborn:GetInteractionColorBySave()

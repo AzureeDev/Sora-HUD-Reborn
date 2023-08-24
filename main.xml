@@ -4,7 +4,7 @@
         <class file="SoraHUDChangelog.lua"/>
     </Classes>
 
-    <AssetUpdates id="22152" version="2.6.1" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+    <AssetUpdates id="22152" version="2.7.0" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 
     <Hooks directory="Hooks">
         <hook file="Setup.lua" source_file="lib/setups/setup"/>
@@ -67,6 +67,7 @@
             <option type="number" default_value="1" name="StatusNumberType"/>
             <option type="bool" default_value="true" name="EnablePlayerLevel"/>
             <option type="bool" default_value="true" name="EnableSteamAvatars"/>
+            <option type="bool" default_value="true" name="EnableSteamAvatarsInChat"/>
             <option type="bool" default_value="true" name="EnableDownCounter"/>
             <option type="number" min="0.1" max="1.5" default_value="0.8" name="Scale"/>
             <option type="number" min="0.1" max="1" default_value="0.95" name="Spacing"/>
@@ -130,6 +131,7 @@
 
         <texture path="NepgearsyHUDReborn/Menu/MenuBackgrounds/SoraHudReborn"/>
 
+        <texture path="NepgearsyHUDReborn/Menu/Versions/270"/>
         <texture path="NepgearsyHUDReborn/Menu/Versions/261"/>
         <texture path="NepgearsyHUDReborn/Menu/Versions/260"/>
         <texture path="NepgearsyHUDReborn/Menu/Versions/250"/>
@@ -146,6 +148,7 @@
         <texture path="NepgearsyHUDReborn/HUD/AssaultBarReversed"/>
         <texture path="NepgearsyHUDReborn/HUD/DownCounterIcon"/>
         <texture path="NepgearsyHUDReborn/HUD/DownCounterIconHeartOnly"/>
+        <texture path="NepgearsyHUDReborn/HUD/PlayerPlateSeparator"/>
         <texture path="NepgearsyHUDReborn/HUD/Thund"/>
         <texture path="NepgearsyHUDReborn/HUD/Skull"/>
         <texture path="NepgearsyHUDReborn/HUD/TimeR"/>
@@ -322,6 +325,28 @@
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/sans" load="true"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/earthchan/winxp_bliss" load="true"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/community/whyyoubooingme" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/paimon" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/lumineaether" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/venti" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/zhongli" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/ei" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/nahida" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/furina" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/diona" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/razor" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/klee" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/eula" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/hutao" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/itto" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/kazuha" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/nilou" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/genshin/xiao" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/starrail/pom" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/starrail/march" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/starrail/asta" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/starrail/bronya" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/starrail/clara" load="true"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkins/starrail/kafka" load="true"/>
 
         <texture path="NepgearsyHUDReborn/HUD/WideTeammateSkins/default"/>
         <texture path="NepgearsyHUDReborn/HUD/WideTeammateSkins/default_bot"/>
@@ -338,6 +363,8 @@
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/plush"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/other"/>
         <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/kiniro"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/genshin"/>
+        <texture path="NepgearsyHUDReborn/HUD/TeammateSkinsCategories/starrail"/>
 
         <texture path="NepgearsyHUDReborn/Minimap/kenaz_loc_b_df"/>
         <texture path="NepgearsyHUDReborn/Minimap/mus_1"/>

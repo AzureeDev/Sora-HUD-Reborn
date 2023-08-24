@@ -59,7 +59,7 @@ end)
 
 function HUDMissionBriefing:_update_avatar_slot(peer_id)
 	local peer_data = managers.network and managers.network:session() and managers.network:session():peer(peer_id)
-	local steam_id = peer_data:user_id()
+	local steam_id = peer_data:account_id()
 
 	self._player[peer_id] = tostring(steam_id)
 
