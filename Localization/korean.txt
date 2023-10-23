@@ -95,7 +95,7 @@
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno2" : "이 곳은 어디지 ...?",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno3" : "...",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno4" : "그러지 말았어야 했어...",
-	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno5" : "도망갈 수 있을 때 여길 빠져나가야해...",
+	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno5" : "도망갈 수 있으면 여길 빠져나가...",
 	"NepgearsyHUDReborn/HUD/AssaultCorner/Uno6" : "넌 그저 여기서 죽을 뿐이야...",
 
 	"hud_instruct_mask_on" : "",
@@ -106,6 +106,7 @@
 	"NepgearsyHUDRebornMenu/Buttons/ColorOptionsButton" : "색상 옵션",
 	"NepgearsyHUDRebornMenu/Buttons/TeammatePanelSkinButton" : "팀원 패널 스킨",
 	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableSteamAvatars" : "스팀 아바타 활성화",
+	"NepgearsyHUDRebornMenu/Buttons/HUD/EnableSteamAvatarsInChat" : "스팀 아바타 활성화 (채팅 박스)",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkinsHeader" : "팀원 스킨 모음집",
 	"NepgearsyHUDRebornMenu/Help/TeammateSkinsExplaination" : "팀원 스킨은 원래 이전 Nepgearsy HUD에 있었던 '와이푸 선택기'를 대체합니다.\n\n이제 HUD에서 팀원 패널의 배경을 설정할 수 있습니다. 설정할려면 왼쪽에 있는 사용할 수 있는 배경 중 하나를 클릭하십시오. 기본 및 커스텀을 제외하고 HUD의 다른 유저와 모두 동기화됩니다.",
 	"NepgearsyHUDRebornMenu/Help/SkinEquipped" : "현재 배경 :",
@@ -119,6 +120,8 @@
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/PersonaHeader" : "페르소나",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/Pd2Header" : "페이데이 2",
 	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/KiniroHeader" : "금빛 모자이크",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/GenshinHeader" : "원신",
+	"NepgearsyHUDRebornMenu/Buttons/TeammateSkin/StarrailHeader" : "붕괴: 스타레일",
 	"NepgearsyHUDRebornMenu/Buttons/Back" : "뒤로",
 
 	"NepgearsyHUDRebornMenu/Buttons/DiscordRichPresenceButton" : "디스코드 활동 상태 옵션",
