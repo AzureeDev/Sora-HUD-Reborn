@@ -1,5 +1,5 @@
 # Sora's HUD Reborn
-Self explainatory.
+Self explanatory.
 
 # Feature Requests
-Feathub being gone, you can post them in Issues with the proper tag.
+You can post them in Issues with the proper tag.
