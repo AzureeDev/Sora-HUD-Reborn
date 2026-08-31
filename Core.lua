@@ -2,7 +2,7 @@ _G.NepgearsyHUDReborn = _G.NepgearsyHUDReborn or {}
 
 function NepgearsyHUDReborn:Init()
 	self.Dev = false
-	self.Version = "2.7.0 - Epic Update"
+	self.Version = "3.0.0 - Guess Who's Back"
 	self.ModVersion = self.update_module_data.module.version or self.Version
 	--self.WaifuSend = false
 
@@ -43,7 +43,8 @@ NepgearsyHUDReborn.creators = {
 	{ name = "Hinaomi", steam_id = "76561198027102120", desc = "Made the Thai localization" },
 	{ name = "FR0Z3", steam_id = "76561198058215284", desc = "Made the Simplified Chinese localization" },
 	{ name = "VladTheH", steam_id = "76561198149442981", desc = "Made the Polish localization" },
-	{ name = "Gullwing Door", steam_id = "76561198062944994", desc = "Made the Korean localization" }
+	{ name = "Gullwing Door", steam_id = "76561198062944994", desc = "Made the Korean localization" },
+	{ name = "yousef157", steam_id = nil, desc = "Made the 3.0.0 version" }
 }
 
 NepgearsyHUDReborn.colors = {

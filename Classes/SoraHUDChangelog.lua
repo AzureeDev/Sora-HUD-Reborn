@@ -1,5 +1,16 @@
 SoraHUDChangelog = SoraHUDChangelog or class()
 SoraHUDChangelog.log = {
+     {
+        label = "Update 3.0.0 - 31.08.2026, 15:30",
+        version = "3.0.0 - Guess Who's Back",
+        image = "NepgearsyHUDReborn/Menu/Versions/300",
+        entries = {
+            { title = "Special Thanks", desc = "This update was entirely made by yousef157 on GitHub, big thanks to them!" },
+            { title = "Features", desc = "- Added BangL's heal per second meter\n- Added assault banner scaling (+ trackers on the assault side)\n- Restored the Steam avatars in lobby feature\n- Added an option to show the perk deck name instead of character name for the horizontal loadout feature\n- Added 2nd deployable support for the horizontal loadout feature\n- The horizontal loadout feature now supports melee type\n- Added burst fire mode support to the in-game HUD\n- Restored the discord large image type feature\n- The username in custom discord rpc is now optional\n- You can now set a custom username for the custom discord rpc feature\n- The custom discord rpc supports crime spree now" },
+            { title = "Changes", desc = "- The chat supports scrolling now\n- The chat's input panel font now matches the rest of the chat's HD font\n- The infamy icon in the chat is now preserved instead of it being replaced by the avatar\n- The heist background in the heist preview feature is now optional\n- Interaction bar's invalid text is now colored red\n- If a teammate's avatar has failed to fetch, the colored background avatar will now not be shown\n- Most of the control panel's options has been re-ordered" },
+            { title = "Bugfixes", desc = "- Fix Starring screen shows disconnected players (issue #61)\n- Fix Leech Perk Deck not working with HUD (issue #51) with Thin health style support\n- Fix the heist preview in blackscreen feature not working\n- Fix the interaction bar still being shown when being revived and said revive is canceled\n- Fix the interaction bar's fade out animation not working\n- Fix the interaction bar's background color being red instead of the progress when invalid\n- Fix the interaction bar color option changing the background color instead of the progress color\n- Fix teammate panel avatars being refetched when someone gets traded from custody\n- Fix control panel dialog leaving background disabled\n- Unintentionally fixed compatibility with Void UI's scoreboard." },
+        }
+    },
     {
         label = "Update 2.7.0 - 24.08.2023, 16:51",
         version = "2.7.0 - Epic Update",
