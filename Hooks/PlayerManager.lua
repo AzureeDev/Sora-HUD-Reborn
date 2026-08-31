@@ -8,5 +8,5 @@ NepHook:Post(PlayerManager, "init", function(self)
 end)
 
 NepHook:Post(PlayerManager, "peer_dropped_out", function(self, peer)
-    self._player_teammate_bgs[peer:id()] = 1 -- Clean bg on peer drop
+    self._player_teammate_bgs[peer:id()] = nil -- Clean bg on peer drop
 end)

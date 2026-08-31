@@ -24,7 +24,6 @@ function HUDTeammateWide:_create_panel_background()
 end
 
 function HUDTeammateWide:_create_panel_content_background()
-
     self._panel_content = self._panel:panel({
         name = "panel_content",
         w = self._panel_width - 20,
@@ -45,14 +44,13 @@ function HUDTeammateWide:_create_panel_content_background()
 end
 
 function HUDTeammate:SetupAvatar()
-    if not NepgearsyHUDReborn:HasSteamAvatarsEnabled() then
-        self:set_level()
+    self:set_level()
 
+    if not NepgearsyHUDReborn:GetOption("EnableSteamAvatars") then
         return
     end
 
     Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
-
         self.Avatar:set_image(texture or "guis/textures/pd2/none_icon")
         self.Avatar:set_visible(true)
         if texture then
@@ -61,7 +59,7 @@ function HUDTeammate:SetupAvatar()
             self.BGAvatar:set_visible(false)
         end
 
-        DelayedCalls:Add( "NepHudAvatarRecheckFix", 0.5, function()
+        DelayedCalls:Add("NepHudAvatarRecheckFix", 0.5, function()
             Steam:friend_avatar(Steam.LARGE_AVATAR, self._steam_id, function(texture)
                 self.Avatar:set_image(texture or "guis/textures/pd2/none_icon")
                 self.Avatar:set_visible(true)
@@ -73,8 +71,6 @@ function HUDTeammate:SetupAvatar()
             end)
         end)
     end)
-
-    self:set_level()
 end
 
 function HUDTeammateWide:teammate_progress(enabled, tweak_data_id, timer, success)
@@ -108,43 +104,43 @@ function HUDTeammateWide:set_state(state)
     if not self._main_player then
         if is_player then
             teammate_panel:set_h(135)
-			teammate_panel:set_bottom(self.teammates:h())
-			name:set_left(self.Avatar:left())
-			name:set_top(teammate_panel:top() + 9)
-			player_level:set_top(teammate_panel:top() + 9)
-			player_level:set_right(self._panel:right() - 10)
-			player_name_bg:set_visible(true)
-			managers.hud:make_fine_text(name)
-			self._player_panel:set_h(self._panel:h())
-			self._condition_icon:set_shape(self._radial_health_panel:shape())
-			self._panel:child("condition_timer"):set_shape(self._radial_health_panel:shape())
-			interact_panel:set_shape(self._radial_health_panel:shape())
-			if NepgearsyHUDReborn:HasSteamAvatarsEnabled() then
-				weapons_panel:set_bottom(self._radial_health_panel:bottom())
-				weapons_panel:set_x(self._radial_health_panel:right() + 4)
-				deployable_equipment_panel:set_top(weapons_panel:top())
-				deployable_equipment_panel:set_left(weapons_panel:right() + 2)
-				cable_ties_panel:set_top(deployable_equipment_panel:bottom() + 1)
-				cable_ties_panel:set_left(weapons_panel:right() + 2)
-				if PlayerBase.USE_GRENADES then
-					local grenades_panel = self._player_panel:child("grenades_panel")
-					grenades_panel:set_top(cable_ties_panel:bottom() + 1)
-					grenades_panel:set_left(weapons_panel:right() + 2)
-				end
-			else
-				weapons_panel:set_bottom(self._radial_health_panel:bottom())
-				deployable_equipment_panel:set_top(weapons_panel:top())
-				cable_ties_panel:set_top(deployable_equipment_panel:bottom() + 1)
-				if PlayerBase.USE_GRENADES then
-					local grenades_panel = self._player_panel:child("grenades_panel")
-					grenades_panel:set_top(cable_ties_panel:bottom() + 1)
-				end
-			end     
-			self.BGAvatar:set_bottom(self._radial_health_panel:bottom() - 2)
-			self.Avatar:set_bottom(self.BGAvatar:bottom() - 2)
-			self.Avatar:set_left(self.BGAvatar:left() + 2)
-			self._steam_id = self:get_steam_id_by_peer()
-			self:SetupAvatar()
+            teammate_panel:set_bottom(self.teammates:h())
+            name:set_left(self.Avatar:left())
+            name:set_top(teammate_panel:top() + 9)
+            player_level:set_top(teammate_panel:top() + 9)
+            player_level:set_right(self._panel:right() - 10)
+            player_name_bg:set_visible(true)
+            managers.hud:make_fine_text(name)
+            self._player_panel:set_h(self._panel:h())
+            self._condition_icon:set_shape(self._radial_health_panel:shape())
+            self._panel:child("condition_timer"):set_shape(self._radial_health_panel:shape())
+            interact_panel:set_shape(self._radial_health_panel:shape())
+            if NepgearsyHUDReborn:GetOption("EnableSteamAvatars") then
+                weapons_panel:set_bottom(self._radial_health_panel:bottom())
+                weapons_panel:set_x(self._radial_health_panel:right() + 4)
+                deployable_equipment_panel:set_top(weapons_panel:top())
+                deployable_equipment_panel:set_left(weapons_panel:right() + 2)
+                cable_ties_panel:set_top(deployable_equipment_panel:bottom() + 1)
+                cable_ties_panel:set_left(weapons_panel:right() + 2)
+                if PlayerBase.USE_GRENADES then
+                    local grenades_panel = self._player_panel:child("grenades_panel")
+                    grenades_panel:set_top(cable_ties_panel:bottom() + 1)
+                    grenades_panel:set_left(weapons_panel:right() + 2)
+                end
+            else
+                weapons_panel:set_bottom(self._radial_health_panel:bottom())
+                deployable_equipment_panel:set_top(weapons_panel:top())
+                cable_ties_panel:set_top(deployable_equipment_panel:bottom() + 1)
+                if PlayerBase.USE_GRENADES then
+                    local grenades_panel = self._player_panel:child("grenades_panel")
+                    grenades_panel:set_top(cable_ties_panel:bottom() + 1)
+                end
+            end
+            self.BGAvatar:set_bottom(self._radial_health_panel:bottom() - 2)
+            self.Avatar:set_bottom(self.BGAvatar:bottom() - 2)
+            self.Avatar:set_left(self.BGAvatar:left() + 2)
+            self._steam_id = self:get_steam_id_by_peer()
+            self:SetupAvatar()
             self._panel_background:set_visible(true)
             self._panel_content:set_visible(true)
         else
@@ -382,9 +378,9 @@ function HUDTeammateWide:_create_radial_health(radial_health_panel)
     })
     self:_create_condition(radial_health_panel)
 
-    if NepgearsyHUDReborn.Options:GetValue("HealthStyle") == 1 then
+    if NepgearsyHUDReborn:GetOption("HealthStyle") == 1 then
         local function set_texture(o, texture) --set using the texture's actual size not a hardcoded size like 64/128.
-            local w,h = o:texture_width(), o:texture_height()
+            local w, h = o:texture_width(), o:texture_height()
             o:set_image(texture, w, 0, -w, h)
         end
 
@@ -477,7 +473,7 @@ function HUDTeammateWide:_create_weapon_panels(weapons_panel)
         y = -2,
         font = "fonts/font_large_mf"
     })
-    
+
     local weapon_selection_panel = primary_weapon_panel:panel({
         name = "weapon_selection",
         layer = 1,
@@ -622,7 +618,7 @@ function HUDTeammateWide:set_level()
 end
 
 NepHook:Post(HUDTeammate, "set_health", function(self, data)
-    if NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 1 or NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 3 then
+    if NepgearsyHUDReborn:GetOption("StatusNumberType") == 1 or NepgearsyHUDReborn:GetOption("StatusNumberType") == 3 then
         local health = math.floor(data.current * 10)
         local HealthNumber = self._radial_health_panel:child("HealthNumber")
 
@@ -633,13 +629,10 @@ end)
 NepHook:Post(HUDTeammate, "set_armor", function(self, data)
     local armor = math.floor(data.current * 10)
 
-    if NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 2 then
-
+    if NepgearsyHUDReborn:GetOption("StatusNumberType") == 2 then
         local ArmorNumber = self._radial_health_panel:child("HealthNumber")
         ArmorNumber:set_text(armor)
-
-    elseif NepgearsyHUDReborn.Options:GetValue("StatusNumberType") == 3 then
-
+    elseif NepgearsyHUDReborn:GetOption("StatusNumberType") == 3 then
         local ArmorNumber = self._radial_health_panel:child("ArmorNumber")
         ArmorNumber:set_text(armor)
     end
@@ -663,11 +656,11 @@ function HUDTeammateWide:_post_init(i, teammates_panel, is_player, width)
     self.teammates = teammates_panel
 
     local name = self._panel:child("name")
-    local player_font_choice = NepgearsyHUDReborn.Options:GetValue("PlayerNameFont")
-    local player_font = "fonts/font_eurostile_ext"
+    local player_font_choice = NepgearsyHUDReborn:GetOption("PlayerNameFont")
+    local player_font = "fonts/font_large_mf"
 
     if player_font_choice == 2 then
-        player_font = "fonts/font_large_mf"
+        player_font = "fonts/font_eurostile_ext"
     end
 
     player_font = NepgearsyHUDReborn:SetFont(player_font)
@@ -708,7 +701,7 @@ function HUDTeammateWide:_post_init(i, teammates_panel, is_player, width)
 
     level:set_top(self._panel:top() + 8)
     level:set_right(self._panel:right() - 10)
-    
+
     self._panel:set_h(135)
     self._panel:set_w(self._panel_width)
     self._panel:set_bottom(teammates_panel:h())
@@ -722,8 +715,8 @@ function HUDTeammateWide:_post_init(i, teammates_panel, is_player, width)
         w = self._radial_health_panel:w()
     })
 
-    local health_numeral_color = NepgearsyHUDReborn:StringToColor("numeral_status_color", NepgearsyHUDReborn:GetOption("HealthColor"))
-    local armor_numeral_color = NepgearsyHUDReborn:StringToColor("numeral_status_color", NepgearsyHUDReborn:GetOption("ShieldColor"))
+    local health_numeral_color = NepgearsyHUDReborn:StringToColor(NepgearsyHUDReborn:GetOption("HealthColor"))
+    local armor_numeral_color = NepgearsyHUDReborn:StringToColor(NepgearsyHUDReborn:GetOption("ShieldColor"))
     local is_both_numbers_visible = NepgearsyHUDReborn:GetOption("StatusNumberType") == 3
     local is_numeral_visible = NepgearsyHUDReborn:GetOption("StatusNumberType") ~= 4
 
@@ -760,14 +753,14 @@ function HUDTeammateWide:_post_init(i, teammates_panel, is_player, width)
         h = 64,
         w = 64,
         x = 2,
-        visible = NepgearsyHUDReborn:HasSteamAvatarsEnabled()
+        visible = NepgearsyHUDReborn:GetOption("EnableSteamAvatars")
     })
     self.Avatar = self._panel:bitmap({
         texture = "guis/textures/pd2/none_icon",
         h = 60,
         w = 60,
         layer = 1,
-        visible = NepgearsyHUDReborn:HasSteamAvatarsEnabled()
+        visible = NepgearsyHUDReborn:GetOption("EnableSteamAvatars")
     })
     self.BGAvatar:set_bottom(self._radial_health_panel:bottom() - 2)
     self.Avatar:set_bottom(self.BGAvatar:bottom() - 2)
@@ -792,14 +785,12 @@ function HUDTeammateWide:set_ammo_amount_by_type(type, max_clip, current_clip, c
     local weapon_panel = weapon_panel or self._player_panel:child("weapons_panel"):child(type .. "_weapon_panel")
     weapon_panel:set_visible(true)
 
-    local TrueAmmo = NepgearsyHUDReborn:GetOption("EnableTrueAmmo")
-
     local weapon_panel = self._player_panel:child("weapons_panel"):child(type .. "_weapon_panel")
     local ammo_total = weapon_panel:child("ammo_total")
     local ammo_clip = weapon_panel:child("ammo_clip")
     local total_left = current_left
 
-    if TrueAmmo then
+    if NepgearsyHUDReborn:GetOption("EnableRealAmmo") then
         total_left = current_left - current_clip
 
         if total_left < 0 then

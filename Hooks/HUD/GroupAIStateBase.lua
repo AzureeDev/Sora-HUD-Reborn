@@ -1,11 +1,6 @@
 NepHook:Post(GroupAIStateBase, "convert_hostage_to_criminal", function(self, unit, peer_unit)
     local player_unit = managers.player:player_unit()
-
-    if not alive(player_unit) then
-        return
-    end
-
-    if player_unit ~= peer_unit then
+    if not alive(player_unit) or player_unit ~= peer_unit then
         return
     end
 

@@ -1,9 +1,11 @@
-NepHook:Post(HUDPresenter, "init", function(self, hud)
-    --self._hud_panel:child("present_panel"):set_visible(true)
+--[[
+NepHook:Post(HUDPresenter, "init", function(self)
+    self._hud_panel:child("present_panel"):set_visible(true)
 end)
+]]
 
 NepHook:Post(HUDPresenter, "_present_information", function(self, params)
-    local present_panel = self._hud_panel:child("present_panel")
+    --local present_panel = self._hud_panel:child("present_panel")
     local title = self._bg_box:child("title")
     local text = self._bg_box:child("text")
 
@@ -18,9 +20,9 @@ NepHook:Post(HUDPresenter, "_present_information", function(self, params)
     text:set_visible(true)
 
     local _, _, w, _ = title:text_rect()
-	title:set_w(w)
-	local _, _, w2, _ = text:text_rect()
-	text:set_w(w2)
-	local tw = math.max(w, w2)
+    title:set_w(w)
+    local _, _, w2, _ = text:text_rect()
+    text:set_w(w2)
+    local tw = math.max(w, w2)
     self._bg_box:set_w(tw + 16)
 end)

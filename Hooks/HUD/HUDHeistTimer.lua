@@ -4,7 +4,7 @@ NepHook:Post(HUDHeistTimer, "init", function(self)
     self._heist_timer_panel:set_x(0)
     self._heist_timer_panel:set_y(0)
     self._heist_timer_panel:set_valign("right")
-    
+
     if managers.hud._hud_minimap._minimap_enabled then
         self._heist_timer_panel:set_top(managers.hud._hud_minimap._panel:bottom() + 5)
     else
@@ -12,19 +12,19 @@ NepHook:Post(HUDHeistTimer, "init", function(self)
     end
 
     self._timer_text = self._heist_timer_panel:text({
-		name = "timer_text",
-		vertical = "center",
-		word_wrap = false,
-		wrap = false,
-		font_size = 20,
+        name = "timer_text",
+        vertical = "center",
+        word_wrap = false,
+        wrap = false,
+        font_size = 20,
         align = "right",
         x = -10,
-		text = "00:00",
+        text = "00:00",
         layer = 1,
         y = 1,
-		font = "fonts/font_large_mf",
-		color = Color.black
-	})
+        font = "fonts/font_large_mf",
+        color = Color.black
+    })
 
     local rect = self._heist_timer_panel:rect({
         name = "background",
@@ -45,5 +45,4 @@ NepHook:Post(HUDHeistTimer, "init", function(self)
         valign = "center"
     })
     --TimeR_texture:set_center_y(self._heist_timer_panel:center_y())
-
 end)
