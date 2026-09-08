@@ -251,7 +251,7 @@ NepgearsyHUDReborn.TeammateSkins = {
 	{ author = "_Direkt", collection = "community", name = "Hannibal Buress", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/community/whyyoubooingme" },
 	{ author = "Sora", collection = "suguri", name = "Suguri", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/suguri/sugu_2" },
 	{ author = "Sora", collection = "suguri", name = "Suguri & Hime", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/suguri/sugu_hime" },
-	{ author = "Sora", collection = "suguri", name = "Sora (Military)", dev = true, texture = "NepgearsyHUDReborn/HUD/TeammateSkins/suguri/sora_m_1" },
+	{ author = "Sora", collection = "suguri", name = "Sora (Military)", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/suguri/sora_m_1" },
 	{ author = "Sora", collection = "default", name = "Rounded", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/defaults/rounded_default" },
 	{ author = "Sora", collection = "default", name = "No Frame", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/defaults/no_frame" },
 	{ author = "Sora", collection = "default", name = "Golden Frame", texture = "NepgearsyHUDReborn/HUD/TeammateSkins/defaults/golden_frame" },
